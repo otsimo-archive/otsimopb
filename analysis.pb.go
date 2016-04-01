@@ -55,7 +55,13 @@
 		Dashboard
 		DashboardGetRequest
 		DashboardItemDecoration
+		DashboardEmpty
+		DashboardWebpage
+		DashboardApplink
+		DashboardAnalysis
 		DashboardItem
+		ProviderInfoRequest
+		ProviderInfo
 		Column
 		TimeOfDay
 		RowValue

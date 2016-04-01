@@ -1,5 +1,5 @@
 syntax = "proto3";
-package apipb;
+package otsimo;
 
 import "dataset.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
@@ -12,30 +12,25 @@ option (gogoproto.goproto_unrecognized_all) = false;
 option (gogoproto.goproto_enum_prefix_all) = false;
 option go_package = "otsimopb";
 
-enum ChartType {
-    LINE = 0;
-    BAR = 1;
-    PIE = 2;
-    SCATTER = 3;
-    BUBLE = 4;
-    RADAR = 5;
-    GEO = 6;
-    TIMELINE = 7;
+// DashboardService
+service DashboardService {
+    rpc Get(DashboardGetRequest) returns (Dashboard);
 }
 
-//Request and Responses
+// DashboardProvider
+service DashboardProvider {
+    rpc Info(ProviderInfoRequest) returns (ProviderInfo);
+    rpc Get(DashboardGetRequest) returns (Dashboard);
+}
 
-message Dashboard{
+message Dashboard {
     //ProfileId
     string profile_id = 1;
     //ChildId
     string child_id = 2;
-    //Data
-    DataSet data = 3;
     //Created At
-    int64 created_at = 4;
-    //Request which created this data
-  //  AnalyzeRequest request = 5; 
+    int64 created_at = 3;
+    repeated DashboardItem items = 8;
 }
 
 message DashboardGetRequest {
@@ -44,16 +39,10 @@ message DashboardGetRequest {
     string app_version = 3;
     string language = 4;
     string country_code = 5;
+    int64 last_time_data_fetched = 6;
 } 
 
-// DashboardService
-service DashboardService {
-    rpc Get(DashboardGetRequest) returns (Dashboard);
-}
-
-//message Decoration
-
-message DashboardItemDecoration{
+message DashboardItemDecoration { 
     enum Size {
         //Small is 1x1 block
         SMALL = 0;
@@ -63,7 +52,7 @@ message DashboardItemDecoration{
         LARGE = 2;
     }
     
-    enum BackgroundStyle{
+    enum BackgroundStyle {
         EMPTY = 0;
         IMAGE = 1;
         CHART_SILHOUETTE = 2;
@@ -76,13 +65,54 @@ message DashboardItemDecoration{
     string right_icon = 5;
 }
 
-message DashboardItem{
-    string title = 1;
+message DashboardEmpty{
+    
+}
+
+message DashboardWebpage{
+    string url = 1;
+}
+
+message DashboardApplink{
+    string applink = 1;
+}
+
+message DashboardAnalysis{
+    apipb.DataSet data = 1;
+    ChartType chart_type = 2;
+}
+
+message DashboardItem {
+    string text = 1;
     int64 expires_at = 2;    
     int64 created_at = 3;
     DashboardItemDecoration decoration = 4;
+    oneof data{
+        DashboardEmpty empty = 10;
+        DashboardWebpage webpage = 11;
+        DashboardApplink applink = 12;
+        DashboardAnalysis analysis = 13;
+    }
 }
 
+enum ChartType {
+    LINE = 0;
+    BAR = 1;
+    PIE = 2;
+    SCATTER = 3;
+    BUBLE = 4;
+    RADAR = 5;
+    GEO = 6;
+    TIMELINE = 7;
+}
+
+message ProviderInfoRequest{
+    
+}
+
+message ProviderInfo{
+    
+}
 /*
 
 
