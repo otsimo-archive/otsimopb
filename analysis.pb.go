@@ -52,7 +52,7 @@
 		ContentListRequest
 		ContentListResponse
 		ContentGetRequest
-		Dashboard
+		DashboardItems
 		DashboardGetRequest
 		DashboardItemDecoration
 		DashboardEmpty

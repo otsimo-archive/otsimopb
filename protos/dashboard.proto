@@ -14,16 +14,16 @@ option go_package = "otsimopb";
 
 // DashboardService
 service DashboardService {
-    rpc Get(DashboardGetRequest) returns (Dashboard);
+    rpc Get(DashboardGetRequest) returns (DashboardItems);
 }
 
 // DashboardProvider
 service DashboardProvider {
     rpc Info(ProviderInfoRequest) returns (ProviderInfo);
-    rpc Get(DashboardGetRequest) returns (Dashboard);
+    rpc Get(stream DashboardGetRequest) returns (stream DashboardItems);
 }
 
-message Dashboard {
+message DashboardItems {
     //ProfileId
     string profile_id = 1;
     //ChildId
@@ -87,6 +87,9 @@ message DashboardItem {
     int64 expires_at = 2;    
     int64 created_at = 3;
     DashboardItemDecoration decoration = 4;
+    int32 score = 5;
+    int32 provider_weight = 6;
+    
     oneof data{
         DashboardEmpty empty = 10;
         DashboardWebpage webpage = 11;
@@ -107,62 +110,14 @@ enum ChartType {
 }
 
 message ProviderInfoRequest{
-    
+    //todo
 }
 
 message ProviderInfo{
-    
+    //todo add some information about provider service,    
 }
-/*
 
 
-DashboardItemType
-    - Webpage
-    - Applink
-    - AnalysisChart
 
-DashboardItem
-
-*/
-
-/*
-    line
-    bar
-    pie
-    scatter
-    bubble
-    radar
-    
-    geo
-    timeline
-    
-    
-Column
-    ValueType
-    Name
-Row
-    Values
-
-
-Purpose:
-X-axis group labels (discrete)
-X-axis values (continuous)
-
-Data Type:	
-string (discrete)
-number, date, datetime, or timeofday (continuous)
-
-The following axes are always continuous:
-    Both axes of bubble charts.
-    The minor axis.
-
-The following axes are always discrete:
-    The major axis of stepped area charts (and combo charts containing such series).
-
-For a discrete axis, set the data column type to string.
-For a continuous axis, set the data column type to one of: number, date, datetime or timeofday
-
-
-*/
 
 
