@@ -9,7 +9,6 @@
 		analysis.proto
 		api.proto
 		catalog.proto
-		certman.proto
 		content.proto
 		dashboard.proto
 		dataset.proto
@@ -46,8 +45,6 @@
 		CatalogListRequest
 		CatalogListResponse
 		CatalogApproveRequest
-		ServiceInfo
-		Certificate
 		Content
 		ContentListRequest
 		ContentListResponse
@@ -60,6 +57,8 @@
 		DashboardApplink
 		DashboardAnalysis
 		DashboardItem
+		ProviderItem
+		ProviderItems
 		ProviderInfoRequest
 		ProviderInfo
 		Column
