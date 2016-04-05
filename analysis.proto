@@ -98,20 +98,18 @@ message Aggregation{
 }
 
 message GroupInterval{
-    oneof interval {
-        //For ContinuesInterval
-        int32 int = 1;
-        //For ContinuesInterval
-        float real = 2;
-        //For Datetime
-        int32 days = 3;
-        //For Datetime
-        int32 hours = 4;
-        //For TimeOfDay
-        bool minutes = 5;
-        //For TimeOfDay
-        bool seconds = 6;    
-    };    
+    //For ContinuesInterval
+    int32 int = 1;
+    //For ContinuesInterval
+    float real = 2;
+    //For Datetime
+    int32 days = 3;
+    //For Datetime
+    int32 hours = 4;
+    //For TimeOfDay
+    bool minutes = 5;
+    //For TimeOfDay
+    bool seconds = 6;    
 }
 
 message QueryGroup {
@@ -122,7 +120,7 @@ message QueryGroup {
         Datetime  = 1;
         //TimeofDay gives rows on time of day. minutes and seconds on interval value determines interval.
         //ex: if minutes and seconds are false then rows will be 0,1,2,3,4
-        //ex: if minutes is false then rows will be 00:00,00:01,00:02,...
+        //ex: if minutes is true then rows will be 00:00,00:01,00:02,...
         //when seconds is true than minutes is always true
         TimeOfDay = 2;
         //Discrete should be used for String values
