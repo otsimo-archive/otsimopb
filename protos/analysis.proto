@@ -66,6 +66,10 @@ message GameWithVersions{
     repeated string versions = 2;
 }
 
+message PlayedGamesList{
+    repeated GameWithVersions games = 1;
+}
+
 message AvailableAnalysisResult{
     //Analysis
     repeated AnalysisMetadata analysis = 1;
@@ -215,7 +219,7 @@ service AnalysisService {
     // ActiveOnRange returns child ids who active given time range
     rpc ActiveOnRange(TimeRange) returns (stream ChildAndProfileIds);
     // PlayedGames returns games played during given time range
-    rpc PlayedGames(ChildAndTimeRange) returns (GameWithVersions);
+    rpc PlayedGames(ChildAndTimeRange) returns (PlayedGamesList);
     // AvailableAnalysis returns analysis can be calculated
     rpc AvailableAnalysis(GameWithVersions) returns (AvailableAnalysisResult);
     // Analyze calculates given request
