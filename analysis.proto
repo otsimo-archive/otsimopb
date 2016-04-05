@@ -94,7 +94,8 @@ message Aggregation{
         AVG = 5;
     }
     string field_name = 1;
-    Accumulator accumulator = 2;
+    string output_field = 2;    
+    Accumulator accumulator = 3;
 }
 
 message GroupInterval{
@@ -132,6 +133,7 @@ message QueryGroup {
     GroupType type = 2;
     //Interval is optional for Date and Discrete type
     GroupInterval interval = 3;
+    string output_field = 4;
 }
 
 message Query{
