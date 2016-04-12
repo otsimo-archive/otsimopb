@@ -17,12 +17,6 @@ service DashboardService {
     rpc Get(DashboardGetRequest) returns (DashboardItems);
 }
 
-// DashboardProvider
-service DashboardProvider {
-    rpc Info(ProviderInfoRequest) returns (ProviderInfo);
-    rpc Get(DashboardGetRequest) returns (ProviderItems);
-}
-
 message DashboardItems {
     //ProfileId
     string profile_id = 1;
@@ -110,37 +104,3 @@ enum ChartType {
     GEO = 6;
     TIMELINE = 7;
 }
-
-message ProviderItem{
-    bool cacheable = 1;
-    int64 ttl = 2;
-    Card item = 4;
-}
-
-message ProviderItems {
-    //ProfileId
-    string profile_id = 1;
-    //ChildId
-    string child_id = 2;
-    //CreatedAt
-    int64 created_at = 3;
-    //Cacheable
-    bool cacheable = 4;
-    //TTL is titme to live duration
-    int64 ttl = 5;
-    //Items
-    repeated ProviderItem items = 8;
-}
-
-message ProviderInfoRequest{
-    //todo
-}
-
-message ProviderInfo{
-    //todo add some information about provider service,    
-}
-
-
-
-
-
