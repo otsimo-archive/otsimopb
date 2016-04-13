@@ -82,9 +82,10 @@ message Card {
     int64 created_at = 4;
     CardDecoration decoration = 5;
     //Score is between 0-500
-    int32 score = 6;
+    int32 provider_score = 6;
     //ProviderWeight is between 0-2
     float provider_weight = 7;
+    string provider_name = 8;
     
     oneof data{
         CardEmpty empty = 10;
