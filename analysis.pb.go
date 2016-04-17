@@ -77,6 +77,8 @@
 		Point
 		Event
 		AppEventData
+		BatchEventData
+		BatchEvent
 		EventResponse
 		GetProfileRequest
 		GetChildRequest
