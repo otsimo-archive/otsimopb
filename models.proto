@@ -30,6 +30,7 @@ message Profile{
     Address address = 7             [(gogoproto.moretags) = "bson:\"address,omitempty\""];
     int64 created_at = 8            [(gogoproto.moretags) = "bson:\"created_at,omitempty\""];
     int64 last_updated = 9          [(gogoproto.moretags) = "bson:\"last_updated,omitempty\""];
+    map<string,string>child_info=10 [(gogoproto.moretags) = "bson:\"child_info,omitempty\""];
 }
 
 message ChildGameEntry{
