@@ -106,7 +106,8 @@ message ListItem {
     ReleaseState latest_state = 4;
     string production_version = 5;
     string storage = 6;           
-    string archive_format = 7;        
+    string archive_format = 7;   
+    int64 released_at = 8;     
 }
 
 message GetLatestVersionsRequest{
