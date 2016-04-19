@@ -107,7 +107,8 @@ message ListItem {
     string production_version = 5;
     string storage = 6;           
     string archive_format = 7;   
-    int64 released_at = 8;     
+    int64 released_at = 8;
+    repeated string languages = 9;
 }
 
 message GetLatestVersionsRequest{
