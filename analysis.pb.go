@@ -90,6 +90,7 @@
 		GameEntryRequest
 		PublishResponse
 		ValidateRequest
+		UpdateIndecesRequest
 		GetGameRequest
 		ListGamesRequest
 		ListItem

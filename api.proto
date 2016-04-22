@@ -30,4 +30,5 @@ service ApiService {
     rpc ChangeActivation(ChangeChildActivationRequest)returns(Response);
     rpc GetDisabledChildren(GetChildrenFromProfileRequest)returns(GetChildrenFromProfileResponse);
     rpc SoundEnable(SoundEnableRequest) returns (Response);
+    rpc UpdateGameIndices(UpdateIndecesRequest) returns (Child);
 }

@@ -78,6 +78,12 @@ message ValidateRequest{
     ReleaseState new_state = 3; //only admins can change to validated state, and only developers can change to others
 }
 
+message UpdateIndecesRequest {
+    string profile_id = 1;
+    string child_id = 2;
+    repeated string game_ids = 3;    
+}
+
 //Get game by game_id or unique_name
 message GetGameRequest{
     string unique_name = 1;
