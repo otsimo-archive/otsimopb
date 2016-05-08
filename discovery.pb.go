@@ -94,6 +94,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for Discovery service
 
 type DiscoveryClient interface {
@@ -127,16 +131,22 @@ func RegisterDiscoveryServer(s *grpc.Server, srv DiscoveryServer) {
 	s.RegisterService(&_Discovery_serviceDesc, srv)
 }
 
-func _Discovery_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Discovery_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DiscoveryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DiscoveryServer).Get(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DiscoveryServer).Get(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.Discovery/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DiscoveryServer).Get(ctx, req.(*DiscoveryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Discovery_serviceDesc = grpc.ServiceDesc{

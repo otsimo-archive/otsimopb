@@ -23,6 +23,10 @@ var _ = math.Inf
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for SearchService service
 
 type SearchServiceClient interface {
@@ -78,40 +82,58 @@ func RegisterSearchServiceServer(s *grpc.Server, srv SearchServiceServer) {
 	s.RegisterService(&_SearchService_serviceDesc, srv)
 }
 
-func _SearchService_IndexDatabase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _SearchService_IndexDatabase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IndexRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SearchServiceServer).IndexDatabase(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SearchServiceServer).IndexDatabase(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.SearchService/IndexDatabase",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).IndexDatabase(ctx, req.(*IndexRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _SearchService_ReindexAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _SearchService_ReindexAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IndexRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SearchServiceServer).ReindexAll(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SearchServiceServer).ReindexAll(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.SearchService/ReindexAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).ReindexAll(ctx, req.(*IndexRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _SearchService_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _SearchService_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SearchServiceServer).Search(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SearchServiceServer).Search(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.SearchService/Search",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).Search(ctx, req.(*SearchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _SearchService_serviceDesc = grpc.ServiceDesc{

@@ -23,6 +23,10 @@ var _ = math.Inf
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for RegistryService service
 
 type RegistryServiceClient interface {
@@ -161,76 +165,112 @@ func RegisterRegistryServiceServer(s *grpc.Server, srv RegistryServiceServer) {
 	s.RegisterService(&_RegistryService_serviceDesc, srv)
 }
 
-func _RegistryService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _RegistryService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(RegistryServiceServer).Get(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).Get(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).Get(ctx, req.(*GetGameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _RegistryService_GetRelease_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _RegistryService_GetRelease_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetGameReleaseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(RegistryServiceServer).GetRelease(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).GetRelease(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/GetRelease",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).GetRelease(ctx, req.(*GetGameReleaseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _RegistryService_Publish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _RegistryService_Publish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GameManifest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(RegistryServiceServer).Publish(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).Publish(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/Publish",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).Publish(ctx, req.(*GameManifest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _RegistryService_ChangeReleaseState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _RegistryService_ChangeReleaseState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ValidateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(RegistryServiceServer).ChangeReleaseState(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).ChangeReleaseState(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/ChangeReleaseState",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).ChangeReleaseState(ctx, req.(*ValidateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _RegistryService_GetLatestVersions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _RegistryService_GetLatestVersions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetLatestVersionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(RegistryServiceServer).GetLatestVersions(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).GetLatestVersions(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/GetLatestVersions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).GetLatestVersions(ctx, req.(*GetLatestVersionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _RegistryService_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _RegistryService_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(RegistryServiceServer).Search(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).Search(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/Search",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).Search(ctx, req.(*SearchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RegistryService_ListGames_Handler(srv interface{}, stream grpc.ServerStream) error {

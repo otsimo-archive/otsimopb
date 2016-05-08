@@ -605,6 +605,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for AnalysisService service
 
 type AnalysisServiceClient interface {
@@ -749,64 +753,94 @@ func (x *analysisServiceActiveOnRangeServer) Send(m *ChildAndProfileIds) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _AnalysisService_PlayedGames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _AnalysisService_PlayedGames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ChildAndTimeRange)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AnalysisServiceServer).PlayedGames(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AnalysisServiceServer).PlayedGames(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.AnalysisService/PlayedGames",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalysisServiceServer).PlayedGames(ctx, req.(*ChildAndTimeRange))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _AnalysisService_AvailableAnalysis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _AnalysisService_AvailableAnalysis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GameWithVersions)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AnalysisServiceServer).AvailableAnalysis(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AnalysisServiceServer).AvailableAnalysis(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.AnalysisService/AvailableAnalysis",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalysisServiceServer).AvailableAnalysis(ctx, req.(*GameWithVersions))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _AnalysisService_Analyze_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _AnalysisService_Analyze_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AnalyzeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AnalysisServiceServer).Analyze(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AnalysisServiceServer).Analyze(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.AnalysisService/Analyze",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalysisServiceServer).Analyze(ctx, req.(*AnalyzeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _AnalysisService_ActiveUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _AnalysisService_ActiveUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ActiveUsersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AnalysisServiceServer).ActiveUsers(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AnalysisServiceServer).ActiveUsers(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.AnalysisService/ActiveUsers",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalysisServiceServer).ActiveUsers(ctx, req.(*ActiveUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _AnalysisService_Retention_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _AnalysisService_Retention_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RetentionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AnalysisServiceServer).Retention(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AnalysisServiceServer).Retention(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.AnalysisService/Retention",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalysisServiceServer).Retention(ctx, req.(*RetentionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _AnalysisService_serviceDesc = grpc.ServiceDesc{

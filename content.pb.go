@@ -167,6 +167,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for ContentService service
 
 type ContentServiceClient interface {
@@ -211,28 +215,40 @@ func RegisterContentServiceServer(s *grpc.Server, srv ContentServiceServer) {
 	s.RegisterService(&_ContentService_serviceDesc, srv)
 }
 
-func _ContentService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ContentService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ContentListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ContentServiceServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ContentServiceServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ContentService/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).List(ctx, req.(*ContentListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ContentService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ContentService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ContentGetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ContentServiceServer).Get(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ContentServiceServer).Get(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ContentService/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).Get(ctx, req.(*ContentGetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _ContentService_serviceDesc = grpc.ServiceDesc{

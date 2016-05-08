@@ -79,6 +79,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for DashboardProvider service
 
 type DashboardProviderClient interface {
@@ -123,28 +127,40 @@ func RegisterDashboardProviderServer(s *grpc.Server, srv DashboardProviderServer
 	s.RegisterService(&_DashboardProvider_serviceDesc, srv)
 }
 
-func _DashboardProvider_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _DashboardProvider_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProviderInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DashboardProviderServer).Info(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DashboardProviderServer).Info(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/otsimo.DashboardProvider/Info",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardProviderServer).Info(ctx, req.(*ProviderInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _DashboardProvider_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _DashboardProvider_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DashboardGetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DashboardProviderServer).Get(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DashboardProviderServer).Get(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/otsimo.DashboardProvider/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardProviderServer).Get(ctx, req.(*DashboardGetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _DashboardProvider_serviceDesc = grpc.ServiceDesc{

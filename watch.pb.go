@@ -112,6 +112,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for WatchService service
 
 type WatchServiceClient interface {
@@ -179,16 +183,22 @@ func RegisterWatchServiceServer(s *grpc.Server, srv WatchServiceServer) {
 	s.RegisterService(&_WatchService_serviceDesc, srv)
 }
 
-func _WatchService_Emit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _WatchService_Emit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EmitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(WatchServiceServer).Emit(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(WatchServiceServer).Emit(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.WatchService/Emit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WatchServiceServer).Emit(ctx, req.(*EmitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _WatchService_Watch_Handler(srv interface{}, stream grpc.ServerStream) error {

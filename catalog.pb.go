@@ -184,6 +184,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for CatalogService service
 
 type CatalogServiceClient interface {
@@ -250,52 +254,76 @@ func RegisterCatalogServiceServer(s *grpc.Server, srv CatalogServiceServer) {
 	s.RegisterService(&_CatalogService_serviceDesc, srv)
 }
 
-func _CatalogService_Pull_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _CatalogService_Pull_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CatalogPullRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CatalogServiceServer).Pull(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CatalogServiceServer).Pull(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.CatalogService/Pull",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatalogServiceServer).Pull(ctx, req.(*CatalogPullRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _CatalogService_Push_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _CatalogService_Push_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Catalog)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CatalogServiceServer).Push(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CatalogServiceServer).Push(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.CatalogService/Push",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatalogServiceServer).Push(ctx, req.(*Catalog))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _CatalogService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _CatalogService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CatalogListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CatalogServiceServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CatalogServiceServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.CatalogService/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatalogServiceServer).List(ctx, req.(*CatalogListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _CatalogService_Approve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _CatalogService_Approve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CatalogApproveRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CatalogServiceServer).Approve(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CatalogServiceServer).Approve(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.CatalogService/Approve",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatalogServiceServer).Approve(ctx, req.(*CatalogApproveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _CatalogService_serviceDesc = grpc.ServiceDesc{

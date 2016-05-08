@@ -23,6 +23,10 @@ var _ = math.Inf
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for ApiService service
 
 type ApiServiceClient interface {
@@ -181,148 +185,220 @@ func RegisterApiServiceServer(s *grpc.Server, srv ApiServiceServer) {
 	s.RegisterService(&_ApiService_serviceDesc, srv)
 }
 
-func _ApiService_AddProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_AddProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Profile)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).AddProfile(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).AddProfile(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/AddProfile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).AddProfile(ctx, req.(*Profile))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_GetProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_GetProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetProfileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).GetProfile(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).GetProfile(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/GetProfile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).GetProfile(ctx, req.(*GetProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_UpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_UpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Profile)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).UpdateProfile(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).UpdateProfile(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/UpdateProfile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).UpdateProfile(ctx, req.(*Profile))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_AddChild_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_AddChild_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Child)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).AddChild(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).AddChild(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/AddChild",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).AddChild(ctx, req.(*Child))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_GetChild_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_GetChild_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetChildRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).GetChild(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).GetChild(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/GetChild",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).GetChild(ctx, req.(*GetChildRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_UpdateChild_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_UpdateChild_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Child)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).UpdateChild(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).UpdateChild(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/UpdateChild",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).UpdateChild(ctx, req.(*Child))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_GetChildren_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_GetChildren_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetChildrenFromProfileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).GetChildren(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).GetChildren(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/GetChildren",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).GetChildren(ctx, req.(*GetChildrenFromProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_UpdateGameEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_UpdateGameEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GameEntryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).UpdateGameEntry(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).UpdateGameEntry(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/UpdateGameEntry",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).UpdateGameEntry(ctx, req.(*GameEntryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_ChangeActivation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_ChangeActivation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ChangeChildActivationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).ChangeActivation(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).ChangeActivation(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/ChangeActivation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).ChangeActivation(ctx, req.(*ChangeChildActivationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_GetDisabledChildren_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_GetDisabledChildren_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetChildrenFromProfileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).GetDisabledChildren(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).GetDisabledChildren(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/GetDisabledChildren",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).GetDisabledChildren(ctx, req.(*GetChildrenFromProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_SoundEnable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_SoundEnable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SoundEnableRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).SoundEnable(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).SoundEnable(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/SoundEnable",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).SoundEnable(ctx, req.(*SoundEnableRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _ApiService_UpdateGameIndices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ApiService_UpdateGameIndices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateIndecesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ApiServiceServer).UpdateGameIndices(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ApiServiceServer).UpdateGameIndices(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/UpdateGameIndices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).UpdateGameIndices(ctx, req.(*UpdateIndecesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _ApiService_serviceDesc = grpc.ServiceDesc{

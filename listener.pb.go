@@ -178,6 +178,10 @@ func init() {
 var _ context.Context
 var _ grpc.ClientConn
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion2
+
 // Client API for ListenerService service
 
 type ListenerServiceClient interface {
@@ -244,16 +248,22 @@ func RegisterListenerServiceServer(s *grpc.Server, srv ListenerServiceServer) {
 	s.RegisterService(&_ListenerService_serviceDesc, srv)
 }
 
-func _ListenerService_AppEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _ListenerService_AppEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AppEventData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ListenerServiceServer).AppEvent(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ListenerServiceServer).AppEvent(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ListenerService/AppEvent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ListenerServiceServer).AppEvent(ctx, req.(*AppEventData))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ListenerService_CustomEvent_Handler(srv interface{}, stream grpc.ServerStream) error {
