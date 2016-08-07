@@ -93,7 +93,7 @@ message GameMetadata{
     // InfoSlug is the id of the content which describes how to play this game
     string info_slug = 9            [(gogoproto.moretags) = "bson:\"info_slug,omitempty\""];
     //Assets are asset folders or paths for this language
-    repeated string assets = 10     [(gogoproto.moretags) = "bson:\"assets,omitempty\""];  
+    repeated string assets = 10     [(gogoproto.moretags) = "bson:\"assets,omitempty\""];
 }
 
 message GameManifest{
@@ -113,6 +113,8 @@ message GameManifest{
     repeated Author authors = 7             [(gogoproto.moretags) = "bson:\"authors\""];
     // Repository 
     string repository = 8                   [(gogoproto.moretags) = "bson:\"repository\""];
+    //SupportedOrientations are the orientations that can be used for this app
+    repeated string supported_orientations = 9 [(gogoproto.moretags) = "bson:\"supported_orientations,omitempty\""];
     //Metadata information for each languages
     repeated GameMetadata metadata = 13     [(gogoproto.moretags) = "bson:\"metadata,omitempty\""];
     //Exclude directories when building
