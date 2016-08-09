@@ -129,8 +129,8 @@ message GameManifest{
     string default_language = 18            [(gogoproto.moretags) = "bson:\"default_language,omitempty\""];
     //Loading Background Color of the Game
     string loading_color = 19               [(gogoproto.moretags) = "bson:\"loading_color,omitempty\""];
-    //Min Version is minumum required client app version
-    string min_version = 20                 [(gogoproto.moretags) = "bson:\"min_version,omitempty\""];
+    //Capabilities are required host app features. The most basic capability is 'sandbox'.  
+    repeated string capabilities = 20      [(gogoproto.moretags) = "bson:\"capabilities,omitempty\""];
 }
 
 message Game{
