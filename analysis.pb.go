@@ -113,6 +113,7 @@
 		Game
 		GameRelease
 		UploadToken
+		AllGameReleases
 		EmitRequest
 		EmitResponse
 		WatchRequest
