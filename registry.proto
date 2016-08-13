@@ -42,8 +42,8 @@ service RegistryService {
     rpc Search(SearchRequest) returns (SearchResponse){}     
     //ListGames returns all games
     rpc ListGames(ListGamesRequest) returns (stream ListItem);
-    // GameReleases returns all releases of the given game
-    rpc GameReleases(GetGameRequest) returns (AllGameReleases);
+    // AllReleases returns all releases of the given game
+    rpc AllReleases(GetGameRequest) returns (AllGameReleases);
 }
 
 
