@@ -24,7 +24,6 @@ message Column {
     }
     Type type = 1;
     string name = 2;
-    int32 index = 3;
 }
 
 message TimeOfDay{
@@ -43,7 +42,6 @@ message RowValue{
         int64 date_of_time = 5;
         TimeOfDay time_of_day = 6;
     };
-    int32 index = 10;
 }
 
 message Row {
