@@ -153,12 +153,10 @@ message AnalyzeRequest{
     string child_id = 1;
     //ProfileId
     string profile_id = 2;
-    //GameId
-    string game_id = 3;
-    //Game Versions
-    repeated string game_versions = 4;
     //Query is calculation query
     Query query = 6;
+    //Games are the compute this request on
+    repeated GameWithVersions games = 7;
 }
 
 message AnalyzeResult{
