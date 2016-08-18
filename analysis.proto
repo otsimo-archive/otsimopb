@@ -2,7 +2,7 @@ syntax = "proto3";
 package apipb;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-import "dataset.proto";
+import "datasetmodels.proto";
 
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;
@@ -139,7 +139,7 @@ message QueryGroup {
 }
 
 message Query{
-    string event = 1;
+    repeated string events = 1;
     TimeRange range = 2;
     repeated QuerySort sort = 3;
     int32 limit = 4;
