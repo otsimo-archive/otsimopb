@@ -65,7 +65,8 @@ message Child{
     repeated ChildGameEntry games = 9   [(gogoproto.moretags) = "bson:\"games,omitempty\""];
     bool active = 10                    [(gogoproto.moretags) = "bson:\"active,omitempty\""];
     bool logged_in = 11                 [(gogoproto.moretags) = "bson:\"logged_in,omitempty\""];
-    bool sounds_enabled = 12            [(gogoproto.moretags) = "bson:\"sounds_enabled,omitempty\""];     
+    bool sounds_enabled = 12            [(gogoproto.moretags) = "bson:\"sounds_enabled,omitempty\""];   
+    string locale = 13                  [(gogoproto.moretags) = "bson:\"locale,omitempty\""];      
     int64 created_at = 15               [(gogoproto.moretags) = "bson:\"created_at,omitempty\""];
     int64 last_updated = 16             [(gogoproto.moretags) = "bson:\"last_updated,omitempty\""];
     map<string,string>child_info = 17   [(gogoproto.moretags) = "bson:\"child_info,omitempty\""];    
