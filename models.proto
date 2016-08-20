@@ -22,16 +22,18 @@ message Address {
     string country_code = 5         [(gogoproto.moretags) = "bson:\"country_code,omitempty\""];
 }
 
-message Profile{
+message Profile {
     string id = 1                   [(gogoproto.moretags) = "bson:\"_id,omitempty\""];
     string email = 2                [(gogoproto.moretags) = "bson:\"email,omitempty\""];
     string first_name = 3           [(gogoproto.moretags) = "bson:\"first_name,omitempty\""];   
     string last_name = 4            [(gogoproto.moretags) = "bson:\"last_name,omitempty\""];
-    string language = 5             [(gogoproto.moretags) = "bson:\"language,omitempty\""];  
+    string language = 5             [(gogoproto.moretags) = "bson:\"language,omitempty\""];
     string mobile_phone = 6         [(gogoproto.moretags) = "bson:\"mobile_phone,omitempty\""]; 
     Address address = 7             [(gogoproto.moretags) = "bson:\"address,omitempty\""];
     int64 created_at = 8            [(gogoproto.moretags) = "bson:\"created_at,omitempty\""];
     int64 last_updated = 9          [(gogoproto.moretags) = "bson:\"last_updated,omitempty\""];
+    string locale = 10              [(gogoproto.moretags) = "bson:\"locale,omitempty\""];
+    int32 timezone = 11             [(gogoproto.moretags) = "bson:\"timezone,omitempty\""];
 }
 
 message ChildGameEntry{

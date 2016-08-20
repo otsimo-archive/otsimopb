@@ -36,31 +36,6 @@ message ChildAndTimeRange{
     TimeRange range = 3;
 }
 
-message AnalysisDataField {
-    enum Type {
-        STRING = 0;
-        INTEGER = 1;
-        FLOAT = 2;
-        BOOL = 3;
-    }
-    //Name is the field name
-    string name = 1;
-    //Type is fields type
-    Type type = 2;
-}
-
-message AnalysisMetadata {
-    //GameId
-    string game_id = 1;
-    //GameVersion
-    repeated string versions = 2;
-    //Event
-    string event = 3;
-    //AnalysisLoad
-    repeated AnalysisDataField fields = 4;
-   
-}
-
 message GameWithVersions{
     //GameId
     string game_id = 1;
@@ -72,10 +47,6 @@ message PlayedGamesList{
     repeated GameWithVersions games = 1;
 }
 
-message AvailableAnalysisResult{
-    //Analysis
-    repeated AnalysisMetadata analysis = 1;
-}
 
 message QuerySort{
     enum SortOrder{
@@ -211,6 +182,11 @@ message RetentionResult{
     int64 created_at = 3;   
 }
 
+message InactiveUsersRequest {
+    string app_id = 1;
+    int64 inactive_after = 2;
+    TimeRange active_during = 3;
+}
 // Revenue
 
 // Sessions
@@ -218,10 +194,10 @@ message RetentionResult{
 service AnalysisService {
     // ActiveOnRange returns child ids who active given time range
     rpc ActiveOnRange(TimeRange) returns (stream ChildAndProfileIds);
+    // Inactive calculates inactive users who was active given period but not after at given app
+    rpc Inactive(InactiveUsersRequest) returns (stream ChildAndProfileIds);
     // PlayedGames returns games played during given time range
     rpc PlayedGames(ChildAndTimeRange) returns (PlayedGamesList);
-    // AvailableAnalysis returns analysis can be calculated
-    rpc AvailableAnalysis(GameWithVersions) returns (AvailableAnalysisResult);
     // Analyze calculates given request
     rpc Analyze(AnalyzeRequest) returns (AnalyzeResult);
     // ActiveUsers calculates MAU, DAU
