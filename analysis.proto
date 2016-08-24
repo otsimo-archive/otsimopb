@@ -187,6 +187,10 @@ message InactiveUsersRequest {
     TimeRange inactive_during = 2;
     TimeRange active_during = 3;
 }
+message GetActiveUsersRequest {
+    string app_id = 1;
+    TimeRange period = 2;
+}
 // Revenue
 
 // Sessions
@@ -196,6 +200,8 @@ service AnalysisService {
     rpc ActiveOnRange(TimeRange) returns (stream ChildAndProfileIds);
     // Inactive calculates inactive users who was active given period but not after at given app
     rpc Inactive(InactiveUsersRequest) returns (stream ChildAndProfileIds);
+    // Active streams active user on given period
+    rpc Active(GetActiveUsersRequest) returns (stream ChildAndProfileIds);
     // PlayedGames returns games played during given time range
     rpc PlayedGames(ChildAndTimeRange) returns (PlayedGamesList);
     // Analyze calculates given request
