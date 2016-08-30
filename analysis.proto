@@ -45,6 +45,10 @@ message GameWithVersions{
 
 message PlayedGamesList{
     repeated GameWithVersions games = 1;
+    //ChildId
+    string child_id = 2;
+    //Range is the time range
+    TimeRange range = 3;
 }
 
 
