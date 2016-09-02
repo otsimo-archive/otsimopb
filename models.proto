@@ -34,6 +34,7 @@ message Profile {
     int64 last_updated = 9          [(gogoproto.moretags) = "bson:\"last_updated,omitempty\""];
     string locale = 10              [(gogoproto.moretags) = "bson:\"locale,omitempty\""];
     int32 timezone = 11             [(gogoproto.moretags) = "bson:\"timezone,omitempty\""];
+    string country = 12             [(gogoproto.moretags) = "bson:\"country,omitempty\""];
 }
 
 message ChildGameEntry{
