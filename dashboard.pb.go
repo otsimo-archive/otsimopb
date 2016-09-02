@@ -2509,6 +2509,8 @@ var (
 	ErrIntOverflowDashboard   = fmt.Errorf("proto: integer overflow")
 )
 
+func init() { proto.RegisterFile("dashboard.proto", fileDescriptorDashboard) }
+
 var fileDescriptorDashboard = []byte{
 	// 975 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x55, 0x4f, 0x6f, 0xdb, 0xc6,

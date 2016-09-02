@@ -458,6 +458,8 @@ var _ApiService_serviceDesc = grpc.ServiceDesc{
 	Metadata: fileDescriptorApi,
 }
 
+func init() { proto.RegisterFile("api.proto", fileDescriptorApi) }
+
 var fileDescriptorApi = []byte{
 	// 425 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x53, 0xcd, 0x8e, 0xd3, 0x30,

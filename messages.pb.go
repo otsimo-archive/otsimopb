@@ -4174,6 +4174,8 @@ var (
 	ErrIntOverflowMessages   = fmt.Errorf("proto: integer overflow")
 )
 
+func init() { proto.RegisterFile("messages.proto", fileDescriptorMessages) }
+
 var fileDescriptorMessages = []byte{
 	// 1157 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x9c, 0x56, 0xdf, 0x6e, 0xe3, 0xc4,
