@@ -201,6 +201,27 @@ message ActiveOnRangeRequest{
     TimeRange range = 1;
     repeated string country_codes = 2;
 }
+
+message GameInfoResponse{
+    enum FieldType {
+        UNKNOWN = 0;
+        STRING = 1;
+        INTEGER = 2;
+        FLOAT = 3;
+        BOOL = 4;
+    }
+    message FieldInfo{
+        string name = 1;
+        FieldType type = 2;
+    }
+    message EventInfo{
+        string name = 1;
+        repeated FieldInfo fields = 2;
+    }
+    string game_id = 1;
+    repeated EventInfo events = 2;
+}
+
 // Revenue
 
 // Sessions
@@ -220,7 +241,8 @@ service AnalysisService {
     rpc ActiveUsers(ActiveUsersRequest) returns (ActiveUsersResult);
     // Retention returns retentation
     rpc Retention(RetentionRequest) returns (RetentionResult);
-    
+
+    rpc GameInfo(GameWithVersions) returns (GameInfoResponse);
     //rpc Sessions
     
     //rpc Revenue
