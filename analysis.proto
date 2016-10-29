@@ -121,6 +121,7 @@ message Query{
     int32 offset = 5;
     QueryGroup group_by = 6;
     repeated Aggregation aggregations = 7;
+    repeated bytes raw_queries = 8;
 }
 
 message AnalyzeRequest{
