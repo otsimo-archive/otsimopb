@@ -55,7 +55,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for RegistryService service
 
@@ -395,36 +395,36 @@ var _RegistryService_serviceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: fileDescriptorRegistry,
+	Metadata: "registry.proto",
 }
 
-func (m *AllGameReleases) Marshal() (data []byte, err error) {
+func (m *AllGameReleases) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *AllGameReleases) MarshalTo(data []byte) (int, error) {
+func (m *AllGameReleases) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.GameId) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintRegistry(data, i, uint64(len(m.GameId)))
-		i += copy(data[i:], m.GameId)
+		i = encodeVarintRegistry(dAtA, i, uint64(len(m.GameId)))
+		i += copy(dAtA[i:], m.GameId)
 	}
 	if len(m.Releases) > 0 {
 		for _, msg := range m.Releases {
-			data[i] = 0x12
+			dAtA[i] = 0x12
 			i++
-			i = encodeVarintRegistry(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintRegistry(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -434,65 +434,65 @@ func (m *AllGameReleases) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *AllGameReleases_MiniRelease) Marshal() (data []byte, err error) {
+func (m *AllGameReleases_MiniRelease) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *AllGameReleases_MiniRelease) MarshalTo(data []byte) (int, error) {
+func (m *AllGameReleases_MiniRelease) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Version) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintRegistry(data, i, uint64(len(m.Version)))
-		i += copy(data[i:], m.Version)
+		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Version)))
+		i += copy(dAtA[i:], m.Version)
 	}
 	if m.ReleasedAt != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintRegistry(data, i, uint64(m.ReleasedAt))
+		i = encodeVarintRegistry(dAtA, i, uint64(m.ReleasedAt))
 	}
 	if m.ReleaseState != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintRegistry(data, i, uint64(m.ReleaseState))
+		i = encodeVarintRegistry(dAtA, i, uint64(m.ReleaseState))
 	}
 	return i, nil
 }
 
-func encodeFixed64Registry(data []byte, offset int, v uint64) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
-	data[offset+4] = uint8(v >> 32)
-	data[offset+5] = uint8(v >> 40)
-	data[offset+6] = uint8(v >> 48)
-	data[offset+7] = uint8(v >> 56)
+func encodeFixed64Registry(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
 	return offset + 8
 }
-func encodeFixed32Registry(data []byte, offset int, v uint32) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
+func encodeFixed32Registry(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
 	return offset + 4
 }
-func encodeVarintRegistry(data []byte, offset int, v uint64) int {
+func encodeVarintRegistry(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
-		data[offset] = uint8(v&0x7f | 0x80)
+		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
-	data[offset] = uint8(v)
+	dAtA[offset] = uint8(v)
 	return offset + 1
 }
 func (m *AllGameReleases) Size() (n int) {
@@ -540,8 +540,8 @@ func sovRegistry(x uint64) (n int) {
 func sozRegistry(x uint64) (n int) {
 	return sovRegistry(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *AllGameReleases) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *AllGameReleases) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -553,7 +553,7 @@ func (m *AllGameReleases) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -581,7 +581,7 @@ func (m *AllGameReleases) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -596,7 +596,7 @@ func (m *AllGameReleases) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.GameId = string(data[iNdEx:postIndex])
+			m.GameId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -610,7 +610,7 @@ func (m *AllGameReleases) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -625,13 +625,13 @@ func (m *AllGameReleases) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Releases = append(m.Releases, &AllGameReleases_MiniRelease{})
-			if err := m.Releases[len(m.Releases)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Releases[len(m.Releases)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipRegistry(data[iNdEx:])
+			skippy, err := skipRegistry(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -650,8 +650,8 @@ func (m *AllGameReleases) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *AllGameReleases_MiniRelease) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -663,7 +663,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -691,7 +691,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -706,7 +706,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Version = string(data[iNdEx:postIndex])
+			m.Version = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 0 {
@@ -720,7 +720,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.ReleasedAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -739,7 +739,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.ReleaseState |= (ReleaseState(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -748,7 +748,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 			}
 		default:
 			iNdEx = preIndex
-			skippy, err := skipRegistry(data[iNdEx:])
+			skippy, err := skipRegistry(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -767,8 +767,8 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func skipRegistry(data []byte) (n int, err error) {
-	l := len(data)
+func skipRegistry(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		var wire uint64
@@ -779,7 +779,7 @@ func skipRegistry(data []byte) (n int, err error) {
 			if iNdEx >= l {
 				return 0, io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -797,7 +797,7 @@ func skipRegistry(data []byte) (n int, err error) {
 					return 0, io.ErrUnexpectedEOF
 				}
 				iNdEx++
-				if data[iNdEx-1] < 0x80 {
+				if dAtA[iNdEx-1] < 0x80 {
 					break
 				}
 			}
@@ -814,7 +814,7 @@ func skipRegistry(data []byte) (n int, err error) {
 				if iNdEx >= l {
 					return 0, io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				length |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -837,7 +837,7 @@ func skipRegistry(data []byte) (n int, err error) {
 					if iNdEx >= l {
 						return 0, io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					innerWire |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -848,7 +848,7 @@ func skipRegistry(data []byte) (n int, err error) {
 				if innerWireType == 4 {
 					break
 				}
-				next, err := skipRegistry(data[start:])
+				next, err := skipRegistry(dAtA[start:])
 				if err != nil {
 					return 0, err
 				}
@@ -876,7 +876,7 @@ func init() { proto.RegisterFile("registry.proto", fileDescriptorRegistry) }
 
 var fileDescriptorRegistry = []byte{
 	// 497 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x74, 0x53, 0xbf, 0x6e, 0xd3, 0x40,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x53, 0xbf, 0x6e, 0xd3, 0x40,
 	0x18, 0xef, 0xc5, 0x22, 0x69, 0xbf, 0x94, 0x44, 0x5c, 0x69, 0x6b, 0x05, 0xe4, 0x46, 0x99, 0xc2,
 	0x80, 0x8b, 0xc2, 0xd0, 0x0e, 0xa8, 0x28, 0x30, 0x58, 0x95, 0x5a, 0x51, 0xd9, 0xa8, 0x03, 0x4b,
 	0x74, 0xb6, 0xbf, 0x3a, 0x27, 0xd9, 0x3e, 0xe3, 0xbb, 0x54, 0x62, 0xe5, 0x29, 0x98, 0x79, 0x9a,

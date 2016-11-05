@@ -409,7 +409,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for DashboardService service
 
@@ -533,47 +533,47 @@ var _DashboardService_serviceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: fileDescriptorDashboard,
+	Metadata: "dashboard.proto",
 }
 
-func (m *DashboardItems) Marshal() (data []byte, err error) {
+func (m *DashboardItems) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *DashboardItems) MarshalTo(data []byte) (int, error) {
+func (m *DashboardItems) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.ProfileId) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.ProfileId)))
-		i += copy(data[i:], m.ProfileId)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.ProfileId)))
+		i += copy(dAtA[i:], m.ProfileId)
 	}
 	if len(m.ChildId) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.ChildId)))
-		i += copy(data[i:], m.ChildId)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.ChildId)))
+		i += copy(dAtA[i:], m.ChildId)
 	}
 	if m.CreatedAt != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.CreatedAt))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.CreatedAt))
 	}
 	if len(m.Items) > 0 {
 		for _, msg := range m.Items {
-			data[i] = 0x42
+			dAtA[i] = 0x42
 			i++
-			i = encodeVarintDashboard(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintDashboard(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -583,116 +583,116 @@ func (m *DashboardItems) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *DashboardGetRequest) Marshal() (data []byte, err error) {
+func (m *DashboardGetRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *DashboardGetRequest) MarshalTo(data []byte) (int, error) {
+func (m *DashboardGetRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.ProfileId) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.ProfileId)))
-		i += copy(data[i:], m.ProfileId)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.ProfileId)))
+		i += copy(dAtA[i:], m.ProfileId)
 	}
 	if len(m.ChildId) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.ChildId)))
-		i += copy(data[i:], m.ChildId)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.ChildId)))
+		i += copy(dAtA[i:], m.ChildId)
 	}
 	if len(m.AppVersion) > 0 {
-		data[i] = 0x1a
+		dAtA[i] = 0x1a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.AppVersion)))
-		i += copy(data[i:], m.AppVersion)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.AppVersion)))
+		i += copy(dAtA[i:], m.AppVersion)
 	}
 	if len(m.Language) > 0 {
-		data[i] = 0x22
+		dAtA[i] = 0x22
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.Language)))
-		i += copy(data[i:], m.Language)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.Language)))
+		i += copy(dAtA[i:], m.Language)
 	}
 	if len(m.CountryCode) > 0 {
-		data[i] = 0x2a
+		dAtA[i] = 0x2a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.CountryCode)))
-		i += copy(data[i:], m.CountryCode)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.CountryCode)))
+		i += copy(dAtA[i:], m.CountryCode)
 	}
 	if m.LastTimeDataFetched != 0 {
-		data[i] = 0x30
+		dAtA[i] = 0x30
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.LastTimeDataFetched))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.LastTimeDataFetched))
 	}
 	return i, nil
 }
 
-func (m *CardDecoration) Marshal() (data []byte, err error) {
+func (m *CardDecoration) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CardDecoration) MarshalTo(data []byte) (int, error) {
+func (m *CardDecoration) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Size_ != 0 {
-		data[i] = 0x8
+		dAtA[i] = 0x8
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Size_))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Size_))
 	}
 	if m.BackgroundStyle != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.BackgroundStyle))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.BackgroundStyle))
 	}
 	if len(m.ImageUrl) > 0 {
-		data[i] = 0x1a
+		dAtA[i] = 0x1a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.ImageUrl)))
-		i += copy(data[i:], m.ImageUrl)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.ImageUrl)))
+		i += copy(dAtA[i:], m.ImageUrl)
 	}
 	if len(m.LeftIcon) > 0 {
-		data[i] = 0x22
+		dAtA[i] = 0x22
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.LeftIcon)))
-		i += copy(data[i:], m.LeftIcon)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.LeftIcon)))
+		i += copy(dAtA[i:], m.LeftIcon)
 	}
 	if len(m.RightIcon) > 0 {
-		data[i] = 0x2a
+		dAtA[i] = 0x2a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.RightIcon)))
-		i += copy(data[i:], m.RightIcon)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.RightIcon)))
+		i += copy(dAtA[i:], m.RightIcon)
 	}
 	return i, nil
 }
 
-func (m *CardEmpty) Marshal() (data []byte, err error) {
+func (m *CardEmpty) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CardEmpty) MarshalTo(data []byte) (int, error) {
+func (m *CardEmpty) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -700,158 +700,158 @@ func (m *CardEmpty) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *CardWebpage) Marshal() (data []byte, err error) {
+func (m *CardWebpage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CardWebpage) MarshalTo(data []byte) (int, error) {
+func (m *CardWebpage) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Url) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.Url)))
-		i += copy(data[i:], m.Url)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.Url)))
+		i += copy(dAtA[i:], m.Url)
 	}
 	return i, nil
 }
 
-func (m *CardApplink) Marshal() (data []byte, err error) {
+func (m *CardApplink) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CardApplink) MarshalTo(data []byte) (int, error) {
+func (m *CardApplink) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Applink) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.Applink)))
-		i += copy(data[i:], m.Applink)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.Applink)))
+		i += copy(dAtA[i:], m.Applink)
 	}
 	return i, nil
 }
 
-func (m *CardAnalysis) Marshal() (data []byte, err error) {
+func (m *CardAnalysis) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CardAnalysis) MarshalTo(data []byte) (int, error) {
+func (m *CardAnalysis) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Data != nil {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Data.Size()))
-		n1, err := m.Data.MarshalTo(data[i:])
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Data.Size()))
+		n1, err := m.Data.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
 		i += n1
 	}
 	if m.ChartType != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.ChartType))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.ChartType))
 	}
 	return i, nil
 }
 
-func (m *Card) Marshal() (data []byte, err error) {
+func (m *Card) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *Card) MarshalTo(data []byte) (int, error) {
+func (m *Card) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Id) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.Id)))
-		i += copy(data[i:], m.Id)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.Id)))
+		i += copy(dAtA[i:], m.Id)
 	}
 	if len(m.Text) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.Text)))
-		i += copy(data[i:], m.Text)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.Text)))
+		i += copy(dAtA[i:], m.Text)
 	}
 	if m.ExpiresAt != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.ExpiresAt))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.ExpiresAt))
 	}
 	if m.CreatedAt != 0 {
-		data[i] = 0x20
+		dAtA[i] = 0x20
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.CreatedAt))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.CreatedAt))
 	}
 	if m.Decoration != nil {
-		data[i] = 0x2a
+		dAtA[i] = 0x2a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Decoration.Size()))
-		n2, err := m.Decoration.MarshalTo(data[i:])
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Decoration.Size()))
+		n2, err := m.Decoration.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
 		i += n2
 	}
 	if m.ProviderScore != 0 {
-		data[i] = 0x30
+		dAtA[i] = 0x30
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.ProviderScore))
+		i = encodeVarintDashboard(dAtA, i, uint64(m.ProviderScore))
 	}
 	if m.ProviderWeight != 0 {
-		data[i] = 0x3d
+		dAtA[i] = 0x3d
 		i++
-		i = encodeFixed32Dashboard(data, i, uint32(math.Float32bits(float32(m.ProviderWeight))))
+		i = encodeFixed32Dashboard(dAtA, i, uint32(math.Float32bits(float32(m.ProviderWeight))))
 	}
 	if len(m.ProviderName) > 0 {
-		data[i] = 0x42
+		dAtA[i] = 0x42
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.ProviderName)))
-		i += copy(data[i:], m.ProviderName)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.ProviderName)))
+		i += copy(dAtA[i:], m.ProviderName)
 	}
 	if len(m.Language) > 0 {
-		data[i] = 0x4a
+		dAtA[i] = 0x4a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(len(m.Language)))
-		i += copy(data[i:], m.Language)
+		i = encodeVarintDashboard(dAtA, i, uint64(len(m.Language)))
+		i += copy(dAtA[i:], m.Language)
 	}
 	if m.Data != nil {
-		nn3, err := m.Data.MarshalTo(data[i:])
+		nn3, err := m.Data.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -860,13 +860,13 @@ func (m *Card) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *Card_Empty) MarshalTo(data []byte) (int, error) {
+func (m *Card_Empty) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	if m.Empty != nil {
-		data[i] = 0x52
+		dAtA[i] = 0x52
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Empty.Size()))
-		n4, err := m.Empty.MarshalTo(data[i:])
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Empty.Size()))
+		n4, err := m.Empty.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -874,13 +874,13 @@ func (m *Card_Empty) MarshalTo(data []byte) (int, error) {
 	}
 	return i, nil
 }
-func (m *Card_Webpage) MarshalTo(data []byte) (int, error) {
+func (m *Card_Webpage) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	if m.Webpage != nil {
-		data[i] = 0x5a
+		dAtA[i] = 0x5a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Webpage.Size()))
-		n5, err := m.Webpage.MarshalTo(data[i:])
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Webpage.Size()))
+		n5, err := m.Webpage.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -888,13 +888,13 @@ func (m *Card_Webpage) MarshalTo(data []byte) (int, error) {
 	}
 	return i, nil
 }
-func (m *Card_Applink) MarshalTo(data []byte) (int, error) {
+func (m *Card_Applink) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	if m.Applink != nil {
-		data[i] = 0x62
+		dAtA[i] = 0x62
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Applink.Size()))
-		n6, err := m.Applink.MarshalTo(data[i:])
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Applink.Size()))
+		n6, err := m.Applink.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -902,13 +902,13 @@ func (m *Card_Applink) MarshalTo(data []byte) (int, error) {
 	}
 	return i, nil
 }
-func (m *Card_Analysis) MarshalTo(data []byte) (int, error) {
+func (m *Card_Analysis) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	if m.Analysis != nil {
-		data[i] = 0x6a
+		dAtA[i] = 0x6a
 		i++
-		i = encodeVarintDashboard(data, i, uint64(m.Analysis.Size()))
-		n7, err := m.Analysis.MarshalTo(data[i:])
+		i = encodeVarintDashboard(dAtA, i, uint64(m.Analysis.Size()))
+		n7, err := m.Analysis.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -916,31 +916,31 @@ func (m *Card_Analysis) MarshalTo(data []byte) (int, error) {
 	}
 	return i, nil
 }
-func encodeFixed64Dashboard(data []byte, offset int, v uint64) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
-	data[offset+4] = uint8(v >> 32)
-	data[offset+5] = uint8(v >> 40)
-	data[offset+6] = uint8(v >> 48)
-	data[offset+7] = uint8(v >> 56)
+func encodeFixed64Dashboard(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
 	return offset + 8
 }
-func encodeFixed32Dashboard(data []byte, offset int, v uint32) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
+func encodeFixed32Dashboard(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
 	return offset + 4
 }
-func encodeVarintDashboard(data []byte, offset int, v uint64) int {
+func encodeVarintDashboard(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
-		data[offset] = uint8(v&0x7f | 0x80)
+		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
-	data[offset] = uint8(v)
+	dAtA[offset] = uint8(v)
 	return offset + 1
 }
 func (m *DashboardItems) Size() (n int) {
@@ -1149,8 +1149,8 @@ func sovDashboard(x uint64) (n int) {
 func sozDashboard(x uint64) (n int) {
 	return sovDashboard(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *DashboardItems) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *DashboardItems) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1162,7 +1162,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1190,7 +1190,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1205,7 +1205,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ProfileId = string(data[iNdEx:postIndex])
+			m.ProfileId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -1219,7 +1219,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1234,7 +1234,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ChildId = string(data[iNdEx:postIndex])
+			m.ChildId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 0 {
@@ -1248,7 +1248,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.CreatedAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1267,7 +1267,7 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1282,13 +1282,13 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Items = append(m.Items, &Card{})
-			if err := m.Items[len(m.Items)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Items[len(m.Items)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1307,8 +1307,8 @@ func (m *DashboardItems) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *DashboardGetRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *DashboardGetRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1320,7 +1320,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1348,7 +1348,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1363,7 +1363,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ProfileId = string(data[iNdEx:postIndex])
+			m.ProfileId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -1377,7 +1377,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1392,7 +1392,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ChildId = string(data[iNdEx:postIndex])
+			m.ChildId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
@@ -1406,7 +1406,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1421,7 +1421,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.AppVersion = string(data[iNdEx:postIndex])
+			m.AppVersion = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
@@ -1435,7 +1435,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1450,7 +1450,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Language = string(data[iNdEx:postIndex])
+			m.Language = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
@@ -1464,7 +1464,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1479,7 +1479,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CountryCode = string(data[iNdEx:postIndex])
+			m.CountryCode = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 6:
 			if wireType != 0 {
@@ -1493,7 +1493,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.LastTimeDataFetched |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1502,7 +1502,7 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 			}
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1521,8 +1521,8 @@ func (m *DashboardGetRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CardDecoration) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CardDecoration) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1534,7 +1534,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1562,7 +1562,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Size_ |= (CardDecoration_Size(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1581,7 +1581,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.BackgroundStyle |= (CardDecoration_BackgroundStyle(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1600,7 +1600,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1615,7 +1615,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ImageUrl = string(data[iNdEx:postIndex])
+			m.ImageUrl = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
@@ -1629,7 +1629,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1644,7 +1644,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.LeftIcon = string(data[iNdEx:postIndex])
+			m.LeftIcon = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
@@ -1658,7 +1658,7 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1673,11 +1673,11 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.RightIcon = string(data[iNdEx:postIndex])
+			m.RightIcon = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1696,8 +1696,8 @@ func (m *CardDecoration) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CardEmpty) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CardEmpty) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1709,7 +1709,7 @@ func (m *CardEmpty) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1727,7 +1727,7 @@ func (m *CardEmpty) Unmarshal(data []byte) error {
 		switch fieldNum {
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1746,8 +1746,8 @@ func (m *CardEmpty) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CardWebpage) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CardWebpage) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1759,7 +1759,7 @@ func (m *CardWebpage) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1787,7 +1787,7 @@ func (m *CardWebpage) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1802,11 +1802,11 @@ func (m *CardWebpage) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Url = string(data[iNdEx:postIndex])
+			m.Url = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1825,8 +1825,8 @@ func (m *CardWebpage) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CardApplink) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CardApplink) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1838,7 +1838,7 @@ func (m *CardApplink) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1866,7 +1866,7 @@ func (m *CardApplink) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1881,11 +1881,11 @@ func (m *CardApplink) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Applink = string(data[iNdEx:postIndex])
+			m.Applink = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1904,8 +1904,8 @@ func (m *CardApplink) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CardAnalysis) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CardAnalysis) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1917,7 +1917,7 @@ func (m *CardAnalysis) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1945,7 +1945,7 @@ func (m *CardAnalysis) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1962,7 +1962,7 @@ func (m *CardAnalysis) Unmarshal(data []byte) error {
 			if m.Data == nil {
 				m.Data = &DataSet{}
 			}
-			if err := m.Data.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Data.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1978,7 +1978,7 @@ func (m *CardAnalysis) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.ChartType |= (ChartType(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1987,7 +1987,7 @@ func (m *CardAnalysis) Unmarshal(data []byte) error {
 			}
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -2006,8 +2006,8 @@ func (m *CardAnalysis) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *Card) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *Card) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -2019,7 +2019,7 @@ func (m *Card) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -2047,7 +2047,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2062,7 +2062,7 @@ func (m *Card) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Id = string(data[iNdEx:postIndex])
+			m.Id = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -2076,7 +2076,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2091,7 +2091,7 @@ func (m *Card) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Text = string(data[iNdEx:postIndex])
+			m.Text = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 0 {
@@ -2105,7 +2105,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.ExpiresAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2124,7 +2124,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.CreatedAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2143,7 +2143,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2160,7 +2160,7 @@ func (m *Card) Unmarshal(data []byte) error {
 			if m.Decoration == nil {
 				m.Decoration = &CardDecoration{}
 			}
-			if err := m.Decoration.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Decoration.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -2176,7 +2176,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.ProviderScore |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2192,10 +2192,10 @@ func (m *Card) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			iNdEx += 4
-			v = uint32(data[iNdEx-4])
-			v |= uint32(data[iNdEx-3]) << 8
-			v |= uint32(data[iNdEx-2]) << 16
-			v |= uint32(data[iNdEx-1]) << 24
+			v = uint32(dAtA[iNdEx-4])
+			v |= uint32(dAtA[iNdEx-3]) << 8
+			v |= uint32(dAtA[iNdEx-2]) << 16
+			v |= uint32(dAtA[iNdEx-1]) << 24
 			m.ProviderWeight = float32(math.Float32frombits(v))
 		case 8:
 			if wireType != 2 {
@@ -2209,7 +2209,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2224,7 +2224,7 @@ func (m *Card) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ProviderName = string(data[iNdEx:postIndex])
+			m.ProviderName = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 9:
 			if wireType != 2 {
@@ -2238,7 +2238,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2253,7 +2253,7 @@ func (m *Card) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Language = string(data[iNdEx:postIndex])
+			m.Language = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 10:
 			if wireType != 2 {
@@ -2267,7 +2267,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2282,7 +2282,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			v := &CardEmpty{}
-			if err := v.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := v.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			m.Data = &Card_Empty{v}
@@ -2299,7 +2299,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2314,7 +2314,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			v := &CardWebpage{}
-			if err := v.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := v.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			m.Data = &Card_Webpage{v}
@@ -2331,7 +2331,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2346,7 +2346,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			v := &CardApplink{}
-			if err := v.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := v.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			m.Data = &Card_Applink{v}
@@ -2363,7 +2363,7 @@ func (m *Card) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2378,14 +2378,14 @@ func (m *Card) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			v := &CardAnalysis{}
-			if err := v.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := v.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			m.Data = &Card_Analysis{v}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashboard(data[iNdEx:])
+			skippy, err := skipDashboard(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -2404,8 +2404,8 @@ func (m *Card) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func skipDashboard(data []byte) (n int, err error) {
-	l := len(data)
+func skipDashboard(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		var wire uint64
@@ -2416,7 +2416,7 @@ func skipDashboard(data []byte) (n int, err error) {
 			if iNdEx >= l {
 				return 0, io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -2434,7 +2434,7 @@ func skipDashboard(data []byte) (n int, err error) {
 					return 0, io.ErrUnexpectedEOF
 				}
 				iNdEx++
-				if data[iNdEx-1] < 0x80 {
+				if dAtA[iNdEx-1] < 0x80 {
 					break
 				}
 			}
@@ -2451,7 +2451,7 @@ func skipDashboard(data []byte) (n int, err error) {
 				if iNdEx >= l {
 					return 0, io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				length |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2474,7 +2474,7 @@ func skipDashboard(data []byte) (n int, err error) {
 					if iNdEx >= l {
 						return 0, io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					innerWire |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -2485,7 +2485,7 @@ func skipDashboard(data []byte) (n int, err error) {
 				if innerWireType == 4 {
 					break
 				}
-				next, err := skipDashboard(data[start:])
+				next, err := skipDashboard(dAtA[start:])
 				if err != nil {
 					return 0, err
 				}
@@ -2513,7 +2513,7 @@ func init() { proto.RegisterFile("dashboard.proto", fileDescriptorDashboard) }
 
 var fileDescriptorDashboard = []byte{
 	// 980 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x55, 0xcf, 0x8f, 0xdb, 0x44,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xcf, 0x8f, 0xdb, 0x44,
 	0x14, 0x8e, 0xf3, 0xdb, 0x2f, 0x69, 0xd6, 0x9d, 0xad, 0x56, 0x66, 0x2b, 0xd2, 0xc5, 0x08, 0xba,
 	0x20, 0x91, 0xad, 0x52, 0x09, 0x01, 0x12, 0x07, 0x67, 0xd7, 0x64, 0x2d, 0x25, 0xed, 0x32, 0xc9,
 	0x52, 0xc1, 0xc5, 0x9a, 0xd8, 0xb3, 0xc9, 0xa8, 0x76, 0xc6, 0xd8, 0x93, 0x6d, 0xd3, 0xbf, 0x80,

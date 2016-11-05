@@ -95,7 +95,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Discovery service
 
@@ -158,159 +158,159 @@ var _Discovery_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptorDiscovery,
+	Metadata: "discovery.proto",
 }
 
-func (m *OtsimoServices) Marshal() (data []byte, err error) {
+func (m *OtsimoServices) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *OtsimoServices) MarshalTo(data []byte) (int, error) {
+func (m *OtsimoServices) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Environment) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.Environment)))
-		i += copy(data[i:], m.Environment)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.Environment)))
+		i += copy(dAtA[i:], m.Environment)
 	}
 	if len(m.Issuer) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.Issuer)))
-		i += copy(data[i:], m.Issuer)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.Issuer)))
+		i += copy(dAtA[i:], m.Issuer)
 	}
 	if m.IsProduction {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
 		if m.IsProduction {
-			data[i] = 1
+			dAtA[i] = 1
 		} else {
-			data[i] = 0
+			dAtA[i] = 0
 		}
 		i++
 	}
 	if m.UseTls {
-		data[i] = 0x20
+		dAtA[i] = 0x20
 		i++
 		if m.UseTls {
-			data[i] = 1
+			dAtA[i] = 1
 		} else {
-			data[i] = 0
+			dAtA[i] = 0
 		}
 		i++
 	}
 	if len(m.RegistryGrpc) > 0 {
-		data[i] = 0x2a
+		dAtA[i] = 0x2a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.RegistryGrpc)))
-		i += copy(data[i:], m.RegistryGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.RegistryGrpc)))
+		i += copy(dAtA[i:], m.RegistryGrpc)
 	}
 	if len(m.ListenerGrpc) > 0 {
-		data[i] = 0x32
+		dAtA[i] = 0x32
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.ListenerGrpc)))
-		i += copy(data[i:], m.ListenerGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.ListenerGrpc)))
+		i += copy(dAtA[i:], m.ListenerGrpc)
 	}
 	if len(m.WatchGrpc) > 0 {
-		data[i] = 0x3a
+		dAtA[i] = 0x3a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.WatchGrpc)))
-		i += copy(data[i:], m.WatchGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.WatchGrpc)))
+		i += copy(dAtA[i:], m.WatchGrpc)
 	}
 	if len(m.CatalogGrpc) > 0 {
-		data[i] = 0x42
+		dAtA[i] = 0x42
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.CatalogGrpc)))
-		i += copy(data[i:], m.CatalogGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.CatalogGrpc)))
+		i += copy(dAtA[i:], m.CatalogGrpc)
 	}
 	if len(m.ContentGrpc) > 0 {
-		data[i] = 0x4a
+		dAtA[i] = 0x4a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.ContentGrpc)))
-		i += copy(data[i:], m.ContentGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.ContentGrpc)))
+		i += copy(dAtA[i:], m.ContentGrpc)
 	}
 	if len(m.DashboardGrpc) > 0 {
-		data[i] = 0x52
+		dAtA[i] = 0x52
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.DashboardGrpc)))
-		i += copy(data[i:], m.DashboardGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.DashboardGrpc)))
+		i += copy(dAtA[i:], m.DashboardGrpc)
 	}
 	if len(m.ApiGrpc) > 0 {
-		data[i] = 0x5a
+		dAtA[i] = 0x5a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.ApiGrpc)))
-		i += copy(data[i:], m.ApiGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.ApiGrpc)))
+		i += copy(dAtA[i:], m.ApiGrpc)
 	}
 	if len(m.GameContent) > 0 {
-		data[i] = 0x62
+		dAtA[i] = 0x62
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.GameContent)))
-		i += copy(data[i:], m.GameContent)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.GameContent)))
+		i += copy(dAtA[i:], m.GameContent)
 	}
 	if len(m.Accounts) > 0 {
-		data[i] = 0x6a
+		dAtA[i] = 0x6a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.Accounts)))
-		i += copy(data[i:], m.Accounts)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.Accounts)))
+		i += copy(dAtA[i:], m.Accounts)
 	}
 	if len(m.AnalyticsGrpc) > 0 {
-		data[i] = 0x72
+		dAtA[i] = 0x72
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.AnalyticsGrpc)))
-		i += copy(data[i:], m.AnalyticsGrpc)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.AnalyticsGrpc)))
+		i += copy(dAtA[i:], m.AnalyticsGrpc)
 	}
 	if len(m.Services) > 0 {
 		for k, _ := range m.Services {
-			data[i] = 0xa2
+			dAtA[i] = 0xa2
 			i++
-			data[i] = 0x1
+			dAtA[i] = 0x1
 			i++
 			v := m.Services[k]
 			mapSize := 1 + len(k) + sovDiscovery(uint64(len(k))) + 1 + len(v) + sovDiscovery(uint64(len(v)))
-			i = encodeVarintDiscovery(data, i, uint64(mapSize))
-			data[i] = 0xa
+			i = encodeVarintDiscovery(dAtA, i, uint64(mapSize))
+			dAtA[i] = 0xa
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			data[i] = 0x12
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(k)))
+			i += copy(dAtA[i:], k)
+			dAtA[i] = 0x12
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(v)))
-			i += copy(data[i:], v)
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(v)))
+			i += copy(dAtA[i:], v)
 		}
 	}
 	if len(m.GameStorageProviders) > 0 {
 		for k, _ := range m.GameStorageProviders {
-			data[i] = 0xaa
+			dAtA[i] = 0xaa
 			i++
-			data[i] = 0x1
+			dAtA[i] = 0x1
 			i++
 			v := m.GameStorageProviders[k]
 			mapSize := 1 + len(k) + sovDiscovery(uint64(len(k))) + 1 + len(v) + sovDiscovery(uint64(len(v)))
-			i = encodeVarintDiscovery(data, i, uint64(mapSize))
-			data[i] = 0xa
+			i = encodeVarintDiscovery(dAtA, i, uint64(mapSize))
+			dAtA[i] = 0xa
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			data[i] = 0x12
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(k)))
+			i += copy(dAtA[i:], k)
+			dAtA[i] = 0x12
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(v)))
-			i += copy(data[i:], v)
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(v)))
+			i += copy(dAtA[i:], v)
 		}
 	}
 	if len(m.SelfLearningConfigs) > 0 {
 		for k, _ := range m.SelfLearningConfigs {
-			data[i] = 0xb2
+			dAtA[i] = 0xb2
 			i++
-			data[i] = 0x1
+			dAtA[i] = 0x1
 			i++
 			v := m.SelfLearningConfigs[k]
 			msgSize := 0
@@ -319,16 +319,16 @@ func (m *OtsimoServices) MarshalTo(data []byte) (int, error) {
 				msgSize += 1 + sovDiscovery(uint64(msgSize))
 			}
 			mapSize := 1 + len(k) + sovDiscovery(uint64(len(k))) + msgSize
-			i = encodeVarintDiscovery(data, i, uint64(mapSize))
-			data[i] = 0xa
+			i = encodeVarintDiscovery(dAtA, i, uint64(mapSize))
+			dAtA[i] = 0xa
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(k)))
+			i += copy(dAtA[i:], k)
 			if v != nil {
-				data[i] = 0x12
+				dAtA[i] = 0x12
 				i++
-				i = encodeVarintDiscovery(data, i, uint64(v.Size()))
-				n1, err := v.MarshalTo(data[i:])
+				i = encodeVarintDiscovery(dAtA, i, uint64(v.Size()))
+				n1, err := v.MarshalTo(dAtA[i:])
 				if err != nil {
 					return 0, err
 				}
@@ -338,106 +338,106 @@ func (m *OtsimoServices) MarshalTo(data []byte) (int, error) {
 	}
 	if len(m.Configs) > 0 {
 		for k, _ := range m.Configs {
-			data[i] = 0xba
+			dAtA[i] = 0xba
 			i++
-			data[i] = 0x1
+			dAtA[i] = 0x1
 			i++
 			v := m.Configs[k]
 			mapSize := 1 + len(k) + sovDiscovery(uint64(len(k))) + 1 + len(v) + sovDiscovery(uint64(len(v)))
-			i = encodeVarintDiscovery(data, i, uint64(mapSize))
-			data[i] = 0xa
+			i = encodeVarintDiscovery(dAtA, i, uint64(mapSize))
+			dAtA[i] = 0xa
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(k)))
-			i += copy(data[i:], k)
-			data[i] = 0x12
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(k)))
+			i += copy(dAtA[i:], k)
+			dAtA[i] = 0x12
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(len(v)))
-			i += copy(data[i:], v)
+			i = encodeVarintDiscovery(dAtA, i, uint64(len(v)))
+			i += copy(dAtA[i:], v)
 		}
 	}
 	return i, nil
 }
 
-func (m *DiscoveryRequest) Marshal() (data []byte, err error) {
+func (m *DiscoveryRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *DiscoveryRequest) MarshalTo(data []byte) (int, error) {
+func (m *DiscoveryRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Environment) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.Environment)))
-		i += copy(data[i:], m.Environment)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.Environment)))
+		i += copy(dAtA[i:], m.Environment)
 	}
 	if len(m.SdkVersion) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.SdkVersion)))
-		i += copy(data[i:], m.SdkVersion)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.SdkVersion)))
+		i += copy(dAtA[i:], m.SdkVersion)
 	}
 	if len(m.OsName) > 0 {
-		data[i] = 0x1a
+		dAtA[i] = 0x1a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.OsName)))
-		i += copy(data[i:], m.OsName)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.OsName)))
+		i += copy(dAtA[i:], m.OsName)
 	}
 	if len(m.CountryCode) > 0 {
-		data[i] = 0x22
+		dAtA[i] = 0x22
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.CountryCode)))
-		i += copy(data[i:], m.CountryCode)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.CountryCode)))
+		i += copy(dAtA[i:], m.CountryCode)
 	}
 	if len(m.AppBundleId) > 0 {
-		data[i] = 0x2a
+		dAtA[i] = 0x2a
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.AppBundleId)))
-		i += copy(data[i:], m.AppBundleId)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.AppBundleId)))
+		i += copy(dAtA[i:], m.AppBundleId)
 	}
 	if len(m.AppBundleVersion) > 0 {
-		data[i] = 0x32
+		dAtA[i] = 0x32
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.AppBundleVersion)))
-		i += copy(data[i:], m.AppBundleVersion)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.AppBundleVersion)))
+		i += copy(dAtA[i:], m.AppBundleVersion)
 	}
 	return i, nil
 }
 
-func (m *SelfLearningSegment) Marshal() (data []byte, err error) {
+func (m *SelfLearningSegment) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *SelfLearningSegment) MarshalTo(data []byte) (int, error) {
+func (m *SelfLearningSegment) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Title) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.Title)))
-		i += copy(data[i:], m.Title)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.Title)))
+		i += copy(dAtA[i:], m.Title)
 	}
 	if m.BaseQuery != nil {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(m.BaseQuery.Size()))
-		n2, err := m.BaseQuery.MarshalTo(data[i:])
+		i = encodeVarintDiscovery(dAtA, i, uint64(m.BaseQuery.Size()))
+		n2, err := m.BaseQuery.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -446,33 +446,33 @@ func (m *SelfLearningSegment) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *SelfLearningConfig) Marshal() (data []byte, err error) {
+func (m *SelfLearningConfig) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *SelfLearningConfig) MarshalTo(data []byte) (int, error) {
+func (m *SelfLearningConfig) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Language) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDiscovery(data, i, uint64(len(m.Language)))
-		i += copy(data[i:], m.Language)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.Language)))
+		i += copy(dAtA[i:], m.Language)
 	}
 	if len(m.Segments) > 0 {
 		for _, msg := range m.Segments {
-			data[i] = 0x12
+			dAtA[i] = 0x12
 			i++
-			i = encodeVarintDiscovery(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintDiscovery(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -482,31 +482,31 @@ func (m *SelfLearningConfig) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func encodeFixed64Discovery(data []byte, offset int, v uint64) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
-	data[offset+4] = uint8(v >> 32)
-	data[offset+5] = uint8(v >> 40)
-	data[offset+6] = uint8(v >> 48)
-	data[offset+7] = uint8(v >> 56)
+func encodeFixed64Discovery(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
 	return offset + 8
 }
-func encodeFixed32Discovery(data []byte, offset int, v uint32) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
+func encodeFixed32Discovery(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
 	return offset + 4
 }
-func encodeVarintDiscovery(data []byte, offset int, v uint64) int {
+func encodeVarintDiscovery(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
-		data[offset] = uint8(v&0x7f | 0x80)
+		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
-	data[offset] = uint8(v)
+	dAtA[offset] = uint8(v)
 	return offset + 1
 }
 func (m *OtsimoServices) Size() (n int) {
@@ -679,8 +679,8 @@ func sovDiscovery(x uint64) (n int) {
 func sozDiscovery(x uint64) (n int) {
 	return sovDiscovery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *OtsimoServices) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *OtsimoServices) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -692,7 +692,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -720,7 +720,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -735,7 +735,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Environment = string(data[iNdEx:postIndex])
+			m.Environment = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -749,7 +749,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -764,7 +764,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Issuer = string(data[iNdEx:postIndex])
+			m.Issuer = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 0 {
@@ -778,7 +778,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -798,7 +798,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -818,7 +818,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -833,7 +833,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.RegistryGrpc = string(data[iNdEx:postIndex])
+			m.RegistryGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 6:
 			if wireType != 2 {
@@ -847,7 +847,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -862,7 +862,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ListenerGrpc = string(data[iNdEx:postIndex])
+			m.ListenerGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 7:
 			if wireType != 2 {
@@ -876,7 +876,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -891,7 +891,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.WatchGrpc = string(data[iNdEx:postIndex])
+			m.WatchGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 8:
 			if wireType != 2 {
@@ -905,7 +905,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -920,7 +920,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CatalogGrpc = string(data[iNdEx:postIndex])
+			m.CatalogGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 9:
 			if wireType != 2 {
@@ -934,7 +934,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -949,7 +949,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ContentGrpc = string(data[iNdEx:postIndex])
+			m.ContentGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 10:
 			if wireType != 2 {
@@ -963,7 +963,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -978,7 +978,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.DashboardGrpc = string(data[iNdEx:postIndex])
+			m.DashboardGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 11:
 			if wireType != 2 {
@@ -992,7 +992,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1007,7 +1007,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ApiGrpc = string(data[iNdEx:postIndex])
+			m.ApiGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 12:
 			if wireType != 2 {
@@ -1021,7 +1021,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1036,7 +1036,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.GameContent = string(data[iNdEx:postIndex])
+			m.GameContent = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 13:
 			if wireType != 2 {
@@ -1050,7 +1050,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1065,7 +1065,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Accounts = string(data[iNdEx:postIndex])
+			m.Accounts = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 14:
 			if wireType != 2 {
@@ -1079,7 +1079,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1094,7 +1094,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.AnalyticsGrpc = string(data[iNdEx:postIndex])
+			m.AnalyticsGrpc = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 20:
 			if wireType != 2 {
@@ -1108,7 +1108,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1130,7 +1130,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				keykey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1145,7 +1145,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1160,7 +1160,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postStringIndexmapkey > l {
 				return io.ErrUnexpectedEOF
 			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			mapkey := string(dAtA[iNdEx:postStringIndexmapkey])
 			iNdEx = postStringIndexmapkey
 			if m.Services == nil {
 				m.Services = make(map[string]string)
@@ -1174,7 +1174,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					valuekey |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1189,7 +1189,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					stringLenmapvalue |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1204,7 +1204,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if postStringIndexmapvalue > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := string(data[iNdEx:postStringIndexmapvalue])
+				mapvalue := string(dAtA[iNdEx:postStringIndexmapvalue])
 				iNdEx = postStringIndexmapvalue
 				m.Services[mapkey] = mapvalue
 			} else {
@@ -1224,7 +1224,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1246,7 +1246,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				keykey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1261,7 +1261,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1276,7 +1276,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postStringIndexmapkey > l {
 				return io.ErrUnexpectedEOF
 			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			mapkey := string(dAtA[iNdEx:postStringIndexmapkey])
 			iNdEx = postStringIndexmapkey
 			if m.GameStorageProviders == nil {
 				m.GameStorageProviders = make(map[string]string)
@@ -1290,7 +1290,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					valuekey |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1305,7 +1305,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					stringLenmapvalue |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1320,7 +1320,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if postStringIndexmapvalue > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := string(data[iNdEx:postStringIndexmapvalue])
+				mapvalue := string(dAtA[iNdEx:postStringIndexmapvalue])
 				iNdEx = postStringIndexmapvalue
 				m.GameStorageProviders[mapkey] = mapvalue
 			} else {
@@ -1340,7 +1340,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1362,7 +1362,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				keykey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1377,7 +1377,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1392,7 +1392,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postStringIndexmapkey > l {
 				return io.ErrUnexpectedEOF
 			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			mapkey := string(dAtA[iNdEx:postStringIndexmapkey])
 			iNdEx = postStringIndexmapkey
 			if m.SelfLearningConfigs == nil {
 				m.SelfLearningConfigs = make(map[string]*SelfLearningConfig)
@@ -1406,7 +1406,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					valuekey |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1421,7 +1421,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					mapmsglen |= (int(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1439,7 +1439,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					return io.ErrUnexpectedEOF
 				}
 				mapvalue := &SelfLearningConfig{}
-				if err := mapvalue.Unmarshal(data[iNdEx:postmsgIndex]); err != nil {
+				if err := mapvalue.Unmarshal(dAtA[iNdEx:postmsgIndex]); err != nil {
 					return err
 				}
 				iNdEx = postmsgIndex
@@ -1461,7 +1461,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1483,7 +1483,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				keykey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1498,7 +1498,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLenmapkey |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1513,7 +1513,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			if postStringIndexmapkey > l {
 				return io.ErrUnexpectedEOF
 			}
-			mapkey := string(data[iNdEx:postStringIndexmapkey])
+			mapkey := string(dAtA[iNdEx:postStringIndexmapkey])
 			iNdEx = postStringIndexmapkey
 			if m.Configs == nil {
 				m.Configs = make(map[string]string)
@@ -1527,7 +1527,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					valuekey |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1542,7 +1542,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 					if iNdEx >= l {
 						return io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					stringLenmapvalue |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1557,7 +1557,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 				if postStringIndexmapvalue > l {
 					return io.ErrUnexpectedEOF
 				}
-				mapvalue := string(data[iNdEx:postStringIndexmapvalue])
+				mapvalue := string(dAtA[iNdEx:postStringIndexmapvalue])
 				iNdEx = postStringIndexmapvalue
 				m.Configs[mapkey] = mapvalue
 			} else {
@@ -1567,7 +1567,7 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDiscovery(data[iNdEx:])
+			skippy, err := skipDiscovery(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1586,8 +1586,8 @@ func (m *OtsimoServices) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *DiscoveryRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *DiscoveryRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1599,7 +1599,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1627,7 +1627,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1642,7 +1642,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Environment = string(data[iNdEx:postIndex])
+			m.Environment = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -1656,7 +1656,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1671,7 +1671,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.SdkVersion = string(data[iNdEx:postIndex])
+			m.SdkVersion = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
@@ -1685,7 +1685,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1700,7 +1700,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.OsName = string(data[iNdEx:postIndex])
+			m.OsName = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
@@ -1714,7 +1714,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1729,7 +1729,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CountryCode = string(data[iNdEx:postIndex])
+			m.CountryCode = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
@@ -1743,7 +1743,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1758,7 +1758,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.AppBundleId = string(data[iNdEx:postIndex])
+			m.AppBundleId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 6:
 			if wireType != 2 {
@@ -1772,7 +1772,7 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1787,11 +1787,11 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.AppBundleVersion = string(data[iNdEx:postIndex])
+			m.AppBundleVersion = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDiscovery(data[iNdEx:])
+			skippy, err := skipDiscovery(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1810,8 +1810,8 @@ func (m *DiscoveryRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *SelfLearningSegment) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *SelfLearningSegment) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1823,7 +1823,7 @@ func (m *SelfLearningSegment) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1851,7 +1851,7 @@ func (m *SelfLearningSegment) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1866,7 +1866,7 @@ func (m *SelfLearningSegment) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Title = string(data[iNdEx:postIndex])
+			m.Title = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -1880,7 +1880,7 @@ func (m *SelfLearningSegment) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1897,13 +1897,13 @@ func (m *SelfLearningSegment) Unmarshal(data []byte) error {
 			if m.BaseQuery == nil {
 				m.BaseQuery = &ContentListRequest{}
 			}
-			if err := m.BaseQuery.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.BaseQuery.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDiscovery(data[iNdEx:])
+			skippy, err := skipDiscovery(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1922,8 +1922,8 @@ func (m *SelfLearningSegment) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *SelfLearningConfig) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *SelfLearningConfig) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1935,7 +1935,7 @@ func (m *SelfLearningConfig) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1963,7 +1963,7 @@ func (m *SelfLearningConfig) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1978,7 +1978,7 @@ func (m *SelfLearningConfig) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Language = string(data[iNdEx:postIndex])
+			m.Language = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -1992,7 +1992,7 @@ func (m *SelfLearningConfig) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2007,13 +2007,13 @@ func (m *SelfLearningConfig) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Segments = append(m.Segments, &SelfLearningSegment{})
-			if err := m.Segments[len(m.Segments)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Segments[len(m.Segments)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDiscovery(data[iNdEx:])
+			skippy, err := skipDiscovery(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -2032,8 +2032,8 @@ func (m *SelfLearningConfig) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func skipDiscovery(data []byte) (n int, err error) {
-	l := len(data)
+func skipDiscovery(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		var wire uint64
@@ -2044,7 +2044,7 @@ func skipDiscovery(data []byte) (n int, err error) {
 			if iNdEx >= l {
 				return 0, io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -2062,7 +2062,7 @@ func skipDiscovery(data []byte) (n int, err error) {
 					return 0, io.ErrUnexpectedEOF
 				}
 				iNdEx++
-				if data[iNdEx-1] < 0x80 {
+				if dAtA[iNdEx-1] < 0x80 {
 					break
 				}
 			}
@@ -2079,7 +2079,7 @@ func skipDiscovery(data []byte) (n int, err error) {
 				if iNdEx >= l {
 					return 0, io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				length |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -2102,7 +2102,7 @@ func skipDiscovery(data []byte) (n int, err error) {
 					if iNdEx >= l {
 						return 0, io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					innerWire |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -2113,7 +2113,7 @@ func skipDiscovery(data []byte) (n int, err error) {
 				if innerWireType == 4 {
 					break
 				}
-				next, err := skipDiscovery(data[start:])
+				next, err := skipDiscovery(dAtA[start:])
 				if err != nil {
 					return 0, err
 				}
@@ -2141,7 +2141,7 @@ func init() { proto.RegisterFile("discovery.proto", fileDescriptorDiscovery) }
 
 var fileDescriptorDiscovery = []byte{
 	// 808 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x94, 0x55, 0x5f, 0x6f, 0xe3, 0x44,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0x5f, 0x6f, 0xe3, 0x44,
 	0x10, 0xaf, 0x5b, 0x9a, 0x26, 0x93, 0xa4, 0x57, 0xed, 0xf5, 0x8f, 0x1b, 0x89, 0x50, 0x72, 0x42,
 	0xea, 0x03, 0xb8, 0x52, 0x11, 0xe8, 0x38, 0x90, 0x90, 0x5a, 0x50, 0x85, 0x74, 0x82, 0x92, 0x22,
 	0x1e, 0x78, 0xb1, 0xd6, 0xf6, 0xd4, 0x5d, 0xd5, 0xf6, 0xfa, 0x76, 0xd7, 0x41, 0xf9, 0x16, 0x3c,

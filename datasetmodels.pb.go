@@ -322,90 +322,90 @@ func init() {
 	proto.RegisterType((*DataSet)(nil), "apipb.DataSet")
 	proto.RegisterEnum("apipb.Column_Type", Column_Type_name, Column_Type_value)
 }
-func (m *Column) Marshal() (data []byte, err error) {
+func (m *Column) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *Column) MarshalTo(data []byte) (int, error) {
+func (m *Column) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Type != 0 {
-		data[i] = 0x8
+		dAtA[i] = 0x8
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(m.Type))
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Type))
 	}
 	if len(m.Name) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(len(m.Name)))
-		i += copy(data[i:], m.Name)
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(len(m.Name)))
+		i += copy(dAtA[i:], m.Name)
 	}
 	return i, nil
 }
 
-func (m *TimeOfDay) Marshal() (data []byte, err error) {
+func (m *TimeOfDay) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *TimeOfDay) MarshalTo(data []byte) (int, error) {
+func (m *TimeOfDay) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Hours != 0 {
-		data[i] = 0x8
+		dAtA[i] = 0x8
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(m.Hours))
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Hours))
 	}
 	if m.Minutes != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(m.Minutes))
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Minutes))
 	}
 	if m.Seconds != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(m.Seconds))
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Seconds))
 	}
 	if m.Milliseconds != 0 {
-		data[i] = 0x20
+		dAtA[i] = 0x20
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(m.Milliseconds))
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Milliseconds))
 	}
 	return i, nil
 }
 
-func (m *RowValue) Marshal() (data []byte, err error) {
+func (m *RowValue) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *RowValue) MarshalTo(data []byte) (int, error) {
+func (m *RowValue) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Value != nil {
-		nn1, err := m.Value.MarshalTo(data[i:])
+		nn1, err := m.Value.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -414,49 +414,49 @@ func (m *RowValue) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *RowValue_Str) MarshalTo(data []byte) (int, error) {
+func (m *RowValue_Str) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
-	data[i] = 0xa
+	dAtA[i] = 0xa
 	i++
-	i = encodeVarintDatasetmodels(data, i, uint64(len(m.Str)))
-	i += copy(data[i:], m.Str)
+	i = encodeVarintDatasetmodels(dAtA, i, uint64(len(m.Str)))
+	i += copy(dAtA[i:], m.Str)
 	return i, nil
 }
-func (m *RowValue_Int) MarshalTo(data []byte) (int, error) {
+func (m *RowValue_Int) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
-	data[i] = 0x10
+	dAtA[i] = 0x10
 	i++
-	i = encodeVarintDatasetmodels(data, i, uint64(m.Int))
+	i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Int))
 	return i, nil
 }
-func (m *RowValue_Real) MarshalTo(data []byte) (int, error) {
+func (m *RowValue_Real) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
-	data[i] = 0x1d
+	dAtA[i] = 0x1d
 	i++
-	i = encodeFixed32Datasetmodels(data, i, uint32(math.Float32bits(float32(m.Real))))
+	i = encodeFixed32Datasetmodels(dAtA, i, uint32(math.Float32bits(float32(m.Real))))
 	return i, nil
 }
-func (m *RowValue_Date) MarshalTo(data []byte) (int, error) {
+func (m *RowValue_Date) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
-	data[i] = 0x20
+	dAtA[i] = 0x20
 	i++
-	i = encodeVarintDatasetmodels(data, i, uint64(m.Date))
+	i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Date))
 	return i, nil
 }
-func (m *RowValue_DateOfTime) MarshalTo(data []byte) (int, error) {
+func (m *RowValue_DateOfTime) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
-	data[i] = 0x28
+	dAtA[i] = 0x28
 	i++
-	i = encodeVarintDatasetmodels(data, i, uint64(m.DateOfTime))
+	i = encodeVarintDatasetmodels(dAtA, i, uint64(m.DateOfTime))
 	return i, nil
 }
-func (m *RowValue_TimeOfDay) MarshalTo(data []byte) (int, error) {
+func (m *RowValue_TimeOfDay) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	if m.TimeOfDay != nil {
-		data[i] = 0x32
+		dAtA[i] = 0x32
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(m.TimeOfDay.Size()))
-		n2, err := m.TimeOfDay.MarshalTo(data[i:])
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.TimeOfDay.Size()))
+		n2, err := m.TimeOfDay.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -464,27 +464,27 @@ func (m *RowValue_TimeOfDay) MarshalTo(data []byte) (int, error) {
 	}
 	return i, nil
 }
-func (m *Row) Marshal() (data []byte, err error) {
+func (m *Row) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *Row) MarshalTo(data []byte) (int, error) {
+func (m *Row) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Values) > 0 {
 		for _, msg := range m.Values {
-			data[i] = 0xa
+			dAtA[i] = 0xa
 			i++
-			i = encodeVarintDatasetmodels(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintDatasetmodels(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -494,33 +494,33 @@ func (m *Row) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *DataSet) Marshal() (data []byte, err error) {
+func (m *DataSet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *DataSet) MarshalTo(data []byte) (int, error) {
+func (m *DataSet) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Label) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDatasetmodels(data, i, uint64(len(m.Label)))
-		i += copy(data[i:], m.Label)
+		i = encodeVarintDatasetmodels(dAtA, i, uint64(len(m.Label)))
+		i += copy(dAtA[i:], m.Label)
 	}
 	if len(m.Columns) > 0 {
 		for _, msg := range m.Columns {
-			data[i] = 0x2a
+			dAtA[i] = 0x2a
 			i++
-			i = encodeVarintDatasetmodels(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintDatasetmodels(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -529,10 +529,10 @@ func (m *DataSet) MarshalTo(data []byte) (int, error) {
 	}
 	if len(m.Rows) > 0 {
 		for _, msg := range m.Rows {
-			data[i] = 0x32
+			dAtA[i] = 0x32
 			i++
-			i = encodeVarintDatasetmodels(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintDatasetmodels(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -542,31 +542,31 @@ func (m *DataSet) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func encodeFixed64Datasetmodels(data []byte, offset int, v uint64) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
-	data[offset+4] = uint8(v >> 32)
-	data[offset+5] = uint8(v >> 40)
-	data[offset+6] = uint8(v >> 48)
-	data[offset+7] = uint8(v >> 56)
+func encodeFixed64Datasetmodels(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
 	return offset + 8
 }
-func encodeFixed32Datasetmodels(data []byte, offset int, v uint32) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
+func encodeFixed32Datasetmodels(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
 	return offset + 4
 }
-func encodeVarintDatasetmodels(data []byte, offset int, v uint64) int {
+func encodeVarintDatasetmodels(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
-		data[offset] = uint8(v&0x7f | 0x80)
+		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
-	data[offset] = uint8(v)
+	dAtA[offset] = uint8(v)
 	return offset + 1
 }
 func (m *Column) Size() (n int) {
@@ -696,8 +696,8 @@ func sovDatasetmodels(x uint64) (n int) {
 func sozDatasetmodels(x uint64) (n int) {
 	return sovDatasetmodels(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *Column) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *Column) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -709,7 +709,7 @@ func (m *Column) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -737,7 +737,7 @@ func (m *Column) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Type |= (Column_Type(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -756,7 +756,7 @@ func (m *Column) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -771,11 +771,11 @@ func (m *Column) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Name = string(data[iNdEx:postIndex])
+			m.Name = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDatasetmodels(data[iNdEx:])
+			skippy, err := skipDatasetmodels(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -794,8 +794,8 @@ func (m *Column) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *TimeOfDay) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *TimeOfDay) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -807,7 +807,7 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -835,7 +835,7 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Hours |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -854,7 +854,7 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Minutes |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -873,7 +873,7 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Seconds |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -892,7 +892,7 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Milliseconds |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -901,7 +901,7 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 			}
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDatasetmodels(data[iNdEx:])
+			skippy, err := skipDatasetmodels(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -920,8 +920,8 @@ func (m *TimeOfDay) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *RowValue) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *RowValue) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -933,7 +933,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -961,7 +961,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -976,7 +976,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Value = &RowValue_Str{string(data[iNdEx:postIndex])}
+			m.Value = &RowValue_Str{string(dAtA[iNdEx:postIndex])}
 			iNdEx = postIndex
 		case 2:
 			if wireType != 0 {
@@ -990,7 +990,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1007,10 +1007,10 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			iNdEx += 4
-			v = uint32(data[iNdEx-4])
-			v |= uint32(data[iNdEx-3]) << 8
-			v |= uint32(data[iNdEx-2]) << 16
-			v |= uint32(data[iNdEx-1]) << 24
+			v = uint32(dAtA[iNdEx-4])
+			v |= uint32(dAtA[iNdEx-3]) << 8
+			v |= uint32(dAtA[iNdEx-2]) << 16
+			v |= uint32(dAtA[iNdEx-1]) << 24
 			m.Value = &RowValue_Real{float32(math.Float32frombits(v))}
 		case 4:
 			if wireType != 0 {
@@ -1024,7 +1024,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1044,7 +1044,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1064,7 +1064,7 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1079,14 +1079,14 @@ func (m *RowValue) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			v := &TimeOfDay{}
-			if err := v.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := v.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			m.Value = &RowValue_TimeOfDay{v}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDatasetmodels(data[iNdEx:])
+			skippy, err := skipDatasetmodels(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1105,8 +1105,8 @@ func (m *RowValue) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *Row) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *Row) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1118,7 +1118,7 @@ func (m *Row) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1146,7 +1146,7 @@ func (m *Row) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1161,13 +1161,13 @@ func (m *Row) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Values = append(m.Values, &RowValue{})
-			if err := m.Values[len(m.Values)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Values[len(m.Values)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDatasetmodels(data[iNdEx:])
+			skippy, err := skipDatasetmodels(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1186,8 +1186,8 @@ func (m *Row) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *DataSet) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *DataSet) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1199,7 +1199,7 @@ func (m *DataSet) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1227,7 +1227,7 @@ func (m *DataSet) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1242,7 +1242,7 @@ func (m *DataSet) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Label = string(data[iNdEx:postIndex])
+			m.Label = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
@@ -1256,7 +1256,7 @@ func (m *DataSet) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1271,7 +1271,7 @@ func (m *DataSet) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Columns = append(m.Columns, &Column{})
-			if err := m.Columns[len(m.Columns)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Columns[len(m.Columns)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1287,7 +1287,7 @@ func (m *DataSet) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1302,13 +1302,13 @@ func (m *DataSet) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Rows = append(m.Rows, &Row{})
-			if err := m.Rows[len(m.Rows)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Rows[len(m.Rows)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDatasetmodels(data[iNdEx:])
+			skippy, err := skipDatasetmodels(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1327,8 +1327,8 @@ func (m *DataSet) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func skipDatasetmodels(data []byte) (n int, err error) {
-	l := len(data)
+func skipDatasetmodels(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		var wire uint64
@@ -1339,7 +1339,7 @@ func skipDatasetmodels(data []byte) (n int, err error) {
 			if iNdEx >= l {
 				return 0, io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1357,7 +1357,7 @@ func skipDatasetmodels(data []byte) (n int, err error) {
 					return 0, io.ErrUnexpectedEOF
 				}
 				iNdEx++
-				if data[iNdEx-1] < 0x80 {
+				if dAtA[iNdEx-1] < 0x80 {
 					break
 				}
 			}
@@ -1374,7 +1374,7 @@ func skipDatasetmodels(data []byte) (n int, err error) {
 				if iNdEx >= l {
 					return 0, io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				length |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1397,7 +1397,7 @@ func skipDatasetmodels(data []byte) (n int, err error) {
 					if iNdEx >= l {
 						return 0, io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					innerWire |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1408,7 +1408,7 @@ func skipDatasetmodels(data []byte) (n int, err error) {
 				if innerWireType == 4 {
 					break
 				}
-				next, err := skipDatasetmodels(data[start:])
+				next, err := skipDatasetmodels(dAtA[start:])
 				if err != nil {
 					return 0, err
 				}
@@ -1436,7 +1436,7 @@ func init() { proto.RegisterFile("datasetmodels.proto", fileDescriptorDatasetmod
 
 var fileDescriptorDatasetmodels = []byte{
 	// 518 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x54, 0x92, 0xcf, 0x6e, 0xda, 0x4e,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x92, 0xcf, 0x6e, 0xda, 0x4e,
 	0x10, 0xc7, 0xbd, 0xf1, 0x1f, 0xc2, 0xf0, 0xcb, 0x0f, 0x6b, 0x9b, 0x83, 0xd5, 0x83, 0x85, 0x7c,
 	0x68, 0xb8, 0xd4, 0x91, 0xe8, 0xa9, 0x47, 0x52, 0x68, 0x40, 0x6a, 0x43, 0xb5, 0x58, 0x95, 0xda,
 	0x0b, 0x5a, 0xc3, 0x02, 0x96, 0x6c, 0xaf, 0x65, 0xaf, 0x8b, 0x78, 0x8b, 0x1e, 0xdb, 0xa7, 0xe9,

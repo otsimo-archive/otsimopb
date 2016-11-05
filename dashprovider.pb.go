@@ -93,7 +93,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for DashboardProvider service
 
@@ -189,29 +189,29 @@ var _DashboardProvider_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptorDashprovider,
+	Metadata: "dashprovider.proto",
 }
 
-func (m *ProviderGetRequest) Marshal() (data []byte, err error) {
+func (m *ProviderGetRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *ProviderGetRequest) MarshalTo(data []byte) (int, error) {
+func (m *ProviderGetRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Request != nil {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(m.Request.Size()))
-		n1, err := m.Request.MarshalTo(data[i:])
+		i = encodeVarintDashprovider(dAtA, i, uint64(m.Request.Size()))
+		n1, err := m.Request.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -219,57 +219,57 @@ func (m *ProviderGetRequest) MarshalTo(data []byte) (int, error) {
 	}
 	if len(m.UserGroups) > 0 {
 		for _, s := range m.UserGroups {
-			data[i] = 0x12
+			dAtA[i] = 0x12
 			i++
 			l = len(s)
 			for l >= 1<<7 {
-				data[i] = uint8(uint64(l)&0x7f | 0x80)
+				dAtA[i] = uint8(uint64(l)&0x7f | 0x80)
 				l >>= 7
 				i++
 			}
-			data[i] = uint8(l)
+			dAtA[i] = uint8(l)
 			i++
-			i += copy(data[i:], s)
+			i += copy(dAtA[i:], s)
 		}
 	}
 	return i, nil
 }
 
-func (m *ProviderItem) Marshal() (data []byte, err error) {
+func (m *ProviderItem) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *ProviderItem) MarshalTo(data []byte) (int, error) {
+func (m *ProviderItem) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Cacheable {
-		data[i] = 0x8
+		dAtA[i] = 0x8
 		i++
 		if m.Cacheable {
-			data[i] = 1
+			dAtA[i] = 1
 		} else {
-			data[i] = 0
+			dAtA[i] = 0
 		}
 		i++
 	}
 	if m.Ttl != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(m.Ttl))
+		i = encodeVarintDashprovider(dAtA, i, uint64(m.Ttl))
 	}
 	if m.Item != nil {
-		data[i] = 0x22
+		dAtA[i] = 0x22
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(m.Item.Size()))
-		n2, err := m.Item.MarshalTo(data[i:])
+		i = encodeVarintDashprovider(dAtA, i, uint64(m.Item.Size()))
+		n2, err := m.Item.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
@@ -278,59 +278,59 @@ func (m *ProviderItem) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *ProviderItems) Marshal() (data []byte, err error) {
+func (m *ProviderItems) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *ProviderItems) MarshalTo(data []byte) (int, error) {
+func (m *ProviderItems) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.ProfileId) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(len(m.ProfileId)))
-		i += copy(data[i:], m.ProfileId)
+		i = encodeVarintDashprovider(dAtA, i, uint64(len(m.ProfileId)))
+		i += copy(dAtA[i:], m.ProfileId)
 	}
 	if len(m.ChildId) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(len(m.ChildId)))
-		i += copy(data[i:], m.ChildId)
+		i = encodeVarintDashprovider(dAtA, i, uint64(len(m.ChildId)))
+		i += copy(dAtA[i:], m.ChildId)
 	}
 	if m.CreatedAt != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(m.CreatedAt))
+		i = encodeVarintDashprovider(dAtA, i, uint64(m.CreatedAt))
 	}
 	if m.Cacheable {
-		data[i] = 0x20
+		dAtA[i] = 0x20
 		i++
 		if m.Cacheable {
-			data[i] = 1
+			dAtA[i] = 1
 		} else {
-			data[i] = 0
+			dAtA[i] = 0
 		}
 		i++
 	}
 	if m.Ttl != 0 {
-		data[i] = 0x28
+		dAtA[i] = 0x28
 		i++
-		i = encodeVarintDashprovider(data, i, uint64(m.Ttl))
+		i = encodeVarintDashprovider(dAtA, i, uint64(m.Ttl))
 	}
 	if len(m.Items) > 0 {
 		for _, msg := range m.Items {
-			data[i] = 0x42
+			dAtA[i] = 0x42
 			i++
-			i = encodeVarintDashprovider(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintDashprovider(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -340,17 +340,17 @@ func (m *ProviderItems) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *ProviderInfoRequest) Marshal() (data []byte, err error) {
+func (m *ProviderInfoRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *ProviderInfoRequest) MarshalTo(data []byte) (int, error) {
+func (m *ProviderInfoRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -358,64 +358,64 @@ func (m *ProviderInfoRequest) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *ProviderInfo) Marshal() (data []byte, err error) {
+func (m *ProviderInfo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *ProviderInfo) MarshalTo(data []byte) (int, error) {
+func (m *ProviderInfo) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.ServesFor) > 0 {
 		for _, s := range m.ServesFor {
-			data[i] = 0xa
+			dAtA[i] = 0xa
 			i++
 			l = len(s)
 			for l >= 1<<7 {
-				data[i] = uint8(uint64(l)&0x7f | 0x80)
+				dAtA[i] = uint8(uint64(l)&0x7f | 0x80)
 				l >>= 7
 				i++
 			}
-			data[i] = uint8(l)
+			dAtA[i] = uint8(l)
 			i++
-			i += copy(data[i:], s)
+			i += copy(dAtA[i:], s)
 		}
 	}
 	return i, nil
 }
 
-func encodeFixed64Dashprovider(data []byte, offset int, v uint64) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
-	data[offset+4] = uint8(v >> 32)
-	data[offset+5] = uint8(v >> 40)
-	data[offset+6] = uint8(v >> 48)
-	data[offset+7] = uint8(v >> 56)
+func encodeFixed64Dashprovider(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
 	return offset + 8
 }
-func encodeFixed32Dashprovider(data []byte, offset int, v uint32) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
+func encodeFixed32Dashprovider(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
 	return offset + 4
 }
-func encodeVarintDashprovider(data []byte, offset int, v uint64) int {
+func encodeVarintDashprovider(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
-		data[offset] = uint8(v&0x7f | 0x80)
+		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
-	data[offset] = uint8(v)
+	dAtA[offset] = uint8(v)
 	return offset + 1
 }
 func (m *ProviderGetRequest) Size() (n int) {
@@ -510,8 +510,8 @@ func sovDashprovider(x uint64) (n int) {
 func sozDashprovider(x uint64) (n int) {
 	return sovDashprovider(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *ProviderGetRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *ProviderGetRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -523,7 +523,7 @@ func (m *ProviderGetRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -551,7 +551,7 @@ func (m *ProviderGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -568,7 +568,7 @@ func (m *ProviderGetRequest) Unmarshal(data []byte) error {
 			if m.Request == nil {
 				m.Request = &DashboardGetRequest{}
 			}
-			if err := m.Request.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Request.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -584,7 +584,7 @@ func (m *ProviderGetRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -599,11 +599,11 @@ func (m *ProviderGetRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.UserGroups = append(m.UserGroups, string(data[iNdEx:postIndex]))
+			m.UserGroups = append(m.UserGroups, string(dAtA[iNdEx:postIndex]))
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashprovider(data[iNdEx:])
+			skippy, err := skipDashprovider(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -622,8 +622,8 @@ func (m *ProviderGetRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *ProviderItem) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *ProviderItem) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -635,7 +635,7 @@ func (m *ProviderItem) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -663,7 +663,7 @@ func (m *ProviderItem) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -683,7 +683,7 @@ func (m *ProviderItem) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Ttl |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -702,7 +702,7 @@ func (m *ProviderItem) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -719,13 +719,13 @@ func (m *ProviderItem) Unmarshal(data []byte) error {
 			if m.Item == nil {
 				m.Item = &Card{}
 			}
-			if err := m.Item.Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Item.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashprovider(data[iNdEx:])
+			skippy, err := skipDashprovider(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -744,8 +744,8 @@ func (m *ProviderItem) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *ProviderItems) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *ProviderItems) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -757,7 +757,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -785,7 +785,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -800,7 +800,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ProfileId = string(data[iNdEx:postIndex])
+			m.ProfileId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -814,7 +814,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -829,7 +829,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ChildId = string(data[iNdEx:postIndex])
+			m.ChildId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 0 {
@@ -843,7 +843,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.CreatedAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -862,7 +862,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -882,7 +882,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Ttl |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -901,7 +901,7 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -916,13 +916,13 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Items = append(m.Items, &ProviderItem{})
-			if err := m.Items[len(m.Items)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Items[len(m.Items)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashprovider(data[iNdEx:])
+			skippy, err := skipDashprovider(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -941,8 +941,8 @@ func (m *ProviderItems) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *ProviderInfoRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *ProviderInfoRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -954,7 +954,7 @@ func (m *ProviderInfoRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -972,7 +972,7 @@ func (m *ProviderInfoRequest) Unmarshal(data []byte) error {
 		switch fieldNum {
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashprovider(data[iNdEx:])
+			skippy, err := skipDashprovider(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -991,8 +991,8 @@ func (m *ProviderInfoRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *ProviderInfo) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *ProviderInfo) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1004,7 +1004,7 @@ func (m *ProviderInfo) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1032,7 +1032,7 @@ func (m *ProviderInfo) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1047,11 +1047,11 @@ func (m *ProviderInfo) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ServesFor = append(m.ServesFor, string(data[iNdEx:postIndex]))
+			m.ServesFor = append(m.ServesFor, string(dAtA[iNdEx:postIndex]))
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipDashprovider(data[iNdEx:])
+			skippy, err := skipDashprovider(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1070,8 +1070,8 @@ func (m *ProviderInfo) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func skipDashprovider(data []byte) (n int, err error) {
-	l := len(data)
+func skipDashprovider(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		var wire uint64
@@ -1082,7 +1082,7 @@ func skipDashprovider(data []byte) (n int, err error) {
 			if iNdEx >= l {
 				return 0, io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1100,7 +1100,7 @@ func skipDashprovider(data []byte) (n int, err error) {
 					return 0, io.ErrUnexpectedEOF
 				}
 				iNdEx++
-				if data[iNdEx-1] < 0x80 {
+				if dAtA[iNdEx-1] < 0x80 {
 					break
 				}
 			}
@@ -1117,7 +1117,7 @@ func skipDashprovider(data []byte) (n int, err error) {
 				if iNdEx >= l {
 					return 0, io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				length |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1140,7 +1140,7 @@ func skipDashprovider(data []byte) (n int, err error) {
 					if iNdEx >= l {
 						return 0, io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					innerWire |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1151,7 +1151,7 @@ func skipDashprovider(data []byte) (n int, err error) {
 				if innerWireType == 4 {
 					break
 				}
-				next, err := skipDashprovider(data[start:])
+				next, err := skipDashprovider(dAtA[start:])
 				if err != nil {
 					return 0, err
 				}
@@ -1179,7 +1179,7 @@ func init() { proto.RegisterFile("dashprovider.proto", fileDescriptorDashprovide
 
 var fileDescriptorDashprovider = []byte{
 	// 448 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x74, 0x92, 0xcf, 0x6e, 0xd3, 0x40,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x92, 0xcf, 0x6e, 0xd3, 0x40,
 	0x10, 0xc6, 0xb3, 0x71, 0xda, 0xc6, 0x93, 0xa2, 0xc2, 0xd2, 0x4a, 0xc6, 0x05, 0x63, 0xf9, 0x14,
 	0x21, 0x35, 0x95, 0x82, 0x90, 0xe8, 0x91, 0x3f, 0x22, 0xca, 0xad, 0xda, 0x23, 0x97, 0x60, 0x7b,
 	0xd7, 0x8e, 0x25, 0xbb, 0x63, 0x76, 0xd7, 0x7d, 0x06, 0x8e, 0x1c, 0x79, 0x20, 0x0e, 0x3d, 0xf6,

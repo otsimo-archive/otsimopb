@@ -186,7 +186,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for CatalogService service
 
@@ -348,90 +348,90 @@ var _CatalogService_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptorCatalog,
+	Metadata: "catalog.proto",
 }
 
-func (m *CatalogItem) Marshal() (data []byte, err error) {
+func (m *CatalogItem) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CatalogItem) MarshalTo(data []byte) (int, error) {
+func (m *CatalogItem) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.GameId) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintCatalog(data, i, uint64(len(m.GameId)))
-		i += copy(data[i:], m.GameId)
+		i = encodeVarintCatalog(dAtA, i, uint64(len(m.GameId)))
+		i += copy(dAtA[i:], m.GameId)
 	}
 	if m.Category != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Category))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Category))
 	}
 	if m.Index != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Index))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Index))
 	}
 	return i, nil
 }
 
-func (m *Catalog) Marshal() (data []byte, err error) {
+func (m *Catalog) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *Catalog) MarshalTo(data []byte) (int, error) {
+func (m *Catalog) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Title) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintCatalog(data, i, uint64(len(m.Title)))
-		i += copy(data[i:], m.Title)
+		i = encodeVarintCatalog(dAtA, i, uint64(len(m.Title)))
+		i += copy(dAtA[i:], m.Title)
 	}
 	if m.CreatedAt != 0 {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.CreatedAt))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.CreatedAt))
 	}
 	if m.VisibleAt != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.VisibleAt))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.VisibleAt))
 	}
 	if m.ExpiresAt != 0 {
-		data[i] = 0x20
+		dAtA[i] = 0x20
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.ExpiresAt))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.ExpiresAt))
 	}
 	if m.Status != 0 {
-		data[i] = 0x28
+		dAtA[i] = 0x28
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Status))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Status))
 	}
 	if len(m.Items) > 0 {
 		for _, msg := range m.Items {
-			data[i] = 0x4a
+			dAtA[i] = 0x4a
 			i++
-			i = encodeVarintCatalog(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintCatalog(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -441,105 +441,105 @@ func (m *Catalog) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *CatalogPullRequest) Marshal() (data []byte, err error) {
+func (m *CatalogPullRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CatalogPullRequest) MarshalTo(data []byte) (int, error) {
+func (m *CatalogPullRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.ProfileId) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintCatalog(data, i, uint64(len(m.ProfileId)))
-		i += copy(data[i:], m.ProfileId)
+		i = encodeVarintCatalog(dAtA, i, uint64(len(m.ProfileId)))
+		i += copy(dAtA[i:], m.ProfileId)
 	}
 	if len(m.ClientVersion) > 0 {
-		data[i] = 0x12
+		dAtA[i] = 0x12
 		i++
-		i = encodeVarintCatalog(data, i, uint64(len(m.ClientVersion)))
-		i += copy(data[i:], m.ClientVersion)
+		i = encodeVarintCatalog(dAtA, i, uint64(len(m.ClientVersion)))
+		i += copy(dAtA[i:], m.ClientVersion)
 	}
 	return i, nil
 }
 
-func (m *CatalogListRequest) Marshal() (data []byte, err error) {
+func (m *CatalogListRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CatalogListRequest) MarshalTo(data []byte) (int, error) {
+func (m *CatalogListRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Status != 0 {
-		data[i] = 0x8
+		dAtA[i] = 0x8
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Status))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Status))
 	}
 	if m.HideExpired {
-		data[i] = 0x10
+		dAtA[i] = 0x10
 		i++
 		if m.HideExpired {
-			data[i] = 1
+			dAtA[i] = 1
 		} else {
-			data[i] = 0
+			dAtA[i] = 0
 		}
 		i++
 	}
 	if m.Limit != 0 {
-		data[i] = 0x18
+		dAtA[i] = 0x18
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Limit))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Limit))
 	}
 	if m.Time != 0 {
-		data[i] = 0x20
+		dAtA[i] = 0x20
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Time))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Time))
 	}
 	if m.Offset != 0 {
-		data[i] = 0x28
+		dAtA[i] = 0x28
 		i++
-		i = encodeVarintCatalog(data, i, uint64(m.Offset))
+		i = encodeVarintCatalog(dAtA, i, uint64(m.Offset))
 	}
 	return i, nil
 }
 
-func (m *CatalogListResponse) Marshal() (data []byte, err error) {
+func (m *CatalogListResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CatalogListResponse) MarshalTo(data []byte) (int, error) {
+func (m *CatalogListResponse) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Catalogs) > 0 {
 		for _, msg := range m.Catalogs {
-			data[i] = 0xa
+			dAtA[i] = 0xa
 			i++
-			i = encodeVarintCatalog(data, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(data[i:])
+			i = encodeVarintCatalog(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
@@ -549,55 +549,55 @@ func (m *CatalogListResponse) MarshalTo(data []byte) (int, error) {
 	return i, nil
 }
 
-func (m *CatalogApproveRequest) Marshal() (data []byte, err error) {
+func (m *CatalogApproveRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
-	data = make([]byte, size)
-	n, err := m.MarshalTo(data)
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
-	return data[:n], nil
+	return dAtA[:n], nil
 }
 
-func (m *CatalogApproveRequest) MarshalTo(data []byte) (int, error) {
+func (m *CatalogApproveRequest) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Title) > 0 {
-		data[i] = 0xa
+		dAtA[i] = 0xa
 		i++
-		i = encodeVarintCatalog(data, i, uint64(len(m.Title)))
-		i += copy(data[i:], m.Title)
+		i = encodeVarintCatalog(dAtA, i, uint64(len(m.Title)))
+		i += copy(dAtA[i:], m.Title)
 	}
 	return i, nil
 }
 
-func encodeFixed64Catalog(data []byte, offset int, v uint64) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
-	data[offset+4] = uint8(v >> 32)
-	data[offset+5] = uint8(v >> 40)
-	data[offset+6] = uint8(v >> 48)
-	data[offset+7] = uint8(v >> 56)
+func encodeFixed64Catalog(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
 	return offset + 8
 }
-func encodeFixed32Catalog(data []byte, offset int, v uint32) int {
-	data[offset] = uint8(v)
-	data[offset+1] = uint8(v >> 8)
-	data[offset+2] = uint8(v >> 16)
-	data[offset+3] = uint8(v >> 24)
+func encodeFixed32Catalog(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
 	return offset + 4
 }
-func encodeVarintCatalog(data []byte, offset int, v uint64) int {
+func encodeVarintCatalog(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
-		data[offset] = uint8(v&0x7f | 0x80)
+		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
-	data[offset] = uint8(v)
+	dAtA[offset] = uint8(v)
 	return offset + 1
 }
 func (m *CatalogItem) Size() (n int) {
@@ -714,8 +714,8 @@ func sovCatalog(x uint64) (n int) {
 func sozCatalog(x uint64) (n int) {
 	return sovCatalog(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *CatalogItem) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CatalogItem) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -727,7 +727,7 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -755,7 +755,7 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -770,7 +770,7 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.GameId = string(data[iNdEx:postIndex])
+			m.GameId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 0 {
@@ -784,7 +784,7 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Category |= (CatalogCategory(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -803,7 +803,7 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Index |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -812,7 +812,7 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 			}
 		default:
 			iNdEx = preIndex
-			skippy, err := skipCatalog(data[iNdEx:])
+			skippy, err := skipCatalog(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -831,8 +831,8 @@ func (m *CatalogItem) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *Catalog) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *Catalog) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -844,7 +844,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -872,7 +872,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -887,7 +887,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Title = string(data[iNdEx:postIndex])
+			m.Title = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 0 {
@@ -901,7 +901,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.CreatedAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -920,7 +920,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.VisibleAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -939,7 +939,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.ExpiresAt |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -958,7 +958,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Status |= (CatalogStatus(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -977,7 +977,7 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -992,13 +992,13 @@ func (m *Catalog) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Items = append(m.Items, &CatalogItem{})
-			if err := m.Items[len(m.Items)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Items[len(m.Items)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipCatalog(data[iNdEx:])
+			skippy, err := skipCatalog(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1017,8 +1017,8 @@ func (m *Catalog) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CatalogPullRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CatalogPullRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1030,7 +1030,7 @@ func (m *CatalogPullRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1058,7 +1058,7 @@ func (m *CatalogPullRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1073,7 +1073,7 @@ func (m *CatalogPullRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ProfileId = string(data[iNdEx:postIndex])
+			m.ProfileId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -1087,7 +1087,7 @@ func (m *CatalogPullRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1102,11 +1102,11 @@ func (m *CatalogPullRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ClientVersion = string(data[iNdEx:postIndex])
+			m.ClientVersion = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipCatalog(data[iNdEx:])
+			skippy, err := skipCatalog(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1125,8 +1125,8 @@ func (m *CatalogPullRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CatalogListRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CatalogListRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1138,7 +1138,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1166,7 +1166,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Status |= (CatalogListRequest_ListStatus(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1185,7 +1185,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				v |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1205,7 +1205,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Limit |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1224,7 +1224,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Time |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1243,7 +1243,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				m.Offset |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1252,7 +1252,7 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 			}
 		default:
 			iNdEx = preIndex
-			skippy, err := skipCatalog(data[iNdEx:])
+			skippy, err := skipCatalog(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1271,8 +1271,8 @@ func (m *CatalogListRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CatalogListResponse) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CatalogListResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1284,7 +1284,7 @@ func (m *CatalogListResponse) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1312,7 +1312,7 @@ func (m *CatalogListResponse) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1327,13 +1327,13 @@ func (m *CatalogListResponse) Unmarshal(data []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Catalogs = append(m.Catalogs, &Catalog{})
-			if err := m.Catalogs[len(m.Catalogs)-1].Unmarshal(data[iNdEx:postIndex]); err != nil {
+			if err := m.Catalogs[len(m.Catalogs)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipCatalog(data[iNdEx:])
+			skippy, err := skipCatalog(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1352,8 +1352,8 @@ func (m *CatalogListResponse) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func (m *CatalogApproveRequest) Unmarshal(data []byte) error {
-	l := len(data)
+func (m *CatalogApproveRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		preIndex := iNdEx
@@ -1365,7 +1365,7 @@ func (m *CatalogApproveRequest) Unmarshal(data []byte) error {
 			if iNdEx >= l {
 				return io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1393,7 +1393,7 @@ func (m *CatalogApproveRequest) Unmarshal(data []byte) error {
 				if iNdEx >= l {
 					return io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1408,11 +1408,11 @@ func (m *CatalogApproveRequest) Unmarshal(data []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Title = string(data[iNdEx:postIndex])
+			m.Title = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
-			skippy, err := skipCatalog(data[iNdEx:])
+			skippy, err := skipCatalog(dAtA[iNdEx:])
 			if err != nil {
 				return err
 			}
@@ -1431,8 +1431,8 @@ func (m *CatalogApproveRequest) Unmarshal(data []byte) error {
 	}
 	return nil
 }
-func skipCatalog(data []byte) (n int, err error) {
-	l := len(data)
+func skipCatalog(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
 		var wire uint64
@@ -1443,7 +1443,7 @@ func skipCatalog(data []byte) (n int, err error) {
 			if iNdEx >= l {
 				return 0, io.ErrUnexpectedEOF
 			}
-			b := data[iNdEx]
+			b := dAtA[iNdEx]
 			iNdEx++
 			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
@@ -1461,7 +1461,7 @@ func skipCatalog(data []byte) (n int, err error) {
 					return 0, io.ErrUnexpectedEOF
 				}
 				iNdEx++
-				if data[iNdEx-1] < 0x80 {
+				if dAtA[iNdEx-1] < 0x80 {
 					break
 				}
 			}
@@ -1478,7 +1478,7 @@ func skipCatalog(data []byte) (n int, err error) {
 				if iNdEx >= l {
 					return 0, io.ErrUnexpectedEOF
 				}
-				b := data[iNdEx]
+				b := dAtA[iNdEx]
 				iNdEx++
 				length |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
@@ -1501,7 +1501,7 @@ func skipCatalog(data []byte) (n int, err error) {
 					if iNdEx >= l {
 						return 0, io.ErrUnexpectedEOF
 					}
-					b := data[iNdEx]
+					b := dAtA[iNdEx]
 					iNdEx++
 					innerWire |= (uint64(b) & 0x7F) << shift
 					if b < 0x80 {
@@ -1512,7 +1512,7 @@ func skipCatalog(data []byte) (n int, err error) {
 				if innerWireType == 4 {
 					break
 				}
-				next, err := skipCatalog(data[start:])
+				next, err := skipCatalog(dAtA[start:])
 				if err != nil {
 					return 0, err
 				}
@@ -1540,7 +1540,7 @@ func init() { proto.RegisterFile("catalog.proto", fileDescriptorCatalog) }
 
 var fileDescriptorCatalog = []byte{
 	// 721 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x6c, 0x54, 0xdf, 0x6e, 0x3a, 0x45,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x54, 0xdf, 0x6e, 0x3a, 0x45,
 	0x14, 0x66, 0x81, 0xe5, 0xcf, 0xa1, 0xd0, 0x75, 0xac, 0x15, 0x89, 0x12, 0x24, 0x1a, 0x49, 0x63,
 	0x69, 0xc4, 0x1b, 0x8d, 0x7a, 0xb1, 0x85, 0x6d, 0x24, 0xa1, 0x2c, 0x99, 0xd2, 0x9a, 0xf6, 0x86,
 	0x2c, 0xcb, 0xb0, 0x9d, 0x64, 0x97, 0x5d, 0x77, 0x06, 0x52, 0xdf, 0xc2, 0x4b, 0xaf, 0x7d, 0x9a,
