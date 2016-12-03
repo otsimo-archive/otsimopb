@@ -20,9 +20,6 @@ message ABTestGroup{
     bool active = 4;
 }
 
-message ABCreateResp{
-}
-
 message ABDisableReq{
     string name = 1;
     string app_id = 2;
@@ -69,6 +66,7 @@ service ABTest {
     rpc DisableTestGroup(ABDisableReq)returns(AppTestingStatus);
     // ListTestGroupsForApp
     rpc ListTestGroupsForApp(ListTestGroupReq)returns(AppTestingStatus);
+
     rpc CheckUserStatus(CheckUserStatusReq) returns (UserTestGroupStatus);
     rpc ChangeUserTestGroup(ChangeUserTestGroupReq) returns (UserTestGroupStatus);
 }
