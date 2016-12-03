@@ -45,5 +45,3 @@ service RegistryService {
     // AllReleases returns all releases of the given game
     rpc AllReleases(GetGameRequest) returns (AllGameReleases);
 }
-
-

@@ -134,7 +134,9 @@ message GameManifest{
     //Loading Background Color of the Game
     string loading_color = 19               [(gogoproto.moretags) = "bson:\"loading_color,omitempty\""];
     //Capabilities are required host app features. The most basic capability is 'sandbox'.  
-    repeated string capabilities = 20      [(gogoproto.moretags) = "bson:\"capabilities,omitempty\""];
+    repeated string capabilities = 20       [(gogoproto.moretags) = "bson:\"capabilities,omitempty\""];
+    //AbTest determines whether or not this version is for ab testingÏ
+    string ab_test = 21                     [(gogoproto.moretags) = "bson:\"ab_test,omitempty\""];    
 }
 
 message Game{
