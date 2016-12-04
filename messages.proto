@@ -121,6 +121,24 @@ message ListItem {
     repeated string languages = 9;
 }
 
+message ListItemWithTests {
+    message TestGroup{
+        string name = 1; 
+        int32 weight = 2;
+        string latest_version = 3;
+        ReleaseState latest_state = 4;
+        string production_version = 5;
+        string storage = 6;
+        string archive_format = 7;   
+        int64 released_at = 8;
+        repeated string languages = 9;
+    }
+    string game_id = 1;
+    string unique_name = 2;
+    int32 testing_version = 3;
+    repeated TestGroup groups = 4;
+}
+
 message GetLatestVersionsRequest{
     RequestReleaseState state = 1; //Default State is PRODUCTION
     repeated string game_ids = 2;

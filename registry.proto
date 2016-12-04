@@ -40,8 +40,10 @@ service RegistryService {
     rpc GetLatestVersions(GetLatestVersionsRequest) returns (GameVersionsResponse){}
     //Search does search 
     rpc Search(SearchRequest) returns (SearchResponse){}     
-    //ListGames returns all games
+    //ListGames returns all games with normal versions
     rpc ListGames(ListGamesRequest) returns (stream ListItem);
+    //ListGames returns all games with testing versions    
+    rpc ListGamesWithTests(ListGamesRequest) returns (stream ListItemWithTests);
     // AllReleases returns all releases of the given game
     rpc AllReleases(GetGameRequest) returns (AllGameReleases);
 }

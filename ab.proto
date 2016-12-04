@@ -36,12 +36,10 @@ message AppTestingStatus{
 
 message CheckUserStatusReq{
     string user_id = 1;
-    string email = 2;
 }
 
 message ChangeUserTestGroupReq{
     string user_id = 1;
-    string user_email = 2;
 
     string app_id = 3;
     //TestGroupName is empty for no testing group
