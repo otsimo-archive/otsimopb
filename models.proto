@@ -136,7 +136,8 @@ message GameManifest{
     //Capabilities are required host app features. The most basic capability is 'sandbox'.  
     repeated string capabilities = 20       [(gogoproto.moretags) = "bson:\"capabilities,omitempty\""];
     //AbTest determines whether or not this version is for ab testing
-    string ab_test = 21                     [(gogoproto.moretags) = "bson:\"ab_test\""];    
+    string ab_test = 21                     [(gogoproto.moretags) = "bson:\"ab_test\""];
+    map<string,string>labels = 22           [(gogoproto.moretags) = "bson:\"labels\""];
 }
 
 message Game{
@@ -147,6 +148,7 @@ message Game{
     bool is_on_production = 5               [(gogoproto.moretags) = "bson:\"is_on_production,omitempty\""];  
     int64 created_at = 6                    [(gogoproto.moretags) = "bson:\"created_at,omitempty\""];
     int64 last_updated = 7                  [(gogoproto.moretags) = "bson:\"last_updated,omitempty\""];
+    map<string,string> labels = 8           [(gogoproto.moretags) = "bson:\"labels\""];    
 }
 
 message GameRelease {
