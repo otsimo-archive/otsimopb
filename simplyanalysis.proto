@@ -22,12 +22,18 @@ service SimplifiedAnalytics{
 
 }
 
+enum DataInterval{
+	HOURLY = 0;
+	DAILY = 1;
+}
+
 message GamePlayingRequest{
     repeated string games = 1;
     //From is the unix seconds time
     int64 from = 2;
     //To is the unix seconds time
     int64 to = 3;
+    DataInterval interval = 4;
 }
 message GamePlayingReply{
     DataSet data = 1;
