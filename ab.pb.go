@@ -21,6 +21,7 @@
 		models.proto
 		registry.proto
 		search.proto
+		simplyanalysis.proto
 		watch.proto
 
 	It has these top-level messages:
@@ -135,6 +136,8 @@
 		GameRelease
 		UploadToken
 		AllGameReleases
+		GamePlayingRequest
+		GamePlayingReply
 		EmitRequest
 		EmitResponse
 		WatchRequest

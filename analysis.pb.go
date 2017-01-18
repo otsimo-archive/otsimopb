@@ -4069,7 +4069,24 @@ func (m *ActiveUsersRequest) Unmarshal(dAtA []byte) error {
 				}
 			}
 		case 2:
-			if wireType == 2 {
+			if wireType == 0 {
+				var v int64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowAnalysis
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					v |= (int64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				m.Dates = append(m.Dates, v)
+			} else if wireType == 2 {
 				var packedLen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
@@ -4110,23 +4127,6 @@ func (m *ActiveUsersRequest) Unmarshal(dAtA []byte) error {
 					}
 					m.Dates = append(m.Dates, v)
 				}
-			} else if wireType == 0 {
-				var v int64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowAnalysis
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Dates = append(m.Dates, v)
 			} else {
 				return fmt.Errorf("proto: wrong wireType = %d for field Dates", wireType)
 			}
@@ -4364,7 +4364,24 @@ func (m *RetentionRequest) Unmarshal(dAtA []byte) error {
 				}
 			}
 		case 2:
-			if wireType == 2 {
+			if wireType == 0 {
+				var v int64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowAnalysis
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					v |= (int64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				m.Dates = append(m.Dates, v)
+			} else if wireType == 2 {
 				var packedLen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
@@ -4405,23 +4422,6 @@ func (m *RetentionRequest) Unmarshal(dAtA []byte) error {
 					}
 					m.Dates = append(m.Dates, v)
 				}
-			} else if wireType == 0 {
-				var v int64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowAnalysis
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Dates = append(m.Dates, v)
 			} else {
 				return fmt.Errorf("proto: wrong wireType = %d for field Dates", wireType)
 			}
