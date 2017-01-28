@@ -137,7 +137,10 @@ message GameManifest{
     repeated string capabilities = 20       [(gogoproto.moretags) = "bson:\"capabilities,omitempty\""];
     //AbTest determines whether or not this version is for ab testing
     string ab_test = 21                     [(gogoproto.moretags) = "bson:\"ab_test\""];
+    //Labels are string key value pairs
     map<string,string>labels = 22           [(gogoproto.moretags) = "bson:\"labels\""];
+    //ManifestVersion 
+    int32 manifest_version = 23;
 }
 
 message Game{

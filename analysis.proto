@@ -129,6 +129,8 @@ message AnalyzeRequest{
     string child_id = 1;
     //ProfileId
     string profile_id = 2;
+    //UseAppData changes data source
+    bool use_app_data = 3;
     //Query is calculation query
     Query query = 6;
     //Games are the compute this request on
