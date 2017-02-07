@@ -52,6 +52,7 @@
 		GetActiveUsersRequest
 		ActiveOnRangeRequest
 		GameInfoResponse
+		AppDataInfoReq
 		CatalogItem
 		Catalog
 		CatalogPullRequest

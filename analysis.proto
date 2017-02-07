@@ -225,9 +225,9 @@ message GameInfoResponse{
     repeated EventInfo events = 2;
 }
 
-// Revenue
+message AppDataInfoReq{
 
-// Sessions
+}
 
 service AnalysisService {
     // ActiveOnRange returns child ids who active given time range
@@ -244,10 +244,9 @@ service AnalysisService {
     rpc ActiveUsers(ActiveUsersRequest) returns (ActiveUsersResult);
     // Retention returns retentation
     rpc Retention(RetentionRequest) returns (RetentionResult);
-
+    // GameInfo returns available events of a game
     rpc GameInfo(GameWithVersions) returns (GameInfoResponse);
-    //rpc Sessions
-    
-    //rpc Revenue
+    // AppDataInfo returns available events and their fields
+    rpc AppDataInfo(AppDataInfoReq) returns (GameInfoResponse);
 }
 
