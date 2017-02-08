@@ -14,10 +14,36 @@ import (
 	grpc "google.golang.org/grpc"
 )
 
+import io "io"
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+type StatisticsReq struct {
+	TimeFrom int64 `protobuf:"varint,1,opt,name=time_from,json=timeFrom,proto3" json:"time_from,omitempty"`
+	TimeTo   int64 `protobuf:"varint,2,opt,name=time_to,json=timeTo,proto3" json:"time_to,omitempty"`
+}
+
+func (m *StatisticsReq) Reset()                    { *m = StatisticsReq{} }
+func (m *StatisticsReq) String() string            { return proto.CompactTextString(m) }
+func (*StatisticsReq) ProtoMessage()               {}
+func (*StatisticsReq) Descriptor() ([]byte, []int) { return fileDescriptorApi, []int{0} }
+
+type StatisticsRes struct {
+	Statistics map[string]int64 `protobuf:"bytes,1,rep,name=statistics" json:"statistics,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+}
+
+func (m *StatisticsRes) Reset()                    { *m = StatisticsRes{} }
+func (m *StatisticsRes) String() string            { return proto.CompactTextString(m) }
+func (*StatisticsRes) ProtoMessage()               {}
+func (*StatisticsRes) Descriptor() ([]byte, []int) { return fileDescriptorApi, []int{1} }
+
+func init() {
+	proto.RegisterType((*StatisticsReq)(nil), "apipb.StatisticsReq")
+	proto.RegisterType((*StatisticsRes)(nil), "apipb.StatisticsRes")
+}
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
@@ -44,6 +70,7 @@ type ApiServiceClient interface {
 	GetDisabledChildren(ctx context.Context, in *GetChildrenFromProfileRequest, opts ...grpc.CallOption) (*GetChildrenFromProfileResponse, error)
 	SoundEnable(ctx context.Context, in *SoundEnableRequest, opts ...grpc.CallOption) (*Response, error)
 	UpdateGameIndices(ctx context.Context, in *UpdateIndecesRequest, opts ...grpc.CallOption) (*Child, error)
+	Statistics(ctx context.Context, in *StatisticsReq, opts ...grpc.CallOption) (*StatisticsRes, error)
 }
 
 type apiServiceClient struct {
@@ -162,6 +189,15 @@ func (c *apiServiceClient) UpdateGameIndices(ctx context.Context, in *UpdateInde
 	return out, nil
 }
 
+func (c *apiServiceClient) Statistics(ctx context.Context, in *StatisticsReq, opts ...grpc.CallOption) (*StatisticsRes, error) {
+	out := new(StatisticsRes)
+	err := grpc.Invoke(ctx, "/apipb.ApiService/Statistics", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for ApiService service
 
 type ApiServiceServer interface {
@@ -179,6 +215,7 @@ type ApiServiceServer interface {
 	GetDisabledChildren(context.Context, *GetChildrenFromProfileRequest) (*GetChildrenFromProfileResponse, error)
 	SoundEnable(context.Context, *SoundEnableRequest) (*Response, error)
 	UpdateGameIndices(context.Context, *UpdateIndecesRequest) (*Child, error)
+	Statistics(context.Context, *StatisticsReq) (*StatisticsRes, error)
 }
 
 func RegisterApiServiceServer(s *grpc.Server, srv ApiServiceServer) {
@@ -401,6 +438,24 @@ func _ApiService_UpdateGameIndices_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ApiService_Statistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StatisticsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApiServiceServer).Statistics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.ApiService/Statistics",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApiServiceServer).Statistics(ctx, req.(*StatisticsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ApiService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "apipb.ApiService",
 	HandlerType: (*ApiServiceServer)(nil),
@@ -453,40 +508,529 @@ var _ApiService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "UpdateGameIndices",
 			Handler:    _ApiService_UpdateGameIndices_Handler,
 		},
+		{
+			MethodName: "Statistics",
+			Handler:    _ApiService_Statistics_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "api.proto",
 }
 
+func (m *StatisticsReq) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *StatisticsReq) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.TimeFrom != 0 {
+		dAtA[i] = 0x8
+		i++
+		i = encodeVarintApi(dAtA, i, uint64(m.TimeFrom))
+	}
+	if m.TimeTo != 0 {
+		dAtA[i] = 0x10
+		i++
+		i = encodeVarintApi(dAtA, i, uint64(m.TimeTo))
+	}
+	return i, nil
+}
+
+func (m *StatisticsRes) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *StatisticsRes) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Statistics) > 0 {
+		for k, _ := range m.Statistics {
+			dAtA[i] = 0xa
+			i++
+			v := m.Statistics[k]
+			mapSize := 1 + len(k) + sovApi(uint64(len(k))) + 1 + sovApi(uint64(v))
+			i = encodeVarintApi(dAtA, i, uint64(mapSize))
+			dAtA[i] = 0xa
+			i++
+			i = encodeVarintApi(dAtA, i, uint64(len(k)))
+			i += copy(dAtA[i:], k)
+			dAtA[i] = 0x10
+			i++
+			i = encodeVarintApi(dAtA, i, uint64(v))
+		}
+	}
+	return i, nil
+}
+
+func encodeFixed64Api(dAtA []byte, offset int, v uint64) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	dAtA[offset+4] = uint8(v >> 32)
+	dAtA[offset+5] = uint8(v >> 40)
+	dAtA[offset+6] = uint8(v >> 48)
+	dAtA[offset+7] = uint8(v >> 56)
+	return offset + 8
+}
+func encodeFixed32Api(dAtA []byte, offset int, v uint32) int {
+	dAtA[offset] = uint8(v)
+	dAtA[offset+1] = uint8(v >> 8)
+	dAtA[offset+2] = uint8(v >> 16)
+	dAtA[offset+3] = uint8(v >> 24)
+	return offset + 4
+}
+func encodeVarintApi(dAtA []byte, offset int, v uint64) int {
+	for v >= 1<<7 {
+		dAtA[offset] = uint8(v&0x7f | 0x80)
+		v >>= 7
+		offset++
+	}
+	dAtA[offset] = uint8(v)
+	return offset + 1
+}
+func (m *StatisticsReq) Size() (n int) {
+	var l int
+	_ = l
+	if m.TimeFrom != 0 {
+		n += 1 + sovApi(uint64(m.TimeFrom))
+	}
+	if m.TimeTo != 0 {
+		n += 1 + sovApi(uint64(m.TimeTo))
+	}
+	return n
+}
+
+func (m *StatisticsRes) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Statistics) > 0 {
+		for k, v := range m.Statistics {
+			_ = k
+			_ = v
+			mapEntrySize := 1 + len(k) + sovApi(uint64(len(k))) + 1 + sovApi(uint64(v))
+			n += mapEntrySize + 1 + sovApi(uint64(mapEntrySize))
+		}
+	}
+	return n
+}
+
+func sovApi(x uint64) (n int) {
+	for {
+		n++
+		x >>= 7
+		if x == 0 {
+			break
+		}
+	}
+	return n
+}
+func sozApi(x uint64) (n int) {
+	return sovApi(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *StatisticsReq) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowApi
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: StatisticsReq: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: StatisticsReq: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TimeFrom", wireType)
+			}
+			m.TimeFrom = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.TimeFrom |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TimeTo", wireType)
+			}
+			m.TimeTo = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.TimeTo |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipApi(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthApi
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *StatisticsRes) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowApi
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: StatisticsRes: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: StatisticsRes: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Statistics", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthApi
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			var keykey uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				keykey |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			var stringLenmapkey uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLenmapkey |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLenmapkey := int(stringLenmapkey)
+			if intStringLenmapkey < 0 {
+				return ErrInvalidLengthApi
+			}
+			postStringIndexmapkey := iNdEx + intStringLenmapkey
+			if postStringIndexmapkey > l {
+				return io.ErrUnexpectedEOF
+			}
+			mapkey := string(dAtA[iNdEx:postStringIndexmapkey])
+			iNdEx = postStringIndexmapkey
+			if m.Statistics == nil {
+				m.Statistics = make(map[string]int64)
+			}
+			if iNdEx < postIndex {
+				var valuekey uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowApi
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					valuekey |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				var mapvalue int64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowApi
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					mapvalue |= (int64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				m.Statistics[mapkey] = mapvalue
+			} else {
+				var mapvalue int64
+				m.Statistics[mapkey] = mapvalue
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipApi(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthApi
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func skipApi(dAtA []byte) (n int, err error) {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return 0, ErrIntOverflowApi
+			}
+			if iNdEx >= l {
+				return 0, io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		wireType := int(wire & 0x7)
+		switch wireType {
+		case 0:
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return 0, ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return 0, io.ErrUnexpectedEOF
+				}
+				iNdEx++
+				if dAtA[iNdEx-1] < 0x80 {
+					break
+				}
+			}
+			return iNdEx, nil
+		case 1:
+			iNdEx += 8
+			return iNdEx, nil
+		case 2:
+			var length int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return 0, ErrIntOverflowApi
+				}
+				if iNdEx >= l {
+					return 0, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				length |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			iNdEx += length
+			if length < 0 {
+				return 0, ErrInvalidLengthApi
+			}
+			return iNdEx, nil
+		case 3:
+			for {
+				var innerWire uint64
+				var start int = iNdEx
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return 0, ErrIntOverflowApi
+					}
+					if iNdEx >= l {
+						return 0, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					innerWire |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				innerWireType := int(innerWire & 0x7)
+				if innerWireType == 4 {
+					break
+				}
+				next, err := skipApi(dAtA[start:])
+				if err != nil {
+					return 0, err
+				}
+				iNdEx = start + next
+			}
+			return iNdEx, nil
+		case 4:
+			return iNdEx, nil
+		case 5:
+			iNdEx += 4
+			return iNdEx, nil
+		default:
+			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
+		}
+	}
+	panic("unreachable")
+}
+
+var (
+	ErrInvalidLengthApi = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowApi   = fmt.Errorf("proto: integer overflow")
+)
+
 func init() { proto.RegisterFile("api.proto", fileDescriptorApi) }
 
 var fileDescriptorApi = []byte{
-	// 429 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x53, 0xcd, 0x8e, 0xd3, 0x30,
-	0x18, 0x4c, 0x40, 0xac, 0xca, 0xd7, 0x65, 0x0b, 0x46, 0xe2, 0x27, 0x48, 0x39, 0x14, 0x38, 0x21,
-	0x52, 0xa9, 0x5c, 0xe0, 0x00, 0x28, 0x2c, 0x4b, 0xd8, 0x13, 0xab, 0x2d, 0x5c, 0x10, 0x17, 0x27,
-	0xfe, 0x36, 0xb5, 0x94, 0xd8, 0xc6, 0x76, 0x56, 0xe2, 0xca, 0x13, 0x70, 0xe4, 0xcc, 0xd3, 0xec,
-	0x71, 0x1f, 0x81, 0xb6, 0x2f, 0x82, 0xea, 0x24, 0x0d, 0x54, 0xad, 0x80, 0xc3, 0xde, 0x32, 0xf3,
-	0xcd, 0x37, 0x33, 0x76, 0x64, 0xb8, 0x4a, 0x15, 0x8f, 0x94, 0x96, 0x56, 0x92, 0x2b, 0x54, 0x71,
-	0x95, 0x06, 0x7b, 0x25, 0x1a, 0x43, 0x73, 0x34, 0x35, 0x1d, 0xec, 0x96, 0x92, 0x61, 0xd1, 0xa2,
-	0xc7, 0x39, 0xb7, 0xd3, 0x2a, 0x8d, 0x32, 0x59, 0x8e, 0x72, 0x99, 0xcb, 0x91, 0xa3, 0xd3, 0xea,
-	0xc4, 0x21, 0x07, 0xdc, 0x57, 0x2d, 0x1f, 0x7f, 0xdd, 0x01, 0x88, 0x15, 0x9f, 0xa0, 0x3e, 0xe5,
-	0x19, 0x92, 0x11, 0x40, 0xcc, 0xd8, 0x91, 0x96, 0x27, 0xbc, 0x40, 0xb2, 0x17, 0xb9, 0xc4, 0xa8,
-	0xc1, 0xc1, 0xa0, 0xc1, 0xc7, 0x68, 0x94, 0x14, 0x06, 0x87, 0x1e, 0x79, 0x0a, 0x90, 0xa0, 0x6d,
-	0x17, 0xee, 0x34, 0x82, 0x8e, 0x3a, 0xc6, 0xcf, 0x15, 0x1a, 0x1b, 0xac, 0x59, 0x0d, 0x3d, 0x32,
-	0x86, 0x6b, 0x1f, 0x14, 0xa3, 0x16, 0xff, 0x23, 0xed, 0x11, 0xf4, 0x62, 0xc6, 0xf6, 0xa7, 0xbc,
-	0x60, 0x64, 0xb7, 0x19, 0x3b, 0xb4, 0x49, 0x3c, 0x86, 0x5e, 0x82, 0xb6, 0x16, 0xdf, 0xea, 0x8a,
-	0x39, 0xa2, 0xad, 0xf5, 0x87, 0xc9, 0xd0, 0x23, 0x11, 0xf4, 0xeb, 0x52, 0xff, 0x98, 0xf1, 0x09,
-	0xfa, 0xad, 0xa5, 0x46, 0x41, 0x1e, 0xac, 0xc5, 0x68, 0x14, 0x6f, 0xb4, 0x2c, 0xd7, 0xee, 0xe2,
-	0xe1, 0x5f, 0x54, 0x2b, 0xf7, 0xe7, 0x30, 0xa8, 0xdb, 0x24, 0xb4, 0xc4, 0x03, 0x61, 0xf5, 0x17,
-	0x72, 0xbb, 0xdd, 0x6d, 0x99, 0xd6, 0x74, 0x43, 0xb9, 0xb7, 0x70, 0x7d, 0x7f, 0x4a, 0x45, 0x8e,
-	0x71, 0x66, 0xf9, 0x29, 0xb5, 0x5c, 0x0a, 0x72, 0x7f, 0x75, 0xa2, 0xe5, 0xc0, 0xc5, 0x77, 0xd3,
-	0x6d, 0x5e, 0x24, 0x85, 0x9b, 0x09, 0xda, 0xd7, 0xdc, 0xd0, 0xb4, 0x40, 0x76, 0x21, 0xc7, 0x25,
-	0xcf, 0xa0, 0x3f, 0x91, 0x95, 0x60, 0x07, 0x62, 0x19, 0x42, 0xee, 0x36, 0x5b, 0xbf, 0x71, 0x5b,
-	0xeb, 0xbd, 0x80, 0x1b, 0xdd, 0x3d, 0x1d, 0x0a, 0xc6, 0x33, 0x34, 0xe4, 0x5e, 0xa3, 0xaa, 0x27,
-	0x87, 0x82, 0x61, 0x86, 0x66, 0xe3, 0x7f, 0x7f, 0xf5, 0xf2, 0x6c, 0x16, 0x7a, 0xe7, 0xb3, 0xd0,
-	0x3b, 0x9b, 0x87, 0xfe, 0xf9, 0x3c, 0xf4, 0x7f, 0xce, 0x43, 0xff, 0xdb, 0x22, 0xf4, 0xbe, 0x2f,
-	0x42, 0x0f, 0x06, 0x99, 0x2c, 0x23, 0x69, 0x0d, 0x2f, 0x65, 0x94, 0x6b, 0x95, 0x1d, 0xf9, 0x1f,
-	0x7b, 0x35, 0x54, 0xe9, 0x8f, 0x4b, 0x97, 0xdf, 0xbd, 0x9f, 0xa4, 0x3b, 0xee, 0x31, 0x3d, 0xf9,
-	0x15, 0x00, 0x00, 0xff, 0xff, 0xee, 0xdf, 0x83, 0x98, 0xad, 0x03, 0x00, 0x00,
+	// 554 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x54, 0x4d, 0x6e, 0xd3, 0x40,
+	0x14, 0xb6, 0x1b, 0xb5, 0x24, 0x2f, 0x6d, 0x53, 0x86, 0x8a, 0x06, 0x57, 0xb2, 0xaa, 0x50, 0xa4,
+	0x4a, 0x08, 0x47, 0x0a, 0x9b, 0x82, 0x54, 0x50, 0x68, 0x43, 0xe8, 0x8a, 0xca, 0x29, 0x1b, 0x84,
+	0x84, 0x6c, 0xcf, 0x8b, 0x33, 0x22, 0xf6, 0x38, 0x9e, 0x49, 0xa4, 0xde, 0x82, 0x05, 0x0b, 0xd6,
+	0x9c, 0x83, 0x03, 0x74, 0xd9, 0x23, 0xd0, 0xf4, 0x22, 0xc8, 0x63, 0x3b, 0x6e, 0xa2, 0x54, 0xc0,
+	0x82, 0x9d, 0xbf, 0x9f, 0xf9, 0xde, 0x37, 0xf6, 0x8c, 0xa1, 0xe2, 0x44, 0xcc, 0x8a, 0x62, 0x2e,
+	0x39, 0x59, 0x75, 0x22, 0x16, 0xb9, 0xc6, 0x66, 0x80, 0x42, 0x38, 0x3e, 0x8a, 0x94, 0x36, 0xd6,
+	0x03, 0x4e, 0x71, 0x98, 0xa3, 0x67, 0x3e, 0x93, 0x83, 0xb1, 0x6b, 0x79, 0x3c, 0x68, 0xfa, 0xdc,
+	0xe7, 0x4d, 0x45, 0xbb, 0xe3, 0xbe, 0x42, 0x0a, 0xa8, 0xa7, 0xd4, 0xde, 0xe8, 0xc0, 0x46, 0x4f,
+	0x3a, 0x92, 0x09, 0xc9, 0x3c, 0x61, 0xe3, 0x88, 0xec, 0x42, 0x45, 0xb2, 0x00, 0x3f, 0xf7, 0x63,
+	0x1e, 0xd4, 0xf5, 0x3d, 0xfd, 0xa0, 0x64, 0x97, 0x13, 0xe2, 0x6d, 0xcc, 0x03, 0xb2, 0x03, 0xf7,
+	0x94, 0x28, 0x79, 0x7d, 0x45, 0x49, 0x6b, 0x09, 0x3c, 0xe7, 0x8d, 0x6f, 0xfa, 0x7c, 0x8e, 0x20,
+	0x27, 0x00, 0x62, 0x46, 0xd4, 0xf5, 0xbd, 0xd2, 0x41, 0xb5, 0xb5, 0x6f, 0xa9, 0x1d, 0x58, 0x73,
+	0xce, 0x5b, 0xa8, 0x13, 0xca, 0xf8, 0xc2, 0xbe, 0xb5, 0xce, 0x38, 0x82, 0xda, 0x82, 0x4c, 0xb6,
+	0xa0, 0xf4, 0x05, 0x2f, 0x54, 0xb5, 0x8a, 0x9d, 0x3c, 0x92, 0x6d, 0x58, 0x9d, 0x38, 0xc3, 0x31,
+	0x66, 0x9d, 0x52, 0xf0, 0x72, 0xe5, 0x50, 0x6f, 0xfd, 0x5c, 0x03, 0x68, 0x47, 0xac, 0x87, 0xf1,
+	0x84, 0x79, 0x48, 0x9a, 0x00, 0x6d, 0x4a, 0xcf, 0x62, 0xde, 0x67, 0x43, 0x24, 0x9b, 0x59, 0x9b,
+	0x0c, 0x1b, 0xb5, 0x0c, 0xdb, 0x28, 0x22, 0x1e, 0x0a, 0x6c, 0x68, 0xe4, 0x10, 0xa0, 0x8b, 0x32,
+	0x5f, 0x50, 0xcf, 0x0c, 0x05, 0x65, 0xe3, 0x68, 0x8c, 0x42, 0x1a, 0x0b, 0x51, 0x0d, 0x8d, 0xb4,
+	0x60, 0xe3, 0x43, 0x44, 0x1d, 0x89, 0xff, 0x30, 0xed, 0x29, 0x94, 0xdb, 0x94, 0x1e, 0x0f, 0xd8,
+	0x90, 0x92, 0xf5, 0x4c, 0x56, 0x68, 0x99, 0xb9, 0x05, 0xe5, 0x2e, 0xca, 0xd4, 0xfc, 0xb0, 0x28,
+	0xa6, 0x88, 0xbc, 0xd6, 0x5c, 0x48, 0x43, 0x23, 0x16, 0x54, 0xd3, 0x52, 0x7f, 0x39, 0xe3, 0x13,
+	0x54, 0xf3, 0xc8, 0x18, 0x43, 0xb2, 0xbf, 0x30, 0x26, 0xc6, 0x30, 0x39, 0x15, 0x0b, 0xef, 0xe2,
+	0xc9, 0x1f, 0x5c, 0xb3, 0xf4, 0x23, 0xa8, 0xa5, 0x6d, 0xba, 0x4e, 0x80, 0xe9, 0xb7, 0xdd, 0xc9,
+	0xd7, 0xe6, 0x4c, 0x1e, 0xba, 0xa4, 0xdc, 0x3b, 0xd8, 0x3a, 0x1e, 0x38, 0xa1, 0x8f, 0x6d, 0x4f,
+	0xb2, 0x89, 0x23, 0x19, 0x0f, 0xc9, 0xe3, 0xd9, 0x8e, 0x12, 0x41, 0x8d, 0x2f, 0xd4, 0xbb, 0xb2,
+	0x88, 0x0b, 0x0f, 0xba, 0x28, 0x4f, 0x98, 0x70, 0xdc, 0x21, 0xd2, 0xff, 0xb2, 0x5d, 0xf2, 0x02,
+	0xaa, 0x3d, 0x3e, 0x0e, 0x69, 0x27, 0x4c, 0x86, 0x90, 0x47, 0xf9, 0x4d, 0x28, 0xb8, 0x3b, 0xeb,
+	0xbd, 0x82, 0xfb, 0xc5, 0x7b, 0x3a, 0x0d, 0x29, 0xf3, 0x50, 0x90, 0xdd, 0xcc, 0x95, 0x2a, 0xa7,
+	0x21, 0x45, 0x0f, 0xc5, 0xd2, 0xef, 0x9e, 0x1c, 0xe2, 0xe2, 0x0e, 0x91, 0xed, 0x25, 0x77, 0x70,
+	0x64, 0x2c, 0x63, 0xc5, 0x9b, 0xd7, 0x97, 0xd7, 0xa6, 0x76, 0x75, 0x6d, 0x6a, 0x97, 0x53, 0x53,
+	0xbf, 0x9a, 0x9a, 0xfa, 0xaf, 0xa9, 0xa9, 0x7f, 0xbd, 0x31, 0xb5, 0xef, 0x37, 0xa6, 0x06, 0x35,
+	0x8f, 0x07, 0x16, 0x97, 0x82, 0x05, 0xdc, 0xf2, 0xe3, 0xc8, 0x3b, 0xd3, 0x3f, 0x96, 0x53, 0x18,
+	0xb9, 0x3f, 0x56, 0x4a, 0xef, 0xcf, 0x7b, 0xee, 0x9a, 0xfa, 0xc9, 0x3c, 0xff, 0x1d, 0x00, 0x00,
+	0xff, 0xff, 0x85, 0x71, 0x5a, 0x44, 0xc5, 0x04, 0x00, 0x00,
 }
