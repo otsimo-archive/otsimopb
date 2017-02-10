@@ -53,6 +53,8 @@
 		ActiveOnRangeRequest
 		GameInfoResponse
 		AppDataInfoReq
+		StatisticsReq
+		StatisticsRes
 		CatalogItem
 		Catalog
 		CatalogPullRequest
