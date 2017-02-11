@@ -88,12 +88,12 @@
 		SelfLearningSegment
 		SelfLearningConfig
 		FileMetadata
-		UploadRequest
-		UploadResponse
-		StoreRequest
-		StoreResponse
-		LookupRequest
-		LookupResponse
+		UploadReq
+		UploadRes
+		StoreReq
+		StoreRes
+		LookupReq
+		LookupRes
 		DeviceInfo
 		GameInfo
 		Point
@@ -128,6 +128,9 @@
 		SearchRequest
 		SearchResponse
 		Response
+		LabelSelectorRequirement
+		LabelSelectorTerm
+		LabelSelector
 		Address
 		Profile
 		ChildGameEntry

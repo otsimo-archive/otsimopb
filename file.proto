@@ -2,6 +2,7 @@ syntax = "proto3";
 package otsimo;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "messages.proto";
 
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;
@@ -16,30 +17,37 @@ option java_multiple_files = true;
 option java_outer_classname= "FileProto";
 
 service File {
-    rpc StoreSmall(StoreRequest) returns (StoreResponse);
-    rpc RequestStoreBig(UploadRequest) returns (UploadResponse);
-    rpc Lookup(LookupRequest) returns (LookupResponse);
+    rpc StoreSmall(StoreReq) returns (StoreRes);
+    rpc RequestStoreBig(UploadReq) returns (UploadRes);
+    rpc Lookup(LookupReq) returns (LookupRes);
 }
 
 message FileMetadata{
+    string name = 1;
+    map<string,string> labels = 2;
+    string content_type = 3;
+    string content_encoding = 4;
 }
 
-message UploadRequest{
+message UploadReq{
     FileMetadata metadata = 1;
     bytes data = 2;
 }
 
-message UploadResponse{
+message UploadRes{
+    string upload_token = 1;
 }
 
-message StoreRequest{
+message StoreReq{
+    FileMetadata metadata = 1;
 }
 
-message StoreResponse{
+message StoreRes{
 }
 
-message LookupRequest{
+message LookupReq{
+    apipb.LabelSelector selector = 1;
 }
 
-message LookupResponse{
+message LookupRes{
 }
