@@ -142,6 +142,11 @@
 		GameRelease
 		UploadToken
 		AllGameReleases
+		GameCategoryLocale
+		GameCategory
+		CategoryReq
+		CategoryListReq
+		CategoryList
 		GamePlayingRequest
 		GamePlayingReply
 		EmitRequest

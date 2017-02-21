@@ -21,6 +21,30 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+type CategoryReq_Task int32
+
+const (
+	CategoryReq_ADD    CategoryReq_Task = 0
+	CategoryReq_UPDATE CategoryReq_Task = 1
+	CategoryReq_DELETE CategoryReq_Task = 2
+)
+
+var CategoryReq_Task_name = map[int32]string{
+	0: "ADD",
+	1: "UPDATE",
+	2: "DELETE",
+}
+var CategoryReq_Task_value = map[string]int32{
+	"ADD":    0,
+	"UPDATE": 1,
+	"DELETE": 2,
+}
+
+func (x CategoryReq_Task) String() string {
+	return proto.EnumName(CategoryReq_Task_name, int32(x))
+}
+func (CategoryReq_Task) EnumDescriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{3, 0} }
+
 type AllGameReleases struct {
 	GameId   string                         `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
 	Releases []*AllGameReleases_MiniRelease `protobuf:"bytes,2,rep,name=releases" json:"releases,omitempty"`
@@ -44,9 +68,65 @@ func (*AllGameReleases_MiniRelease) Descriptor() ([]byte, []int) {
 	return fileDescriptorRegistry, []int{0, 0}
 }
 
+type GameCategoryLocale struct {
+	Language string `protobuf:"bytes,1,opt,name=language,proto3" json:"language,omitempty"`
+	Title    string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Image    string `protobuf:"bytes,3,opt,name=image,proto3" json:"image,omitempty"`
+}
+
+func (m *GameCategoryLocale) Reset()                    { *m = GameCategoryLocale{} }
+func (m *GameCategoryLocale) String() string            { return proto.CompactTextString(m) }
+func (*GameCategoryLocale) ProtoMessage()               {}
+func (*GameCategoryLocale) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{1} }
+
+type GameCategory struct {
+	Name     string                `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Locales  []*GameCategoryLocale `protobuf:"bytes,2,rep,name=locales" json:"locales,omitempty"`
+	Revision int32                 `protobuf:"varint,3,opt,name=revision,proto3" json:"revision,omitempty"`
+}
+
+func (m *GameCategory) Reset()                    { *m = GameCategory{} }
+func (m *GameCategory) String() string            { return proto.CompactTextString(m) }
+func (*GameCategory) ProtoMessage()               {}
+func (*GameCategory) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{2} }
+
+type CategoryReq struct {
+	Task          CategoryReq_Task `protobuf:"varint,1,opt,name=task,proto3,enum=apipb.CategoryReq_Task" json:"task,omitempty"`
+	Category      *GameCategory    `protobuf:"bytes,2,opt,name=category" json:"category,omitempty"`
+	KnownRevision int32            `protobuf:"varint,3,opt,name=known_revision,json=knownRevision,proto3" json:"known_revision,omitempty"`
+}
+
+func (m *CategoryReq) Reset()                    { *m = CategoryReq{} }
+func (m *CategoryReq) String() string            { return proto.CompactTextString(m) }
+func (*CategoryReq) ProtoMessage()               {}
+func (*CategoryReq) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{3} }
+
+type CategoryListReq struct {
+}
+
+func (m *CategoryListReq) Reset()                    { *m = CategoryListReq{} }
+func (m *CategoryListReq) String() string            { return proto.CompactTextString(m) }
+func (*CategoryListReq) ProtoMessage()               {}
+func (*CategoryListReq) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{4} }
+
+type CategoryList struct {
+	Categories []*GameCategory `protobuf:"bytes,1,rep,name=categories" json:"categories,omitempty"`
+}
+
+func (m *CategoryList) Reset()                    { *m = CategoryList{} }
+func (m *CategoryList) String() string            { return proto.CompactTextString(m) }
+func (*CategoryList) ProtoMessage()               {}
+func (*CategoryList) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{5} }
+
 func init() {
 	proto.RegisterType((*AllGameReleases)(nil), "apipb.AllGameReleases")
 	proto.RegisterType((*AllGameReleases_MiniRelease)(nil), "apipb.AllGameReleases.MiniRelease")
+	proto.RegisterType((*GameCategoryLocale)(nil), "apipb.GameCategoryLocale")
+	proto.RegisterType((*GameCategory)(nil), "apipb.GameCategory")
+	proto.RegisterType((*CategoryReq)(nil), "apipb.CategoryReq")
+	proto.RegisterType((*CategoryListReq)(nil), "apipb.CategoryListReq")
+	proto.RegisterType((*CategoryList)(nil), "apipb.CategoryList")
+	proto.RegisterEnum("apipb.CategoryReq_Task", CategoryReq_Task_name, CategoryReq_Task_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -79,6 +159,10 @@ type RegistryServiceClient interface {
 	ListGamesWithTests(ctx context.Context, in *ListGamesRequest, opts ...grpc.CallOption) (RegistryService_ListGamesWithTestsClient, error)
 	// AllReleases returns all releases of the given game
 	AllReleases(ctx context.Context, in *GetGameRequest, opts ...grpc.CallOption) (*AllGameReleases, error)
+	// Category adds, updates and removes a game category
+	Category(ctx context.Context, in *CategoryReq, opts ...grpc.CallOption) (*GameCategory, error)
+	// ListCategories returns all the categories
+	ListCategories(ctx context.Context, in *CategoryListReq, opts ...grpc.CallOption) (*CategoryList, error)
 }
 
 type registryServiceClient struct {
@@ -216,6 +300,24 @@ func (c *registryServiceClient) AllReleases(ctx context.Context, in *GetGameRequ
 	return out, nil
 }
 
+func (c *registryServiceClient) Category(ctx context.Context, in *CategoryReq, opts ...grpc.CallOption) (*GameCategory, error) {
+	out := new(GameCategory)
+	err := grpc.Invoke(ctx, "/apipb.RegistryService/Category", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *registryServiceClient) ListCategories(ctx context.Context, in *CategoryListReq, opts ...grpc.CallOption) (*CategoryList, error) {
+	out := new(CategoryList)
+	err := grpc.Invoke(ctx, "/apipb.RegistryService/ListCategories", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for RegistryService service
 
 type RegistryServiceServer interface {
@@ -238,6 +340,10 @@ type RegistryServiceServer interface {
 	ListGamesWithTests(*ListGamesRequest, RegistryService_ListGamesWithTestsServer) error
 	// AllReleases returns all releases of the given game
 	AllReleases(context.Context, *GetGameRequest) (*AllGameReleases, error)
+	// Category adds, updates and removes a game category
+	Category(context.Context, *CategoryReq) (*GameCategory, error)
+	// ListCategories returns all the categories
+	ListCategories(context.Context, *CategoryListReq) (*CategoryList, error)
 }
 
 func RegisterRegistryServiceServer(s *grpc.Server, srv RegistryServiceServer) {
@@ -412,6 +518,42 @@ func _RegistryService_AllReleases_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RegistryService_Category_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CategoryReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).Category(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/Category",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).Category(ctx, req.(*CategoryReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RegistryService_ListCategories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CategoryListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).ListCategories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/apipb.RegistryService/ListCategories",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).ListCategories(ctx, req.(*CategoryListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _RegistryService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "apipb.RegistryService",
 	HandlerType: (*RegistryServiceServer)(nil),
@@ -443,6 +585,14 @@ var _RegistryService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AllReleases",
 			Handler:    _RegistryService_AllReleases_Handler,
+		},
+		{
+			MethodName: "Category",
+			Handler:    _RegistryService_Category_Handler,
+		},
+		{
+			MethodName: "ListCategories",
+			Handler:    _RegistryService_ListCategories_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
@@ -530,6 +680,169 @@ func (m *AllGameReleases_MiniRelease) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+func (m *GameCategoryLocale) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GameCategoryLocale) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Language) > 0 {
+		dAtA[i] = 0xa
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Language)))
+		i += copy(dAtA[i:], m.Language)
+	}
+	if len(m.Title) > 0 {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Title)))
+		i += copy(dAtA[i:], m.Title)
+	}
+	if len(m.Image) > 0 {
+		dAtA[i] = 0x1a
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Image)))
+		i += copy(dAtA[i:], m.Image)
+	}
+	return i, nil
+}
+
+func (m *GameCategory) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GameCategory) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Name) > 0 {
+		dAtA[i] = 0xa
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Name)))
+		i += copy(dAtA[i:], m.Name)
+	}
+	if len(m.Locales) > 0 {
+		for _, msg := range m.Locales {
+			dAtA[i] = 0x12
+			i++
+			i = encodeVarintRegistry(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	if m.Revision != 0 {
+		dAtA[i] = 0x18
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(m.Revision))
+	}
+	return i, nil
+}
+
+func (m *CategoryReq) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *CategoryReq) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.Task != 0 {
+		dAtA[i] = 0x8
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(m.Task))
+	}
+	if m.Category != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(m.Category.Size()))
+		n1, err := m.Category.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
+		}
+		i += n1
+	}
+	if m.KnownRevision != 0 {
+		dAtA[i] = 0x18
+		i++
+		i = encodeVarintRegistry(dAtA, i, uint64(m.KnownRevision))
+	}
+	return i, nil
+}
+
+func (m *CategoryListReq) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *CategoryListReq) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	return i, nil
+}
+
+func (m *CategoryList) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *CategoryList) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Categories) > 0 {
+		for _, msg := range m.Categories {
+			dAtA[i] = 0xa
+			i++
+			i = encodeVarintRegistry(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
+}
+
 func encodeFixed64Registry(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	dAtA[offset+1] = uint8(v >> 8)
@@ -585,6 +898,77 @@ func (m *AllGameReleases_MiniRelease) Size() (n int) {
 	}
 	if m.ReleaseState != 0 {
 		n += 1 + sovRegistry(uint64(m.ReleaseState))
+	}
+	return n
+}
+
+func (m *GameCategoryLocale) Size() (n int) {
+	var l int
+	_ = l
+	l = len(m.Language)
+	if l > 0 {
+		n += 1 + l + sovRegistry(uint64(l))
+	}
+	l = len(m.Title)
+	if l > 0 {
+		n += 1 + l + sovRegistry(uint64(l))
+	}
+	l = len(m.Image)
+	if l > 0 {
+		n += 1 + l + sovRegistry(uint64(l))
+	}
+	return n
+}
+
+func (m *GameCategory) Size() (n int) {
+	var l int
+	_ = l
+	l = len(m.Name)
+	if l > 0 {
+		n += 1 + l + sovRegistry(uint64(l))
+	}
+	if len(m.Locales) > 0 {
+		for _, e := range m.Locales {
+			l = e.Size()
+			n += 1 + l + sovRegistry(uint64(l))
+		}
+	}
+	if m.Revision != 0 {
+		n += 1 + sovRegistry(uint64(m.Revision))
+	}
+	return n
+}
+
+func (m *CategoryReq) Size() (n int) {
+	var l int
+	_ = l
+	if m.Task != 0 {
+		n += 1 + sovRegistry(uint64(m.Task))
+	}
+	if m.Category != nil {
+		l = m.Category.Size()
+		n += 1 + l + sovRegistry(uint64(l))
+	}
+	if m.KnownRevision != 0 {
+		n += 1 + sovRegistry(uint64(m.KnownRevision))
+	}
+	return n
+}
+
+func (m *CategoryListReq) Size() (n int) {
+	var l int
+	_ = l
+	return n
+}
+
+func (m *CategoryList) Size() (n int) {
+	var l int
+	_ = l
+	if len(m.Categories) > 0 {
+		for _, e := range m.Categories {
+			l = e.Size()
+			n += 1 + l + sovRegistry(uint64(l))
+		}
 	}
 	return n
 }
@@ -829,6 +1213,524 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+func (m *GameCategoryLocale) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowRegistry
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GameCategoryLocale: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GameCategoryLocale: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Language", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Language = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Title", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Title = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Image", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Image = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipRegistry(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GameCategory) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowRegistry
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GameCategory: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GameCategory: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Name = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Locales", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Locales = append(m.Locales, &GameCategoryLocale{})
+			if err := m.Locales[len(m.Locales)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Revision", wireType)
+			}
+			m.Revision = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Revision |= (int32(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipRegistry(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *CategoryReq) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowRegistry
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: CategoryReq: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: CategoryReq: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Task", wireType)
+			}
+			m.Task = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Task |= (CategoryReq_Task(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Category", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Category == nil {
+				m.Category = &GameCategory{}
+			}
+			if err := m.Category.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field KnownRevision", wireType)
+			}
+			m.KnownRevision = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.KnownRevision |= (int32(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipRegistry(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *CategoryListReq) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowRegistry
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: CategoryListReq: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: CategoryListReq: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipRegistry(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *CategoryList) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowRegistry
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: CategoryList: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: CategoryList: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Categories", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRegistry
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			postIndex := iNdEx + msglen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Categories = append(m.Categories, &GameCategory{})
+			if err := m.Categories[len(m.Categories)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipRegistry(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthRegistry
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
 func skipRegistry(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
@@ -937,38 +1839,53 @@ var (
 func init() { proto.RegisterFile("registry.proto", fileDescriptorRegistry) }
 
 var fileDescriptorRegistry = []byte{
-	// 519 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x7c, 0x53, 0xc1, 0x6e, 0xd3, 0x4a,
-	0x14, 0xcd, 0x24, 0xef, 0x25, 0xed, 0x4d, 0x49, 0xc4, 0x2d, 0x6d, 0xad, 0x80, 0xd2, 0x28, 0xab,
-	0xb0, 0xc0, 0xad, 0xc2, 0xa2, 0x5d, 0xa0, 0xa2, 0xc0, 0x22, 0x8a, 0xd4, 0x8a, 0xca, 0xa9, 0x8a,
-	0xc4, 0x26, 0x1a, 0x27, 0xb7, 0xce, 0x48, 0x76, 0xc6, 0x78, 0x26, 0x95, 0xd8, 0xf2, 0x15, 0xac,
-	0xf9, 0x19, 0xba, 0xe4, 0x13, 0x20, 0x7c, 0x00, 0xbf, 0x80, 0x6c, 0x8f, 0x5d, 0x63, 0x01, 0xbb,
-	0x9c, 0x73, 0xcf, 0x39, 0x33, 0xe7, 0x66, 0x0c, 0xad, 0x88, 0x3c, 0xa1, 0x74, 0xf4, 0xc1, 0x0e,
-	0x23, 0xa9, 0x25, 0xfe, 0xcf, 0x43, 0x11, 0xba, 0x9d, 0x56, 0x40, 0x4a, 0x71, 0x8f, 0x54, 0x4a,
-	0x77, 0x76, 0x02, 0xb9, 0x20, 0x3f, 0x43, 0xcf, 0x3c, 0xa1, 0x97, 0x6b, 0xd7, 0x9e, 0xcb, 0xe0,
-	0xc8, 0x93, 0x9e, 0x3c, 0x4a, 0x68, 0x77, 0x7d, 0x93, 0xa0, 0x04, 0x24, 0xbf, 0x52, 0x79, 0xff,
-	0x27, 0x83, 0xf6, 0xc8, 0xf7, 0xc7, 0x3c, 0x20, 0x87, 0x7c, 0xe2, 0x8a, 0x14, 0x1e, 0x40, 0xc3,
-	0xe3, 0x01, 0xcd, 0xc4, 0xc2, 0x62, 0x3d, 0x36, 0xd8, 0x76, 0xea, 0x31, 0x9c, 0x2c, 0xf0, 0x0c,
-	0xb6, 0x22, 0x23, 0xb2, 0xaa, 0xbd, 0xda, 0xa0, 0x39, 0xec, 0xdb, 0xc9, 0x9d, 0xec, 0x52, 0x84,
-	0x7d, 0x21, 0x56, 0xc2, 0x00, 0x27, 0xf7, 0x74, 0x3e, 0x32, 0x68, 0x16, 0x26, 0x68, 0x41, 0xe3,
-	0x96, 0x22, 0x25, 0xe4, 0xca, 0x1c, 0x94, 0x41, 0x3c, 0x84, 0xa6, 0x71, 0x2d, 0x66, 0x5c, 0x5b,
-	0xd5, 0x1e, 0x1b, 0xd4, 0x1c, 0xc8, 0xa8, 0x91, 0xc6, 0x53, 0x78, 0x60, 0xd0, 0x4c, 0x69, 0xae,
-	0xc9, 0xaa, 0xf5, 0xd8, 0xa0, 0x35, 0xdc, 0x35, 0xf7, 0x31, 0x27, 0x4c, 0xe3, 0x91, 0xb3, 0x13,
-	0x15, 0xd0, 0xf0, 0xcb, 0x7f, 0xd0, 0x76, 0xcc, 0x62, 0xa7, 0x14, 0xdd, 0x8a, 0x39, 0xe1, 0x53,
-	0xa8, 0x8d, 0x49, 0xe3, 0x9e, 0x71, 0x8f, 0x49, 0xa7, 0x6d, 0xde, 0xaf, 0x49, 0xe9, 0x4e, 0x33,
-	0xa3, 0x79, 0x40, 0x78, 0x06, 0x30, 0x26, 0x9d, 0x35, 0x78, 0x52, 0x76, 0xa4, 0x95, 0x8d, 0x11,
-	0x0b, 0xc6, 0xcc, 0x71, 0x0a, 0x8d, 0xcb, 0xb5, 0xeb, 0x0b, 0xb5, 0xc4, 0xdd, 0xc2, 0xf8, 0x82,
-	0xaf, 0xc4, 0x4d, 0xec, 0xd9, 0x37, 0xa4, 0x11, 0x39, 0xa4, 0x42, 0xb9, 0x52, 0xd4, 0xaf, 0xe0,
-	0x4b, 0xc0, 0xd7, 0x4b, 0xbe, 0xf2, 0xa8, 0x58, 0x0e, 0x33, 0xfd, 0x35, 0xf7, 0xc5, 0x22, 0x6e,
-	0x6b, 0xce, 0x6e, 0xe7, 0x9b, 0xc8, 0x03, 0xa6, 0xf0, 0x70, 0x4c, 0xfa, 0x9c, 0x6b, 0x52, 0xfa,
-	0x3a, 0x5d, 0xb4, 0xc2, 0xc3, 0xfb, 0x06, 0xbf, 0x4f, 0xb2, 0xa0, 0xc7, 0x85, 0x5b, 0xde, 0xcf,
-	0xf2, 0xd0, 0x13, 0xa8, 0x4f, 0x89, 0x47, 0xf3, 0x25, 0x3e, 0x32, 0xc2, 0x14, 0x66, 0xf6, 0xbd,
-	0x12, 0x5b, 0x30, 0x6e, 0x9f, 0x0b, 0x95, 0xac, 0x4d, 0xe1, 0x81, 0x51, 0xe5, 0x4c, 0xb9, 0x46,
-	0x3c, 0x98, 0x68, 0x0a, 0x8e, 0x19, 0x4e, 0x00, 0x73, 0xd9, 0x5b, 0xa1, 0x97, 0x57, 0xa4, 0xf4,
-	0x3f, 0x12, 0xac, 0x52, 0x42, 0x6e, 0x39, 0x66, 0xf8, 0x02, 0x9a, 0x23, 0xdf, 0xcf, 0x1f, 0xfe,
-	0x5f, 0xfe, 0xff, 0xfd, 0x3f, 0x3f, 0xf2, 0x57, 0x27, 0x77, 0xdf, 0xbb, 0x95, 0xbb, 0x4d, 0x97,
-	0x7d, 0xdd, 0x74, 0xd9, 0xb7, 0x4d, 0x97, 0x7d, 0xfa, 0xd1, 0xad, 0x40, 0x7b, 0x2e, 0x03, 0x5b,
-	0x6a, 0x25, 0x02, 0x69, 0x7b, 0x51, 0x38, 0xbf, 0x64, 0xef, 0xb6, 0x52, 0x18, 0xba, 0x9f, 0xab,
-	0xb5, 0x37, 0x57, 0x53, 0xb7, 0x9e, 0x7c, 0x7b, 0xcf, 0x7f, 0x05, 0x00, 0x00, 0xff, 0xff, 0x3b,
-	0x32, 0x67, 0x3a, 0xe1, 0x03, 0x00, 0x00,
+	// 763 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x7c, 0x54, 0xdb, 0x8e, 0x1b, 0x45,
+	0x10, 0xf5, 0xd8, 0xeb, 0xcb, 0x96, 0x1d, 0x7b, 0x53, 0xe4, 0x62, 0x0c, 0x72, 0xac, 0x91, 0x10,
+	0x46, 0x88, 0xd9, 0xc8, 0x7e, 0x48, 0x1e, 0x20, 0xc8, 0xd8, 0x96, 0xb5, 0xd2, 0x46, 0xac, 0xc6,
+	0x26, 0x48, 0x08, 0xc9, 0x6a, 0xdb, 0x95, 0x71, 0x6b, 0xe7, 0xe2, 0x9d, 0x6e, 0x2f, 0xca, 0x2b,
+	0x5f, 0xc1, 0x33, 0xbf, 0x91, 0x1f, 0xc8, 0x23, 0x9f, 0x00, 0xcb, 0x07, 0xf0, 0x0b, 0x68, 0x7a,
+	0x7a, 0x7a, 0x07, 0x67, 0xc9, 0x5b, 0x9f, 0xaa, 0x73, 0xaa, 0x4e, 0x77, 0x57, 0x37, 0x34, 0x63,
+	0xf2, 0xb8, 0x90, 0xf1, 0x1b, 0x67, 0x17, 0x47, 0x32, 0xc2, 0x32, 0xdb, 0xf1, 0xdd, 0xaa, 0xd3,
+	0x0c, 0x48, 0x08, 0xe6, 0x91, 0x48, 0xc3, 0x9d, 0x46, 0x10, 0x6d, 0xc8, 0xcf, 0xd0, 0x57, 0x1e,
+	0x97, 0xdb, 0xfd, 0xca, 0x59, 0x47, 0xc1, 0xa9, 0x17, 0x79, 0xd1, 0xa9, 0x0a, 0xaf, 0xf6, 0xaf,
+	0x15, 0x52, 0x40, 0xad, 0x52, 0xba, 0xfd, 0x8f, 0x05, 0xad, 0x91, 0xef, 0xcf, 0x58, 0x40, 0x2e,
+	0xf9, 0xc4, 0x04, 0x09, 0x7c, 0x0c, 0x55, 0x8f, 0x05, 0xb4, 0xe4, 0x9b, 0xb6, 0xd5, 0xb3, 0xfa,
+	0xc7, 0x6e, 0x25, 0x81, 0x67, 0x1b, 0x7c, 0x01, 0xb5, 0x58, 0x93, 0xda, 0xc5, 0x5e, 0xa9, 0x5f,
+	0x1f, 0xd8, 0x8e, 0xf2, 0xe4, 0x1c, 0x94, 0x70, 0x5e, 0xf2, 0x90, 0x6b, 0xe0, 0x1a, 0x4d, 0xe7,
+	0x57, 0x0b, 0xea, 0xb9, 0x0c, 0xb6, 0xa1, 0x7a, 0x4d, 0xb1, 0xe0, 0x51, 0xa8, 0x1b, 0x65, 0x10,
+	0x9f, 0x40, 0x5d, 0xab, 0x36, 0x4b, 0x26, 0xdb, 0xc5, 0x9e, 0xd5, 0x2f, 0xb9, 0x90, 0x85, 0x46,
+	0x12, 0x9f, 0xc3, 0x3d, 0x8d, 0x96, 0x42, 0x32, 0x49, 0xed, 0x52, 0xcf, 0xea, 0x37, 0x07, 0x1f,
+	0x69, 0x3f, 0xba, 0xc3, 0x3c, 0x49, 0xb9, 0x8d, 0x38, 0x87, 0xec, 0x9f, 0x01, 0x13, 0xab, 0x63,
+	0x26, 0xc9, 0x8b, 0xe2, 0x37, 0xe7, 0xd1, 0x9a, 0xf9, 0x84, 0x1d, 0xa8, 0xf9, 0x2c, 0xf4, 0xf6,
+	0xcc, 0x23, 0xed, 0xc5, 0x60, 0x7c, 0x00, 0x65, 0xc9, 0xa5, 0x4f, 0xca, 0xc6, 0xb1, 0x9b, 0x82,
+	0x24, 0xca, 0x83, 0x84, 0x5e, 0x4a, 0xa3, 0x0a, 0xd8, 0x02, 0x1a, 0xf9, 0xea, 0x88, 0x70, 0x14,
+	0xb2, 0x20, 0xab, 0xa9, 0xd6, 0x38, 0x84, 0xaa, 0xaf, 0xba, 0x66, 0xa7, 0xf8, 0xb1, 0x76, 0xfd,
+	0xbe, 0x2f, 0x37, 0x63, 0x26, 0x06, 0x63, 0xba, 0xe6, 0xea, 0xb0, 0x92, 0x8e, 0x65, 0xd7, 0x60,
+	0xfb, 0xad, 0x05, 0xf5, 0x4c, 0xe7, 0xd2, 0x15, 0x7e, 0x09, 0x47, 0x92, 0x89, 0x4b, 0xd5, 0xb4,
+	0x39, 0x78, 0xac, 0xab, 0xe7, 0x18, 0xce, 0x82, 0x89, 0x4b, 0x57, 0x91, 0xf0, 0x14, 0x6a, 0x6b,
+	0x9d, 0x51, 0x1b, 0xac, 0x9b, 0x43, 0xcc, 0xdb, 0x71, 0x0d, 0x09, 0x3f, 0x83, 0xe6, 0x65, 0x18,
+	0xfd, 0x12, 0x2e, 0x0f, 0xfc, 0xdc, 0x53, 0x51, 0x37, 0x33, 0xf5, 0x39, 0x1c, 0x25, 0x5d, 0xb0,
+	0x0a, 0xa5, 0xd1, 0x64, 0x72, 0x52, 0x40, 0x80, 0xca, 0x0f, 0x17, 0x93, 0xd1, 0x62, 0x7a, 0x62,
+	0x25, 0xeb, 0xc9, 0xf4, 0x7c, 0xba, 0x98, 0x9e, 0x14, 0xed, 0xfb, 0xd0, 0x32, 0x9b, 0xe6, 0x42,
+	0xba, 0x74, 0x65, 0x8f, 0xa1, 0x91, 0x0f, 0xe1, 0x10, 0x40, 0xb7, 0xe7, 0x24, 0xda, 0x96, 0x3a,
+	0xb4, 0x3b, 0x5d, 0xe6, 0x68, 0x83, 0xb7, 0x65, 0x68, 0xb9, 0xfa, 0x05, 0xcd, 0x29, 0xbe, 0xe6,
+	0x6b, 0xc2, 0x2f, 0xa0, 0x34, 0x23, 0x89, 0x0f, 0x33, 0x2d, 0xc9, 0x74, 0x6c, 0xaf, 0xf6, 0x24,
+	0x64, 0xa7, 0x9e, 0x2b, 0x89, 0x2f, 0x00, 0x66, 0x24, 0xb3, 0x51, 0xfd, 0xf4, 0x50, 0x91, 0xce,
+	0xb6, 0x16, 0x62, 0x4e, 0x98, 0x29, 0x9e, 0x43, 0xf5, 0x62, 0xbf, 0xf2, 0xb9, 0xd8, 0x62, 0xde,
+	0xea, 0x4b, 0x16, 0xf2, 0xd7, 0x89, 0xe6, 0x91, 0x0e, 0x6a, 0x92, 0x4b, 0x62, 0x17, 0x85, 0x82,
+	0xec, 0x02, 0x7e, 0x0b, 0x38, 0xde, 0xb2, 0xd0, 0xa3, 0xfc, 0x14, 0x63, 0xc6, 0x7f, 0xc5, 0x7c,
+	0xbe, 0x49, 0xc6, 0x5a, 0xf7, 0x6e, 0x99, 0x91, 0x37, 0x05, 0xe6, 0x70, 0x7f, 0x46, 0xf2, 0x9c,
+	0x49, 0x12, 0xf2, 0x55, 0xfa, 0xa2, 0x04, 0x3e, 0xb9, 0xdd, 0xc1, 0x7f, 0x33, 0x59, 0xa1, 0x4f,
+	0x72, 0x2e, 0x6f, 0x73, 0xa6, 0xe8, 0x33, 0xa8, 0xcc, 0x89, 0xc5, 0xeb, 0x2d, 0x3e, 0xd0, 0xc4,
+	0x14, 0x66, 0xf2, 0x87, 0x07, 0xd1, 0x9c, 0xf0, 0x38, 0xb9, 0xc4, 0xa4, 0xac, 0xc0, 0x6c, 0x18,
+	0x4d, 0xe4, 0x70, 0x1b, 0x49, 0xe2, 0x4c, 0x52, 0xf0, 0xd4, 0xc2, 0x33, 0x40, 0x43, 0xfb, 0x91,
+	0xcb, 0xed, 0x82, 0x84, 0xfc, 0x40, 0x85, 0xf6, 0x41, 0x05, 0x23, 0x79, 0x6a, 0xe1, 0xd7, 0x50,
+	0x1f, 0xf9, 0xbe, 0xf9, 0xe1, 0xfe, 0xe7, 0xfe, 0x1f, 0xdd, 0xfd, 0x9b, 0xe1, 0x10, 0x6a, 0xb7,
+	0x0f, 0xfa, 0xfd, 0xd7, 0xd4, 0xb9, 0x6b, 0x14, 0xf1, 0x1b, 0x68, 0x26, 0x4e, 0xc6, 0x66, 0x20,
+	0xcd, 0x0d, 0x1e, 0x4c, 0xbb, 0x91, 0xe7, 0xe3, 0xdf, 0x3d, 0x7b, 0xf7, 0x57, 0xb7, 0xf0, 0xee,
+	0xa6, 0x6b, 0xfd, 0x71, 0xd3, 0xb5, 0xfe, 0xbc, 0xe9, 0x5a, 0xbf, 0xfd, 0xdd, 0x2d, 0x40, 0x6b,
+	0x1d, 0x05, 0x4e, 0x24, 0x05, 0x0f, 0x22, 0xc7, 0x8b, 0x77, 0xeb, 0x0b, 0xeb, 0xa7, 0x5a, 0x0a,
+	0x77, 0xab, 0xdf, 0x8b, 0xa5, 0xef, 0x17, 0xf3, 0x55, 0x45, 0x7d, 0xec, 0xc3, 0x7f, 0x03, 0x00,
+	0x00, 0xff, 0xff, 0x8c, 0x99, 0x82, 0xd0, 0x3e, 0x06, 0x00, 0x00,
 }
