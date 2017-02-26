@@ -57,8 +57,8 @@ message CategoryList{
 }
 
 message GetAllGamesReq{
-    // GamesIDs are the games that user wants the data of, if it is empty returns all games
-    repeated string game_ids = 1;
+    // Games that user wants the data of, if it is empty returns all games
+    repeated GameAndVersion games = 1;
     // Language filters games. If language field is empty than returns games with all languages.
     string language = 2;
 }
