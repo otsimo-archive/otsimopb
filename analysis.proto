@@ -197,6 +197,7 @@ message GetActiveUsersRequest {
 message ActiveOnRangeRequest{
     TimeRange range = 1;
     repeated string country_codes = 2;
+    repeated string app_ids = 3;
 }
 
 message GameInfoResponse{
