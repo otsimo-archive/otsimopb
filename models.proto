@@ -168,6 +168,7 @@ message GameRelease {
     int64 int_version = 10              [(gogoproto.moretags) = "bson:\"int_version\""];
     string storage = 11                 [(gogoproto.moretags) = "bson:\"-\""];
     string archive_format = 12          [(gogoproto.moretags) = "bson:\"-\""];
+    string package_url = 13             [(gogoproto.moretags) = "bson:\"-\""];
 }
 
 enum ReleaseState{

@@ -61,6 +61,31 @@ message GetAllGamesRes{
     repeated apipb.GameRelease games = 1;
 }
 
+message PublishReq{
+    apipb.GameManifest manifest = 1;
+    map<string,string> files = 2;
+}
+
+message PublishRes{
+    apipb.UploadToken token = 1;
+    map<string,string> upload_urls = 2;
+}
+
+message TarballInfo{
+    string url = 1;
+    string storage = 2;
+    string archive_format = 3;
+}
+
+message AddTarballReq{
+    string token = 1;
+    repeated TarballInfo infos = 2;
+}
+
+message AddTarballRes{
+    map<string,string> package_urls = 1;
+}
+
 // Registry Service
 service RegistryService {
     // Get returns game
@@ -68,7 +93,9 @@ service RegistryService {
     // GetRelease returns GameRelease by given game id and version
     rpc GetRelease(apipb.GetGameReleaseRequest) returns (apipb.GameRelease);
     // Publish tries to create a new GameRelease by given manifest
-    rpc Publish(apipb.GameManifest) returns (apipb.PublishResponse){}
+    rpc Publish(PublishReq) returns (PublishRes){}
+
+    rpc AddTarballInfo(AddTarballReq) returns (AddTarballRes){}
     // ChangeReleaseState changes state of a release, If user is admin than s/he can change 
     // from WAITING to REJECTED or VALIDATED, developers can change to any except VALIDATED
     rpc ChangeReleaseState(apipb.ValidateRequest) returns (apipb.Response){}
