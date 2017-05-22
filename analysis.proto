@@ -63,6 +63,8 @@ message Aggregation{
         MAX = 3;
         MIN = 4;
         AVG = 5;
+        STD_SAMP = 6;
+        STD_POP = 7;
     }
     string field_name = 1;
     string output_field = 2;    
