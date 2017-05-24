@@ -55,6 +55,10 @@
 		AppDataInfoReq
 		StatisticsReq
 		StatisticsRes
+		SetLabelReq
+		RemoveLabelReq
+		UsersQueryReq
+		UsersQueryRes
 		CatalogItem
 		Catalog
 		CatalogPullRequest

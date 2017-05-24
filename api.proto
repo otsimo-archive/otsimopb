@@ -22,7 +22,7 @@ service ApiService {
     rpc AddProfile(Profile) returns (Response){}
     rpc GetProfile(GetProfileRequest) returns (Profile){}
     rpc UpdateProfile(Profile) returns (Response){}
-    
+
     // Child
     rpc AddChild(Child) returns (Response){}
     rpc GetChild(GetChildRequest) returns (Child){}
@@ -36,6 +36,12 @@ service ApiService {
     rpc Statistics(StatisticsReq) returns (StatisticsRes);
 }
 
+service LabelApiService{
+    rpc SetLabel(SetLabelReq) returns (Profile);
+    rpc RemoveLabel(RemoveLabelReq) returns (Profile);
+    rpc Select(LabelSelector) returns (UsersQueryRes);
+}
+
 message StatisticsReq{
     int64 time_from = 1;
     int64 time_to = 2;
@@ -43,4 +49,26 @@ message StatisticsReq{
 
 message StatisticsRes{
     map<string,int64> statistics = 1;
+}
+
+message SetLabelReq{
+    string user_id = 1;
+    bool is_child = 2;
+    string key = 3;
+    string value = 4;
+}
+
+message RemoveLabelReq{
+    string user_id = 1;
+    bool is_child = 2;
+    string key = 3;
+}
+
+message UsersQueryReq{
+    bool is_child = 1;
+    LabelSelector selector = 2;
+}
+
+message UsersQueryRes{
+    repeated Profile users = 1;
 }
