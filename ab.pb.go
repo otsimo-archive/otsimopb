@@ -57,8 +57,9 @@
 		StatisticsRes
 		SetLabelReq
 		RemoveLabelReq
-		UsersQueryReq
-		UsersQueryRes
+		UpdateLabelsRes
+		UsersSelectReq
+		UsersSelectRes
 		CatalogItem
 		Catalog
 		CatalogPullRequest

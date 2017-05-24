@@ -37,9 +37,9 @@ service ApiService {
 }
 
 service LabelApiService{
-    rpc SetLabel(SetLabelReq) returns (Profile);
-    rpc RemoveLabel(RemoveLabelReq) returns (Profile);
-    rpc Select(LabelSelector) returns (UsersQueryRes);
+    rpc SetLabel(SetLabelReq) returns (UpdateLabelsRes);
+    rpc RemoveLabel(RemoveLabelReq) returns (UpdateLabelsRes);
+    rpc Select(UsersSelectReq) returns (UsersSelectRes);
 }
 
 message StatisticsReq{
@@ -64,11 +64,17 @@ message RemoveLabelReq{
     string key = 3;
 }
 
-message UsersQueryReq{
+message UpdateLabelsRes{
+    string user_id = 1;
+    map<string,string> labels = 2;
+}
+
+message UsersSelectReq{
     bool is_child = 1;
     LabelSelector selector = 2;
 }
 
-message UsersQueryRes{
-    repeated Profile users = 1;
+message UsersSelectRes{
+    repeated Profile profiles = 1;
+    repeated Child children = 2;
 }
