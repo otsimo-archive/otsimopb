@@ -7,78 +7,78 @@ import "google/protobuf/field_mask.proto";
 
 option go_package = "otsimopb/v2";
 option objc_class_prefix = "OTS";
-option java_package = "com.otsimo.grpc";
+option java_package = "com.otsimo.grpc.v2";
 option java_multiple_files = true;
 
 // API Service
 service ApiService {
     // Profile
-    rpc AddProfile(apipb.Profile) returns (apipb.Profile);
-    rpc GetProfile(apipb.GetProfileRequest) returns (apipb.Profile);
+    rpc AddProfile (apipb.Profile) returns (apipb.Profile);
+    rpc GetProfile (apipb.GetProfileRequest) returns (apipb.Profile);
 
     // Child
-    rpc AddChild(apipb.Child) returns (apipb.Child);
-    rpc GetChild(apipb.GetChildRequest) returns (apipb.Child);
-    rpc UpdateGameEntry(apipb.GameEntryRequest)returns(apipb.Response);
-    rpc ChangeActivation(apipb.ChangeChildActivationRequest)returns(apipb.Response);
-    rpc GetDisabledChildren(apipb.GetChildrenFromProfileRequest)returns(apipb.GetChildrenFromProfileResponse);
-    rpc SoundEnable(apipb.SoundEnableRequest) returns (apipb.Response);
-    rpc UpdateGameIndices(apipb.UpdateIndecesRequest) returns (apipb.Child);
-  
-    rpc Statistics(StatisticsReq) returns (StatisticsRes);
-    rpc UpdateProfile(UpdateProfileReq) returns (apipb.Profile);
-    rpc UpdateChild(UpdateChildReq) returns (apipb.Child);
+    rpc AddChild (apipb.Child) returns (apipb.Child);
+    rpc GetChild (apipb.GetChildRequest) returns (apipb.Child);
+    rpc UpdateGameEntry (apipb.GameEntryRequest) returns (apipb.Response);
+    rpc ChangeActivation (apipb.ChangeChildActivationRequest) returns (apipb.Response);
+    rpc GetDisabledChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
+    rpc SoundEnable (apipb.SoundEnableRequest) returns (apipb.Response);
+    rpc UpdateGameIndices (apipb.UpdateIndecesRequest) returns (apipb.Child);
+
+    rpc Statistics (StatisticsReq) returns (StatisticsRes);
+    rpc UpdateProfile (UpdateProfileReq) returns (apipb.Profile);
+    rpc UpdateChild (UpdateChildReq) returns (apipb.Child);
 }
 
-service LabelApiService{
-    rpc SetLabel(SetLabelReq) returns (UpdateLabelsRes);
-    rpc RemoveLabel(RemoveLabelReq) returns (UpdateLabelsRes);
-    rpc Select(UsersSelectReq) returns (UsersSelectRes);
+service LabelApiService {
+    rpc SetLabel (SetLabelReq) returns (UpdateLabelsRes);
+    rpc RemoveLabel (RemoveLabelReq) returns (UpdateLabelsRes);
+    rpc Select (UsersSelectReq) returns (UsersSelectRes);
 }
 
-message StatisticsReq{
+message StatisticsReq {
     int64 time_from = 1;
     int64 time_to = 2;
 }
 
-message StatisticsRes{
-    map<string,int64> statistics = 1;
+message StatisticsRes {
+    map<string, int64> statistics = 1;
 }
 
-message SetLabelReq{
+message SetLabelReq {
     string user_id = 1;
     bool is_child = 2;
     string key = 3;
     string value = 4;
 }
 
-message RemoveLabelReq{
+message RemoveLabelReq {
     string user_id = 1;
     bool is_child = 2;
     string key = 3;
 }
 
-message UpdateLabelsRes{
+message UpdateLabelsRes {
     string user_id = 1;
-    map<string,string> labels = 2;
+    map<string, string> labels = 2;
 }
 
-message UsersSelectReq{
+message UsersSelectReq {
     bool is_child = 1;
     apipb.LabelSelector selector = 2;
 }
 
-message UsersSelectRes{
+message UsersSelectRes {
     repeated apipb.Profile profiles = 1;
     repeated apipb.Child children = 2;
 }
 
-message UpdateProfileReq{
+message UpdateProfileReq {
     google.protobuf.FieldMask fields = 1;
     apipb.Profile profile = 2;
 }
 
-message UpdateChildReq{
+message UpdateChildReq {
     google.protobuf.FieldMask fields = 1;
     apipb.Child child = 2;
 }
