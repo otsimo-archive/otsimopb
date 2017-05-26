@@ -40,7 +40,7 @@ import fmt "fmt"
 import math "math"
 import apipb1 "github.com/otsimo/otsimopb"
 import apipb "github.com/otsimo/otsimopb"
-import google_protobuf1 "google.golang.org/genproto/protobuf/field_mask"
+import google_protobuf1 "github.com/gogo/protobuf/types"
 
 import (
 	context "golang.org/x/net/context"
