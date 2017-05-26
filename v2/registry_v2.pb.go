@@ -2,27 +2,6 @@
 // source: v2/registry_v2.proto
 // DO NOT EDIT!
 
-/*
-	Package v2 is a generated protocol buffer package.
-
-	It is generated from these files:
-		v2/registry_v2.proto
-
-	It has these top-level messages:
-		AllGameReleases
-		GameCategoryLocale
-		GameCategory
-		CategoryReq
-		CategoryListReq
-		CategoryList
-		GetAllGamesReq
-		GetAllGamesRes
-		PublishReq
-		PublishRes
-		TarballInfo
-		AddTarballReq
-		AddTarballRes
-*/
 package v2
 
 import proto "github.com/golang/protobuf/proto"
@@ -42,12 +21,6 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type CategoryReq_Task int32
 

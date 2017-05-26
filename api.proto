@@ -33,48 +33,5 @@ service ApiService {
     rpc GetDisabledChildren(GetChildrenFromProfileRequest)returns(GetChildrenFromProfileResponse);
     rpc SoundEnable(SoundEnableRequest) returns (Response);
     rpc UpdateGameIndices(UpdateIndecesRequest) returns (Child);
-    rpc Statistics(StatisticsReq) returns (StatisticsRes);
 }
 
-service LabelApiService{
-    rpc SetLabel(SetLabelReq) returns (UpdateLabelsRes);
-    rpc RemoveLabel(RemoveLabelReq) returns (UpdateLabelsRes);
-    rpc Select(UsersSelectReq) returns (UsersSelectRes);
-}
-
-message StatisticsReq{
-    int64 time_from = 1;
-    int64 time_to = 2;
-}
-
-message StatisticsRes{
-    map<string,int64> statistics = 1;
-}
-
-message SetLabelReq{
-    string user_id = 1;
-    bool is_child = 2;
-    string key = 3;
-    string value = 4;
-}
-
-message RemoveLabelReq{
-    string user_id = 1;
-    bool is_child = 2;
-    string key = 3;
-}
-
-message UpdateLabelsRes{
-    string user_id = 1;
-    map<string,string> labels = 2;
-}
-
-message UsersSelectReq{
-    bool is_child = 1;
-    LabelSelector selector = 2;
-}
-
-message UsersSelectRes{
-    repeated Profile profiles = 1;
-    repeated Child children = 2;
-}

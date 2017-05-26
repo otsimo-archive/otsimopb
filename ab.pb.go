@@ -53,13 +53,6 @@
 		ActiveOnRangeRequest
 		GameInfoResponse
 		AppDataInfoReq
-		StatisticsReq
-		StatisticsRes
-		SetLabelReq
-		RemoveLabelReq
-		UpdateLabelsRes
-		UsersSelectReq
-		UsersSelectRes
 		CatalogItem
 		Catalog
 		CatalogPullRequest
