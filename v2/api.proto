@@ -15,19 +15,20 @@ service ApiService {
     // Profile
     rpc AddProfile (apipb.Profile) returns (apipb.Profile);
     rpc GetProfile (apipb.GetProfileRequest) returns (apipb.Profile);
+    rpc UpdateProfile (UpdateProfileReq) returns (apipb.Profile);
 
     // Child
     rpc AddChild (apipb.Child) returns (apipb.Child);
     rpc GetChild (apipb.GetChildRequest) returns (apipb.Child);
-    rpc UpdateGameEntry (apipb.GameEntryRequest) returns (apipb.Response);
-    rpc ChangeActivation (apipb.ChangeChildActivationRequest) returns (apipb.Response);
-    rpc GetDisabledChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
-    rpc SoundEnable (apipb.SoundEnableRequest) returns (apipb.Response);
+    rpc GetChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
+    rpc UpdateChild (UpdateChildReq) returns (apipb.Child);
+    
+    rpc UpdateGameEntry (apipb.GameEntryRequest) returns (apipb.Child);
+    rpc ChangeActivation (apipb.ChangeChildActivationRequest) returns (apipb.Child);
+    rpc SoundEnable (apipb.SoundEnableRequest) returns (apipb.Child);
     rpc UpdateGameIndices (apipb.UpdateIndecesRequest) returns (apipb.Child);
 
     rpc Statistics (StatisticsReq) returns (StatisticsRes);
-    rpc UpdateProfile (UpdateProfileReq) returns (apipb.Profile);
-    rpc UpdateChild (UpdateChildReq) returns (apipb.Child);
 }
 
 service LabelApiService {
