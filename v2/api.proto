@@ -21,6 +21,7 @@ service ApiService {
     rpc AddChild (apipb.Child) returns (apipb.Child);
     rpc GetChild (apipb.GetChildRequest) returns (apipb.Child);
     rpc GetChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
+    rpc GetDisabledChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
     rpc UpdateChild (UpdateChildReq) returns (apipb.Child);
     
     rpc UpdateGameEntry (apipb.GameEntryRequest) returns (apipb.Child);
