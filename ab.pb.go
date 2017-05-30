@@ -88,7 +88,7 @@
 		FileMetadata
 		UploadReq
 		UploadRes
-		StoreReq
+		StoreSmallReq
 		StoreRes
 		LookupReq
 		LookupRes
