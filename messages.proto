@@ -61,6 +61,7 @@ message GameEntryRequest{
         DEACTIVATE = 2;
         SETTINGS = 3;
         INDEX = 4;
+        LOCALSETTINGS = 5;
     }
     string child_id = 1;
     string game_id = 2;
