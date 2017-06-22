@@ -15,11 +15,10 @@ option go_package = "otsimopb";
 option java_package = "com.otsimo.grpc";
 option java_multiple_files = true;
 
-// Search Service
 service SimplifiedAnalytics{
-    rpc GamePlayingDuration(GamePlayingRequest) returns (GamePlayingReply){}
-    rpc GameSuccessFailure(GamePlayingRequest) returns (GamePlayingReply){}
-
+    rpc GamePlayingDuration(GamePlayingRequest) returns (GamePlayingReply);
+    rpc GameSuccessFailure(GamePlayingRequest) returns (GamePlayingReply);
+    rpc ByName(SimplifiedReq) returns (DataSet);
 }
 
 enum DataInterval{
@@ -37,4 +36,14 @@ message GamePlayingRequest{
 }
 message GamePlayingReply{
     DataSet data = 1;
+}
+
+message SimplifiedReq{
+    string analysis = 1;
+    //From is the unix seconds time
+    int64 from = 2;
+    //To is the unix seconds time
+    int64 to = 3;
+    repeated string games = 4;
+    DataInterval interval = 5;
 }

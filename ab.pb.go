@@ -149,6 +149,7 @@
 		GetAllGamesRes
 		GamePlayingRequest
 		GamePlayingReply
+		SimplifiedReq
 		EmitRequest
 		EmitResponse
 		WatchRequest
