@@ -2,6 +2,7 @@ syntax = "proto3";
 package otsimo;
 
 import "messages.proto";
+import "google/api/annotations.proto";
 
 option go_package = "otsimopb";
 option java_package = "com.otsimo.grpc";
@@ -10,8 +11,18 @@ option java_outer_classname= "FileProto";
 
 service File {
     rpc StoreSmall(StoreSmallReq) returns (StoreRes);
-    rpc RequestStoreBig(UploadReq) returns (UploadRes);
-    rpc Lookup(LookupReq) returns (LookupRes);
+    rpc RequestStoreBig(UploadReq) returns (UploadRes){
+        option (google.api.http) = {
+			post: "/api/v1/file/big"
+            body: "*"
+		};
+    }
+    rpc Lookup(LookupReq) returns (LookupRes){
+        option (google.api.http) = {
+			post: "/api/v1/file/lookup"
+            body: "*"
+		};
+    }
 }
 
 message FileMetadata{
