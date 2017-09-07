@@ -6,7 +6,6 @@ package otsimopb
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "."
 
 import (
 	context "golang.org/x/net/context"
