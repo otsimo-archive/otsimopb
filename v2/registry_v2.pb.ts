@@ -90,3 +90,23 @@ export class AddTarballRes {
   packageUrls: { [key: string]: string };
 		}
 
+export class RegistryClient {
+  uniqueName: string;
+  apiKey: string;
+}
+
+export class CreateClientReq {
+  uniqueName: string;
+}
+
+export class RevokeClientReq {
+  apiKey: string;
+}
+
+export class ClientList {
+  clientNames: string[];
+}
+
+export class ListClientReq {
+}
+

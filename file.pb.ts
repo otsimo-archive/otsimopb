@@ -95,6 +95,10 @@ export class FileService {
 	const _req = new Request(`${this.host}/api/v1/file/big`, _init);
 	try {
 	  const resp = await fetch(_req);
+	  if (resp.status !== 200) {
+        const rj = await resp.json();
+        return Promise.reject(rj);
+      }
 	  return resp.json();
 	} catch (err) {
 	  return Promise.reject(err);
@@ -117,6 +121,10 @@ export class FileService {
 	const _req = new Request(`${this.host}/api/v1/file/lookup`, _init);
 	try {
 	  const resp = await fetch(_req);
+	  if (resp.status !== 200) {
+        const rj = await resp.json();
+        return Promise.reject(rj);
+      }
 	  return resp.json();
 	} catch (err) {
 	  return Promise.reject(err);

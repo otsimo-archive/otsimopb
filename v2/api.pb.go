@@ -26,6 +26,11 @@
 		TarballInfo
 		AddTarballReq
 		AddTarballRes
+		RegistryClient
+		CreateClientReq
+		RevokeClientReq
+		ClientList
+		ListClientReq
 */
 package v2
 
