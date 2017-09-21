@@ -143,6 +143,8 @@ message ListItemWithTests {
 message GetLatestVersionsRequest{
     RequestReleaseState state = 1; //Default State is PRODUCTION
     repeated string game_ids = 2;
+    // Device Capabilities
+    repeated string capabilities = 3; 
 }
 
 message GameAndVersion{

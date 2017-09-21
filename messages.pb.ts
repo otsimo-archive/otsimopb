@@ -145,6 +145,10 @@ export class ListItemWithTestsTestGroup {
 export class GetLatestVersionsRequest {
   state: RequestReleaseState;
   gameIds: string[];
+/**
+Device Capabilities
+*/
+  capabilities: string[];
 }
 
 export class GameAndVersion {

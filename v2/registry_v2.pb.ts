@@ -58,6 +58,10 @@ Games that user wants the data of, if it is empty returns all games
 Language filters games. If language field is empty than returns games with all languages.
 */
   language: string;
+/**
+Device Capabilities
+*/
+  capabilities: string[];
 }
 
 export class GetAllGamesRes {

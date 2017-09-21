@@ -58,6 +58,8 @@ message GetAllGamesReq{
     repeated apipb.GameAndVersion games = 1;
     // Language filters games. If language field is empty than returns games with all languages.
     string language = 2;
+    // Device Capabilities
+    repeated string capabilities = 3; 
 }
 
 message GetAllGamesRes{
