@@ -142,6 +142,18 @@ message GameManifest{
     map<string,string>labels = 22           [(gogoproto.moretags) = "bson:\"labels\""];
     //ManifestVersion 
     int32 manifest_version = 23;
+    map<string, GameOption> options = 24     [(gogoproto.moretags) = "bson:\"options\""];
+}
+
+message GameOption {
+    string id = 1;
+    string type = 2;
+    string description = 3;
+    string default = 4;
+    repeated string enum = 5;
+    string format = 6;
+    double min_value = 7;
+    double amx_value = 8;
 }
 
 message Game{
