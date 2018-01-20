@@ -32,86 +32,86 @@ export const ChartType_RADAR: ChartType = "RADAR";
 export const ChartType_GEO: ChartType = "GEO";
 export const ChartType_TIMELINE: ChartType = "TIMELINE";
 
-export class DashboardItems {
+export interface DashboardItems {
 /**
 ProfileId
 */
-  profileId: string;
+  profileId?: string;
 /**
 ChildId
 */
-  childId: string;
+  childId?: string;
 /**
 Created At
 */
-  createdAt: string|number;
-  items: Card[];
+  createdAt?: string|number;
+  items?: Card[];
 }
 
-export class DashboardGetRequest {
-  profileId: string;
-  childId: string;
-  appVersion: string;
-  language: string;
-  countryCode: string;
-  lastTimeDataFetched: string|number;
+export interface DashboardGetRequest {
+  profileId?: string;
+  childId?: string;
+  appVersion?: string;
+  language?: string;
+  countryCode?: string;
+  lastTimeDataFetched?: string|number;
 }
 
-export class CardDecoration {
-  size: CardDecorationSize;
-  backgroundStyle: CardDecorationBackgroundStyle;
-  imageUrl: string;
-  leftIcon: string;
-  rightIcon: string;
+export interface CardDecoration {
+  size?: CardDecorationSize;
+  backgroundStyle?: CardDecorationBackgroundStyle;
+  imageUrl?: string;
+  leftIcon?: string;
+  rightIcon?: string;
 }
 
-export class CardEmpty {
+export interface CardEmpty {
 }
 
-export class CardWebpage {
-  url: string;
+export interface CardWebpage {
+  url?: string;
 }
 
-export class CardApplink {
-  applink: string;
+export interface CardApplink {
+  applink?: string;
 }
 
-export class CardAnalysis {
-  data: apipb_datasetmodels.DataSet;
-  chartType: ChartType;
+export interface CardAnalysis {
+  data?: apipb_datasetmodels.DataSet;
+  chartType?: ChartType;
 }
 
-export class Card {
-  id: string;
-  text: string;
-  expiresAt: string|number;
-  createdAt: string|number;
-  decoration: CardDecoration;
+export interface Card {
+  id?: string;
+  text?: string;
+  expiresAt?: string|number;
+  createdAt?: string|number;
+  decoration?: CardDecoration;
 /**
 Score is between 0-500
 */
-  providerScore: number;
+  providerScore?: number;
 /**
 ProviderWeight is between 0-2
 */
-  providerWeight: number;
-  providerName: string;
-  language: string;
-  empty: CardEmpty;
-  webpage: CardWebpage;
-  applink: CardApplink;
-  analysis: CardAnalysis;
+  providerWeight?: number;
+  providerName?: string;
+  language?: string;
+  empty?: CardEmpty;
+  webpage?: CardWebpage;
+  applink?: CardApplink;
+  analysis?: CardAnalysis;
 /**
 Title for newer systems
 */
-  title: string;
+  title?: string;
 /**
 Subtitle for newer systems
 */
-  subtitle: string;
+  subtitle?: string;
 /**
 Labels of the card
 */
-  labels: { [key: string]: string };
+  labels?: { [key: string]: string };
 		}
 

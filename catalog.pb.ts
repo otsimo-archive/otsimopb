@@ -20,42 +20,42 @@ export type CatalogStatus =  "DRAFT"  | "APPROVED" ;
 export const CatalogStatus_DRAFT: CatalogStatus = "DRAFT";
 export const CatalogStatus_APPROVED: CatalogStatus = "APPROVED";
 
-export class CatalogItem {
-  gameId: string;
-  category: CatalogCategory;
-  index: number;
+export interface CatalogItem {
+  gameId?: string;
+  category?: CatalogCategory;
+  index?: number;
 }
 
-export class Catalog {
-  title: string;
-  createdAt: string|number;
-  visibleAt: string|number;
-  expiresAt: string|number;
-  status: CatalogStatus;
-  items: CatalogItem[];
+export interface Catalog {
+  title?: string;
+  createdAt?: string|number;
+  visibleAt?: string|number;
+  expiresAt?: string|number;
+  status?: CatalogStatus;
+  items?: CatalogItem[];
 }
 
 /**
 Request-Response
 */
-export class CatalogPullRequest {
-  profileId: string;
-  clientVersion: string;
+export interface CatalogPullRequest {
+  profileId?: string;
+  clientVersion?: string;
 }
 
-export class CatalogListRequest {
-  status: CatalogListRequestListStatus;
-  hideExpired: boolean;
-  limit: number;
-  time: string|number;
-  offset: number;
+export interface CatalogListRequest {
+  status?: CatalogListRequestListStatus;
+  hideExpired?: boolean;
+  limit?: number;
+  time?: string|number;
+  offset?: number;
 }
 
-export class CatalogListResponse {
-  catalogs: Catalog[];
+export interface CatalogListResponse {
+  catalogs?: Catalog[];
 }
 
-export class CatalogApproveRequest {
-  title: string;
+export interface CatalogApproveRequest {
+  title?: string;
 }
 

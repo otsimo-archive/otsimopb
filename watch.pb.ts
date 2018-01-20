@@ -8,31 +8,31 @@ export const WatchEventEventType_CHILD_UPDATED: WatchEventEventType = "CHILD_UPD
 export const WatchEventEventType_CHILD_GAMES_UPDATED: WatchEventEventType = "CHILD_GAMES_UPDATED";
 export const WatchEventEventType_CHILD_SOUND_UPDATED: WatchEventEventType = "CHILD_SOUND_UPDATED";
 
-export class EmitRequest {
-  profileId: string;
-  event: WatchEvent;
+export interface EmitRequest {
+  profileId?: string;
+  event?: WatchEvent;
 }
 
-export class EmitResponse {
+export interface EmitResponse {
 }
 
-export class WatchRequest {
+export interface WatchRequest {
 /**
 profile id is for Create request
 */
-  profileId: string;
+  profileId?: string;
 }
 
-export class WatchEvent {
-  type: WatchEventEventType;
-  profileId: string;
-  childId: string;
-  gameId: string;
+export interface WatchEvent {
+  type?: WatchEventEventType;
+  profileId?: string;
+  childId?: string;
+  gameId?: string;
 }
 
-export class WatchResponse {
-  created: boolean;
-  canceled: boolean;
-  event: WatchEvent;
+export interface WatchResponse {
+  created?: boolean;
+  canceled?: boolean;
+  event?: WatchEvent;
 }
 

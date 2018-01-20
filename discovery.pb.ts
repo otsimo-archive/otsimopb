@@ -3,46 +3,46 @@
 
 import * as apipb_content from "./content.pb";
 
-export class OtsimoServices {
-  environment: string;
-  issuer: string;
-  isProduction: boolean;
-  useTls: boolean;
-  registryGrpc: string;
-  listenerGrpc: string;
-  watchGrpc: string;
-  catalogGrpc: string;
-  contentGrpc: string;
-  dashboardGrpc: string;
-  apiGrpc: string;
+export interface OtsimoServices {
+  environment?: string;
+  issuer?: string;
+  isProduction?: boolean;
+  useTls?: boolean;
+  registryGrpc?: string;
+  listenerGrpc?: string;
+  watchGrpc?: string;
+  catalogGrpc?: string;
+  contentGrpc?: string;
+  dashboardGrpc?: string;
+  apiGrpc?: string;
 /**
 GameContent is registry service http url
 */
-  gameContent: string;
-  accounts: string;
-  analyticsGrpc: string;
-  services: { [key: string]: string };
-		  gameStorageProviders: { [key: string]: string };
-		  selfLearningConfigs: { [key: string]: SelfLearningConfig };
-		  configs: { [key: string]: string };
+  gameContent?: string;
+  accounts?: string;
+  analyticsGrpc?: string;
+  services?: { [key: string]: string };
+		  gameStorageProviders?: { [key: string]: string };
+		  selfLearningConfigs?: { [key: string]: SelfLearningConfig };
+		  configs?: { [key: string]: string };
 		}
 
-export class DiscoveryRequest {
-  environment: string;
-  sdkVersion: string;
-  osName: string;
-  countryCode: string;
-  appBundleId: string;
-  appBundleVersion: string;
+export interface DiscoveryRequest {
+  environment?: string;
+  sdkVersion?: string;
+  osName?: string;
+  countryCode?: string;
+  appBundleId?: string;
+  appBundleVersion?: string;
 }
 
-export class SelfLearningSegment {
-  title: string;
-  baseQuery: apipb_content.ContentListRequest;
+export interface SelfLearningSegment {
+  title?: string;
+  baseQuery?: apipb_content.ContentListRequest;
 }
 
-export class SelfLearningConfig {
-  language: string;
-  segments: SelfLearningSegment[];
+export interface SelfLearningConfig {
+  language?: string;
+  segments?: SelfLearningSegment[];
 }
 

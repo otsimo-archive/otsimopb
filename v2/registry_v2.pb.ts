@@ -9,108 +9,108 @@ export const CategoryReqTask_ADD: CategoryReqTask = "ADD";
 export const CategoryReqTask_UPDATE: CategoryReqTask = "UPDATE";
 export const CategoryReqTask_DELETE: CategoryReqTask = "DELETE";
 
-export class AllGameReleases {
-  gameId: string;
-  releases: AllGameReleasesMiniRelease[];
+export interface AllGameReleases {
+  gameId?: string;
+  releases?: AllGameReleasesMiniRelease[];
 }
 
-export class AllGameReleasesMiniRelease {
-  version: string;
-  releasedAt: string|number;
-  releaseState: apipb_models.ReleaseState;
+export interface AllGameReleasesMiniRelease {
+  version?: string;
+  releasedAt?: string|number;
+  releaseState?: apipb_models.ReleaseState;
 }
 
-export class GameCategoryLocale {
-  language: string;
-  title: string;
-  image: string;
-  color: string;
-  description: string;
+export interface GameCategoryLocale {
+  language?: string;
+  title?: string;
+  image?: string;
+  color?: string;
+  description?: string;
 }
 
-export class GameCategory {
-  name: string;
-  locales: GameCategoryLocale[];
-  revision: number;
-  labels: { [key: string]: string };
-		  defaultLocale: string;
+export interface GameCategory {
+  name?: string;
+  locales?: GameCategoryLocale[];
+  revision?: number;
+  labels?: { [key: string]: string };
+		  defaultLocale?: string;
 }
 
-export class CategoryReq {
-  task: CategoryReqTask;
-  category: GameCategory;
-  knownRevision: number;
+export interface CategoryReq {
+  task?: CategoryReqTask;
+  category?: GameCategory;
+  knownRevision?: number;
 }
 
-export class CategoryListReq {
+export interface CategoryListReq {
 }
 
-export class CategoryList {
-  categories: GameCategory[];
+export interface CategoryList {
+  categories?: GameCategory[];
 }
 
-export class GetAllGamesReq {
+export interface GetAllGamesReq {
 /**
 Games that user wants the data of, if it is empty returns all games
 */
-  games: apipb_messages.GameAndVersion[];
+  games?: apipb_messages.GameAndVersion[];
 /**
 Language filters games. If language field is empty than returns games with all languages.
 */
-  language: string;
+  language?: string;
 /**
 Device Capabilities
 */
-  capabilities: string[];
+  capabilities?: string[];
 }
 
-export class GetAllGamesRes {
-  games: apipb_models.GameRelease[];
+export interface GetAllGamesRes {
+  games?: apipb_models.GameRelease[];
 }
 
-export class PublishReq {
-  manifest: apipb_models.GameManifest;
-  files: { [key: string]: string };
+export interface PublishReq {
+  manifest?: apipb_models.GameManifest;
+  files?: { [key: string]: string };
 		}
 
-export class PublishRes {
-  token: apipb_models.UploadToken;
-  uploadUrls: { [key: string]: string };
-		  storage: string;
+export interface PublishRes {
+  token?: apipb_models.UploadToken;
+  uploadUrls?: { [key: string]: string };
+		  storage?: string;
 }
 
-export class TarballInfo {
-  url: string;
-  storage: string;
-  archiveFormat: string;
+export interface TarballInfo {
+  url?: string;
+  storage?: string;
+  archiveFormat?: string;
 }
 
-export class AddTarballReq {
-  token: string;
-  infos: TarballInfo[];
+export interface AddTarballReq {
+  token?: string;
+  infos?: TarballInfo[];
 }
 
-export class AddTarballRes {
-  packageUrls: { [key: string]: string };
+export interface AddTarballRes {
+  packageUrls?: { [key: string]: string };
 		}
 
-export class RegistryClient {
-  uniqueName: string;
-  apiKey: string;
+export interface RegistryClient {
+  uniqueName?: string;
+  apiKey?: string;
 }
 
-export class CreateClientReq {
-  uniqueName: string;
+export interface CreateClientReq {
+  uniqueName?: string;
 }
 
-export class RevokeClientReq {
-  apiKey: string;
+export interface RevokeClientReq {
+  apiKey?: string;
 }
 
-export class ClientList {
-  clientNames: string[];
+export interface ClientList {
+  clientNames?: string[];
 }
 
-export class ListClientReq {
+export interface ListClientReq {
 }
 

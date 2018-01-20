@@ -60,243 +60,243 @@ export const GameInfoResponseFieldType_INTEGER: GameInfoResponseFieldType = "INT
 export const GameInfoResponseFieldType_FLOAT: GameInfoResponseFieldType = "FLOAT";
 export const GameInfoResponseFieldType_BOOL: GameInfoResponseFieldType = "BOOL";
 
-export class TimeRange {
+export interface TimeRange {
 /**
 From is the unix seconds time
 */
-  from: string|number;
+  from?: string|number;
 /**
 To is the unix seconds time
 */
-  to: string|number;
+  to?: string|number;
 }
 
-export class ChildAndProfileIds {
+export interface ChildAndProfileIds {
 /**
 ChildId
 */
-  childId: string;
+  childId?: string;
 /**
 ProfileId
 */
-  profileId: string;
+  profileId?: string;
 }
 
-export class ChildAndTimeRange {
+export interface ChildAndTimeRange {
 /**
 ChildId
 */
-  childId: string;
+  childId?: string;
 /**
 ProfileId
 */
-  profileId: string;
+  profileId?: string;
 /**
 Range is the time range
 */
-  range: TimeRange;
+  range?: TimeRange;
 }
 
-export class GameWithVersions {
+export interface GameWithVersions {
 /**
 GameId
 */
-  gameId: string;
+  gameId?: string;
 /**
 Versions
 */
-  versions: string[];
+  versions?: string[];
 }
 
-export class PlayedGamesList {
-  games: GameWithVersions[];
+export interface PlayedGamesList {
+  games?: GameWithVersions[];
 /**
 ChildId
 */
-  childId: string;
+  childId?: string;
 /**
 Range is the time range
 */
-  range: TimeRange;
+  range?: TimeRange;
 }
 
-export class QuerySort {
-  fieldName: string;
-  order: QuerySortSortOrder;
+export interface QuerySort {
+  fieldName?: string;
+  order?: QuerySortSortOrder;
 }
 
-export class Aggregation {
-  fieldName: string;
-  outputField: string;
-  accumulator: AggregationAccumulator;
+export interface Aggregation {
+  fieldName?: string;
+  outputField?: string;
+  accumulator?: AggregationAccumulator;
 }
 
-export class GroupInterval {
+export interface GroupInterval {
 /**
 For ContinuesInterval
 */
-  int: number;
+  int?: number;
 /**
 For ContinuesInterval
 */
-  real: number;
+  real?: number;
 /**
 For Datetime
 */
-  days: number;
+  days?: number;
 /**
 For Datetime
 */
-  hours: number;
+  hours?: number;
 /**
 For TimeOfDay
 */
-  minutes: boolean;
+  minutes?: boolean;
 /**
 For TimeOfDay
 */
-  seconds: boolean;
+  seconds?: boolean;
 }
 
-export class QueryGroup {
-  fieldName: string;
-  type: QueryGroupGroupType;
+export interface QueryGroup {
+  fieldName?: string;
+  type?: QueryGroupGroupType;
 /**
 Interval is optional for Date and Discrete type
 */
-  interval: GroupInterval;
-  outputField: string;
+  interval?: GroupInterval;
+  outputField?: string;
 }
 
-export class Query {
-  events: string[];
-  range: TimeRange;
-  sort: QuerySort[];
-  limit: number;
-  offset: number;
-  groupBy: QueryGroup;
-  aggregations: Aggregation[];
-  rawQueries: string[];
+export interface Query {
+  events?: string[];
+  range?: TimeRange;
+  sort?: QuerySort[];
+  limit?: number;
+  offset?: number;
+  groupBy?: QueryGroup;
+  aggregations?: Aggregation[];
+  rawQueries?: string[];
 }
 
-export class AnalyzeRequest {
+export interface AnalyzeRequest {
 /**
 ChildId
 */
-  childId: string;
+  childId?: string;
 /**
 ProfileId
 */
-  profileId: string;
+  profileId?: string;
 /**
 UseAppData changes data source
 */
-  useAppData: boolean;
+  useAppData?: boolean;
 /**
 Query is calculation query
 */
-  query: Query;
+  query?: Query;
 /**
 Games are the compute this request on
 */
-  games: GameWithVersions[];
+  games?: GameWithVersions[];
 }
 
-export class AnalyzeResult {
+export interface AnalyzeResult {
 /**
 Request
 */
-  request: AnalyzeRequest;
+  request?: AnalyzeRequest;
 /**
 Data
 */
-  data: apipb_datasetmodels.DataSet;
+  data?: apipb_datasetmodels.DataSet;
 /**
 Created At
 */
-  createdAt: string|number;
+  createdAt?: string|number;
 }
 
 /**
 Active Users
 */
-export class ActiveUsersRequest {
-  type: ActiveUsersRequestType;
-  dates: string[]|number[];
-  appId: string;
+export interface ActiveUsersRequest {
+  type?: ActiveUsersRequestType;
+  dates?: string[]|number[];
+  appId?: string;
 }
 
-export class ActiveUsersResult {
+export interface ActiveUsersResult {
 /**
 Request
 */
-  request: ActiveUsersRequest;
+  request?: ActiveUsersRequest;
 /**
 Data
 */
-  data: apipb_datasetmodels.DataSet;
+  data?: apipb_datasetmodels.DataSet;
 /**
 Created At
 */
-  createdAt: string|number;
+  createdAt?: string|number;
 }
 
 /**
 Retention
 */
-export class RetentionRequest {
-  type: RetentionRequestType;
-  dates: string[]|number[];
-  appId: string;
+export interface RetentionRequest {
+  type?: RetentionRequestType;
+  dates?: string[]|number[];
+  appId?: string;
 }
 
-export class RetentionResult {
+export interface RetentionResult {
 /**
 Request
 */
-  request: RetentionRequest;
+  request?: RetentionRequest;
 /**
 Data
 */
-  data: apipb_datasetmodels.DataSet;
+  data?: apipb_datasetmodels.DataSet;
 /**
 Created At
 */
-  createdAt: string|number;
+  createdAt?: string|number;
 }
 
-export class InactiveUsersRequest {
-  appId: string;
-  inactiveDuring: TimeRange;
-  activeDuring: TimeRange;
+export interface InactiveUsersRequest {
+  appId?: string;
+  inactiveDuring?: TimeRange;
+  activeDuring?: TimeRange;
 }
 
-export class GetActiveUsersRequest {
-  appId: string;
-  period: TimeRange;
+export interface GetActiveUsersRequest {
+  appId?: string;
+  period?: TimeRange;
 }
 
-export class ActiveOnRangeRequest {
-  range: TimeRange;
-  countryCodes: string[];
-  appIds: string[];
+export interface ActiveOnRangeRequest {
+  range?: TimeRange;
+  countryCodes?: string[];
+  appIds?: string[];
 }
 
-export class GameInfoResponse {
-  gameId: string;
-  events: GameInfoResponseEventInfo[];
+export interface GameInfoResponse {
+  gameId?: string;
+  events?: GameInfoResponseEventInfo[];
 }
 
-export class GameInfoResponseFieldInfo {
-  name: string;
-  type: GameInfoResponseFieldType;
+export interface GameInfoResponseFieldInfo {
+  name?: string;
+  type?: GameInfoResponseFieldType;
 }
 
-export class GameInfoResponseEventInfo {
-  name: string;
-  fields: GameInfoResponseFieldInfo[];
+export interface GameInfoResponseEventInfo {
+  name?: string;
+  fields?: GameInfoResponseFieldInfo[];
 }
 
-export class AppDataInfoReq {
+export interface AppDataInfoReq {
 }
 

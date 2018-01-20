@@ -3,48 +3,48 @@
 
 import * as otsimo_dashboard from "./dashboard.pb";
 
-export class ProviderGetRequest {
-  request: otsimo_dashboard.DashboardGetRequest;
-  userGroups: string[];
+export interface ProviderGetRequest {
+  request?: otsimo_dashboard.DashboardGetRequest;
+  userGroups?: string[];
 }
 
-export class ProviderItem {
-  cacheable: boolean;
-  ttl: string|number;
-  item: otsimo_dashboard.Card;
+export interface ProviderItem {
+  cacheable?: boolean;
+  ttl?: string|number;
+  item?: otsimo_dashboard.Card;
 }
 
-export class ProviderItems {
+export interface ProviderItems {
 /**
 ProfileId
 */
-  profileId: string;
+  profileId?: string;
 /**
 ChildId
 */
-  childId: string;
+  childId?: string;
 /**
 CreatedAt
 */
-  createdAt: string|number;
+  createdAt?: string|number;
 /**
 Cacheable
 */
-  cacheable: boolean;
+  cacheable?: boolean;
 /**
 TTL is titme to live duration
 */
-  ttl: string|number;
+  ttl?: string|number;
 /**
 Items
 */
-  items: ProviderItem[];
+  items?: ProviderItem[];
 }
 
-export class ProviderInfoRequest {
+export interface ProviderInfoRequest {
 }
 
-export class ProviderInfo {
-  servesFor: string[];
+export interface ProviderInfo {
+  servesFor?: string[];
 }
 

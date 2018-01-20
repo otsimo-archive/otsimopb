@@ -15,44 +15,44 @@ export type ContentListRequestSortOrder =  "DSC"  | "ASC" ;
 export const ContentListRequestSortOrder_DSC: ContentListRequestSortOrder = "DSC";
 export const ContentListRequestSortOrder_ASC: ContentListRequestSortOrder = "ASC";
 
-export class Content {
-  slug: string;
-  title: string;
-  language: string;
-  date: string|number;
-  draft: boolean;
-  writtenAt: string;
-  author: string;
-  category: string;
-  url: string;
-  weight: number;
-  keywords: string[];
-  categoryWeight: number;
-  markdown: string;
-  params: { [key: string]: string };
+export interface Content {
+  slug?: string;
+  title?: string;
+  language?: string;
+  date?: string|number;
+  draft?: boolean;
+  writtenAt?: string;
+  author?: string;
+  category?: string;
+  url?: string;
+  weight?: number;
+  keywords?: string[];
+  categoryWeight?: number;
+  markdown?: string;
+  params?: { [key: string]: string };
 		}
 
-export class ContentListRequest {
-  status: ContentListRequestListStatus;
-  limit: number;
-  category: string;
-  offset: number;
-  language: string;
-  onlyHtmlUrl: boolean;
-  sort: ContentListRequestSortBy;
-  order: ContentListRequestSortOrder;
-  profileId: string;
-  clientVersion: string;
-  categories: string[];
-  exceptCategories: string[];
+export interface ContentListRequest {
+  status?: ContentListRequestListStatus;
+  limit?: number;
+  category?: string;
+  offset?: number;
+  language?: string;
+  onlyHtmlUrl?: boolean;
+  sort?: ContentListRequestSortBy;
+  order?: ContentListRequestSortOrder;
+  profileId?: string;
+  clientVersion?: string;
+  categories?: string[];
+  exceptCategories?: string[];
 }
 
-export class ContentListResponse {
-  contents: Content[];
-  assetVersion: number;
+export interface ContentListResponse {
+  contents?: Content[];
+  assetVersion?: number;
 }
 
-export class ContentGetRequest {
-  slug: string;
+export interface ContentGetRequest {
+  slug?: string;
 }
 

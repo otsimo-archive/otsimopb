@@ -15,221 +15,233 @@ export const ReleaseState_REJECTED: ReleaseState = "REJECTED";
 export const ReleaseState_VALIDATED: ReleaseState = "VALIDATED";
 export const ReleaseState_PRODUCTION: ReleaseState = "PRODUCTION";
 
-export class Address {
-  streetAddress: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  countryCode: string;
+export interface Address {
+  streetAddress?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  countryCode?: string;
 }
 
-export class Profile {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  language: string;
-  mobilePhone: string;
-  address: Address;
-  createdAt: string|number;
-  lastUpdated: string|number;
-  locale: string;
-  timezone: number;
-  country: string;
-  labels: { [key: string]: string };
+export interface Profile {
+  id?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  language?: string;
+  mobilePhone?: string;
+  address?: Address;
+  createdAt?: string|number;
+  lastUpdated?: string|number;
+  locale?: string;
+  timezone?: number;
+  country?: string;
+  labels?: { [key: string]: string };
 		}
 
-export class ChildGameEntry {
-  id: string;
-  active: boolean;
-  dashboardIndex: number;
-  settings: string;
-  addedAt: string|number;
-  activationChangedAt: string|number;
-  updatedAt: string|number;
-  localSettings: string;
-  localSettingsVersion: string|number;
+export interface ChildGameEntry {
+  id?: string;
+  active?: boolean;
+  dashboardIndex?: number;
+  settings?: string;
+  addedAt?: string|number;
+  activationChangedAt?: string|number;
+  updatedAt?: string|number;
+  localSettings?: string;
+  localSettingsVersion?: string|number;
 }
 
-export class Child {
-  id: string;
-  parentId: string;
-  firstName: string;
-  lastName: string;
-  birthDay: string|number;
-  gender: Gender;
-  language: string;
-  games: ChildGameEntry[];
-  active: boolean;
-  loggedIn: boolean;
-  soundsEnabled: boolean;
-  locale: string;
-  createdAt: string|number;
-  lastUpdated: string|number;
-  childInfo: { [key: string]: string };
+export interface Child {
+  id?: string;
+  parentId?: string;
+  firstName?: string;
+  lastName?: string;
+  birthDay?: string|number;
+  gender?: Gender;
+  language?: string;
+  games?: ChildGameEntry[];
+  active?: boolean;
+  loggedIn?: boolean;
+  soundsEnabled?: boolean;
+  locale?: string;
+  createdAt?: string|number;
+  lastUpdated?: string|number;
+  childInfo?: { [key: string]: string };
 		}
 
-export class Author {
-  name: string;
-  email: string;
+export interface Author {
+  name?: string;
+  email?: string;
 }
 
-export class GameMetadata {
-  language: string;
+export interface GameMetadata {
+  language?: string;
 /**
 Visible Name
 */
-  visibleName: string;
+  visibleName?: string;
 /**
 Summary is summary of game
 */
-  summary: string;
+  summary?: string;
 /**
 Description
 */
-  description: string;
+  description?: string;
 /**
 Logo is a rectangle image
 */
-  logo: string;
+  logo?: string;
 /**
 Icon is a square image
 */
-  icon: string;
+  icon?: string;
 /**
 Keywords
 */
-  keywords: string[];
+  keywords?: string[];
 /**
 Images are image files that show on market
 */
-  images: string[];
+  images?: string[];
 /**
 InfoSlug is the id of the content which describes how to play this game
 */
-  infoSlug: string;
+  infoSlug?: string;
 /**
 Assets are asset folders or paths for this language
 */
-  assets: string[];
+  assets?: string[];
 }
 
-export class GameManifest {
+export interface GameManifest {
 /**
 Unique Name of game
 */
-  uniqueName: string;
+  uniqueName?: string;
 /**
 Licence
 */
-  licence: string;
+  licence?: string;
 /**
 Languages
 */
-  languages: string[];
+  languages?: string[];
 /**
 Homepage is the website of game
 */
-  homepage: string;
+  homepage?: string;
 /**
 Main points to index.html file
 */
-  main: string;
+  main?: string;
 /**
 Version is current version for using on manifest file
 */
-  version: string;
+  version?: string;
 /**
 Authors is for using at manifest file
 */
-  authors: Author[];
+  authors?: Author[];
 /**
 Repository
 */
-  repository: string;
+  repository?: string;
 /**
 SupportedOrientations are the orientations that can be used for this app
 */
-  supportedOrientations: string[];
+  supportedOrientations?: string[];
 /**
 Metadata information for each languages
 */
-  metadata: GameMetadata[];
+  metadata?: GameMetadata[];
 /**
 Exclude directories when building
 */
-  exclude: string[];
+  exclude?: string[];
 /**
 Settings.json path
 */
-  settings: string;
+  settings?: string;
 /**
 KV directory path
 */
-  kvPath: string;
+  kvPath?: string;
 /**
 DeveloperName is the visible developer name
 */
-  developerName: string;
+  developerName?: string;
 /**
 DefaultLanguage
 */
-  defaultLanguage: string;
+  defaultLanguage?: string;
 /**
 Loading Background Color of the Game
 */
-  loadingColor: string;
+  loadingColor?: string;
 /**
 Capabilities are required host app features. The most basic capability is 'sandbox'.
 */
-  capabilities: string[];
+  capabilities?: string[];
 /**
 AbTest determines whether or not this version is for ab testing
 */
-  abTest: string;
+  abTest?: string;
 /**
 Labels are string key value pairs
 */
-  labels: { [key: string]: string };
+  labels?: { [key: string]: string };
 		/**
 ManifestVersion
 */
-  manifestVersion: number;
-}
-
-export class Game {
-  id: string;
-  uniqueName: string;
-  ownerId: string;
-  productionVersion: string;
-  isOnProduction: boolean;
-  createdAt: string|number;
-  lastUpdated: string|number;
-  labels: { [key: string]: string };
+  manifestVersion?: number;
+  options?: { [key: string]: GameOption };
 		}
 
-export class GameRelease {
-  releaseId: string;
-  gameId: string;
-  version: string;
-  gameManifest: GameManifest;
-  releasedAt: string|number;
-  releasedBy: string;
-  releaseState: ReleaseState;
-  validatedBy: string;
-  validatedAt: string|number;
-  intVersion: string|number;
-  storage: string;
-  archiveFormat: string;
-  packageUrl: string;
+export interface GameOption {
+  id?: string;
+  type?: string;
+  description?: string;
+  default?: string;
+  enum?: string[];
+  format?: string;
+  minValue?: number;
+  maxValue?: number;
 }
 
-export class UploadToken {
-  token: string;
-  expiresAt: string|number;
-  userId: string;
-  gameId: string;
-  newVersion: string;
-  uploadTo: string;
+export interface Game {
+  id?: string;
+  uniqueName?: string;
+  ownerId?: string;
+  productionVersion?: string;
+  isOnProduction?: boolean;
+  createdAt?: string|number;
+  lastUpdated?: string|number;
+  labels?: { [key: string]: string };
+		}
+
+export interface GameRelease {
+  releaseId?: string;
+  gameId?: string;
+  version?: string;
+  gameManifest?: GameManifest;
+  releasedAt?: string|number;
+  releasedBy?: string;
+  releaseState?: ReleaseState;
+  validatedBy?: string;
+  validatedAt?: string|number;
+  intVersion?: string|number;
+  storage?: string;
+  archiveFormat?: string;
+  packageUrl?: string;
+}
+
+export interface UploadToken {
+  token?: string;
+  expiresAt?: string|number;
+  userId?: string;
+  gameId?: string;
+  newVersion?: string;
+  uploadTo?: string;
 }
 

@@ -135,6 +135,7 @@
 		Author
 		GameMetadata
 		GameManifest
+		GameOption
 		Game
 		GameRelease
 		UploadToken

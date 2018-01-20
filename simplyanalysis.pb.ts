@@ -7,34 +7,34 @@ export type DataInterval =  "HOURLY"  | "DAILY" ;
 export const DataInterval_HOURLY: DataInterval = "HOURLY";
 export const DataInterval_DAILY: DataInterval = "DAILY";
 
-export class GamePlayingRequest {
-  games: string[];
+export interface GamePlayingRequest {
+  games?: string[];
 /**
 From is the unix seconds time
 */
-  from: string|number;
+  from?: string|number;
 /**
 To is the unix seconds time
 */
-  to: string|number;
-  interval: DataInterval;
+  to?: string|number;
+  interval?: DataInterval;
 }
 
-export class GamePlayingReply {
-  data: apipb_datasetmodels.DataSet;
+export interface GamePlayingReply {
+  data?: apipb_datasetmodels.DataSet;
 }
 
-export class SimplifiedReq {
-  analysis: string;
+export interface SimplifiedReq {
+  analysis?: string;
 /**
 From is the unix seconds time
 */
-  from: string|number;
+  from?: string|number;
 /**
 To is the unix seconds time
 */
-  to: string|number;
-  games: string[];
-  interval: DataInterval;
+  to?: string|number;
+  games?: string[];
+  interval?: DataInterval;
 }
 

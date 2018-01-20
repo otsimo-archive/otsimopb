@@ -2,48 +2,48 @@
 // DO NOT EDIT!
 
 
-export class ABTestGroup {
-  name: string;
-  appId: string;
-  weight: number;
-  active: boolean;
+export interface ABTestGroup {
+  name?: string;
+  appId?: string;
+  weight?: number;
+  active?: boolean;
 }
 
-export class ABDisableReq {
-  name: string;
-  appId: string;
+export interface ABDisableReq {
+  name?: string;
+  appId?: string;
 }
 
-export class ListTestGroupReq {
-  appId: string;
+export interface ListTestGroupReq {
+  appId?: string;
 }
 
-export class AppTestingStatus {
-  version: number;
-  tests: ABTestGroup[];
+export interface AppTestingStatus {
+  version?: number;
+  tests?: ABTestGroup[];
 }
 
-export class CheckUserStatusReq {
-  userId: string;
+export interface CheckUserStatusReq {
+  userId?: string;
 }
 
-export class ChangeUserTestGroupReq {
-  userId: string;
-  appId: string;
+export interface ChangeUserTestGroupReq {
+  userId?: string;
+  appId?: string;
 /**
 TestGroupName is empty for no testing group
 */
-  testGroupName: string;
+  testGroupName?: string;
 }
 
-export class UserTestGroupStatus {
-  userId: string;
-  apps: UserTestGroupStatusAppGroup[];
+export interface UserTestGroupStatus {
+  userId?: string;
+  apps?: UserTestGroupStatusAppGroup[];
 }
 
-export class UserTestGroupStatusAppGroup {
-  appId: string;
-  testGroup: string;
-  version: number;
+export interface UserTestGroupStatusAppGroup {
+  appId?: string;
+  testGroup?: string;
+  version?: number;
 }
 

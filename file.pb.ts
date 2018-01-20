@@ -3,66 +3,66 @@
 
 import * as apipb_messages from "./messages.pb";
 
-export class FileMetadata {
+export interface FileMetadata {
 /**
 Key is the unique name of the file in collection
 */
-  key: string;
+  key?: string;
 /**
 Collection of the file, value can be asset, gameid or userid
 */
-  collection: string;
+  collection?: string;
 /**
 Labels of the file. Label fields cannot be "key", "collection" and "type"
 */
-  labels: { [key: string]: string };
+  labels?: { [key: string]: string };
 		/**
 Type is Mime Type of the file
 */
-  type: string;
+  type?: string;
 /**
 Checksum is MD5 of the file
 */
-  checksum: string;
+  checksum?: string;
 /**
 Owner of the file, if the value is empty means that its open to everyone
 */
-  owner: string;
+  owner?: string;
 /**
 Url is the stored file url
 */
-  url: string;
+  url?: string;
 }
 
-export class UploadReq {
+export interface UploadReq {
 /**
 Metadata list of upload files, keys have to be unique in the list
 */
-  metadata: FileMetadata[];
+  metadata?: FileMetadata[];
 }
 
-export class UploadRes {
-  uploadUrls: { [key: string]: string };
+export interface UploadRes {
+  uploadUrls?: { [key: string]: string };
 		}
 
-export class StoreSmallReq {
-  metadata: FileMetadata;
-  data: string;
+export interface StoreSmallReq {
+  metadata?: FileMetadata;
+  data?: string;
 }
 
-export class StoreRes {
-  metadata: FileMetadata;
+export interface StoreRes {
+  metadata?: FileMetadata;
 }
 
-export class LookupReq {
+export interface LookupReq {
 /**
 Selector the files. "key", "collection" and "type" also part of labels
 */
-  selector: apipb_messages.LabelSelector;
+  selector?: apipb_messages.LabelSelector;
 }
 
-export class LookupRes {
-  metadata: FileMetadata[];
+export interface LookupRes {
+  metadata?: FileMetadata[];
 }
 
 export class FileService {

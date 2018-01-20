@@ -36,192 +36,192 @@ export const LabelSelectorOperator_DoesNotExist: LabelSelectorOperator = "DoesNo
 export const LabelSelectorOperator_Gt: LabelSelectorOperator = "Gt";
 export const LabelSelectorOperator_Lt: LabelSelectorOperator = "Lt";
 
-export class GetProfileRequest {
-  id: string;
-  email: string;
+export interface GetProfileRequest {
+  id?: string;
+  email?: string;
 }
 
-export class GetChildRequest {
-  childId: string;
+export interface GetChildRequest {
+  childId?: string;
 }
 
-export class GetChildrenFromProfileRequest {
-  profileId: string;
+export interface GetChildrenFromProfileRequest {
+  profileId?: string;
 }
 
-export class ChangeChildActivationRequest {
-  childId: string;
-  active: boolean;
+export interface ChangeChildActivationRequest {
+  childId?: string;
+  active?: boolean;
 }
 
-export class GetChildrenFromProfileResponse {
-  children: apipb_models.Child[];
+export interface GetChildrenFromProfileResponse {
+  children?: apipb_models.Child[];
 }
 
-export class GetGameReleaseRequest {
-  gameId: string;
-  version: string;
-  state: RequestReleaseState;
+export interface GetGameReleaseRequest {
+  gameId?: string;
+  version?: string;
+  state?: RequestReleaseState;
 }
 
-export class SoundEnableRequest {
-  childId: string;
-  profileId: string;
-  enable: boolean;
+export interface SoundEnableRequest {
+  childId?: string;
+  profileId?: string;
+  enable?: boolean;
 }
 
-export class GameEntryRequest {
-  childId: string;
-  gameId: string;
-  type: GameEntryRequestRequestType;
-  settings: string;
-  index: number;
+export interface GameEntryRequest {
+  childId?: string;
+  gameId?: string;
+  type?: GameEntryRequestRequestType;
+  settings?: string;
+  index?: number;
 }
 
-export class PublishResponse {
-  type: number;
-  message: string;
-  token: apipb_models.UploadToken;
+export interface PublishResponse {
+  type?: number;
+  message?: string;
+  token?: apipb_models.UploadToken;
 }
 
-export class ValidateRequest {
-  gameId: string;
-  gameVersion: string;
-  newState: apipb_models.ReleaseState;
+export interface ValidateRequest {
+  gameId?: string;
+  gameVersion?: string;
+  newState?: apipb_models.ReleaseState;
 }
 
-export class UpdateIndecesRequest {
-  profileId: string;
-  childId: string;
-  gameIds: string[];
+export interface UpdateIndecesRequest {
+  profileId?: string;
+  childId?: string;
+  gameIds?: string[];
 }
 
 /**
 Get game by game_id or unique_name
 */
-export class GetGameRequest {
-  uniqueName: string;
-  gameId: string;
+export interface GetGameRequest {
+  uniqueName?: string;
+  gameId?: string;
 }
 
-export class ListGamesRequest {
-  releaseState: ListGamesRequestInnerState;
-  limit: number;
-  offset: number;
-  language: string;
+export interface ListGamesRequest {
+  releaseState?: ListGamesRequestInnerState;
+  limit?: number;
+  offset?: number;
+  language?: string;
 }
 
-export class ListItem {
-  gameId: string;
-  uniqueName: string;
-  latestVersion: string;
-  latestState: apipb_models.ReleaseState;
-  productionVersion: string;
-  storage: string;
-  archiveFormat: string;
-  releasedAt: string|number;
-  languages: string[];
+export interface ListItem {
+  gameId?: string;
+  uniqueName?: string;
+  latestVersion?: string;
+  latestState?: apipb_models.ReleaseState;
+  productionVersion?: string;
+  storage?: string;
+  archiveFormat?: string;
+  releasedAt?: string|number;
+  languages?: string[];
 }
 
-export class ListItemWithTests {
-  gameId: string;
-  uniqueName: string;
-  testingVersion: number;
-  groups: ListItemWithTestsTestGroup[];
+export interface ListItemWithTests {
+  gameId?: string;
+  uniqueName?: string;
+  testingVersion?: number;
+  groups?: ListItemWithTestsTestGroup[];
 }
 
-export class ListItemWithTestsTestGroup {
-  name: string;
-  weight: number;
-  latestVersion: string;
-  latestState: apipb_models.ReleaseState;
-  productionVersion: string;
-  storage: string;
-  archiveFormat: string;
-  releasedAt: string|number;
-  languages: string[];
+export interface ListItemWithTestsTestGroup {
+  name?: string;
+  weight?: number;
+  latestVersion?: string;
+  latestState?: apipb_models.ReleaseState;
+  productionVersion?: string;
+  storage?: string;
+  archiveFormat?: string;
+  releasedAt?: string|number;
+  languages?: string[];
 }
 
-export class GetLatestVersionsRequest {
-  state: RequestReleaseState;
-  gameIds: string[];
+export interface GetLatestVersionsRequest {
+  state?: RequestReleaseState;
+  gameIds?: string[];
 /**
 Device Capabilities
 */
-  capabilities: string[];
+  capabilities?: string[];
 }
 
-export class GameAndVersion {
-  gameId: string;
-  version: string;
-  tarballUrl: string;
+export interface GameAndVersion {
+  gameId?: string;
+  version?: string;
+  tarballUrl?: string;
 }
 
-export class GameVersionsResponse {
-  results: GameAndVersion[];
+export interface GameVersionsResponse {
+  results?: GameAndVersion[];
 }
 
 /**
 Search Service
 */
-export class IndexRequest {
+export interface IndexRequest {
 }
 
-export class SearchResult {
-  gameId: string;
-  score: number;
+export interface SearchResult {
+  gameId?: string;
+  score?: number;
 }
 
-export class SearchRequest {
-  query: string;
-  state: RequestReleaseState;
+export interface SearchRequest {
+  query?: string;
+  state?: RequestReleaseState;
 }
 
-export class SearchResponse {
-  type: number;
-  results: SearchResult[];
+export interface SearchResponse {
+  type?: number;
+  results?: SearchResult[];
 }
 
 /**
 Common
 */
-export class Response {
-  type: number;
-  message: string;
+export interface Response {
+  type?: number;
+  message?: string;
 }
 
 /**
 A label selector requirement is a selector that contains values, a key, and an operator
 that relates the key and values.
 */
-export class LabelSelectorRequirement {
+export interface LabelSelectorRequirement {
 /**
 key is the label key that the selector applies to.
 */
-  key: string;
+  key?: string;
 /**
 operator represents a key's relationship to a set of values.
 Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
 */
-  operator: LabelSelectorOperator;
+  operator?: LabelSelectorOperator;
 /**
 values is an array of string values. If the operator is In or NotIn,
 the values array must be non-empty. If the operator is Exists or DoesNotExist,
 the values array must be empty. If the operator is Gt or Lt, the values
 array must have a single element, which will be interpreted as an integer.
 */
-  values: string[];
+  values?: string[];
 }
 
 /**
 An empty label selector term matches all objects. A null label selector term
 matches no objects.
 */
-export class LabelSelectorTerm {
+export interface LabelSelectorTerm {
 /**
 expressions is a list of label selector requirements. The requirements are ANDed.
 */
-  expressions: LabelSelectorRequirement[];
+  expressions?: LabelSelectorRequirement[];
 }
 
 /**
@@ -229,10 +229,10 @@ A label selector represents the union of the results of one or more label querie
 over a set of labels; that is, it represents the OR of the selectors represented
 by the labelSelectorTerms.
 */
-export class LabelSelector {
+export interface LabelSelector {
 /**
 terms is a list of label selector terms. The terms are ORed.
 */
-  terms: LabelSelectorTerm[];
+  terms?: LabelSelectorTerm[];
 }
 

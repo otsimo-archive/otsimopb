@@ -10,34 +10,34 @@ export const ColumnType_DATE: ColumnType = "DATE";
 export const ColumnType_DATE_TIME: ColumnType = "DATE_TIME";
 export const ColumnType_TIME_OF_DAY: ColumnType = "TIME_OF_DAY";
 
-export class Column {
-  type: ColumnType;
-  name: string;
+export interface Column {
+  type?: ColumnType;
+  name?: string;
 }
 
-export class TimeOfDay {
-  hours: number;
-  minutes: number;
-  seconds: number;
-  milliseconds: number;
+export interface TimeOfDay {
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds?: number;
 }
 
-export class RowValue {
-  str: string;
-  int: number;
-  real: number;
-  date: string|number;
-  dateOfTime: string|number;
-  timeOfDay: TimeOfDay;
+export interface RowValue {
+  str?: string;
+  int?: number;
+  real?: number;
+  date?: string|number;
+  dateOfTime?: string|number;
+  timeOfDay?: TimeOfDay;
 }
 
-export class Row {
-  values: RowValue[];
+export interface Row {
+  values?: RowValue[];
 }
 
-export class DataSet {
-  label: string;
-  columns: Column[];
-  rows: Row[];
+export interface DataSet {
+  label?: string;
+  columns?: Column[];
+  rows?: Row[];
 }
 

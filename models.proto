@@ -153,7 +153,7 @@ message GameOption {
     repeated string enum = 5;
     string format = 6;
     double min_value = 7;
-    double amx_value = 8;
+    double max_value = 8;
 }
 
 message Game{

@@ -3,24 +3,24 @@
 
 import * as apipb_models from "./models.pb";
 
-export class DeviceInfo {
-  vendorId: string;
-  clientSdk: string;
-  bundleIdentifier: string;
-  bundleVersion: string;
-  bundleShortVersion: string;
-  deviceType: string;
-  deviceName: string;
-  osName: string;
-  systemVersion: string;
-  languageCode: string;
-  countryCode: string;
+export interface DeviceInfo {
+  vendorId?: string;
+  clientSdk?: string;
+  bundleIdentifier?: string;
+  bundleVersion?: string;
+  bundleShortVersion?: string;
+  deviceType?: string;
+  deviceName?: string;
+  osName?: string;
+  systemVersion?: string;
+  languageCode?: string;
+  countryCode?: string;
 }
 
-export class GameInfo {
-  id: string;
-  version: string;
-  language: string;
+export interface GameInfo {
+  id?: string;
+  version?: string;
+  language?: string;
 }
 
 /**
@@ -29,181 +29,181 @@ Points are represented as latitude-longitude pairs in the E7 representation
 Latitudes should be in the range +/- 90 degrees and longitude should be in
 the range +/- 180 degrees (inclusive).
 */
-export class Point {
-  latitude: number;
-  longitude: number;
+export interface Point {
+  latitude?: number;
+  longitude?: number;
 }
 
-export class Vector3 {
-  x: number;
-  y: number;
-  z: number;
+export interface Vector3 {
+  x?: number;
+  y?: number;
+  z?: number;
 }
 
-export class MotionData {
-  gravity: Vector3;
-  userAcceleration: Vector3;
-  rotationRate: Vector3;
-  attitude: Vector3;
+export interface MotionData {
+  gravity?: Vector3;
+  userAcceleration?: Vector3;
+  rotationRate?: Vector3;
+  attitude?: Vector3;
 }
 
-export class GestureData {
-  velocity: number;
-  width: number;
-  height: number;
-  duration: number;
+export interface GestureData {
+  velocity?: number;
+  width?: number;
+  height?: number;
+  duration?: number;
 }
 
-export class Event {
+export interface Event {
 /**
 UserId is profile id or child id
 */
-  userId: string;
+  userId?: string;
 /**
 Child is secondary id
 */
-  childId: string;
+  childId?: string;
 /**
 Event the event name
 */
-  event: string;
+  event?: string;
 /**
 Timestamp is seconds unix time
 */
-  timestamp: string|number;
+  timestamp?: string|number;
 /**
 Game is the game information
 */
-  game: GameInfo;
+  game?: GameInfo;
 /**
 Device is device information,
 */
-  device: DeviceInfo;
+  device?: DeviceInfo;
 /**
 AppId is the client app id
 */
-  appId: string;
+  appId?: string;
 /**
 Loc is the location of user
 */
-  loc: Point;
+  loc?: Point;
 /**
 EventId is Client side event id in order to track whether event is delivered successfully
 */
-  eventId: string;
+  eventId?: string;
 /**
 IsResend is true if client is trying to send a failed event
 */
-  isResend: boolean;
+  isResend?: boolean;
 /**
 Payload is a json data
 */
-  payload: string;
+  payload?: string;
 /**
 Age is child's age in month
 */
-  age: number;
+  age?: number;
 /**
 Child gender
 */
-  gender: apipb_models.Gender;
+  gender?: apipb_models.Gender;
 /**
 MotionData keeps motion data of device
 */
-  motionData: MotionData;
-  gestureData: GestureData;
+  motionData?: MotionData;
+  gestureData?: GestureData;
 }
 
-export class AppEventData {
-  event: string;
-  appId: string;
-  device: DeviceInfo;
-  timestamp: string|number;
-  payload: string;
-  loc: Point;
+export interface AppEventData {
+  event?: string;
+  appId?: string;
+  device?: DeviceInfo;
+  timestamp?: string|number;
+  payload?: string;
+  loc?: Point;
 /**
 EventId is Client side event id in order to track whether event is delivered successfully
 */
-  eventId: string;
+  eventId?: string;
 /**
 IsResend is true if client is trying to send a failed event
 */
-  isResend: boolean;
+  isResend?: boolean;
 /**
 UserId is profile id or child id
 */
-  userId: string;
+  userId?: string;
 }
 
-export class BatchEventData {
+export interface BatchEventData {
 /**
 Event the event name
 */
-  event: string;
+  event?: string;
 /**
 EventId is Client side event id in order to track whether event is delivered successfully
 */
-  eventId: string;
+  eventId?: string;
 /**
 Timestamp is seconds unix time
 */
-  timestamp: string|number;
+  timestamp?: string|number;
 /**
 Game is the game information
 */
-  game: GameInfo;
+  game?: GameInfo;
 /**
 Loc is the location of user
 */
-  loc: Point;
+  loc?: Point;
 /**
 IsResend is true if client is trying to send a failed event
 */
-  isResend: boolean;
+  isResend?: boolean;
 /**
 Payload is a json data
 */
-  payload: string;
+  payload?: string;
 /**
 MotionData keeps motion data of device
 */
-  motionData: MotionData;
-  gestureData: GestureData;
+  motionData?: MotionData;
+  gestureData?: GestureData;
 }
 
-export class BatchEvent {
+export interface BatchEvent {
 /**
 UserId is profile id or child id
 */
-  userId: string;
+  userId?: string;
 /**
 Child is secondary id
 */
-  childId: string;
+  childId?: string;
 /**
 AppId is the client app id
 */
-  appId: string;
+  appId?: string;
 /**
 Device is device information,
 */
-  device: DeviceInfo;
+  device?: DeviceInfo;
 /**
 Age is child's age in month
 */
-  age: number;
+  age?: number;
 /**
 Child Gender
 */
-  gender: apipb_models.Gender;
+  gender?: apipb_models.Gender;
 /**
 Data is
 */
-  data: BatchEventData[];
+  data?: BatchEventData[];
 }
 
-export class EventResponse {
-  eventId: string;
-  success: boolean;
+export interface EventResponse {
+  eventId?: string;
+  success?: boolean;
 }
 

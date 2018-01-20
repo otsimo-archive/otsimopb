@@ -9,55 +9,55 @@ export const CategoryReqTask_ADD: CategoryReqTask = "ADD";
 export const CategoryReqTask_UPDATE: CategoryReqTask = "UPDATE";
 export const CategoryReqTask_DELETE: CategoryReqTask = "DELETE";
 
-export class AllGameReleases {
-  gameId: string;
-  releases: AllGameReleasesMiniRelease[];
+export interface AllGameReleases {
+  gameId?: string;
+  releases?: AllGameReleasesMiniRelease[];
 }
 
-export class AllGameReleasesMiniRelease {
-  version: string;
-  releasedAt: string|number;
-  releaseState: apipb_models.ReleaseState;
+export interface AllGameReleasesMiniRelease {
+  version?: string;
+  releasedAt?: string|number;
+  releaseState?: apipb_models.ReleaseState;
 }
 
-export class GameCategoryLocale {
-  language: string;
-  title: string;
-  image: string;
+export interface GameCategoryLocale {
+  language?: string;
+  title?: string;
+  image?: string;
 }
 
-export class GameCategory {
-  name: string;
-  locales: GameCategoryLocale[];
-  revision: number;
-  labels: { [key: string]: string };
+export interface GameCategory {
+  name?: string;
+  locales?: GameCategoryLocale[];
+  revision?: number;
+  labels?: { [key: string]: string };
 		}
 
-export class CategoryReq {
-  task: CategoryReqTask;
-  category: GameCategory;
-  knownRevision: number;
+export interface CategoryReq {
+  task?: CategoryReqTask;
+  category?: GameCategory;
+  knownRevision?: number;
 }
 
-export class CategoryListReq {
+export interface CategoryListReq {
 }
 
-export class CategoryList {
-  categories: GameCategory[];
+export interface CategoryList {
+  categories?: GameCategory[];
 }
 
-export class GetAllGamesReq {
+export interface GetAllGamesReq {
 /**
 Games that user wants the data of, if it is empty returns all games
 */
-  games: apipb_messages.GameAndVersion[];
+  games?: apipb_messages.GameAndVersion[];
 /**
 Language filters games. If language field is empty than returns games with all languages.
 */
-  language: string;
+  language?: string;
 }
 
-export class GetAllGamesRes {
-  games: apipb_models.GameRelease[];
+export interface GetAllGamesRes {
+  games?: apipb_models.GameRelease[];
 }
 
