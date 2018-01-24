@@ -165,5 +165,5 @@ message AllGamesSummaryReq{
 
 service GameProvider{
     rpc Single(apipb.GetGameRequest) returns(GameSummaryInfo);
-    rpc All(AllGamesSummaryReq) returns(AllGamesSummaryReq);
+    rpc All(AllGamesSummaryReq) returns(AllGamesSummary);
 }
