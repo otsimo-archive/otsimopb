@@ -147,6 +147,9 @@
 		CategoryList
 		GetAllGamesReq
 		GetAllGamesRes
+		GameSummaryInfo
+		AllGamesSummary
+		AllGamesSummaryReq
 		GamePlayingRequest
 		GamePlayingReply
 		SimplifiedReq
