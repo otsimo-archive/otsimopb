@@ -149,3 +149,21 @@ service RegistryService {
     // List the client names
     rpc ListClients(ListClientReq)returns(ClientList);
 }
+
+message GameSummaryInfo{
+    string game_id = 1;
+    string unique_name = 2;
+    bool is_premium = 3;
+}
+
+message AllGamesSummary{
+    repeated GameSummaryInfo games = 1;
+}
+
+message AllGamesSummaryReq{
+}
+
+service GameProvider{
+    rpc Single(apipb.GetGameRequest) returns(GameSummaryInfo);
+    rpc All(AllGamesSummaryReq) returns(AllGamesSummaryReq);
+}

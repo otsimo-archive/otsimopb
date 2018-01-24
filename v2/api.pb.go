@@ -31,6 +31,9 @@
 		RevokeClientReq
 		ClientList
 		ListClientReq
+		GameSummaryInfo
+		AllGamesSummary
+		AllGamesSummaryReq
 */
 package v2
 

@@ -114,3 +114,16 @@ export interface ClientList {
 export interface ListClientReq {
 }
 
+export interface GameSummaryInfo {
+  gameId?: string;
+  uniqueName?: string;
+  isPremium?: boolean;
+}
+
+export interface AllGamesSummary {
+  games?: GameSummaryInfo[];
+}
+
+export interface AllGamesSummaryReq {
+}
+
