@@ -61,4 +61,5 @@ message UpdateProgressReq {
     int32 level_star_count = 3;
     // Badges earned by user
     repeated apipb.Badge badges_earned = 4;
+    string child_id = 5;
 }

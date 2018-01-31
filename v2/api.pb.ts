@@ -41,5 +41,6 @@ put -1 in order not to update
 Badges earned by user
 */
   badgesEarned?: apipb_models.Badge[];
+  childId?: string;
 }
 
