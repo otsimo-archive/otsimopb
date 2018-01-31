@@ -71,7 +71,17 @@ message Child{
     string locale = 13                  [(gogoproto.moretags) = "bson:\"locale,omitempty\""];      
     int64 created_at = 15               [(gogoproto.moretags) = "bson:\"created_at,omitempty\""];
     int64 last_updated = 16             [(gogoproto.moretags) = "bson:\"last_updated,omitempty\""];
-    map<string,string>child_info = 17   [(gogoproto.moretags) = "bson:\"child_info,omitempty\""];    
+    map<string,string>child_info = 17   [(gogoproto.moretags) = "bson:\"child_info,omitempty\""]; 
+    int32 total_star_count = 18         [(gogoproto.moretags) = "bson:\"total_star_count,omitempty\""]; 
+    int32 level_star_count = 19         [(gogoproto.moretags) = "bson:\"level_star_count,omitempty\""]; 
+    int32 level = 20                    [(gogoproto.moretags) = "bson:\"level,omitempty\""]; 
+    repeated Badge badges = 21          [(gogoproto.moretags) = "bson:\"badges,omitempty\""]; 
+}
+
+message Badge {
+    string name = 1;
+    int64 created_at = 2;
+    int32 level = 3;
 }
 
 message Author{

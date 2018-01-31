@@ -24,3 +24,22 @@ export interface UpdateChildReq {
   child?: apipb_models.Child;
 }
 
+export interface UpdateProgressReq {
+/**
+number of stars earned by user
+*/
+  starsEarned?: number;
+/**
+put -1 to not update
+*/
+  newLevel?: number;
+/**
+put -1 in order not to update
+*/
+  levelStarCount?: number;
+/**
+Badges earned by user
+*/
+  badgesEarned?: apipb_models.Badge[];
+}
+

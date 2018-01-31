@@ -30,6 +30,7 @@ service ApiService {
     rpc UpdateGameIndices (apipb.UpdateIndecesRequest) returns (apipb.Child);
 
     rpc Statistics (StatisticsReq) returns (StatisticsRes);
+    rpc UpdateProgress(UpdateProgressReq) returns (apipb.Child);
 }
 
 message StatisticsReq {
@@ -49,4 +50,15 @@ message UpdateProfileReq {
 message UpdateChildReq {
     google.protobuf.FieldMask fields = 1;
     apipb.Child child = 2;
+}
+
+message UpdateProgressReq {
+    // number of stars earned by user
+    int32 stars_earned = 1;
+    // put -1 to not update
+    int32 new_level = 2;
+    // put -1 in order not to update
+    int32 level_star_count = 3;
+    // Badges earned by user
+    repeated apipb.Badge badges_earned = 4;
 }

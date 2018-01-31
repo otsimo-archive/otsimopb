@@ -132,6 +132,7 @@
 		Profile
 		ChildGameEntry
 		Child
+		Badge
 		Author
 		GameMetadata
 		GameManifest

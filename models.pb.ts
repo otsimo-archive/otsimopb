@@ -67,7 +67,17 @@ export interface Child {
   createdAt?: string|number;
   lastUpdated?: string|number;
   childInfo?: { [key: string]: string };
-		}
+		  totalStarCount?: number;
+  levelStarCount?: number;
+  level?: number;
+  badges?: Badge[];
+}
+
+export interface Badge {
+  name?: string;
+  createdAt?: string|number;
+  level?: number;
+}
 
 export interface Author {
   name?: string;
