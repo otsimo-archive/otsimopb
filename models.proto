@@ -109,6 +109,8 @@ message GameMetadata{
     string info_slug = 9            [(gogoproto.moretags) = "bson:\"info_slug,omitempty\""];
     //Assets are asset folders or paths for this language
     repeated string assets = 10     [(gogoproto.moretags) = "bson:\"assets,omitempty\""];
+    //Localized Annotations
+    map<string,string> annotations = 11 [(gogoproto.moretags) = "bson:\"annotations,omitempty\""];
 }
 
 message GameManifest{

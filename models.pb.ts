@@ -122,7 +122,11 @@ InfoSlug is the id of the content which describes how to play this game
 Assets are asset folders or paths for this language
 */
   assets?: string[];
-}
+/**
+Localized Annotations
+*/
+  annotations?: { [key: string]: string };
+		}
 
 export interface GameManifest {
 /**
