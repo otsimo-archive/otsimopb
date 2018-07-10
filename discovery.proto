@@ -1,7 +1,6 @@
 syntax = "proto3";
 package apipb;
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-import "content.proto";
+import weak "gogoproto/gogo.proto";
 
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;
@@ -33,7 +32,6 @@ message OtsimoServices{
     
     map<string,string> services = 20;
     map<string,string> game_storage_providers = 21;
-    map<string,SelfLearningConfig> self_learning_configs = 22;
     map<string,string> configs = 23;
 }
 
@@ -44,16 +42,6 @@ message DiscoveryRequest {
     string country_code = 4;
     string app_bundle_id = 5;
     string app_bundle_version = 6;
-}
-
-message SelfLearningSegment{
-    string title = 1;
-    ContentListRequest base_query = 2;
-}
-
-message SelfLearningConfig{
-    string language = 1;
-    repeated SelfLearningSegment segments = 2;
 }
 
 service Discovery{

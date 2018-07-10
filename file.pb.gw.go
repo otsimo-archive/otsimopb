@@ -32,8 +32,10 @@ func request_File_RequestStoreBig_0(ctx context.Context, marshaler runtime.Marsh
 	var protoReq UploadReq
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	if req.ContentLength > 0 {
+		if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+			return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		}
 	}
 
 	msg, err := client.RequestStoreBig(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -45,8 +47,10 @@ func request_File_Lookup_0(ctx context.Context, marshaler runtime.Marshaler, cli
 	var protoReq LookupReq
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	if req.ContentLength > 0 {
+		if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+			return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		}
 	}
 
 	msg, err := client.Lookup(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -82,10 +86,18 @@ func RegisterFileHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux,
 // RegisterFileHandler registers the http handlers for service File to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
 func RegisterFileHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewFileClient(conn)
+	return RegisterFileHandlerClient(ctx, mux, NewFileClient(conn))
+}
+
+// RegisterFileHandler registers the http handlers for service File to "mux".
+// The handlers forward requests to the grpc endpoint over the given implementation of "FileClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "FileClient"
+// doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
+// "FileClient" to call the correct interceptors.
+func RegisterFileHandlerClient(ctx context.Context, mux *runtime.ServeMux, client FileClient) error {
 
 	mux.Handle("POST", pattern_File_RequestStoreBig_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
+		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
 			go func(done <-chan struct{}, closed <-chan bool) {
@@ -114,7 +126,7 @@ func RegisterFileHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 	})
 
 	mux.Handle("POST", pattern_File_Lookup_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
+		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
 			go func(done <-chan struct{}, closed <-chan bool) {

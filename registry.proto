@@ -3,7 +3,7 @@ package apipb;
 
 import "messages.proto";
 import "models.proto";
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import weak "gogoproto/gogo.proto";
 
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;

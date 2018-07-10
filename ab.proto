@@ -1,7 +1,7 @@
 syntax = "proto3";
 package otsimo.abtest;
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import weak "gogoproto/gogo.proto";
 
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;

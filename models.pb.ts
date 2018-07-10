@@ -221,6 +221,8 @@ export interface GameOption {
   format?: string;
   minValue?: number;
   maxValue?: number;
+  image?: string;
+  sortKey?: string;
 }
 
 export interface Game {

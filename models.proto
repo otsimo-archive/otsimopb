@@ -1,7 +1,7 @@
 syntax = "proto3";
 package apipb;
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import weak "gogoproto/gogo.proto";
 
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;
@@ -166,6 +166,8 @@ message GameOption {
     string format = 6;
     double min_value = 7;
     double max_value = 8;
+    string image = 9;
+    string sort_key = 10;
 }
 
 message Game{
