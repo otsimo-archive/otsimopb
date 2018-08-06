@@ -157,6 +157,12 @@ message GameManifest{
     map<string, GameOption> options = 24     [(gogoproto.moretags) = "bson:\"options\""];
 }
 
+message GameEnumGroup {
+    string key = 1;
+    string default_value = 2;
+    repeated string values = 3;
+}
+
 message GameOption {
     string id = 1;
     string type = 2;
@@ -168,7 +174,7 @@ message GameOption {
     double max_value = 8;
     string image = 9;
     string sort_key = 10;
-    string group_key = 11;
+    repeated GameEnumGroup enum_groups = 11;
 }
 
 message Game{

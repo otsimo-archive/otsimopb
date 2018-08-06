@@ -119,6 +119,7 @@
 		Author
 		GameMetadata
 		GameManifest
+		GameEnumGroup
 		GameOption
 		Game
 		GameRelease
