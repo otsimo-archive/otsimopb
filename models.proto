@@ -168,6 +168,7 @@ message GameOption {
     double max_value = 8;
     string image = 9;
     string sort_key = 10;
+    string group_key = 11;
 }
 
 message Game{
