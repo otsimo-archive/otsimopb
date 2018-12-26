@@ -7,13 +7,19 @@ export const ContentListRequestListStatus_BOTH: ContentListRequestListStatus = "
 export const ContentListRequestListStatus_ONLY_DRAFT: ContentListRequestListStatus = "ONLY_DRAFT";
 export const ContentListRequestListStatus_ONLY_APPROVED: ContentListRequestListStatus = "ONLY_APPROVED";
 
+export const ALL_ContentListRequestListStatus_VALUES: ContentListRequestListStatus[] = [ContentListRequestListStatus_BOTH,ContentListRequestListStatus_ONLY_DRAFT,ContentListRequestListStatus_ONLY_APPROVED];
+
 export type ContentListRequestSortBy =  "WEIGHT"  | "TIME" ;
 export const ContentListRequestSortBy_WEIGHT: ContentListRequestSortBy = "WEIGHT";
 export const ContentListRequestSortBy_TIME: ContentListRequestSortBy = "TIME";
 
+export const ALL_ContentListRequestSortBy_VALUES: ContentListRequestSortBy[] = [ContentListRequestSortBy_WEIGHT,ContentListRequestSortBy_TIME];
+
 export type ContentListRequestSortOrder =  "DSC"  | "ASC" ;
 export const ContentListRequestSortOrder_DSC: ContentListRequestSortOrder = "DSC";
 export const ContentListRequestSortOrder_ASC: ContentListRequestSortOrder = "ASC";
+
+export const ALL_ContentListRequestSortOrder_VALUES: ContentListRequestSortOrder[] = [ContentListRequestSortOrder_DSC,ContentListRequestSortOrder_ASC];
 
 export interface Content {
   slug?: string;
@@ -32,6 +38,20 @@ export interface Content {
   params?: { [key: string]: string };
 		}
 
+export const Content_slug = "slug";
+export const Content_title = "title";
+export const Content_language = "language";
+export const Content_date = "date";
+export const Content_draft = "draft";
+export const Content_writtenAt = "written_at";
+export const Content_author = "author";
+export const Content_category = "category";
+export const Content_url = "url";
+export const Content_weight = "weight";
+export const Content_keywords = "keywords";
+export const Content_categoryWeight = "category_weight";
+export const Content_markdown = "markdown";
+export const Content_params = "params";
 export interface ContentListRequest {
   status?: ContentListRequestListStatus;
   limit?: number;
@@ -47,12 +67,27 @@ export interface ContentListRequest {
   exceptCategories?: string[];
 }
 
+export const ContentListRequest_status = "status";
+export const ContentListRequest_limit = "limit";
+export const ContentListRequest_category = "category";
+export const ContentListRequest_offset = "offset";
+export const ContentListRequest_language = "language";
+export const ContentListRequest_onlyHtmlUrl = "only_html_url";
+export const ContentListRequest_sort = "sort";
+export const ContentListRequest_order = "order";
+export const ContentListRequest_profileId = "profile_id";
+export const ContentListRequest_clientVersion = "client_version";
+export const ContentListRequest_categories = "categories";
+export const ContentListRequest_exceptCategories = "except_categories";
 export interface ContentListResponse {
   contents?: Content[];
   assetVersion?: number;
 }
 
+export const ContentListResponse_contents = "contents";
+export const ContentListResponse_assetVersion = "asset_version";
 export interface ContentGetRequest {
   slug?: string;
 }
 
+export const ContentGetRequest_slug = "slug";

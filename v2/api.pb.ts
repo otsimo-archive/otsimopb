@@ -10,20 +10,27 @@ export interface StatisticsReq {
   timeTo?: string|number;
 }
 
+export const StatisticsReq_timeFrom = "time_from";
+export const StatisticsReq_timeTo = "time_to";
 export interface StatisticsRes {
   statistics?: { [key: string]: string|number };
 		}
 
+export const StatisticsRes_statistics = "statistics";
 export interface UpdateProfileReq {
   fields?: google_protobuf_google_protobuf_field_mask.FieldMask;
   profile?: apipb_models.Profile;
 }
 
+export const UpdateProfileReq_fields = "fields";
+export const UpdateProfileReq_profile = "profile";
 export interface UpdateChildReq {
   fields?: google_protobuf_google_protobuf_field_mask.FieldMask;
   child?: apipb_models.Child;
 }
 
+export const UpdateChildReq_fields = "fields";
+export const UpdateChildReq_child = "child";
 export interface UpdateProgressReq {
 /**
 number of stars earned by user
@@ -44,3 +51,8 @@ Badges earned by user
   childId?: string;
 }
 
+export const UpdateProgressReq_starsEarned = "stars_earned";
+export const UpdateProgressReq_newLevel = "new_level";
+export const UpdateProgressReq_levelStarCount = "level_star_count";
+export const UpdateProgressReq_badgesEarned = "badges_earned";
+export const UpdateProgressReq_childId = "child_id";

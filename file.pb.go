@@ -7,8 +7,10 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
 import io "io"
 
@@ -16,6 +18,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type FileMetadata struct {
 	// Key is the unique name of the file in collection
@@ -31,13 +39,44 @@ type FileMetadata struct {
 	// Owner of the file, if the value is empty means that its open to everyone
 	Owner string `protobuf:"bytes,6,opt,name=owner,proto3" json:"owner,omitempty"`
 	// Url is the stored file url
-	Url string `protobuf:"bytes,7,opt,name=url,proto3" json:"url,omitempty"`
+	Url                  string   `protobuf:"bytes,7,opt,name=url,proto3" json:"url,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *FileMetadata) Reset()                    { *m = FileMetadata{} }
-func (m *FileMetadata) String() string            { return proto.CompactTextString(m) }
-func (*FileMetadata) ProtoMessage()               {}
-func (*FileMetadata) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{0} }
+func (m *FileMetadata) Reset()         { *m = FileMetadata{} }
+func (m *FileMetadata) String() string { return proto.CompactTextString(m) }
+func (*FileMetadata) ProtoMessage()    {}
+func (*FileMetadata) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{0}
+}
+func (m *FileMetadata) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *FileMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_FileMetadata.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *FileMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileMetadata.Merge(dst, src)
+}
+func (m *FileMetadata) XXX_Size() int {
+	return m.Size()
+}
+func (m *FileMetadata) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileMetadata.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FileMetadata proto.InternalMessageInfo
 
 func (m *FileMetadata) GetKey() string {
 	if m != nil {
@@ -90,13 +129,44 @@ func (m *FileMetadata) GetUrl() string {
 
 type UploadReq struct {
 	// Metadata list of upload files, keys have to be unique in the list
-	Metadata []*FileMetadata `protobuf:"bytes,1,rep,name=metadata" json:"metadata,omitempty"`
+	Metadata             []*FileMetadata `protobuf:"bytes,1,rep,name=metadata" json:"metadata,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *UploadReq) Reset()                    { *m = UploadReq{} }
-func (m *UploadReq) String() string            { return proto.CompactTextString(m) }
-func (*UploadReq) ProtoMessage()               {}
-func (*UploadReq) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{1} }
+func (m *UploadReq) Reset()         { *m = UploadReq{} }
+func (m *UploadReq) String() string { return proto.CompactTextString(m) }
+func (*UploadReq) ProtoMessage()    {}
+func (*UploadReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{1}
+}
+func (m *UploadReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *UploadReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_UploadReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *UploadReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UploadReq.Merge(dst, src)
+}
+func (m *UploadReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *UploadReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_UploadReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UploadReq proto.InternalMessageInfo
 
 func (m *UploadReq) GetMetadata() []*FileMetadata {
 	if m != nil {
@@ -106,13 +176,44 @@ func (m *UploadReq) GetMetadata() []*FileMetadata {
 }
 
 type UploadRes struct {
-	UploadUrls map[string]string `protobuf:"bytes,1,rep,name=upload_urls,json=uploadUrls" json:"upload_urls,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	UploadUrls           map[string]string `protobuf:"bytes,1,rep,name=upload_urls,json=uploadUrls" json:"upload_urls,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *UploadRes) Reset()                    { *m = UploadRes{} }
-func (m *UploadRes) String() string            { return proto.CompactTextString(m) }
-func (*UploadRes) ProtoMessage()               {}
-func (*UploadRes) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{2} }
+func (m *UploadRes) Reset()         { *m = UploadRes{} }
+func (m *UploadRes) String() string { return proto.CompactTextString(m) }
+func (*UploadRes) ProtoMessage()    {}
+func (*UploadRes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{2}
+}
+func (m *UploadRes) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *UploadRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_UploadRes.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *UploadRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UploadRes.Merge(dst, src)
+}
+func (m *UploadRes) XXX_Size() int {
+	return m.Size()
+}
+func (m *UploadRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_UploadRes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UploadRes proto.InternalMessageInfo
 
 func (m *UploadRes) GetUploadUrls() map[string]string {
 	if m != nil {
@@ -122,14 +223,45 @@ func (m *UploadRes) GetUploadUrls() map[string]string {
 }
 
 type StoreSmallReq struct {
-	Metadata *FileMetadata `protobuf:"bytes,1,opt,name=metadata" json:"metadata,omitempty"`
-	Data     []byte        `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Metadata             *FileMetadata `protobuf:"bytes,1,opt,name=metadata" json:"metadata,omitempty"`
+	Data                 []byte        `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *StoreSmallReq) Reset()                    { *m = StoreSmallReq{} }
-func (m *StoreSmallReq) String() string            { return proto.CompactTextString(m) }
-func (*StoreSmallReq) ProtoMessage()               {}
-func (*StoreSmallReq) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{3} }
+func (m *StoreSmallReq) Reset()         { *m = StoreSmallReq{} }
+func (m *StoreSmallReq) String() string { return proto.CompactTextString(m) }
+func (*StoreSmallReq) ProtoMessage()    {}
+func (*StoreSmallReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{3}
+}
+func (m *StoreSmallReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *StoreSmallReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_StoreSmallReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *StoreSmallReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StoreSmallReq.Merge(dst, src)
+}
+func (m *StoreSmallReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *StoreSmallReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_StoreSmallReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StoreSmallReq proto.InternalMessageInfo
 
 func (m *StoreSmallReq) GetMetadata() *FileMetadata {
 	if m != nil {
@@ -146,13 +278,44 @@ func (m *StoreSmallReq) GetData() []byte {
 }
 
 type StoreRes struct {
-	Metadata *FileMetadata `protobuf:"bytes,1,opt,name=metadata" json:"metadata,omitempty"`
+	Metadata             *FileMetadata `protobuf:"bytes,1,opt,name=metadata" json:"metadata,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *StoreRes) Reset()                    { *m = StoreRes{} }
-func (m *StoreRes) String() string            { return proto.CompactTextString(m) }
-func (*StoreRes) ProtoMessage()               {}
-func (*StoreRes) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{4} }
+func (m *StoreRes) Reset()         { *m = StoreRes{} }
+func (m *StoreRes) String() string { return proto.CompactTextString(m) }
+func (*StoreRes) ProtoMessage()    {}
+func (*StoreRes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{4}
+}
+func (m *StoreRes) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *StoreRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_StoreRes.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *StoreRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StoreRes.Merge(dst, src)
+}
+func (m *StoreRes) XXX_Size() int {
+	return m.Size()
+}
+func (m *StoreRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_StoreRes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StoreRes proto.InternalMessageInfo
 
 func (m *StoreRes) GetMetadata() *FileMetadata {
 	if m != nil {
@@ -163,13 +326,44 @@ func (m *StoreRes) GetMetadata() *FileMetadata {
 
 type LookupReq struct {
 	// Selector the files. "key", "collection" and "type" also part of labels
-	Selector *LabelSelector `protobuf:"bytes,1,opt,name=selector" json:"selector,omitempty"`
+	Selector             *LabelSelector `protobuf:"bytes,1,opt,name=selector" json:"selector,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *LookupReq) Reset()                    { *m = LookupReq{} }
-func (m *LookupReq) String() string            { return proto.CompactTextString(m) }
-func (*LookupReq) ProtoMessage()               {}
-func (*LookupReq) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{5} }
+func (m *LookupReq) Reset()         { *m = LookupReq{} }
+func (m *LookupReq) String() string { return proto.CompactTextString(m) }
+func (*LookupReq) ProtoMessage()    {}
+func (*LookupReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{5}
+}
+func (m *LookupReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *LookupReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_LookupReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *LookupReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LookupReq.Merge(dst, src)
+}
+func (m *LookupReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *LookupReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_LookupReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LookupReq proto.InternalMessageInfo
 
 func (m *LookupReq) GetSelector() *LabelSelector {
 	if m != nil {
@@ -179,13 +373,44 @@ func (m *LookupReq) GetSelector() *LabelSelector {
 }
 
 type LookupRes struct {
-	Metadata []*FileMetadata `protobuf:"bytes,1,rep,name=metadata" json:"metadata,omitempty"`
+	Metadata             []*FileMetadata `protobuf:"bytes,1,rep,name=metadata" json:"metadata,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *LookupRes) Reset()                    { *m = LookupRes{} }
-func (m *LookupRes) String() string            { return proto.CompactTextString(m) }
-func (*LookupRes) ProtoMessage()               {}
-func (*LookupRes) Descriptor() ([]byte, []int) { return fileDescriptorFile, []int{6} }
+func (m *LookupRes) Reset()         { *m = LookupRes{} }
+func (m *LookupRes) String() string { return proto.CompactTextString(m) }
+func (*LookupRes) ProtoMessage()    {}
+func (*LookupRes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_file_5fb73e0ee18f949b, []int{6}
+}
+func (m *LookupRes) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *LookupRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_LookupRes.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *LookupRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LookupRes.Merge(dst, src)
+}
+func (m *LookupRes) XXX_Size() int {
+	return m.Size()
+}
+func (m *LookupRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_LookupRes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LookupRes proto.InternalMessageInfo
 
 func (m *LookupRes) GetMetadata() []*FileMetadata {
 	if m != nil {
@@ -196,8 +421,10 @@ func (m *LookupRes) GetMetadata() []*FileMetadata {
 
 func init() {
 	proto.RegisterType((*FileMetadata)(nil), "otsimo.FileMetadata")
+	proto.RegisterMapType((map[string]string)(nil), "otsimo.FileMetadata.LabelsEntry")
 	proto.RegisterType((*UploadReq)(nil), "otsimo.UploadReq")
 	proto.RegisterType((*UploadRes)(nil), "otsimo.UploadRes")
+	proto.RegisterMapType((map[string]string)(nil), "otsimo.UploadRes.UploadUrlsEntry")
 	proto.RegisterType((*StoreSmallReq)(nil), "otsimo.StoreSmallReq")
 	proto.RegisterType((*StoreRes)(nil), "otsimo.StoreRes")
 	proto.RegisterType((*LookupReq)(nil), "otsimo.LookupReq")
@@ -212,8 +439,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for File service
-
+// FileClient is the client API for File service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type FileClient interface {
 	StoreSmall(ctx context.Context, in *StoreSmallReq, opts ...grpc.CallOption) (*StoreRes, error)
 	RequestStoreBig(ctx context.Context, in *UploadReq, opts ...grpc.CallOption) (*UploadRes, error)
@@ -230,7 +458,7 @@ func NewFileClient(cc *grpc.ClientConn) FileClient {
 
 func (c *fileClient) StoreSmall(ctx context.Context, in *StoreSmallReq, opts ...grpc.CallOption) (*StoreRes, error) {
 	out := new(StoreRes)
-	err := grpc.Invoke(ctx, "/otsimo.File/StoreSmall", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/otsimo.File/StoreSmall", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -239,7 +467,7 @@ func (c *fileClient) StoreSmall(ctx context.Context, in *StoreSmallReq, opts ...
 
 func (c *fileClient) RequestStoreBig(ctx context.Context, in *UploadReq, opts ...grpc.CallOption) (*UploadRes, error) {
 	out := new(UploadRes)
-	err := grpc.Invoke(ctx, "/otsimo.File/RequestStoreBig", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/otsimo.File/RequestStoreBig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -248,15 +476,14 @@ func (c *fileClient) RequestStoreBig(ctx context.Context, in *UploadReq, opts ..
 
 func (c *fileClient) Lookup(ctx context.Context, in *LookupReq, opts ...grpc.CallOption) (*LookupRes, error) {
 	out := new(LookupRes)
-	err := grpc.Invoke(ctx, "/otsimo.File/Lookup", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/otsimo.File/Lookup", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for File service
-
+// FileServer is the server API for File service.
 type FileServer interface {
 	StoreSmall(context.Context, *StoreSmallReq) (*StoreRes, error)
 	RequestStoreBig(context.Context, *UploadReq) (*UploadRes, error)
@@ -410,6 +637,9 @@ func (m *FileMetadata) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintFile(dAtA, i, uint64(len(m.Url)))
 		i += copy(dAtA[i:], m.Url)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -439,6 +669,9 @@ func (m *UploadReq) MarshalTo(dAtA []byte) (int, error) {
 			}
 			i += n
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -475,6 +708,9 @@ func (m *UploadRes) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], v)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -509,6 +745,9 @@ func (m *StoreSmallReq) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintFile(dAtA, i, uint64(len(m.Data)))
 		i += copy(dAtA[i:], m.Data)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -537,6 +776,9 @@ func (m *StoreRes) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i += n2
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -564,6 +806,9 @@ func (m *LookupReq) MarshalTo(dAtA []byte) (int, error) {
 			return 0, err
 		}
 		i += n3
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -594,6 +839,9 @@ func (m *LookupRes) MarshalTo(dAtA []byte) (int, error) {
 			}
 			i += n
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -642,6 +890,9 @@ func (m *FileMetadata) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovFile(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -653,6 +904,9 @@ func (m *UploadReq) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovFile(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -668,6 +922,9 @@ func (m *UploadRes) Size() (n int) {
 			n += mapEntrySize + 1 + sovFile(uint64(mapEntrySize))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -682,6 +939,9 @@ func (m *StoreSmallReq) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovFile(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -692,6 +952,9 @@ func (m *StoreRes) Size() (n int) {
 		l = m.Metadata.Size()
 		n += 1 + l + sovFile(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -701,6 +964,9 @@ func (m *LookupReq) Size() (n int) {
 	if m.Selector != nil {
 		l = m.Selector.Size()
 		n += 1 + l + sovFile(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -713,6 +979,9 @@ func (m *LookupRes) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovFile(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1063,6 +1332,7 @@ func (m *FileMetadata) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1144,6 +1414,7 @@ func (m *UploadReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1312,6 +1583,7 @@ func (m *UploadRes) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1426,6 +1698,7 @@ func (m *StoreSmallReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1509,6 +1782,7 @@ func (m *StoreRes) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1592,6 +1866,7 @@ func (m *LookupReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1673,6 +1948,7 @@ func (m *LookupRes) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1787,9 +2063,9 @@ var (
 	ErrIntOverflowFile   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("file.proto", fileDescriptorFile) }
+func init() { proto.RegisterFile("file.proto", fileDescriptor_file_5fb73e0ee18f949b) }
 
-var fileDescriptorFile = []byte{
+var fileDescriptor_file_5fb73e0ee18f949b = []byte{
 	// 529 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x4d, 0x6f, 0xd3, 0x40,
 	0x10, 0x65, 0xf3, 0x45, 0x32, 0x29, 0x24, 0x2c, 0xa9, 0x64, 0x19, 0x64, 0x05, 0x9f, 0xaa, 0x1e,

@@ -34,6 +34,13 @@ Url is the stored file url
   url?: string;
 }
 
+export const FileMetadata_key = "key";
+export const FileMetadata_collection = "collection";
+export const FileMetadata_labels = "labels";
+export const FileMetadata_type = "type";
+export const FileMetadata_checksum = "checksum";
+export const FileMetadata_owner = "owner";
+export const FileMetadata_url = "url";
 export interface UploadReq {
 /**
 Metadata list of upload files, keys have to be unique in the list
@@ -41,19 +48,24 @@ Metadata list of upload files, keys have to be unique in the list
   metadata?: FileMetadata[];
 }
 
+export const UploadReq_metadata = "metadata";
 export interface UploadRes {
   uploadUrls?: { [key: string]: string };
 		}
 
+export const UploadRes_uploadUrls = "upload_urls";
 export interface StoreSmallReq {
   metadata?: FileMetadata;
   data?: string;
 }
 
+export const StoreSmallReq_metadata = "metadata";
+export const StoreSmallReq_data = "data";
 export interface StoreRes {
   metadata?: FileMetadata;
 }
 
+export const StoreRes_metadata = "metadata";
 export interface LookupReq {
 /**
 Selector the files. "key", "collection" and "type" also part of labels
@@ -61,10 +73,12 @@ Selector the files. "key", "collection" and "type" also part of labels
   selector?: apipb_messages.LabelSelector;
 }
 
+export const LookupReq_selector = "selector";
 export interface LookupRes {
   metadata?: FileMetadata[];
 }
 
+export const LookupRes_metadata = "metadata";
 export class FileService {
     private host:string;
     private headerEditors :any[]= [];
@@ -86,13 +100,14 @@ export class FileService {
 	for (let i = 0; i < this.headerEditors.length; ++i) {
 	  this.headerEditors[i].edit(_headers);
 	}
+	const _url = new URL(`${this.host}/api/v1/file/big`);
 	const _init = {
 	  method: 'POST',
 	  headers: _headers,
 	  body: JSON.stringify(uploadReq),
 	} as RequestInit;
 	
-	const _req = new Request(`${this.host}/api/v1/file/big`, _init);
+	const _req = new Request(_url.toString(), _init);
 	try {
 	  const resp = await fetch(_req);
 	  if (resp.status !== 200) {
@@ -112,13 +127,14 @@ export class FileService {
 	for (let i = 0; i < this.headerEditors.length; ++i) {
 	  this.headerEditors[i].edit(_headers);
 	}
+	const _url = new URL(`${this.host}/api/v1/file/lookup`);
 	const _init = {
 	  method: 'POST',
 	  headers: _headers,
 	  body: JSON.stringify(lookupReq),
 	} as RequestInit;
 	
-	const _req = new Request(`${this.host}/api/v1/file/lookup`, _init);
+	const _req = new Request(_url.toString(), _init);
 	try {
 	  const resp = await fetch(_req);
 	  if (resp.status !== 200) {

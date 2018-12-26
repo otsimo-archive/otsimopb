@@ -9,10 +9,12 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
-import binary "encoding/binary"
+import encoding_binary "encoding/binary"
 
 import io "io"
 
@@ -20,6 +22,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type ChartType int32
 
@@ -58,7 +66,9 @@ var ChartType_value = map[string]int32{
 func (x ChartType) String() string {
 	return proto.EnumName(ChartType_name, int32(x))
 }
-func (ChartType) EnumDescriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{0} }
+func (ChartType) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{0}
+}
 
 type CardDecoration_Size int32
 
@@ -86,7 +96,7 @@ func (x CardDecoration_Size) String() string {
 	return proto.EnumName(CardDecoration_Size_name, int32(x))
 }
 func (CardDecoration_Size) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorDashboard, []int{2, 0}
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{2, 0}
 }
 
 type CardDecoration_BackgroundStyle int32
@@ -112,7 +122,7 @@ func (x CardDecoration_BackgroundStyle) String() string {
 	return proto.EnumName(CardDecoration_BackgroundStyle_name, int32(x))
 }
 func (CardDecoration_BackgroundStyle) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorDashboard, []int{2, 1}
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{2, 1}
 }
 
 type DashboardItems struct {
@@ -121,77 +131,287 @@ type DashboardItems struct {
 	// ChildId
 	ChildId string `protobuf:"bytes,2,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
 	// Created At
-	CreatedAt int64   `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Items     []*Card `protobuf:"bytes,8,rep,name=items" json:"items,omitempty"`
+	CreatedAt            int64    `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Items                []*Card  `protobuf:"bytes,8,rep,name=items" json:"items,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DashboardItems) Reset()                    { *m = DashboardItems{} }
-func (m *DashboardItems) String() string            { return proto.CompactTextString(m) }
-func (*DashboardItems) ProtoMessage()               {}
-func (*DashboardItems) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{0} }
+func (m *DashboardItems) Reset()         { *m = DashboardItems{} }
+func (m *DashboardItems) String() string { return proto.CompactTextString(m) }
+func (*DashboardItems) ProtoMessage()    {}
+func (*DashboardItems) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{0}
+}
+func (m *DashboardItems) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DashboardItems) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DashboardItems.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *DashboardItems) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DashboardItems.Merge(dst, src)
+}
+func (m *DashboardItems) XXX_Size() int {
+	return m.Size()
+}
+func (m *DashboardItems) XXX_DiscardUnknown() {
+	xxx_messageInfo_DashboardItems.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DashboardItems proto.InternalMessageInfo
 
 type DashboardGetRequest struct {
-	ProfileId           string `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
-	ChildId             string `protobuf:"bytes,2,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
-	AppVersion          string `protobuf:"bytes,3,opt,name=app_version,json=appVersion,proto3" json:"app_version,omitempty"`
-	Language            string `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
-	CountryCode         string `protobuf:"bytes,5,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
-	LastTimeDataFetched int64  `protobuf:"varint,6,opt,name=last_time_data_fetched,json=lastTimeDataFetched,proto3" json:"last_time_data_fetched,omitempty"`
+	ProfileId            string   `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	ChildId              string   `protobuf:"bytes,2,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	AppVersion           string   `protobuf:"bytes,3,opt,name=app_version,json=appVersion,proto3" json:"app_version,omitempty"`
+	Language             string   `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
+	CountryCode          string   `protobuf:"bytes,5,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	LastTimeDataFetched  int64    `protobuf:"varint,6,opt,name=last_time_data_fetched,json=lastTimeDataFetched,proto3" json:"last_time_data_fetched,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DashboardGetRequest) Reset()                    { *m = DashboardGetRequest{} }
-func (m *DashboardGetRequest) String() string            { return proto.CompactTextString(m) }
-func (*DashboardGetRequest) ProtoMessage()               {}
-func (*DashboardGetRequest) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{1} }
+func (m *DashboardGetRequest) Reset()         { *m = DashboardGetRequest{} }
+func (m *DashboardGetRequest) String() string { return proto.CompactTextString(m) }
+func (*DashboardGetRequest) ProtoMessage()    {}
+func (*DashboardGetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{1}
+}
+func (m *DashboardGetRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DashboardGetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DashboardGetRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *DashboardGetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DashboardGetRequest.Merge(dst, src)
+}
+func (m *DashboardGetRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *DashboardGetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DashboardGetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DashboardGetRequest proto.InternalMessageInfo
 
 type CardDecoration struct {
-	Size_           CardDecoration_Size            `protobuf:"varint,1,opt,name=size,proto3,enum=otsimo.CardDecoration_Size" json:"size,omitempty"`
-	BackgroundStyle CardDecoration_BackgroundStyle `protobuf:"varint,2,opt,name=background_style,json=backgroundStyle,proto3,enum=otsimo.CardDecoration_BackgroundStyle" json:"background_style,omitempty"`
-	ImageUrl        string                         `protobuf:"bytes,3,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
-	LeftIcon        string                         `protobuf:"bytes,4,opt,name=left_icon,json=leftIcon,proto3" json:"left_icon,omitempty"`
-	RightIcon       string                         `protobuf:"bytes,5,opt,name=right_icon,json=rightIcon,proto3" json:"right_icon,omitempty"`
+	Size_                CardDecoration_Size            `protobuf:"varint,1,opt,name=size,proto3,enum=otsimo.CardDecoration_Size" json:"size,omitempty"`
+	BackgroundStyle      CardDecoration_BackgroundStyle `protobuf:"varint,2,opt,name=background_style,json=backgroundStyle,proto3,enum=otsimo.CardDecoration_BackgroundStyle" json:"background_style,omitempty"`
+	ImageUrl             string                         `protobuf:"bytes,3,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	LeftIcon             string                         `protobuf:"bytes,4,opt,name=left_icon,json=leftIcon,proto3" json:"left_icon,omitempty"`
+	RightIcon            string                         `protobuf:"bytes,5,opt,name=right_icon,json=rightIcon,proto3" json:"right_icon,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
 }
 
-func (m *CardDecoration) Reset()                    { *m = CardDecoration{} }
-func (m *CardDecoration) String() string            { return proto.CompactTextString(m) }
-func (*CardDecoration) ProtoMessage()               {}
-func (*CardDecoration) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{2} }
+func (m *CardDecoration) Reset()         { *m = CardDecoration{} }
+func (m *CardDecoration) String() string { return proto.CompactTextString(m) }
+func (*CardDecoration) ProtoMessage()    {}
+func (*CardDecoration) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{2}
+}
+func (m *CardDecoration) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CardDecoration) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CardDecoration.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CardDecoration) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CardDecoration.Merge(dst, src)
+}
+func (m *CardDecoration) XXX_Size() int {
+	return m.Size()
+}
+func (m *CardDecoration) XXX_DiscardUnknown() {
+	xxx_messageInfo_CardDecoration.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CardDecoration proto.InternalMessageInfo
 
 type CardEmpty struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CardEmpty) Reset()                    { *m = CardEmpty{} }
-func (m *CardEmpty) String() string            { return proto.CompactTextString(m) }
-func (*CardEmpty) ProtoMessage()               {}
-func (*CardEmpty) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{3} }
+func (m *CardEmpty) Reset()         { *m = CardEmpty{} }
+func (m *CardEmpty) String() string { return proto.CompactTextString(m) }
+func (*CardEmpty) ProtoMessage()    {}
+func (*CardEmpty) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{3}
+}
+func (m *CardEmpty) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CardEmpty) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CardEmpty.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CardEmpty) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CardEmpty.Merge(dst, src)
+}
+func (m *CardEmpty) XXX_Size() int {
+	return m.Size()
+}
+func (m *CardEmpty) XXX_DiscardUnknown() {
+	xxx_messageInfo_CardEmpty.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CardEmpty proto.InternalMessageInfo
 
 type CardWebpage struct {
-	Url string `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Url                  string   `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CardWebpage) Reset()                    { *m = CardWebpage{} }
-func (m *CardWebpage) String() string            { return proto.CompactTextString(m) }
-func (*CardWebpage) ProtoMessage()               {}
-func (*CardWebpage) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{4} }
+func (m *CardWebpage) Reset()         { *m = CardWebpage{} }
+func (m *CardWebpage) String() string { return proto.CompactTextString(m) }
+func (*CardWebpage) ProtoMessage()    {}
+func (*CardWebpage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{4}
+}
+func (m *CardWebpage) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CardWebpage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CardWebpage.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CardWebpage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CardWebpage.Merge(dst, src)
+}
+func (m *CardWebpage) XXX_Size() int {
+	return m.Size()
+}
+func (m *CardWebpage) XXX_DiscardUnknown() {
+	xxx_messageInfo_CardWebpage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CardWebpage proto.InternalMessageInfo
 
 type CardApplink struct {
-	Applink string `protobuf:"bytes,1,opt,name=applink,proto3" json:"applink,omitempty"`
+	Applink              string   `protobuf:"bytes,1,opt,name=applink,proto3" json:"applink,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CardApplink) Reset()                    { *m = CardApplink{} }
-func (m *CardApplink) String() string            { return proto.CompactTextString(m) }
-func (*CardApplink) ProtoMessage()               {}
-func (*CardApplink) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{5} }
+func (m *CardApplink) Reset()         { *m = CardApplink{} }
+func (m *CardApplink) String() string { return proto.CompactTextString(m) }
+func (*CardApplink) ProtoMessage()    {}
+func (*CardApplink) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{5}
+}
+func (m *CardApplink) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CardApplink) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CardApplink.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CardApplink) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CardApplink.Merge(dst, src)
+}
+func (m *CardApplink) XXX_Size() int {
+	return m.Size()
+}
+func (m *CardApplink) XXX_DiscardUnknown() {
+	xxx_messageInfo_CardApplink.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CardApplink proto.InternalMessageInfo
 
 type CardAnalysis struct {
-	Data      *DataSet  `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
-	ChartType ChartType `protobuf:"varint,2,opt,name=chart_type,json=chartType,proto3,enum=otsimo.ChartType" json:"chart_type,omitempty"`
+	Data                 *DataSet  `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
+	ChartType            ChartType `protobuf:"varint,2,opt,name=chart_type,json=chartType,proto3,enum=otsimo.ChartType" json:"chart_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
 }
 
-func (m *CardAnalysis) Reset()                    { *m = CardAnalysis{} }
-func (m *CardAnalysis) String() string            { return proto.CompactTextString(m) }
-func (*CardAnalysis) ProtoMessage()               {}
-func (*CardAnalysis) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{6} }
+func (m *CardAnalysis) Reset()         { *m = CardAnalysis{} }
+func (m *CardAnalysis) String() string { return proto.CompactTextString(m) }
+func (*CardAnalysis) ProtoMessage()    {}
+func (*CardAnalysis) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{6}
+}
+func (m *CardAnalysis) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CardAnalysis) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CardAnalysis.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CardAnalysis) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CardAnalysis.Merge(dst, src)
+}
+func (m *CardAnalysis) XXX_Size() int {
+	return m.Size()
+}
+func (m *CardAnalysis) XXX_DiscardUnknown() {
+	xxx_messageInfo_CardAnalysis.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CardAnalysis proto.InternalMessageInfo
 
 type Card struct {
 	Id         string          `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -216,13 +436,43 @@ type Card struct {
 	// Subtitle for newer systems
 	Subtitle string `protobuf:"bytes,15,opt,name=subtitle,proto3" json:"subtitle,omitempty"`
 	// Labels of the card
-	Labels map[string]string `protobuf:"bytes,16,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels               map[string]string `protobuf:"bytes,16,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *Card) Reset()                    { *m = Card{} }
-func (m *Card) String() string            { return proto.CompactTextString(m) }
-func (*Card) ProtoMessage()               {}
-func (*Card) Descriptor() ([]byte, []int) { return fileDescriptorDashboard, []int{7} }
+func (m *Card) Reset()         { *m = Card{} }
+func (m *Card) String() string { return proto.CompactTextString(m) }
+func (*Card) ProtoMessage()    {}
+func (*Card) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dashboard_840bb42e114f155c, []int{7}
+}
+func (m *Card) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Card) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Card.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Card) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Card.Merge(dst, src)
+}
+func (m *Card) XXX_Size() int {
+	return m.Size()
+}
+func (m *Card) XXX_DiscardUnknown() {
+	xxx_messageInfo_Card.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Card proto.InternalMessageInfo
 
 type isCard_Data interface {
 	isCard_Data()
@@ -370,22 +620,22 @@ func _Card_OneofSizer(msg proto.Message) (n int) {
 	switch x := m.Data.(type) {
 	case *Card_Empty:
 		s := proto.Size(x.Empty)
-		n += proto.SizeVarint(10<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Card_Webpage:
 		s := proto.Size(x.Webpage)
-		n += proto.SizeVarint(11<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Card_Applink:
 		s := proto.Size(x.Applink)
-		n += proto.SizeVarint(12<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Card_Analysis:
 		s := proto.Size(x.Analysis)
-		n += proto.SizeVarint(13<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case nil:
@@ -404,6 +654,7 @@ func init() {
 	proto.RegisterType((*CardApplink)(nil), "otsimo.CardApplink")
 	proto.RegisterType((*CardAnalysis)(nil), "otsimo.CardAnalysis")
 	proto.RegisterType((*Card)(nil), "otsimo.Card")
+	proto.RegisterMapType((map[string]string)(nil), "otsimo.Card.LabelsEntry")
 	proto.RegisterEnum("otsimo.ChartType", ChartType_name, ChartType_value)
 	proto.RegisterEnum("otsimo.CardDecoration_Size", CardDecoration_Size_name, CardDecoration_Size_value)
 	proto.RegisterEnum("otsimo.CardDecoration_BackgroundStyle", CardDecoration_BackgroundStyle_name, CardDecoration_BackgroundStyle_value)
@@ -417,8 +668,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for DashboardService service
-
+// DashboardServiceClient is the client API for DashboardService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DashboardServiceClient interface {
 	Get(ctx context.Context, in *DashboardGetRequest, opts ...grpc.CallOption) (*DashboardItems, error)
 	GetStream(ctx context.Context, in *DashboardGetRequest, opts ...grpc.CallOption) (DashboardService_GetStreamClient, error)
@@ -434,7 +686,7 @@ func NewDashboardServiceClient(cc *grpc.ClientConn) DashboardServiceClient {
 
 func (c *dashboardServiceClient) Get(ctx context.Context, in *DashboardGetRequest, opts ...grpc.CallOption) (*DashboardItems, error) {
 	out := new(DashboardItems)
-	err := grpc.Invoke(ctx, "/otsimo.DashboardService/Get", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/otsimo.DashboardService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -442,7 +694,7 @@ func (c *dashboardServiceClient) Get(ctx context.Context, in *DashboardGetReques
 }
 
 func (c *dashboardServiceClient) GetStream(ctx context.Context, in *DashboardGetRequest, opts ...grpc.CallOption) (DashboardService_GetStreamClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_DashboardService_serviceDesc.Streams[0], c.cc, "/otsimo.DashboardService/GetStream", opts...)
+	stream, err := c.cc.NewStream(ctx, &_DashboardService_serviceDesc.Streams[0], "/otsimo.DashboardService/GetStream", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -473,8 +725,7 @@ func (x *dashboardServiceGetStreamClient) Recv() (*Card, error) {
 	return m, nil
 }
 
-// Server API for DashboardService service
-
+// DashboardServiceServer is the server API for DashboardService service.
 type DashboardServiceServer interface {
 	Get(context.Context, *DashboardGetRequest) (*DashboardItems, error)
 	GetStream(*DashboardGetRequest, DashboardService_GetStreamServer) error
@@ -842,7 +1093,7 @@ func (m *Card) MarshalTo(dAtA []byte) (int, error) {
 	if m.ProviderWeight != 0 {
 		dAtA[i] = 0x3d
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.ProviderWeight))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.ProviderWeight))))
 		i += 4
 	}
 	if len(m.ProviderName) > 0 {
@@ -2227,7 +2478,7 @@ func (m *Card) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.ProviderWeight = float32(math.Float32frombits(v))
 		case 8:
@@ -2718,9 +2969,9 @@ var (
 	ErrIntOverflowDashboard   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("dashboard.proto", fileDescriptorDashboard) }
+func init() { proto.RegisterFile("dashboard.proto", fileDescriptor_dashboard_840bb42e114f155c) }
 
-var fileDescriptorDashboard = []byte{
+var fileDescriptor_dashboard_840bb42e114f155c = []byte{
 	// 1038 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xcd, 0x6e, 0xdb, 0x46,
 	0x10, 0x16, 0xf5, 0xcf, 0x91, 0x22, 0x31, 0x6b, 0xc3, 0x60, 0x1d, 0x54, 0x71, 0x55, 0xb4, 0x71,

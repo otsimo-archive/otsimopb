@@ -9,17 +9,24 @@ export const CategoryReqTask_ADD: CategoryReqTask = "ADD";
 export const CategoryReqTask_UPDATE: CategoryReqTask = "UPDATE";
 export const CategoryReqTask_DELETE: CategoryReqTask = "DELETE";
 
+export const ALL_CategoryReqTask_VALUES: CategoryReqTask[] = [CategoryReqTask_ADD,CategoryReqTask_UPDATE,CategoryReqTask_DELETE];
+
 export interface AllGameReleases {
   gameId?: string;
   releases?: AllGameReleasesMiniRelease[];
 }
 
+export const AllGameReleases_gameId = "game_id";
+export const AllGameReleases_releases = "releases";
 export interface AllGameReleasesMiniRelease {
   version?: string;
   releasedAt?: string|number;
   releaseState?: apipb_models.ReleaseState;
 }
 
+export const AllGameReleasesMiniRelease_version = "version";
+export const AllGameReleasesMiniRelease_releasedAt = "released_at";
+export const AllGameReleasesMiniRelease_releaseState = "release_state";
 export interface GameCategoryLocale {
   language?: string;
   title?: string;
@@ -28,6 +35,11 @@ export interface GameCategoryLocale {
   description?: string;
 }
 
+export const GameCategoryLocale_language = "language";
+export const GameCategoryLocale_title = "title";
+export const GameCategoryLocale_image = "image";
+export const GameCategoryLocale_color = "color";
+export const GameCategoryLocale_description = "description";
 export interface GameCategory {
   name?: string;
   locales?: GameCategoryLocale[];
@@ -36,12 +48,20 @@ export interface GameCategory {
 		  defaultLocale?: string;
 }
 
+export const GameCategory_name = "name";
+export const GameCategory_locales = "locales";
+export const GameCategory_revision = "revision";
+export const GameCategory_labels = "labels";
+export const GameCategory_defaultLocale = "default_locale";
 export interface CategoryReq {
   task?: CategoryReqTask;
   category?: GameCategory;
   knownRevision?: number;
 }
 
+export const CategoryReq_task = "task";
+export const CategoryReq_category = "category";
+export const CategoryReq_knownRevision = "known_revision";
 export interface CategoryListReq {
 }
 
@@ -49,13 +69,15 @@ export interface CategoryList {
   categories?: GameCategory[];
 }
 
+export const CategoryList_categories = "categories";
 export interface GetAllGamesReq {
 /**
 Games that user wants the data of, if it is empty returns all games
 */
   games?: apipb_messages.GameAndVersion[];
 /**
-Language filters games. If language field is empty than returns games with all languages.
+Language filters games. If language field is empty than returns games with
+all languages.
 */
   language?: string;
 /**
@@ -64,53 +86,73 @@ Device Capabilities
   capabilities?: string[];
 }
 
+export const GetAllGamesReq_games = "games";
+export const GetAllGamesReq_language = "language";
+export const GetAllGamesReq_capabilities = "capabilities";
 export interface GetAllGamesRes {
   games?: apipb_models.GameRelease[];
 }
 
+export const GetAllGamesRes_games = "games";
 export interface PublishReq {
   manifest?: apipb_models.GameManifest;
   files?: { [key: string]: string };
 		}
 
+export const PublishReq_manifest = "manifest";
+export const PublishReq_files = "files";
 export interface PublishRes {
   token?: apipb_models.UploadToken;
   uploadUrls?: { [key: string]: string };
 		  storage?: string;
 }
 
+export const PublishRes_token = "token";
+export const PublishRes_uploadUrls = "upload_urls";
+export const PublishRes_storage = "storage";
 export interface TarballInfo {
   url?: string;
   storage?: string;
   archiveFormat?: string;
 }
 
+export const TarballInfo_url = "url";
+export const TarballInfo_storage = "storage";
+export const TarballInfo_archiveFormat = "archive_format";
 export interface AddTarballReq {
   token?: string;
   infos?: TarballInfo[];
 }
 
+export const AddTarballReq_token = "token";
+export const AddTarballReq_infos = "infos";
 export interface AddTarballRes {
   packageUrls?: { [key: string]: string };
 		}
 
+export const AddTarballRes_packageUrls = "package_urls";
 export interface RegistryClient {
   uniqueName?: string;
   apiKey?: string;
 }
 
+export const RegistryClient_uniqueName = "unique_name";
+export const RegistryClient_apiKey = "api_key";
 export interface CreateClientReq {
   uniqueName?: string;
 }
 
+export const CreateClientReq_uniqueName = "unique_name";
 export interface RevokeClientReq {
   apiKey?: string;
 }
 
+export const RevokeClientReq_apiKey = "api_key";
 export interface ClientList {
   clientNames?: string[];
 }
 
+export const ClientList_clientNames = "client_names";
 export interface ListClientReq {
 }
 
@@ -120,10 +162,14 @@ export interface GameSummaryInfo {
   isPremium?: boolean;
 }
 
+export const GameSummaryInfo_gameId = "game_id";
+export const GameSummaryInfo_uniqueName = "unique_name";
+export const GameSummaryInfo_isPremium = "is_premium";
 export interface AllGamesSummary {
   games?: GameSummaryInfo[];
 }
 
+export const AllGamesSummary_games = "games";
 export interface AllGamesSummaryReq {
 }
 

@@ -9,23 +9,33 @@ export const CategoryReqTask_ADD: CategoryReqTask = "ADD";
 export const CategoryReqTask_UPDATE: CategoryReqTask = "UPDATE";
 export const CategoryReqTask_DELETE: CategoryReqTask = "DELETE";
 
+export const ALL_CategoryReqTask_VALUES: CategoryReqTask[] = [CategoryReqTask_ADD,CategoryReqTask_UPDATE,CategoryReqTask_DELETE];
+
 export interface AllGameReleases {
   gameId?: string;
   releases?: AllGameReleasesMiniRelease[];
 }
 
+export const AllGameReleases_gameId = "game_id";
+export const AllGameReleases_releases = "releases";
 export interface AllGameReleasesMiniRelease {
   version?: string;
   releasedAt?: string|number;
   releaseState?: apipb_models.ReleaseState;
 }
 
+export const AllGameReleasesMiniRelease_version = "version";
+export const AllGameReleasesMiniRelease_releasedAt = "released_at";
+export const AllGameReleasesMiniRelease_releaseState = "release_state";
 export interface GameCategoryLocale {
   language?: string;
   title?: string;
   image?: string;
 }
 
+export const GameCategoryLocale_language = "language";
+export const GameCategoryLocale_title = "title";
+export const GameCategoryLocale_image = "image";
 export interface GameCategory {
   name?: string;
   locales?: GameCategoryLocale[];
@@ -33,12 +43,19 @@ export interface GameCategory {
   labels?: { [key: string]: string };
 		}
 
+export const GameCategory_name = "name";
+export const GameCategory_locales = "locales";
+export const GameCategory_revision = "revision";
+export const GameCategory_labels = "labels";
 export interface CategoryReq {
   task?: CategoryReqTask;
   category?: GameCategory;
   knownRevision?: number;
 }
 
+export const CategoryReq_task = "task";
+export const CategoryReq_category = "category";
+export const CategoryReq_knownRevision = "known_revision";
 export interface CategoryListReq {
 }
 
@@ -46,18 +63,23 @@ export interface CategoryList {
   categories?: GameCategory[];
 }
 
+export const CategoryList_categories = "categories";
 export interface GetAllGamesReq {
 /**
 Games that user wants the data of, if it is empty returns all games
 */
   games?: apipb_messages.GameAndVersion[];
 /**
-Language filters games. If language field is empty than returns games with all languages.
+Language filters games. If language field is empty than returns games with
+all languages.
 */
   language?: string;
 }
 
+export const GetAllGamesReq_games = "games";
+export const GetAllGamesReq_language = "language";
 export interface GetAllGamesRes {
   games?: apipb_models.GameRelease[];
 }
 
+export const GetAllGamesRes_games = "games";

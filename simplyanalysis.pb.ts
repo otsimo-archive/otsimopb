@@ -7,6 +7,8 @@ export type DataInterval =  "HOURLY"  | "DAILY" ;
 export const DataInterval_HOURLY: DataInterval = "HOURLY";
 export const DataInterval_DAILY: DataInterval = "DAILY";
 
+export const ALL_DataInterval_VALUES: DataInterval[] = [DataInterval_HOURLY,DataInterval_DAILY];
+
 export interface GamePlayingRequest {
   games?: string[];
 /**
@@ -20,10 +22,15 @@ To is the unix seconds time
   interval?: DataInterval;
 }
 
+export const GamePlayingRequest_games = "games";
+export const GamePlayingRequest_from = "from";
+export const GamePlayingRequest_to = "to";
+export const GamePlayingRequest_interval = "interval";
 export interface GamePlayingReply {
   data?: apipb_datasetmodels.DataSet;
 }
 
+export const GamePlayingReply_data = "data";
 export interface SimplifiedReq {
   analysis?: string;
 /**
@@ -38,3 +45,8 @@ To is the unix seconds time
   interval?: DataInterval;
 }
 
+export const SimplifiedReq_analysis = "analysis";
+export const SimplifiedReq_from = "from";
+export const SimplifiedReq_to = "to";
+export const SimplifiedReq_games = "games";
+export const SimplifiedReq_interval = "interval";

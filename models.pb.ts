@@ -7,6 +7,8 @@ export const Gender_UNKNOWN: Gender = "UNKNOWN";
 export const Gender_MALE: Gender = "MALE";
 export const Gender_FEMALE: Gender = "FEMALE";
 
+export const ALL_Gender_VALUES: Gender[] = [Gender_UNKNOWN,Gender_MALE,Gender_FEMALE];
+
 export type ReleaseState =  "CREATED"  | "DEVELOPMENT"  | "WAITING"  | "REJECTED"  | "VALIDATED"  | "PRODUCTION" ;
 export const ReleaseState_CREATED: ReleaseState = "CREATED";
 export const ReleaseState_DEVELOPMENT: ReleaseState = "DEVELOPMENT";
@@ -14,6 +16,8 @@ export const ReleaseState_WAITING: ReleaseState = "WAITING";
 export const ReleaseState_REJECTED: ReleaseState = "REJECTED";
 export const ReleaseState_VALIDATED: ReleaseState = "VALIDATED";
 export const ReleaseState_PRODUCTION: ReleaseState = "PRODUCTION";
+
+export const ALL_ReleaseState_VALUES: ReleaseState[] = [ReleaseState_CREATED,ReleaseState_DEVELOPMENT,ReleaseState_WAITING,ReleaseState_REJECTED,ReleaseState_VALIDATED,ReleaseState_PRODUCTION];
 
 export interface Address {
   streetAddress?: string;
@@ -23,6 +27,11 @@ export interface Address {
   countryCode?: string;
 }
 
+export const Address_streetAddress = "street_address";
+export const Address_city = "city";
+export const Address_state = "state";
+export const Address_zipCode = "zip_code";
+export const Address_countryCode = "country_code";
 export interface Profile {
   id?: string;
   email?: string;
@@ -39,6 +48,19 @@ export interface Profile {
   labels?: { [key: string]: string };
 		}
 
+export const Profile_id = "id";
+export const Profile_email = "email";
+export const Profile_firstName = "first_name";
+export const Profile_lastName = "last_name";
+export const Profile_language = "language";
+export const Profile_mobilePhone = "mobile_phone";
+export const Profile_address = "address";
+export const Profile_createdAt = "created_at";
+export const Profile_lastUpdated = "last_updated";
+export const Profile_locale = "locale";
+export const Profile_timezone = "timezone";
+export const Profile_country = "country";
+export const Profile_labels = "labels";
 export interface ChildGameEntry {
   id?: string;
   active?: boolean;
@@ -49,8 +71,22 @@ export interface ChildGameEntry {
   updatedAt?: string|number;
   localSettings?: string;
   localSettingsVersion?: string|number;
+/**
+LimitAccess permits user to access to game only if on of the contitions match
+*/
+  limitAccess?: string[];
 }
 
+export const ChildGameEntry_id = "id";
+export const ChildGameEntry_active = "active";
+export const ChildGameEntry_dashboardIndex = "dashboard_index";
+export const ChildGameEntry_settings = "settings";
+export const ChildGameEntry_addedAt = "added_at";
+export const ChildGameEntry_activationChangedAt = "activation_changed_at";
+export const ChildGameEntry_updatedAt = "updated_at";
+export const ChildGameEntry_localSettings = "local_settings";
+export const ChildGameEntry_localSettingsVersion = "local_settings_version";
+export const ChildGameEntry_limitAccess = "limit_access";
 export interface Child {
   id?: string;
   parentId?: string;
@@ -73,17 +109,41 @@ export interface Child {
   badges?: Badge[];
 }
 
+export const Child_id = "id";
+export const Child_parentId = "parent_id";
+export const Child_firstName = "first_name";
+export const Child_lastName = "last_name";
+export const Child_birthDay = "birth_day";
+export const Child_gender = "gender";
+export const Child_language = "language";
+export const Child_games = "games";
+export const Child_active = "active";
+export const Child_loggedIn = "logged_in";
+export const Child_soundsEnabled = "sounds_enabled";
+export const Child_locale = "locale";
+export const Child_createdAt = "created_at";
+export const Child_lastUpdated = "last_updated";
+export const Child_childInfo = "child_info";
+export const Child_totalStarCount = "total_star_count";
+export const Child_levelStarCount = "level_star_count";
+export const Child_level = "level";
+export const Child_badges = "badges";
 export interface Badge {
   name?: string;
   createdAt?: string|number;
   level?: number;
 }
 
+export const Badge_name = "name";
+export const Badge_createdAt = "created_at";
+export const Badge_level = "level";
 export interface Author {
   name?: string;
   email?: string;
 }
 
+export const Author_name = "name";
+export const Author_email = "email";
 export interface GameMetadata {
   language?: string;
 /**
@@ -128,6 +188,17 @@ Localized Annotations
   annotations?: { [key: string]: string };
 		}
 
+export const GameMetadata_language = "language";
+export const GameMetadata_visibleName = "visible_name";
+export const GameMetadata_summary = "summary";
+export const GameMetadata_description = "description";
+export const GameMetadata_logo = "logo";
+export const GameMetadata_icon = "icon";
+export const GameMetadata_keywords = "keywords";
+export const GameMetadata_images = "images";
+export const GameMetadata_infoSlug = "info_slug";
+export const GameMetadata_assets = "assets";
+export const GameMetadata_annotations = "annotations";
 export interface GameManifest {
 /**
 Unique Name of game
@@ -194,7 +265,8 @@ Loading Background Color of the Game
 */
   loadingColor?: string;
 /**
-Capabilities are required host app features. The most basic capability is 'sandbox'.
+Capabilities are required host app features. The most basic capability is
+'sandbox'.
 */
   capabilities?: string[];
 /**
@@ -212,6 +284,36 @@ ManifestVersion
   options?: { [key: string]: GameOption };
 		}
 
+export const GameManifest_uniqueName = "unique_name";
+export const GameManifest_licence = "licence";
+export const GameManifest_languages = "languages";
+export const GameManifest_homepage = "homepage";
+export const GameManifest_main = "main";
+export const GameManifest_version = "version";
+export const GameManifest_authors = "authors";
+export const GameManifest_repository = "repository";
+export const GameManifest_supportedOrientations = "supported_orientations";
+export const GameManifest_metadata = "metadata";
+export const GameManifest_exclude = "exclude";
+export const GameManifest_settings = "settings";
+export const GameManifest_kvPath = "kv_path";
+export const GameManifest_developerName = "developer_name";
+export const GameManifest_defaultLanguage = "default_language";
+export const GameManifest_loadingColor = "loading_color";
+export const GameManifest_capabilities = "capabilities";
+export const GameManifest_abTest = "ab_test";
+export const GameManifest_labels = "labels";
+export const GameManifest_manifestVersion = "manifest_version";
+export const GameManifest_options = "options";
+export interface GameEnumGroup {
+  key?: string;
+  defaultValue?: string;
+  values?: string[];
+}
+
+export const GameEnumGroup_key = "key";
+export const GameEnumGroup_defaultValue = "default_value";
+export const GameEnumGroup_values = "values";
 export interface GameOption {
   id?: string;
   type?: string;
@@ -223,8 +325,20 @@ export interface GameOption {
   maxValue?: number;
   image?: string;
   sortKey?: string;
+  enumGroups?: GameEnumGroup[];
 }
 
+export const GameOption_id = "id";
+export const GameOption_type = "type";
+export const GameOption_description = "description";
+export const GameOption_default = "default";
+export const GameOption_enum = "enum";
+export const GameOption_format = "format";
+export const GameOption_minValue = "min_value";
+export const GameOption_maxValue = "max_value";
+export const GameOption_image = "image";
+export const GameOption_sortKey = "sort_key";
+export const GameOption_enumGroups = "enum_groups";
 export interface Game {
   id?: string;
   uniqueName?: string;
@@ -236,6 +350,14 @@ export interface Game {
   labels?: { [key: string]: string };
 		}
 
+export const Game_id = "id";
+export const Game_uniqueName = "unique_name";
+export const Game_ownerId = "owner_id";
+export const Game_productionVersion = "production_version";
+export const Game_isOnProduction = "is_on_production";
+export const Game_createdAt = "created_at";
+export const Game_lastUpdated = "last_updated";
+export const Game_labels = "labels";
 export interface GameRelease {
   releaseId?: string;
   gameId?: string;
@@ -252,6 +374,19 @@ export interface GameRelease {
   packageUrl?: string;
 }
 
+export const GameRelease_releaseId = "release_id";
+export const GameRelease_gameId = "game_id";
+export const GameRelease_version = "version";
+export const GameRelease_gameManifest = "game_manifest";
+export const GameRelease_releasedAt = "released_at";
+export const GameRelease_releasedBy = "released_by";
+export const GameRelease_releaseState = "release_state";
+export const GameRelease_validatedBy = "validated_by";
+export const GameRelease_validatedAt = "validated_at";
+export const GameRelease_intVersion = "int_version";
+export const GameRelease_storage = "storage";
+export const GameRelease_archiveFormat = "archive_format";
+export const GameRelease_packageUrl = "package_url";
 export interface UploadToken {
   token?: string;
   expiresAt?: string|number;
@@ -261,3 +396,9 @@ export interface UploadToken {
   uploadTo?: string;
 }
 
+export const UploadToken_token = "token";
+export const UploadToken_expiresAt = "expires_at";
+export const UploadToken_userId = "user_id";
+export const UploadToken_gameId = "game_id";
+export const UploadToken_newVersion = "new_version";
+export const UploadToken_uploadTo = "upload_to";

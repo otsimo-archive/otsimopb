@@ -9,8 +9,10 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
 import io "io"
 
@@ -18,6 +20,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type ContentListRequest_ListStatus int32
 
@@ -42,7 +50,7 @@ func (x ContentListRequest_ListStatus) String() string {
 	return proto.EnumName(ContentListRequest_ListStatus_name, int32(x))
 }
 func (ContentListRequest_ListStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorContent, []int{1, 0}
+	return fileDescriptor_content_3ed96300a0b79c54, []int{1, 0}
 }
 
 type ContentListRequest_SortBy int32
@@ -65,7 +73,7 @@ func (x ContentListRequest_SortBy) String() string {
 	return proto.EnumName(ContentListRequest_SortBy_name, int32(x))
 }
 func (ContentListRequest_SortBy) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorContent, []int{1, 1}
+	return fileDescriptor_content_3ed96300a0b79c54, []int{1, 1}
 }
 
 type ContentListRequest_SortOrder int32
@@ -88,72 +96,193 @@ func (x ContentListRequest_SortOrder) String() string {
 	return proto.EnumName(ContentListRequest_SortOrder_name, int32(x))
 }
 func (ContentListRequest_SortOrder) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorContent, []int{1, 2}
+	return fileDescriptor_content_3ed96300a0b79c54, []int{1, 2}
 }
 
 type Content struct {
-	Slug           string            `protobuf:"bytes,1,opt,name=slug,proto3" json:"slug,omitempty"`
-	Title          string            `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Language       string            `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
-	Date           int64             `protobuf:"varint,4,opt,name=date,proto3" json:"date,omitempty"`
-	Draft          bool              `protobuf:"varint,5,opt,name=draft,proto3" json:"draft,omitempty"`
-	WrittenAt      string            `protobuf:"bytes,6,opt,name=written_at,json=writtenAt,proto3" json:"written_at,omitempty"`
-	Author         string            `protobuf:"bytes,7,opt,name=author,proto3" json:"author,omitempty"`
-	Category       string            `protobuf:"bytes,8,opt,name=category,proto3" json:"category,omitempty"`
-	Url            string            `protobuf:"bytes,9,opt,name=url,proto3" json:"url,omitempty"`
-	Weight         int32             `protobuf:"varint,10,opt,name=weight,proto3" json:"weight,omitempty"`
-	Keywords       []string          `protobuf:"bytes,11,rep,name=keywords" json:"keywords,omitempty"`
-	CategoryWeight int32             `protobuf:"varint,12,opt,name=category_weight,json=categoryWeight,proto3" json:"category_weight,omitempty"`
-	Markdown       []byte            `protobuf:"bytes,13,opt,name=markdown,proto3" json:"markdown,omitempty"`
-	Params         map[string]string `protobuf:"bytes,14,rep,name=params" json:"params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Slug                 string            `protobuf:"bytes,1,opt,name=slug,proto3" json:"slug,omitempty"`
+	Title                string            `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Language             string            `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	Date                 int64             `protobuf:"varint,4,opt,name=date,proto3" json:"date,omitempty"`
+	Draft                bool              `protobuf:"varint,5,opt,name=draft,proto3" json:"draft,omitempty"`
+	WrittenAt            string            `protobuf:"bytes,6,opt,name=written_at,json=writtenAt,proto3" json:"written_at,omitempty"`
+	Author               string            `protobuf:"bytes,7,opt,name=author,proto3" json:"author,omitempty"`
+	Category             string            `protobuf:"bytes,8,opt,name=category,proto3" json:"category,omitempty"`
+	Url                  string            `protobuf:"bytes,9,opt,name=url,proto3" json:"url,omitempty"`
+	Weight               int32             `protobuf:"varint,10,opt,name=weight,proto3" json:"weight,omitempty"`
+	Keywords             []string          `protobuf:"bytes,11,rep,name=keywords" json:"keywords,omitempty"`
+	CategoryWeight       int32             `protobuf:"varint,12,opt,name=category_weight,json=categoryWeight,proto3" json:"category_weight,omitempty"`
+	Markdown             []byte            `protobuf:"bytes,13,opt,name=markdown,proto3" json:"markdown,omitempty"`
+	Params               map[string]string `protobuf:"bytes,14,rep,name=params" json:"params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *Content) Reset()                    { *m = Content{} }
-func (m *Content) String() string            { return proto.CompactTextString(m) }
-func (*Content) ProtoMessage()               {}
-func (*Content) Descriptor() ([]byte, []int) { return fileDescriptorContent, []int{0} }
+func (m *Content) Reset()         { *m = Content{} }
+func (m *Content) String() string { return proto.CompactTextString(m) }
+func (*Content) ProtoMessage()    {}
+func (*Content) Descriptor() ([]byte, []int) {
+	return fileDescriptor_content_3ed96300a0b79c54, []int{0}
+}
+func (m *Content) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Content) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Content.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Content) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Content.Merge(dst, src)
+}
+func (m *Content) XXX_Size() int {
+	return m.Size()
+}
+func (m *Content) XXX_DiscardUnknown() {
+	xxx_messageInfo_Content.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Content proto.InternalMessageInfo
 
 type ContentListRequest struct {
-	Status           ContentListRequest_ListStatus `protobuf:"varint,1,opt,name=status,proto3,enum=apipb.ContentListRequest_ListStatus" json:"status,omitempty"`
-	Limit            int32                         `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
-	Category         string                        `protobuf:"bytes,3,opt,name=category,proto3" json:"category,omitempty"`
-	Offset           int32                         `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
-	Language         string                        `protobuf:"bytes,5,opt,name=language,proto3" json:"language,omitempty"`
-	OnlyHtmlUrl      bool                          `protobuf:"varint,6,opt,name=only_html_url,json=onlyHtmlUrl,proto3" json:"only_html_url,omitempty"`
-	Sort             ContentListRequest_SortBy     `protobuf:"varint,7,opt,name=sort,proto3,enum=apipb.ContentListRequest_SortBy" json:"sort,omitempty"`
-	Order            ContentListRequest_SortOrder  `protobuf:"varint,8,opt,name=order,proto3,enum=apipb.ContentListRequest_SortOrder" json:"order,omitempty"`
-	ProfileId        string                        `protobuf:"bytes,10,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
-	ClientVersion    string                        `protobuf:"bytes,11,opt,name=client_version,json=clientVersion,proto3" json:"client_version,omitempty"`
-	Categories       []string                      `protobuf:"bytes,12,rep,name=categories" json:"categories,omitempty"`
-	ExceptCategories []string                      `protobuf:"bytes,13,rep,name=except_categories,json=exceptCategories" json:"except_categories,omitempty"`
+	Status               ContentListRequest_ListStatus `protobuf:"varint,1,opt,name=status,proto3,enum=apipb.ContentListRequest_ListStatus" json:"status,omitempty"`
+	Limit                int32                         `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Category             string                        `protobuf:"bytes,3,opt,name=category,proto3" json:"category,omitempty"`
+	Offset               int32                         `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
+	Language             string                        `protobuf:"bytes,5,opt,name=language,proto3" json:"language,omitempty"`
+	OnlyHtmlUrl          bool                          `protobuf:"varint,6,opt,name=only_html_url,json=onlyHtmlUrl,proto3" json:"only_html_url,omitempty"`
+	Sort                 ContentListRequest_SortBy     `protobuf:"varint,7,opt,name=sort,proto3,enum=apipb.ContentListRequest_SortBy" json:"sort,omitempty"`
+	Order                ContentListRequest_SortOrder  `protobuf:"varint,8,opt,name=order,proto3,enum=apipb.ContentListRequest_SortOrder" json:"order,omitempty"`
+	ProfileId            string                        `protobuf:"bytes,10,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	ClientVersion        string                        `protobuf:"bytes,11,opt,name=client_version,json=clientVersion,proto3" json:"client_version,omitempty"`
+	Categories           []string                      `protobuf:"bytes,12,rep,name=categories" json:"categories,omitempty"`
+	ExceptCategories     []string                      `protobuf:"bytes,13,rep,name=except_categories,json=exceptCategories" json:"except_categories,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
+	XXX_sizecache        int32                         `json:"-"`
 }
 
-func (m *ContentListRequest) Reset()                    { *m = ContentListRequest{} }
-func (m *ContentListRequest) String() string            { return proto.CompactTextString(m) }
-func (*ContentListRequest) ProtoMessage()               {}
-func (*ContentListRequest) Descriptor() ([]byte, []int) { return fileDescriptorContent, []int{1} }
+func (m *ContentListRequest) Reset()         { *m = ContentListRequest{} }
+func (m *ContentListRequest) String() string { return proto.CompactTextString(m) }
+func (*ContentListRequest) ProtoMessage()    {}
+func (*ContentListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_content_3ed96300a0b79c54, []int{1}
+}
+func (m *ContentListRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContentListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContentListRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ContentListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContentListRequest.Merge(dst, src)
+}
+func (m *ContentListRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContentListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContentListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContentListRequest proto.InternalMessageInfo
 
 type ContentListResponse struct {
-	Contents     []*Content `protobuf:"bytes,1,rep,name=contents" json:"contents,omitempty"`
-	AssetVersion int32      `protobuf:"varint,2,opt,name=asset_version,json=assetVersion,proto3" json:"asset_version,omitempty"`
+	Contents             []*Content `protobuf:"bytes,1,rep,name=contents" json:"contents,omitempty"`
+	AssetVersion         int32      `protobuf:"varint,2,opt,name=asset_version,json=assetVersion,proto3" json:"asset_version,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *ContentListResponse) Reset()                    { *m = ContentListResponse{} }
-func (m *ContentListResponse) String() string            { return proto.CompactTextString(m) }
-func (*ContentListResponse) ProtoMessage()               {}
-func (*ContentListResponse) Descriptor() ([]byte, []int) { return fileDescriptorContent, []int{2} }
+func (m *ContentListResponse) Reset()         { *m = ContentListResponse{} }
+func (m *ContentListResponse) String() string { return proto.CompactTextString(m) }
+func (*ContentListResponse) ProtoMessage()    {}
+func (*ContentListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_content_3ed96300a0b79c54, []int{2}
+}
+func (m *ContentListResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContentListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContentListResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ContentListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContentListResponse.Merge(dst, src)
+}
+func (m *ContentListResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContentListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContentListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContentListResponse proto.InternalMessageInfo
 
 type ContentGetRequest struct {
-	Slug string `protobuf:"bytes,1,opt,name=slug,proto3" json:"slug,omitempty"`
+	Slug                 string   `protobuf:"bytes,1,opt,name=slug,proto3" json:"slug,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ContentGetRequest) Reset()                    { *m = ContentGetRequest{} }
-func (m *ContentGetRequest) String() string            { return proto.CompactTextString(m) }
-func (*ContentGetRequest) ProtoMessage()               {}
-func (*ContentGetRequest) Descriptor() ([]byte, []int) { return fileDescriptorContent, []int{3} }
+func (m *ContentGetRequest) Reset()         { *m = ContentGetRequest{} }
+func (m *ContentGetRequest) String() string { return proto.CompactTextString(m) }
+func (*ContentGetRequest) ProtoMessage()    {}
+func (*ContentGetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_content_3ed96300a0b79c54, []int{3}
+}
+func (m *ContentGetRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContentGetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContentGetRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ContentGetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContentGetRequest.Merge(dst, src)
+}
+func (m *ContentGetRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContentGetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContentGetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContentGetRequest proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*Content)(nil), "apipb.Content")
+	proto.RegisterMapType((map[string]string)(nil), "apipb.Content.ParamsEntry")
 	proto.RegisterType((*ContentListRequest)(nil), "apipb.ContentListRequest")
 	proto.RegisterType((*ContentListResponse)(nil), "apipb.ContentListResponse")
 	proto.RegisterType((*ContentGetRequest)(nil), "apipb.ContentGetRequest")
@@ -170,8 +299,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for ContentService service
-
+// ContentServiceClient is the client API for ContentService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ContentServiceClient interface {
 	List(ctx context.Context, in *ContentListRequest, opts ...grpc.CallOption) (*ContentListResponse, error)
 	Get(ctx context.Context, in *ContentGetRequest, opts ...grpc.CallOption) (*Content, error)
@@ -187,7 +317,7 @@ func NewContentServiceClient(cc *grpc.ClientConn) ContentServiceClient {
 
 func (c *contentServiceClient) List(ctx context.Context, in *ContentListRequest, opts ...grpc.CallOption) (*ContentListResponse, error) {
 	out := new(ContentListResponse)
-	err := grpc.Invoke(ctx, "/apipb.ContentService/List", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ContentService/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -196,15 +326,14 @@ func (c *contentServiceClient) List(ctx context.Context, in *ContentListRequest,
 
 func (c *contentServiceClient) Get(ctx context.Context, in *ContentGetRequest, opts ...grpc.CallOption) (*Content, error) {
 	out := new(Content)
-	err := grpc.Invoke(ctx, "/apipb.ContentService/Get", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ContentService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for ContentService service
-
+// ContentServiceServer is the server API for ContentService service.
 type ContentServiceServer interface {
 	List(context.Context, *ContentListRequest) (*ContentListResponse, error)
 	Get(context.Context, *ContentGetRequest) (*Content, error)
@@ -1850,9 +1979,9 @@ var (
 	ErrIntOverflowContent   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("content.proto", fileDescriptorContent) }
+func init() { proto.RegisterFile("content.proto", fileDescriptor_content_3ed96300a0b79c54) }
 
-var fileDescriptorContent = []byte{
+var fileDescriptor_content_3ed96300a0b79c54 = []byte{
 	// 791 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x54, 0x4d, 0x6f, 0xe3, 0x36,
 	0x10, 0xb5, 0x22, 0x4b, 0xb1, 0xc7, 0xb1, 0x56, 0x61, 0x17, 0x0b, 0xd6, 0xc0, 0x0a, 0x82, 0xb6,

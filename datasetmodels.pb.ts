@@ -10,11 +10,15 @@ export const ColumnType_DATE: ColumnType = "DATE";
 export const ColumnType_DATE_TIME: ColumnType = "DATE_TIME";
 export const ColumnType_TIME_OF_DAY: ColumnType = "TIME_OF_DAY";
 
+export const ALL_ColumnType_VALUES: ColumnType[] = [ColumnType_STRING,ColumnType_INTEGER,ColumnType_REAL,ColumnType_DATE,ColumnType_DATE_TIME,ColumnType_TIME_OF_DAY];
+
 export interface Column {
   type?: ColumnType;
   name?: string;
 }
 
+export const Column_type = "type";
+export const Column_name = "name";
 export interface TimeOfDay {
   hours?: number;
   minutes?: number;
@@ -22,6 +26,10 @@ export interface TimeOfDay {
   milliseconds?: number;
 }
 
+export const TimeOfDay_hours = "hours";
+export const TimeOfDay_minutes = "minutes";
+export const TimeOfDay_seconds = "seconds";
+export const TimeOfDay_milliseconds = "milliseconds";
 export interface RowValue {
   str?: string;
   int?: number;
@@ -31,13 +39,23 @@ export interface RowValue {
   timeOfDay?: TimeOfDay;
 }
 
+export const RowValue_str = "str";
+export const RowValue_int = "int";
+export const RowValue_real = "real";
+export const RowValue_date = "date";
+export const RowValue_dateOfTime = "date_of_time";
+export const RowValue_timeOfDay = "time_of_day";
 export interface Row {
   values?: RowValue[];
 }
 
+export const Row_values = "values";
 export interface DataSet {
   label?: string;
   columns?: Column[];
   rows?: Row[];
 }
 
+export const DataSet_label = "label";
+export const DataSet_columns = "columns";
+export const DataSet_rows = "rows";

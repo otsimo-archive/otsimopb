@@ -9,10 +9,12 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
-import binary "encoding/binary"
+import encoding_binary "encoding/binary"
 
 import io "io"
 
@@ -21,84 +23,270 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type DeviceInfo struct {
-	VendorId           string `protobuf:"bytes,1,opt,name=vendorId,proto3" json:"vendorId,omitempty"`
-	ClientSdk          string `protobuf:"bytes,2,opt,name=clientSdk,proto3" json:"clientSdk,omitempty"`
-	BundleIdentifier   string `protobuf:"bytes,3,opt,name=bundleIdentifier,proto3" json:"bundleIdentifier,omitempty"`
-	BundleVersion      string `protobuf:"bytes,4,opt,name=bundleVersion,proto3" json:"bundleVersion,omitempty"`
-	BundleShortVersion string `protobuf:"bytes,5,opt,name=bundleShortVersion,proto3" json:"bundleShortVersion,omitempty"`
-	DeviceType         string `protobuf:"bytes,6,opt,name=deviceType,proto3" json:"deviceType,omitempty"`
-	DeviceName         string `protobuf:"bytes,7,opt,name=deviceName,proto3" json:"deviceName,omitempty"`
-	OsName             string `protobuf:"bytes,8,opt,name=osName,proto3" json:"osName,omitempty"`
-	SystemVersion      string `protobuf:"bytes,9,opt,name=systemVersion,proto3" json:"systemVersion,omitempty"`
-	LanguageCode       string `protobuf:"bytes,10,opt,name=languageCode,proto3" json:"languageCode,omitempty"`
-	CountryCode        string `protobuf:"bytes,11,opt,name=countryCode,proto3" json:"countryCode,omitempty"`
+	VendorId             string   `protobuf:"bytes,1,opt,name=vendorId,proto3" json:"vendorId,omitempty"`
+	ClientSdk            string   `protobuf:"bytes,2,opt,name=clientSdk,proto3" json:"clientSdk,omitempty"`
+	BundleIdentifier     string   `protobuf:"bytes,3,opt,name=bundleIdentifier,proto3" json:"bundleIdentifier,omitempty"`
+	BundleVersion        string   `protobuf:"bytes,4,opt,name=bundleVersion,proto3" json:"bundleVersion,omitempty"`
+	BundleShortVersion   string   `protobuf:"bytes,5,opt,name=bundleShortVersion,proto3" json:"bundleShortVersion,omitempty"`
+	DeviceType           string   `protobuf:"bytes,6,opt,name=deviceType,proto3" json:"deviceType,omitempty"`
+	DeviceName           string   `protobuf:"bytes,7,opt,name=deviceName,proto3" json:"deviceName,omitempty"`
+	OsName               string   `protobuf:"bytes,8,opt,name=osName,proto3" json:"osName,omitempty"`
+	SystemVersion        string   `protobuf:"bytes,9,opt,name=systemVersion,proto3" json:"systemVersion,omitempty"`
+	LanguageCode         string   `protobuf:"bytes,10,opt,name=languageCode,proto3" json:"languageCode,omitempty"`
+	CountryCode          string   `protobuf:"bytes,11,opt,name=countryCode,proto3" json:"countryCode,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DeviceInfo) Reset()                    { *m = DeviceInfo{} }
-func (m *DeviceInfo) String() string            { return proto.CompactTextString(m) }
-func (*DeviceInfo) ProtoMessage()               {}
-func (*DeviceInfo) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{0} }
+func (m *DeviceInfo) Reset()         { *m = DeviceInfo{} }
+func (m *DeviceInfo) String() string { return proto.CompactTextString(m) }
+func (*DeviceInfo) ProtoMessage()    {}
+func (*DeviceInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{0}
+}
+func (m *DeviceInfo) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DeviceInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DeviceInfo.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *DeviceInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceInfo.Merge(dst, src)
+}
+func (m *DeviceInfo) XXX_Size() int {
+	return m.Size()
+}
+func (m *DeviceInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeviceInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeviceInfo proto.InternalMessageInfo
 
 type GameInfo struct {
-	Id       string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Version  string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
-	Language string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Version              string   `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	Language             string   `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GameInfo) Reset()                    { *m = GameInfo{} }
-func (m *GameInfo) String() string            { return proto.CompactTextString(m) }
-func (*GameInfo) ProtoMessage()               {}
-func (*GameInfo) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{1} }
+func (m *GameInfo) Reset()         { *m = GameInfo{} }
+func (m *GameInfo) String() string { return proto.CompactTextString(m) }
+func (*GameInfo) ProtoMessage()    {}
+func (*GameInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{1}
+}
+func (m *GameInfo) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameInfo.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameInfo.Merge(dst, src)
+}
+func (m *GameInfo) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameInfo proto.InternalMessageInfo
 
 // Points are represented as latitude-longitude pairs in the E7 representation
 // (degrees multiplied by 10**7 and rounded to the nearest integer).
 // Latitudes should be in the range +/- 90 degrees and longitude should be in
 // the range +/- 180 degrees (inclusive).
 type Point struct {
-	Latitude  int32 `protobuf:"varint,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	Longitude int32 `protobuf:"varint,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude             int32    `protobuf:"varint,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude            int32    `protobuf:"varint,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Point) Reset()                    { *m = Point{} }
-func (m *Point) String() string            { return proto.CompactTextString(m) }
-func (*Point) ProtoMessage()               {}
-func (*Point) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{2} }
+func (m *Point) Reset()         { *m = Point{} }
+func (m *Point) String() string { return proto.CompactTextString(m) }
+func (*Point) ProtoMessage()    {}
+func (*Point) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{2}
+}
+func (m *Point) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Point) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Point.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Point) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Point.Merge(dst, src)
+}
+func (m *Point) XXX_Size() int {
+	return m.Size()
+}
+func (m *Point) XXX_DiscardUnknown() {
+	xxx_messageInfo_Point.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Point proto.InternalMessageInfo
 
 type Vector3 struct {
-	X float32 `protobuf:"fixed32,1,opt,name=x,proto3" json:"x,omitempty"`
-	Y float32 `protobuf:"fixed32,2,opt,name=y,proto3" json:"y,omitempty"`
-	Z float32 `protobuf:"fixed32,3,opt,name=z,proto3" json:"z,omitempty"`
+	X                    float32  `protobuf:"fixed32,1,opt,name=x,proto3" json:"x,omitempty"`
+	Y                    float32  `protobuf:"fixed32,2,opt,name=y,proto3" json:"y,omitempty"`
+	Z                    float32  `protobuf:"fixed32,3,opt,name=z,proto3" json:"z,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Vector3) Reset()                    { *m = Vector3{} }
-func (m *Vector3) String() string            { return proto.CompactTextString(m) }
-func (*Vector3) ProtoMessage()               {}
-func (*Vector3) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{3} }
+func (m *Vector3) Reset()         { *m = Vector3{} }
+func (m *Vector3) String() string { return proto.CompactTextString(m) }
+func (*Vector3) ProtoMessage()    {}
+func (*Vector3) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{3}
+}
+func (m *Vector3) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Vector3) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Vector3.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Vector3) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Vector3.Merge(dst, src)
+}
+func (m *Vector3) XXX_Size() int {
+	return m.Size()
+}
+func (m *Vector3) XXX_DiscardUnknown() {
+	xxx_messageInfo_Vector3.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Vector3 proto.InternalMessageInfo
 
 type MotionData struct {
-	Gravity          *Vector3 `protobuf:"bytes,1,opt,name=gravity" json:"gravity,omitempty"`
-	UserAcceleration *Vector3 `protobuf:"bytes,2,opt,name=user_acceleration,json=userAcceleration" json:"user_acceleration,omitempty"`
-	RotationRate     *Vector3 `protobuf:"bytes,3,opt,name=rotation_rate,json=rotationRate" json:"rotation_rate,omitempty"`
-	Attitude         *Vector3 `protobuf:"bytes,4,opt,name=attitude" json:"attitude,omitempty"`
+	Gravity              *Vector3 `protobuf:"bytes,1,opt,name=gravity" json:"gravity,omitempty"`
+	UserAcceleration     *Vector3 `protobuf:"bytes,2,opt,name=user_acceleration,json=userAcceleration" json:"user_acceleration,omitempty"`
+	RotationRate         *Vector3 `protobuf:"bytes,3,opt,name=rotation_rate,json=rotationRate" json:"rotation_rate,omitempty"`
+	Attitude             *Vector3 `protobuf:"bytes,4,opt,name=attitude" json:"attitude,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *MotionData) Reset()                    { *m = MotionData{} }
-func (m *MotionData) String() string            { return proto.CompactTextString(m) }
-func (*MotionData) ProtoMessage()               {}
-func (*MotionData) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{4} }
+func (m *MotionData) Reset()         { *m = MotionData{} }
+func (m *MotionData) String() string { return proto.CompactTextString(m) }
+func (*MotionData) ProtoMessage()    {}
+func (*MotionData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{4}
+}
+func (m *MotionData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MotionData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MotionData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *MotionData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MotionData.Merge(dst, src)
+}
+func (m *MotionData) XXX_Size() int {
+	return m.Size()
+}
+func (m *MotionData) XXX_DiscardUnknown() {
+	xxx_messageInfo_MotionData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MotionData proto.InternalMessageInfo
 
 type GestureData struct {
-	Velocity float32 `protobuf:"fixed32,1,opt,name=velocity,proto3" json:"velocity,omitempty"`
-	Width    float32 `protobuf:"fixed32,2,opt,name=width,proto3" json:"width,omitempty"`
-	Height   float32 `protobuf:"fixed32,3,opt,name=height,proto3" json:"height,omitempty"`
-	Duration float32 `protobuf:"fixed32,4,opt,name=duration,proto3" json:"duration,omitempty"`
+	Velocity             float32  `protobuf:"fixed32,1,opt,name=velocity,proto3" json:"velocity,omitempty"`
+	Width                float32  `protobuf:"fixed32,2,opt,name=width,proto3" json:"width,omitempty"`
+	Height               float32  `protobuf:"fixed32,3,opt,name=height,proto3" json:"height,omitempty"`
+	Duration             float32  `protobuf:"fixed32,4,opt,name=duration,proto3" json:"duration,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GestureData) Reset()                    { *m = GestureData{} }
-func (m *GestureData) String() string            { return proto.CompactTextString(m) }
-func (*GestureData) ProtoMessage()               {}
-func (*GestureData) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{5} }
+func (m *GestureData) Reset()         { *m = GestureData{} }
+func (m *GestureData) String() string { return proto.CompactTextString(m) }
+func (*GestureData) ProtoMessage()    {}
+func (*GestureData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{5}
+}
+func (m *GestureData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GestureData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GestureData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GestureData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GestureData.Merge(dst, src)
+}
+func (m *GestureData) XXX_Size() int {
+	return m.Size()
+}
+func (m *GestureData) XXX_DiscardUnknown() {
+	xxx_messageInfo_GestureData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GestureData proto.InternalMessageInfo
 
 type Event struct {
 	// UserId is profile id or child id
@@ -117,7 +305,8 @@ type Event struct {
 	AppId string `protobuf:"bytes,7,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	// Loc is the location of user
 	Loc *Point `protobuf:"bytes,8,opt,name=loc" json:"loc,omitempty"`
-	// EventId is Client side event id in order to track whether event is delivered successfully
+	// EventId is Client side event id in order to track whether event is
+	// delivered successfully
 	EventId string `protobuf:"bytes,9,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	// IsResend is true if client is trying to send a failed event
 	IsResend bool `protobuf:"varint,10,opt,name=is_resend,json=isResend,proto3" json:"is_resend,omitempty"`
@@ -130,13 +319,43 @@ type Event struct {
 	// MotionData keeps motion data of device
 	MotionData *MotionData `protobuf:"bytes,14,opt,name=motion_data,json=motionData" json:"motion_data,omitempty"`
 	//
-	GestureData *GestureData `protobuf:"bytes,15,opt,name=gesture_data,json=gestureData" json:"gesture_data,omitempty"`
+	GestureData          *GestureData `protobuf:"bytes,15,opt,name=gesture_data,json=gestureData" json:"gesture_data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *Event) Reset()                    { *m = Event{} }
-func (m *Event) String() string            { return proto.CompactTextString(m) }
-func (*Event) ProtoMessage()               {}
-func (*Event) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{6} }
+func (m *Event) Reset()         { *m = Event{} }
+func (m *Event) String() string { return proto.CompactTextString(m) }
+func (*Event) ProtoMessage()    {}
+func (*Event) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{6}
+}
+func (m *Event) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Event) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Event.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Event) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Event.Merge(dst, src)
+}
+func (m *Event) XXX_Size() int {
+	return m.Size()
+}
+func (m *Event) XXX_DiscardUnknown() {
+	xxx_messageInfo_Event.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Event proto.InternalMessageInfo
 
 type AppEventData struct {
 	Event     string      `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
@@ -145,23 +364,55 @@ type AppEventData struct {
 	Timestamp int64       `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	Payload   []byte      `protobuf:"bytes,5,opt,name=payload,proto3" json:"payload,omitempty"`
 	Loc       *Point      `protobuf:"bytes,6,opt,name=loc" json:"loc,omitempty"`
-	// EventId is Client side event id in order to track whether event is delivered successfully
+	// EventId is Client side event id in order to track whether event is
+	// delivered successfully
 	EventId string `protobuf:"bytes,7,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	// IsResend is true if client is trying to send a failed event
 	IsResend bool `protobuf:"varint,8,opt,name=is_resend,json=isResend,proto3" json:"is_resend,omitempty"`
 	// UserId is profile id or child id
-	UserId string `protobuf:"bytes,9,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId               string   `protobuf:"bytes,9,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AppEventData) Reset()                    { *m = AppEventData{} }
-func (m *AppEventData) String() string            { return proto.CompactTextString(m) }
-func (*AppEventData) ProtoMessage()               {}
-func (*AppEventData) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{7} }
+func (m *AppEventData) Reset()         { *m = AppEventData{} }
+func (m *AppEventData) String() string { return proto.CompactTextString(m) }
+func (*AppEventData) ProtoMessage()    {}
+func (*AppEventData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{7}
+}
+func (m *AppEventData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AppEventData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AppEventData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *AppEventData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AppEventData.Merge(dst, src)
+}
+func (m *AppEventData) XXX_Size() int {
+	return m.Size()
+}
+func (m *AppEventData) XXX_DiscardUnknown() {
+	xxx_messageInfo_AppEventData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AppEventData proto.InternalMessageInfo
 
 type BatchEventData struct {
 	// Event the event name
 	Event string `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
-	// EventId is Client side event id in order to track whether event is delivered successfully
+	// EventId is Client side event id in order to track whether event is
+	// delivered successfully
 	EventId string `protobuf:"bytes,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	// Timestamp is seconds unix time
 	Timestamp int64 `protobuf:"varint,3,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
@@ -176,13 +427,43 @@ type BatchEventData struct {
 	// MotionData keeps motion data of device
 	MotionData *MotionData `protobuf:"bytes,8,opt,name=motion_data,json=motionData" json:"motion_data,omitempty"`
 	//
-	GestureData *GestureData `protobuf:"bytes,9,opt,name=gesture_data,json=gestureData" json:"gesture_data,omitempty"`
+	GestureData          *GestureData `protobuf:"bytes,9,opt,name=gesture_data,json=gestureData" json:"gesture_data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *BatchEventData) Reset()                    { *m = BatchEventData{} }
-func (m *BatchEventData) String() string            { return proto.CompactTextString(m) }
-func (*BatchEventData) ProtoMessage()               {}
-func (*BatchEventData) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{8} }
+func (m *BatchEventData) Reset()         { *m = BatchEventData{} }
+func (m *BatchEventData) String() string { return proto.CompactTextString(m) }
+func (*BatchEventData) ProtoMessage()    {}
+func (*BatchEventData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{8}
+}
+func (m *BatchEventData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *BatchEventData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_BatchEventData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *BatchEventData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchEventData.Merge(dst, src)
+}
+func (m *BatchEventData) XXX_Size() int {
+	return m.Size()
+}
+func (m *BatchEventData) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchEventData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchEventData proto.InternalMessageInfo
 
 type BatchEvent struct {
 	// UserId is profile id or child id
@@ -198,23 +479,83 @@ type BatchEvent struct {
 	// Child Gender
 	Gender Gender `protobuf:"varint,7,opt,name=gender,proto3,enum=apipb.Gender" json:"gender,omitempty"`
 	// Data is
-	Data []*BatchEventData `protobuf:"bytes,5,rep,name=data" json:"data,omitempty"`
+	Data                 []*BatchEventData `protobuf:"bytes,5,rep,name=data" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *BatchEvent) Reset()                    { *m = BatchEvent{} }
-func (m *BatchEvent) String() string            { return proto.CompactTextString(m) }
-func (*BatchEvent) ProtoMessage()               {}
-func (*BatchEvent) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{9} }
+func (m *BatchEvent) Reset()         { *m = BatchEvent{} }
+func (m *BatchEvent) String() string { return proto.CompactTextString(m) }
+func (*BatchEvent) ProtoMessage()    {}
+func (*BatchEvent) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{9}
+}
+func (m *BatchEvent) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *BatchEvent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_BatchEvent.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *BatchEvent) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchEvent.Merge(dst, src)
+}
+func (m *BatchEvent) XXX_Size() int {
+	return m.Size()
+}
+func (m *BatchEvent) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchEvent.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchEvent proto.InternalMessageInfo
 
 type EventResponse struct {
-	EventId string `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
-	Success bool   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
+	EventId              string   `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	Success              bool     `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EventResponse) Reset()                    { *m = EventResponse{} }
-func (m *EventResponse) String() string            { return proto.CompactTextString(m) }
-func (*EventResponse) ProtoMessage()               {}
-func (*EventResponse) Descriptor() ([]byte, []int) { return fileDescriptorListener, []int{10} }
+func (m *EventResponse) Reset()         { *m = EventResponse{} }
+func (m *EventResponse) String() string { return proto.CompactTextString(m) }
+func (*EventResponse) ProtoMessage()    {}
+func (*EventResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_listener_4670f2fab3b28947, []int{10}
+}
+func (m *EventResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *EventResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_EventResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *EventResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EventResponse.Merge(dst, src)
+}
+func (m *EventResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *EventResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_EventResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EventResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*DeviceInfo)(nil), "apipb.DeviceInfo")
@@ -238,8 +579,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for ListenerService service
-
+// ListenerServiceClient is the client API for ListenerService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ListenerServiceClient interface {
 	AppEvent(ctx context.Context, in *AppEventData, opts ...grpc.CallOption) (*EventResponse, error)
 	CustomEvent(ctx context.Context, opts ...grpc.CallOption) (ListenerService_CustomEventClient, error)
@@ -256,7 +598,7 @@ func NewListenerServiceClient(cc *grpc.ClientConn) ListenerServiceClient {
 
 func (c *listenerServiceClient) AppEvent(ctx context.Context, in *AppEventData, opts ...grpc.CallOption) (*EventResponse, error) {
 	out := new(EventResponse)
-	err := grpc.Invoke(ctx, "/apipb.ListenerService/AppEvent", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ListenerService/AppEvent", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -264,7 +606,7 @@ func (c *listenerServiceClient) AppEvent(ctx context.Context, in *AppEventData, 
 }
 
 func (c *listenerServiceClient) CustomEvent(ctx context.Context, opts ...grpc.CallOption) (ListenerService_CustomEventClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_ListenerService_serviceDesc.Streams[0], c.cc, "/apipb.ListenerService/CustomEvent", opts...)
+	stream, err := c.cc.NewStream(ctx, &_ListenerService_serviceDesc.Streams[0], "/apipb.ListenerService/CustomEvent", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -295,7 +637,7 @@ func (x *listenerServiceCustomEventClient) Recv() (*EventResponse, error) {
 }
 
 func (c *listenerServiceClient) BatchStream(ctx context.Context, opts ...grpc.CallOption) (ListenerService_BatchStreamClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_ListenerService_serviceDesc.Streams[1], c.cc, "/apipb.ListenerService/BatchStream", opts...)
+	stream, err := c.cc.NewStream(ctx, &_ListenerService_serviceDesc.Streams[1], "/apipb.ListenerService/BatchStream", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -325,8 +667,7 @@ func (x *listenerServiceBatchStreamClient) Recv() (*EventResponse, error) {
 	return m, nil
 }
 
-// Server API for ListenerService service
-
+// ListenerServiceServer is the server API for ListenerService service.
 type ListenerServiceServer interface {
 	AppEvent(context.Context, *AppEventData) (*EventResponse, error)
 	CustomEvent(ListenerService_CustomEventServer) error
@@ -599,19 +940,19 @@ func (m *Vector3) MarshalTo(dAtA []byte) (int, error) {
 	if m.X != 0 {
 		dAtA[i] = 0xd
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.X))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.X))))
 		i += 4
 	}
 	if m.Y != 0 {
 		dAtA[i] = 0x15
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Y))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Y))))
 		i += 4
 	}
 	if m.Z != 0 {
 		dAtA[i] = 0x1d
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Z))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Z))))
 		i += 4
 	}
 	return i, nil
@@ -693,25 +1034,25 @@ func (m *GestureData) MarshalTo(dAtA []byte) (int, error) {
 	if m.Velocity != 0 {
 		dAtA[i] = 0xd
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Velocity))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Velocity))))
 		i += 4
 	}
 	if m.Width != 0 {
 		dAtA[i] = 0x15
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Width))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Width))))
 		i += 4
 	}
 	if m.Height != 0 {
 		dAtA[i] = 0x1d
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Height))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Height))))
 		i += 4
 	}
 	if m.Duration != 0 {
 		dAtA[i] = 0x25
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Duration))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Duration))))
 		i += 4
 	}
 	return i, nil
@@ -2099,7 +2440,7 @@ func (m *Vector3) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.X = float32(math.Float32frombits(v))
 		case 2:
@@ -2110,7 +2451,7 @@ func (m *Vector3) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Y = float32(math.Float32frombits(v))
 		case 3:
@@ -2121,7 +2462,7 @@ func (m *Vector3) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Z = float32(math.Float32frombits(v))
 		default:
@@ -2364,7 +2705,7 @@ func (m *GestureData) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Velocity = float32(math.Float32frombits(v))
 		case 2:
@@ -2375,7 +2716,7 @@ func (m *GestureData) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Width = float32(math.Float32frombits(v))
 		case 3:
@@ -2386,7 +2727,7 @@ func (m *GestureData) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Height = float32(math.Float32frombits(v))
 		case 4:
@@ -2397,7 +2738,7 @@ func (m *GestureData) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Duration = float32(math.Float32frombits(v))
 		default:
@@ -3944,9 +4285,9 @@ var (
 	ErrIntOverflowListener   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("listener.proto", fileDescriptorListener) }
+func init() { proto.RegisterFile("listener.proto", fileDescriptor_listener_4670f2fab3b28947) }
 
-var fileDescriptorListener = []byte{
+var fileDescriptor_listener_4670f2fab3b28947 = []byte{
 	// 1056 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0xcd, 0x6e, 0xdb, 0x46,
 	0x10, 0x36, 0x29, 0x51, 0xa2, 0x86, 0xb2, 0x6c, 0x6f, 0x9d, 0x96, 0x75, 0x0b, 0xc1, 0x60, 0x5b,

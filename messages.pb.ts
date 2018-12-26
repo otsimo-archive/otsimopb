@@ -11,6 +11,8 @@ export const GameEntryRequestRequestType_SETTINGS: GameEntryRequestRequestType =
 export const GameEntryRequestRequestType_INDEX: GameEntryRequestRequestType = "INDEX";
 export const GameEntryRequestRequestType_LOCALSETTINGS: GameEntryRequestRequestType = "LOCALSETTINGS";
 
+export const ALL_GameEntryRequestRequestType_VALUES: GameEntryRequestRequestType[] = [GameEntryRequestRequestType_ADD,GameEntryRequestRequestType_ACTIVATE,GameEntryRequestRequestType_DEACTIVATE,GameEntryRequestRequestType_SETTINGS,GameEntryRequestRequestType_INDEX,GameEntryRequestRequestType_LOCALSETTINGS];
+
 export type ListGamesRequestInnerState =  "ANY"  | "CREATED"  | "DEVELOPMENT"  | "WAITING"  | "REJECTED"  | "VALIDATED"  | "PRODUCTION" ;
 export const ListGamesRequestInnerState_ANY: ListGamesRequestInnerState = "ANY";
 export const ListGamesRequestInnerState_CREATED: ListGamesRequestInnerState = "CREATED";
@@ -20,9 +22,13 @@ export const ListGamesRequestInnerState_REJECTED: ListGamesRequestInnerState = "
 export const ListGamesRequestInnerState_VALIDATED: ListGamesRequestInnerState = "VALIDATED";
 export const ListGamesRequestInnerState_PRODUCTION: ListGamesRequestInnerState = "PRODUCTION";
 
+export const ALL_ListGamesRequestInnerState_VALUES: ListGamesRequestInnerState[] = [ListGamesRequestInnerState_ANY,ListGamesRequestInnerState_CREATED,ListGamesRequestInnerState_DEVELOPMENT,ListGamesRequestInnerState_WAITING,ListGamesRequestInnerState_REJECTED,ListGamesRequestInnerState_VALIDATED,ListGamesRequestInnerState_PRODUCTION];
+
 export type RequestReleaseState =  "PRODUCTION_STATE"  | "ALL_STATES" ;
 export const RequestReleaseState_PRODUCTION_STATE: RequestReleaseState = "PRODUCTION_STATE";
 export const RequestReleaseState_ALL_STATES: RequestReleaseState = "ALL_STATES";
+
+export const ALL_RequestReleaseState_VALUES: RequestReleaseState[] = [RequestReleaseState_PRODUCTION_STATE,RequestReleaseState_ALL_STATES];
 
 /**
 A label selector operator is the set of operators that can be used in
@@ -36,66 +42,97 @@ export const LabelSelectorOperator_DoesNotExist: LabelSelectorOperator = "DoesNo
 export const LabelSelectorOperator_Gt: LabelSelectorOperator = "Gt";
 export const LabelSelectorOperator_Lt: LabelSelectorOperator = "Lt";
 
+export const ALL_LabelSelectorOperator_VALUES: LabelSelectorOperator[] = [LabelSelectorOperator_In,LabelSelectorOperator_NotIn,LabelSelectorOperator_Exists,LabelSelectorOperator_DoesNotExist,LabelSelectorOperator_Gt,LabelSelectorOperator_Lt];
+
 export interface GetProfileRequest {
   id?: string;
   email?: string;
 }
 
+export const GetProfileRequest_id = "id";
+export const GetProfileRequest_email = "email";
 export interface GetChildRequest {
   childId?: string;
 }
 
+export const GetChildRequest_childId = "child_id";
 export interface GetChildrenFromProfileRequest {
   profileId?: string;
 }
 
+export const GetChildrenFromProfileRequest_profileId = "profile_id";
 export interface ChangeChildActivationRequest {
   childId?: string;
   active?: boolean;
 }
 
+export const ChangeChildActivationRequest_childId = "child_id";
+export const ChangeChildActivationRequest_active = "active";
 export interface GetChildrenFromProfileResponse {
   children?: apipb_models.Child[];
 }
 
+export const GetChildrenFromProfileResponse_children = "children";
 export interface GetGameReleaseRequest {
   gameId?: string;
   version?: string;
   state?: RequestReleaseState;
 }
 
+export const GetGameReleaseRequest_gameId = "game_id";
+export const GetGameReleaseRequest_version = "version";
+export const GetGameReleaseRequest_state = "state";
 export interface SoundEnableRequest {
   childId?: string;
   profileId?: string;
   enable?: boolean;
 }
 
+export const SoundEnableRequest_childId = "child_id";
+export const SoundEnableRequest_profileId = "profile_id";
+export const SoundEnableRequest_enable = "enable";
 export interface GameEntryRequest {
   childId?: string;
   gameId?: string;
   type?: GameEntryRequestRequestType;
   settings?: string;
   index?: number;
+  limitAccess?: string[];
 }
 
+export const GameEntryRequest_childId = "child_id";
+export const GameEntryRequest_gameId = "game_id";
+export const GameEntryRequest_type = "type";
+export const GameEntryRequest_settings = "settings";
+export const GameEntryRequest_index = "index";
+export const GameEntryRequest_limitAccess = "limit_access";
 export interface PublishResponse {
   type?: number;
   message?: string;
   token?: apipb_models.UploadToken;
 }
 
+export const PublishResponse_type = "type";
+export const PublishResponse_message = "message";
+export const PublishResponse_token = "token";
 export interface ValidateRequest {
   gameId?: string;
   gameVersion?: string;
   newState?: apipb_models.ReleaseState;
 }
 
+export const ValidateRequest_gameId = "game_id";
+export const ValidateRequest_gameVersion = "game_version";
+export const ValidateRequest_newState = "new_state";
 export interface UpdateIndecesRequest {
   profileId?: string;
   childId?: string;
   gameIds?: string[];
 }
 
+export const UpdateIndecesRequest_profileId = "profile_id";
+export const UpdateIndecesRequest_childId = "child_id";
+export const UpdateIndecesRequest_gameIds = "game_ids";
 /**
 Get game by game_id or unique_name
 */
@@ -104,6 +141,8 @@ export interface GetGameRequest {
   gameId?: string;
 }
 
+export const GetGameRequest_uniqueName = "unique_name";
+export const GetGameRequest_gameId = "game_id";
 export interface ListGamesRequest {
   releaseState?: ListGamesRequestInnerState;
   limit?: number;
@@ -111,6 +150,10 @@ export interface ListGamesRequest {
   language?: string;
 }
 
+export const ListGamesRequest_releaseState = "release_state";
+export const ListGamesRequest_limit = "limit";
+export const ListGamesRequest_offset = "offset";
+export const ListGamesRequest_language = "language";
 export interface ListItem {
   gameId?: string;
   uniqueName?: string;
@@ -123,6 +166,15 @@ export interface ListItem {
   languages?: string[];
 }
 
+export const ListItem_gameId = "game_id";
+export const ListItem_uniqueName = "unique_name";
+export const ListItem_latestVersion = "latest_version";
+export const ListItem_latestState = "latest_state";
+export const ListItem_productionVersion = "production_version";
+export const ListItem_storage = "storage";
+export const ListItem_archiveFormat = "archive_format";
+export const ListItem_releasedAt = "released_at";
+export const ListItem_languages = "languages";
 export interface ListItemWithTests {
   gameId?: string;
   uniqueName?: string;
@@ -130,6 +182,10 @@ export interface ListItemWithTests {
   groups?: ListItemWithTestsTestGroup[];
 }
 
+export const ListItemWithTests_gameId = "game_id";
+export const ListItemWithTests_uniqueName = "unique_name";
+export const ListItemWithTests_testingVersion = "testing_version";
+export const ListItemWithTests_groups = "groups";
 export interface ListItemWithTestsTestGroup {
   name?: string;
   weight?: number;
@@ -142,6 +198,15 @@ export interface ListItemWithTestsTestGroup {
   languages?: string[];
 }
 
+export const ListItemWithTestsTestGroup_name = "name";
+export const ListItemWithTestsTestGroup_weight = "weight";
+export const ListItemWithTestsTestGroup_latestVersion = "latest_version";
+export const ListItemWithTestsTestGroup_latestState = "latest_state";
+export const ListItemWithTestsTestGroup_productionVersion = "production_version";
+export const ListItemWithTestsTestGroup_storage = "storage";
+export const ListItemWithTestsTestGroup_archiveFormat = "archive_format";
+export const ListItemWithTestsTestGroup_releasedAt = "released_at";
+export const ListItemWithTestsTestGroup_languages = "languages";
 export interface GetLatestVersionsRequest {
   state?: RequestReleaseState;
   gameIds?: string[];
@@ -151,16 +216,23 @@ Device Capabilities
   capabilities?: string[];
 }
 
+export const GetLatestVersionsRequest_state = "state";
+export const GetLatestVersionsRequest_gameIds = "game_ids";
+export const GetLatestVersionsRequest_capabilities = "capabilities";
 export interface GameAndVersion {
   gameId?: string;
   version?: string;
   tarballUrl?: string;
 }
 
+export const GameAndVersion_gameId = "game_id";
+export const GameAndVersion_version = "version";
+export const GameAndVersion_tarballUrl = "tarball_url";
 export interface GameVersionsResponse {
   results?: GameAndVersion[];
 }
 
+export const GameVersionsResponse_results = "results";
 /**
 Search Service
 */
@@ -172,16 +244,22 @@ export interface SearchResult {
   score?: number;
 }
 
+export const SearchResult_gameId = "game_id";
+export const SearchResult_score = "score";
 export interface SearchRequest {
   query?: string;
   state?: RequestReleaseState;
 }
 
+export const SearchRequest_query = "query";
+export const SearchRequest_state = "state";
 export interface SearchResponse {
   type?: number;
   results?: SearchResult[];
 }
 
+export const SearchResponse_type = "type";
+export const SearchResponse_results = "results";
 /**
 Common
 */
@@ -190,9 +268,11 @@ export interface Response {
   message?: string;
 }
 
+export const Response_type = "type";
+export const Response_message = "message";
 /**
-A label selector requirement is a selector that contains values, a key, and an operator
-that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and
+an operator that relates the key and values.
 */
 export interface LabelSelectorRequirement {
 /**
@@ -206,28 +286,34 @@ Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
   operator?: LabelSelectorOperator;
 /**
 values is an array of string values. If the operator is In or NotIn,
-the values array must be non-empty. If the operator is Exists or DoesNotExist,
-the values array must be empty. If the operator is Gt or Lt, the values
-array must have a single element, which will be interpreted as an integer.
+the values array must be non-empty. If the operator is Exists or
+DoesNotExist, the values array must be empty. If the operator is Gt or Lt,
+the values array must have a single element, which will be interpreted as
+an integer.
 */
   values?: string[];
 }
 
+export const LabelSelectorRequirement_key = "key";
+export const LabelSelectorRequirement_operator = "operator";
+export const LabelSelectorRequirement_values = "values";
 /**
 An empty label selector term matches all objects. A null label selector term
 matches no objects.
 */
 export interface LabelSelectorTerm {
 /**
-expressions is a list of label selector requirements. The requirements are ANDed.
+expressions is a list of label selector requirements. The requirements are
+ANDed.
 */
   expressions?: LabelSelectorRequirement[];
 }
 
+export const LabelSelectorTerm_expressions = "expressions";
 /**
-A label selector represents the union of the results of one or more label queries
-over a set of labels; that is, it represents the OR of the selectors represented
-by the labelSelectorTerms.
+A label selector represents the union of the results of one or more label
+queries over a set of labels; that is, it represents the OR of the selectors
+represented by the labelSelectorTerms.
 */
 export interface LabelSelector {
 /**
@@ -236,3 +322,4 @@ terms is a list of label selector terms. The terms are ORed.
   terms?: LabelSelectorTerm[];
 }
 
+export const LabelSelector_terms = "terms";

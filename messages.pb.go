@@ -9,7 +9,7 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import binary "encoding/binary"
+import encoding_binary "encoding/binary"
 
 import io "io"
 
@@ -17,6 +17,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type RequestReleaseState int32
 
@@ -37,7 +43,9 @@ var RequestReleaseState_value = map[string]int32{
 func (x RequestReleaseState) String() string {
 	return proto.EnumName(RequestReleaseState_name, int32(x))
 }
-func (RequestReleaseState) EnumDescriptor() ([]byte, []int) { return fileDescriptorMessages, []int{0} }
+func (RequestReleaseState) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{0}
+}
 
 // A label selector operator is the set of operators that can be used in
 // a label selector requirement.
@@ -72,7 +80,9 @@ var LabelSelectorOperator_value = map[string]int32{
 func (x LabelSelectorOperator) String() string {
 	return proto.EnumName(LabelSelectorOperator_name, int32(x))
 }
-func (LabelSelectorOperator) EnumDescriptor() ([]byte, []int) { return fileDescriptorMessages, []int{1} }
+func (LabelSelectorOperator) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{1}
+}
 
 type GameEntryRequest_RequestType int32
 
@@ -106,7 +116,7 @@ func (x GameEntryRequest_RequestType) String() string {
 	return proto.EnumName(GameEntryRequest_RequestType_name, int32(x))
 }
 func (GameEntryRequest_RequestType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{7, 0}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{7, 0}
 }
 
 type ListGamesRequest_InnerState int32
@@ -144,287 +154,1022 @@ func (x ListGamesRequest_InnerState) String() string {
 	return proto.EnumName(ListGamesRequest_InnerState_name, int32(x))
 }
 func (ListGamesRequest_InnerState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{12, 0}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{12, 0}
 }
 
 type GetProfileRequest struct {
-	Id    string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Email string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Email                string   `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetProfileRequest) Reset()                    { *m = GetProfileRequest{} }
-func (m *GetProfileRequest) String() string            { return proto.CompactTextString(m) }
-func (*GetProfileRequest) ProtoMessage()               {}
-func (*GetProfileRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{0} }
+func (m *GetProfileRequest) Reset()         { *m = GetProfileRequest{} }
+func (m *GetProfileRequest) String() string { return proto.CompactTextString(m) }
+func (*GetProfileRequest) ProtoMessage()    {}
+func (*GetProfileRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{0}
+}
+func (m *GetProfileRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetProfileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetProfileRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetProfileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetProfileRequest.Merge(dst, src)
+}
+func (m *GetProfileRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetProfileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetProfileRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetProfileRequest proto.InternalMessageInfo
 
 type GetChildRequest struct {
-	ChildId string `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	ChildId              string   `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetChildRequest) Reset()                    { *m = GetChildRequest{} }
-func (m *GetChildRequest) String() string            { return proto.CompactTextString(m) }
-func (*GetChildRequest) ProtoMessage()               {}
-func (*GetChildRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{1} }
+func (m *GetChildRequest) Reset()         { *m = GetChildRequest{} }
+func (m *GetChildRequest) String() string { return proto.CompactTextString(m) }
+func (*GetChildRequest) ProtoMessage()    {}
+func (*GetChildRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{1}
+}
+func (m *GetChildRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetChildRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetChildRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetChildRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetChildRequest.Merge(dst, src)
+}
+func (m *GetChildRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetChildRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetChildRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetChildRequest proto.InternalMessageInfo
 
 type GetChildrenFromProfileRequest struct {
-	ProfileId string `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	ProfileId            string   `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *GetChildrenFromProfileRequest) Reset()         { *m = GetChildrenFromProfileRequest{} }
 func (m *GetChildrenFromProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetChildrenFromProfileRequest) ProtoMessage()    {}
 func (*GetChildrenFromProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{2}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{2}
+}
+func (m *GetChildrenFromProfileRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetChildrenFromProfileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetChildrenFromProfileRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetChildrenFromProfileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetChildrenFromProfileRequest.Merge(dst, src)
+}
+func (m *GetChildrenFromProfileRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetChildrenFromProfileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetChildrenFromProfileRequest.DiscardUnknown(m)
 }
 
+var xxx_messageInfo_GetChildrenFromProfileRequest proto.InternalMessageInfo
+
 type ChangeChildActivationRequest struct {
-	ChildId string `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
-	Active  bool   `protobuf:"varint,2,opt,name=active,proto3" json:"active,omitempty"`
+	ChildId              string   `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	Active               bool     `protobuf:"varint,2,opt,name=active,proto3" json:"active,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *ChangeChildActivationRequest) Reset()         { *m = ChangeChildActivationRequest{} }
 func (m *ChangeChildActivationRequest) String() string { return proto.CompactTextString(m) }
 func (*ChangeChildActivationRequest) ProtoMessage()    {}
 func (*ChangeChildActivationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{3}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{3}
+}
+func (m *ChangeChildActivationRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ChangeChildActivationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ChangeChildActivationRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ChangeChildActivationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChangeChildActivationRequest.Merge(dst, src)
+}
+func (m *ChangeChildActivationRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ChangeChildActivationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChangeChildActivationRequest.DiscardUnknown(m)
 }
 
+var xxx_messageInfo_ChangeChildActivationRequest proto.InternalMessageInfo
+
 type GetChildrenFromProfileResponse struct {
-	Children []*Child `protobuf:"bytes,1,rep,name=children" json:"children,omitempty"`
+	Children             []*Child `protobuf:"bytes,1,rep,name=children" json:"children,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *GetChildrenFromProfileResponse) Reset()         { *m = GetChildrenFromProfileResponse{} }
 func (m *GetChildrenFromProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*GetChildrenFromProfileResponse) ProtoMessage()    {}
 func (*GetChildrenFromProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{4}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{4}
 }
+func (m *GetChildrenFromProfileResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetChildrenFromProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetChildrenFromProfileResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetChildrenFromProfileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetChildrenFromProfileResponse.Merge(dst, src)
+}
+func (m *GetChildrenFromProfileResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetChildrenFromProfileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetChildrenFromProfileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetChildrenFromProfileResponse proto.InternalMessageInfo
 
 type GetGameReleaseRequest struct {
-	GameId  string              `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	Version string              `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
-	State   RequestReleaseState `protobuf:"varint,3,opt,name=state,proto3,enum=apipb.RequestReleaseState" json:"state,omitempty"`
+	GameId               string              `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Version              string              `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	State                RequestReleaseState `protobuf:"varint,3,opt,name=state,proto3,enum=apipb.RequestReleaseState" json:"state,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *GetGameReleaseRequest) Reset()                    { *m = GetGameReleaseRequest{} }
-func (m *GetGameReleaseRequest) String() string            { return proto.CompactTextString(m) }
-func (*GetGameReleaseRequest) ProtoMessage()               {}
-func (*GetGameReleaseRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{5} }
+func (m *GetGameReleaseRequest) Reset()         { *m = GetGameReleaseRequest{} }
+func (m *GetGameReleaseRequest) String() string { return proto.CompactTextString(m) }
+func (*GetGameReleaseRequest) ProtoMessage()    {}
+func (*GetGameReleaseRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{5}
+}
+func (m *GetGameReleaseRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetGameReleaseRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetGameReleaseRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetGameReleaseRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetGameReleaseRequest.Merge(dst, src)
+}
+func (m *GetGameReleaseRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetGameReleaseRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetGameReleaseRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetGameReleaseRequest proto.InternalMessageInfo
 
 type SoundEnableRequest struct {
-	ChildId   string `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
-	ProfileId string `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
-	Enable    bool   `protobuf:"varint,3,opt,name=enable,proto3" json:"enable,omitempty"`
+	ChildId              string   `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	ProfileId            string   `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	Enable               bool     `protobuf:"varint,3,opt,name=enable,proto3" json:"enable,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SoundEnableRequest) Reset()                    { *m = SoundEnableRequest{} }
-func (m *SoundEnableRequest) String() string            { return proto.CompactTextString(m) }
-func (*SoundEnableRequest) ProtoMessage()               {}
-func (*SoundEnableRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{6} }
+func (m *SoundEnableRequest) Reset()         { *m = SoundEnableRequest{} }
+func (m *SoundEnableRequest) String() string { return proto.CompactTextString(m) }
+func (*SoundEnableRequest) ProtoMessage()    {}
+func (*SoundEnableRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{6}
+}
+func (m *SoundEnableRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SoundEnableRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SoundEnableRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *SoundEnableRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SoundEnableRequest.Merge(dst, src)
+}
+func (m *SoundEnableRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *SoundEnableRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SoundEnableRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SoundEnableRequest proto.InternalMessageInfo
 
 type GameEntryRequest struct {
-	ChildId  string                       `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
-	GameId   string                       `protobuf:"bytes,2,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	Type     GameEntryRequest_RequestType `protobuf:"varint,3,opt,name=type,proto3,enum=apipb.GameEntryRequest_RequestType" json:"type,omitempty"`
-	Settings []byte                       `protobuf:"bytes,4,opt,name=settings,proto3" json:"settings,omitempty"`
-	Index    int32                        `protobuf:"varint,5,opt,name=index,proto3" json:"index,omitempty"`
+	ChildId              string                       `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	GameId               string                       `protobuf:"bytes,2,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Type                 GameEntryRequest_RequestType `protobuf:"varint,3,opt,name=type,proto3,enum=apipb.GameEntryRequest_RequestType" json:"type,omitempty"`
+	Settings             []byte                       `protobuf:"bytes,4,opt,name=settings,proto3" json:"settings,omitempty"`
+	Index                int32                        `protobuf:"varint,5,opt,name=index,proto3" json:"index,omitempty"`
+	LimitAccess          []string                     `protobuf:"bytes,6,rep,name=limit_access,json=limitAccess" json:"limit_access,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
+	XXX_unrecognized     []byte                       `json:"-"`
+	XXX_sizecache        int32                        `json:"-"`
 }
 
-func (m *GameEntryRequest) Reset()                    { *m = GameEntryRequest{} }
-func (m *GameEntryRequest) String() string            { return proto.CompactTextString(m) }
-func (*GameEntryRequest) ProtoMessage()               {}
-func (*GameEntryRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{7} }
+func (m *GameEntryRequest) Reset()         { *m = GameEntryRequest{} }
+func (m *GameEntryRequest) String() string { return proto.CompactTextString(m) }
+func (*GameEntryRequest) ProtoMessage()    {}
+func (*GameEntryRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{7}
+}
+func (m *GameEntryRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameEntryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameEntryRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameEntryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameEntryRequest.Merge(dst, src)
+}
+func (m *GameEntryRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameEntryRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameEntryRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameEntryRequest proto.InternalMessageInfo
 
 type PublishResponse struct {
-	Type    int32        `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
-	Message string       `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Token   *UploadToken `protobuf:"bytes,3,opt,name=token" json:"token,omitempty"`
+	Type                 int32        `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	Message              string       `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Token                *UploadToken `protobuf:"bytes,3,opt,name=token" json:"token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *PublishResponse) Reset()                    { *m = PublishResponse{} }
-func (m *PublishResponse) String() string            { return proto.CompactTextString(m) }
-func (*PublishResponse) ProtoMessage()               {}
-func (*PublishResponse) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{8} }
+func (m *PublishResponse) Reset()         { *m = PublishResponse{} }
+func (m *PublishResponse) String() string { return proto.CompactTextString(m) }
+func (*PublishResponse) ProtoMessage()    {}
+func (*PublishResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{8}
+}
+func (m *PublishResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PublishResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PublishResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *PublishResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublishResponse.Merge(dst, src)
+}
+func (m *PublishResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *PublishResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_PublishResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PublishResponse proto.InternalMessageInfo
 
 type ValidateRequest struct {
-	GameId      string       `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	GameVersion string       `protobuf:"bytes,2,opt,name=game_version,json=gameVersion,proto3" json:"game_version,omitempty"`
-	NewState    ReleaseState `protobuf:"varint,3,opt,name=new_state,json=newState,proto3,enum=apipb.ReleaseState" json:"new_state,omitempty"`
+	GameId               string       `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	GameVersion          string       `protobuf:"bytes,2,opt,name=game_version,json=gameVersion,proto3" json:"game_version,omitempty"`
+	NewState             ReleaseState `protobuf:"varint,3,opt,name=new_state,json=newState,proto3,enum=apipb.ReleaseState" json:"new_state,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *ValidateRequest) Reset()                    { *m = ValidateRequest{} }
-func (m *ValidateRequest) String() string            { return proto.CompactTextString(m) }
-func (*ValidateRequest) ProtoMessage()               {}
-func (*ValidateRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{9} }
+func (m *ValidateRequest) Reset()         { *m = ValidateRequest{} }
+func (m *ValidateRequest) String() string { return proto.CompactTextString(m) }
+func (*ValidateRequest) ProtoMessage()    {}
+func (*ValidateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{9}
+}
+func (m *ValidateRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ValidateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ValidateRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ValidateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ValidateRequest.Merge(dst, src)
+}
+func (m *ValidateRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ValidateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ValidateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ValidateRequest proto.InternalMessageInfo
 
 type UpdateIndecesRequest struct {
-	ProfileId string   `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
-	ChildId   string   `protobuf:"bytes,2,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
-	GameIds   []string `protobuf:"bytes,3,rep,name=game_ids,json=gameIds" json:"game_ids,omitempty"`
+	ProfileId            string   `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	ChildId              string   `protobuf:"bytes,2,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
+	GameIds              []string `protobuf:"bytes,3,rep,name=game_ids,json=gameIds" json:"game_ids,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *UpdateIndecesRequest) Reset()                    { *m = UpdateIndecesRequest{} }
-func (m *UpdateIndecesRequest) String() string            { return proto.CompactTextString(m) }
-func (*UpdateIndecesRequest) ProtoMessage()               {}
-func (*UpdateIndecesRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{10} }
+func (m *UpdateIndecesRequest) Reset()         { *m = UpdateIndecesRequest{} }
+func (m *UpdateIndecesRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateIndecesRequest) ProtoMessage()    {}
+func (*UpdateIndecesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{10}
+}
+func (m *UpdateIndecesRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *UpdateIndecesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_UpdateIndecesRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *UpdateIndecesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateIndecesRequest.Merge(dst, src)
+}
+func (m *UpdateIndecesRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *UpdateIndecesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateIndecesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateIndecesRequest proto.InternalMessageInfo
 
 // Get game by game_id or unique_name
 type GetGameRequest struct {
-	UniqueName string `protobuf:"bytes,1,opt,name=unique_name,json=uniqueName,proto3" json:"unique_name,omitempty"`
-	GameId     string `protobuf:"bytes,2,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	UniqueName           string   `protobuf:"bytes,1,opt,name=unique_name,json=uniqueName,proto3" json:"unique_name,omitempty"`
+	GameId               string   `protobuf:"bytes,2,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetGameRequest) Reset()                    { *m = GetGameRequest{} }
-func (m *GetGameRequest) String() string            { return proto.CompactTextString(m) }
-func (*GetGameRequest) ProtoMessage()               {}
-func (*GetGameRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{11} }
+func (m *GetGameRequest) Reset()         { *m = GetGameRequest{} }
+func (m *GetGameRequest) String() string { return proto.CompactTextString(m) }
+func (*GetGameRequest) ProtoMessage()    {}
+func (*GetGameRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{11}
+}
+func (m *GetGameRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetGameRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetGameRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetGameRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetGameRequest.Merge(dst, src)
+}
+func (m *GetGameRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetGameRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetGameRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetGameRequest proto.InternalMessageInfo
 
 type ListGamesRequest struct {
-	ReleaseState ListGamesRequest_InnerState `protobuf:"varint,1,opt,name=release_state,json=releaseState,proto3,enum=apipb.ListGamesRequest_InnerState" json:"release_state,omitempty"`
-	Limit        int32                       `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
-	Offset       int32                       `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
-	Language     string                      `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
+	ReleaseState         ListGamesRequest_InnerState `protobuf:"varint,1,opt,name=release_state,json=releaseState,proto3,enum=apipb.ListGamesRequest_InnerState" json:"release_state,omitempty"`
+	Limit                int32                       `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset               int32                       `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	Language             string                      `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
+	XXX_unrecognized     []byte                      `json:"-"`
+	XXX_sizecache        int32                       `json:"-"`
 }
 
-func (m *ListGamesRequest) Reset()                    { *m = ListGamesRequest{} }
-func (m *ListGamesRequest) String() string            { return proto.CompactTextString(m) }
-func (*ListGamesRequest) ProtoMessage()               {}
-func (*ListGamesRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{12} }
+func (m *ListGamesRequest) Reset()         { *m = ListGamesRequest{} }
+func (m *ListGamesRequest) String() string { return proto.CompactTextString(m) }
+func (*ListGamesRequest) ProtoMessage()    {}
+func (*ListGamesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{12}
+}
+func (m *ListGamesRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ListGamesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ListGamesRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ListGamesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListGamesRequest.Merge(dst, src)
+}
+func (m *ListGamesRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ListGamesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListGamesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListGamesRequest proto.InternalMessageInfo
 
 type ListItem struct {
-	GameId            string       `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	UniqueName        string       `protobuf:"bytes,2,opt,name=unique_name,json=uniqueName,proto3" json:"unique_name,omitempty"`
-	LatestVersion     string       `protobuf:"bytes,3,opt,name=latest_version,json=latestVersion,proto3" json:"latest_version,omitempty"`
-	LatestState       ReleaseState `protobuf:"varint,4,opt,name=latest_state,json=latestState,proto3,enum=apipb.ReleaseState" json:"latest_state,omitempty"`
-	ProductionVersion string       `protobuf:"bytes,5,opt,name=production_version,json=productionVersion,proto3" json:"production_version,omitempty"`
-	Storage           string       `protobuf:"bytes,6,opt,name=storage,proto3" json:"storage,omitempty"`
-	ArchiveFormat     string       `protobuf:"bytes,7,opt,name=archive_format,json=archiveFormat,proto3" json:"archive_format,omitempty"`
-	ReleasedAt        int64        `protobuf:"varint,8,opt,name=released_at,json=releasedAt,proto3" json:"released_at,omitempty"`
-	Languages         []string     `protobuf:"bytes,9,rep,name=languages" json:"languages,omitempty"`
+	GameId               string       `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	UniqueName           string       `protobuf:"bytes,2,opt,name=unique_name,json=uniqueName,proto3" json:"unique_name,omitempty"`
+	LatestVersion        string       `protobuf:"bytes,3,opt,name=latest_version,json=latestVersion,proto3" json:"latest_version,omitempty"`
+	LatestState          ReleaseState `protobuf:"varint,4,opt,name=latest_state,json=latestState,proto3,enum=apipb.ReleaseState" json:"latest_state,omitempty"`
+	ProductionVersion    string       `protobuf:"bytes,5,opt,name=production_version,json=productionVersion,proto3" json:"production_version,omitempty"`
+	Storage              string       `protobuf:"bytes,6,opt,name=storage,proto3" json:"storage,omitempty"`
+	ArchiveFormat        string       `protobuf:"bytes,7,opt,name=archive_format,json=archiveFormat,proto3" json:"archive_format,omitempty"`
+	ReleasedAt           int64        `protobuf:"varint,8,opt,name=released_at,json=releasedAt,proto3" json:"released_at,omitempty"`
+	Languages            []string     `protobuf:"bytes,9,rep,name=languages" json:"languages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *ListItem) Reset()                    { *m = ListItem{} }
-func (m *ListItem) String() string            { return proto.CompactTextString(m) }
-func (*ListItem) ProtoMessage()               {}
-func (*ListItem) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{13} }
+func (m *ListItem) Reset()         { *m = ListItem{} }
+func (m *ListItem) String() string { return proto.CompactTextString(m) }
+func (*ListItem) ProtoMessage()    {}
+func (*ListItem) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{13}
+}
+func (m *ListItem) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ListItem.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ListItem) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListItem.Merge(dst, src)
+}
+func (m *ListItem) XXX_Size() int {
+	return m.Size()
+}
+func (m *ListItem) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListItem.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListItem proto.InternalMessageInfo
 
 type ListItemWithTests struct {
-	GameId         string                         `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	UniqueName     string                         `protobuf:"bytes,2,opt,name=unique_name,json=uniqueName,proto3" json:"unique_name,omitempty"`
-	TestingVersion int32                          `protobuf:"varint,3,opt,name=testing_version,json=testingVersion,proto3" json:"testing_version,omitempty"`
-	Groups         []*ListItemWithTests_TestGroup `protobuf:"bytes,4,rep,name=groups" json:"groups,omitempty"`
+	GameId               string                         `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	UniqueName           string                         `protobuf:"bytes,2,opt,name=unique_name,json=uniqueName,proto3" json:"unique_name,omitempty"`
+	TestingVersion       int32                          `protobuf:"varint,3,opt,name=testing_version,json=testingVersion,proto3" json:"testing_version,omitempty"`
+	Groups               []*ListItemWithTests_TestGroup `protobuf:"bytes,4,rep,name=groups" json:"groups,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
 }
 
-func (m *ListItemWithTests) Reset()                    { *m = ListItemWithTests{} }
-func (m *ListItemWithTests) String() string            { return proto.CompactTextString(m) }
-func (*ListItemWithTests) ProtoMessage()               {}
-func (*ListItemWithTests) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{14} }
+func (m *ListItemWithTests) Reset()         { *m = ListItemWithTests{} }
+func (m *ListItemWithTests) String() string { return proto.CompactTextString(m) }
+func (*ListItemWithTests) ProtoMessage()    {}
+func (*ListItemWithTests) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{14}
+}
+func (m *ListItemWithTests) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ListItemWithTests) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ListItemWithTests.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ListItemWithTests) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListItemWithTests.Merge(dst, src)
+}
+func (m *ListItemWithTests) XXX_Size() int {
+	return m.Size()
+}
+func (m *ListItemWithTests) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListItemWithTests.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListItemWithTests proto.InternalMessageInfo
 
 type ListItemWithTests_TestGroup struct {
-	Name              string       `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Weight            int32        `protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`
-	LatestVersion     string       `protobuf:"bytes,3,opt,name=latest_version,json=latestVersion,proto3" json:"latest_version,omitempty"`
-	LatestState       ReleaseState `protobuf:"varint,4,opt,name=latest_state,json=latestState,proto3,enum=apipb.ReleaseState" json:"latest_state,omitempty"`
-	ProductionVersion string       `protobuf:"bytes,5,opt,name=production_version,json=productionVersion,proto3" json:"production_version,omitempty"`
-	Storage           string       `protobuf:"bytes,6,opt,name=storage,proto3" json:"storage,omitempty"`
-	ArchiveFormat     string       `protobuf:"bytes,7,opt,name=archive_format,json=archiveFormat,proto3" json:"archive_format,omitempty"`
-	ReleasedAt        int64        `protobuf:"varint,8,opt,name=released_at,json=releasedAt,proto3" json:"released_at,omitempty"`
-	Languages         []string     `protobuf:"bytes,9,rep,name=languages" json:"languages,omitempty"`
+	Name                 string       `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Weight               int32        `protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`
+	LatestVersion        string       `protobuf:"bytes,3,opt,name=latest_version,json=latestVersion,proto3" json:"latest_version,omitempty"`
+	LatestState          ReleaseState `protobuf:"varint,4,opt,name=latest_state,json=latestState,proto3,enum=apipb.ReleaseState" json:"latest_state,omitempty"`
+	ProductionVersion    string       `protobuf:"bytes,5,opt,name=production_version,json=productionVersion,proto3" json:"production_version,omitempty"`
+	Storage              string       `protobuf:"bytes,6,opt,name=storage,proto3" json:"storage,omitempty"`
+	ArchiveFormat        string       `protobuf:"bytes,7,opt,name=archive_format,json=archiveFormat,proto3" json:"archive_format,omitempty"`
+	ReleasedAt           int64        `protobuf:"varint,8,opt,name=released_at,json=releasedAt,proto3" json:"released_at,omitempty"`
+	Languages            []string     `protobuf:"bytes,9,rep,name=languages" json:"languages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
 func (m *ListItemWithTests_TestGroup) Reset()         { *m = ListItemWithTests_TestGroup{} }
 func (m *ListItemWithTests_TestGroup) String() string { return proto.CompactTextString(m) }
 func (*ListItemWithTests_TestGroup) ProtoMessage()    {}
 func (*ListItemWithTests_TestGroup) Descriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{14, 0}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{14, 0}
 }
+func (m *ListItemWithTests_TestGroup) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ListItemWithTests_TestGroup) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ListItemWithTests_TestGroup.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ListItemWithTests_TestGroup) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListItemWithTests_TestGroup.Merge(dst, src)
+}
+func (m *ListItemWithTests_TestGroup) XXX_Size() int {
+	return m.Size()
+}
+func (m *ListItemWithTests_TestGroup) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListItemWithTests_TestGroup.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListItemWithTests_TestGroup proto.InternalMessageInfo
 
 type GetLatestVersionsRequest struct {
 	State   RequestReleaseState `protobuf:"varint,1,opt,name=state,proto3,enum=apipb.RequestReleaseState" json:"state,omitempty"`
 	GameIds []string            `protobuf:"bytes,2,rep,name=game_ids,json=gameIds" json:"game_ids,omitempty"`
 	// Device Capabilities
-	Capabilities []string `protobuf:"bytes,3,rep,name=capabilities" json:"capabilities,omitempty"`
+	Capabilities         []string `protobuf:"bytes,3,rep,name=capabilities" json:"capabilities,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *GetLatestVersionsRequest) Reset()         { *m = GetLatestVersionsRequest{} }
 func (m *GetLatestVersionsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetLatestVersionsRequest) ProtoMessage()    {}
 func (*GetLatestVersionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{15}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{15}
 }
+func (m *GetLatestVersionsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetLatestVersionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetLatestVersionsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetLatestVersionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetLatestVersionsRequest.Merge(dst, src)
+}
+func (m *GetLatestVersionsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetLatestVersionsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetLatestVersionsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetLatestVersionsRequest proto.InternalMessageInfo
 
 type GameAndVersion struct {
-	GameId     string `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	Version    string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
-	TarballUrl string `protobuf:"bytes,3,opt,name=tarball_url,json=tarballUrl,proto3" json:"tarball_url,omitempty"`
+	GameId               string   `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Version              string   `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	TarballUrl           string   `protobuf:"bytes,3,opt,name=tarball_url,json=tarballUrl,proto3" json:"tarball_url,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GameAndVersion) Reset()                    { *m = GameAndVersion{} }
-func (m *GameAndVersion) String() string            { return proto.CompactTextString(m) }
-func (*GameAndVersion) ProtoMessage()               {}
-func (*GameAndVersion) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{16} }
+func (m *GameAndVersion) Reset()         { *m = GameAndVersion{} }
+func (m *GameAndVersion) String() string { return proto.CompactTextString(m) }
+func (*GameAndVersion) ProtoMessage()    {}
+func (*GameAndVersion) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{16}
+}
+func (m *GameAndVersion) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameAndVersion) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameAndVersion.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameAndVersion) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameAndVersion.Merge(dst, src)
+}
+func (m *GameAndVersion) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameAndVersion) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameAndVersion.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameAndVersion proto.InternalMessageInfo
 
 type GameVersionsResponse struct {
-	Results []*GameAndVersion `protobuf:"bytes,1,rep,name=results" json:"results,omitempty"`
+	Results              []*GameAndVersion `protobuf:"bytes,1,rep,name=results" json:"results,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *GameVersionsResponse) Reset()                    { *m = GameVersionsResponse{} }
-func (m *GameVersionsResponse) String() string            { return proto.CompactTextString(m) }
-func (*GameVersionsResponse) ProtoMessage()               {}
-func (*GameVersionsResponse) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{17} }
+func (m *GameVersionsResponse) Reset()         { *m = GameVersionsResponse{} }
+func (m *GameVersionsResponse) String() string { return proto.CompactTextString(m) }
+func (*GameVersionsResponse) ProtoMessage()    {}
+func (*GameVersionsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{17}
+}
+func (m *GameVersionsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameVersionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameVersionsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameVersionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameVersionsResponse.Merge(dst, src)
+}
+func (m *GameVersionsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameVersionsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameVersionsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameVersionsResponse proto.InternalMessageInfo
 
 // Search Service
 type IndexRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *IndexRequest) Reset()                    { *m = IndexRequest{} }
-func (m *IndexRequest) String() string            { return proto.CompactTextString(m) }
-func (*IndexRequest) ProtoMessage()               {}
-func (*IndexRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{18} }
+func (m *IndexRequest) Reset()         { *m = IndexRequest{} }
+func (m *IndexRequest) String() string { return proto.CompactTextString(m) }
+func (*IndexRequest) ProtoMessage()    {}
+func (*IndexRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{18}
+}
+func (m *IndexRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *IndexRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_IndexRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *IndexRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IndexRequest.Merge(dst, src)
+}
+func (m *IndexRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *IndexRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_IndexRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_IndexRequest proto.InternalMessageInfo
 
 type SearchResult struct {
-	GameId string  `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	Score  float64 `protobuf:"fixed64,2,opt,name=score,proto3" json:"score,omitempty"`
+	GameId               string   `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Score                float64  `protobuf:"fixed64,2,opt,name=score,proto3" json:"score,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SearchResult) Reset()                    { *m = SearchResult{} }
-func (m *SearchResult) String() string            { return proto.CompactTextString(m) }
-func (*SearchResult) ProtoMessage()               {}
-func (*SearchResult) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{19} }
+func (m *SearchResult) Reset()         { *m = SearchResult{} }
+func (m *SearchResult) String() string { return proto.CompactTextString(m) }
+func (*SearchResult) ProtoMessage()    {}
+func (*SearchResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{19}
+}
+func (m *SearchResult) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SearchResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SearchResult.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *SearchResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchResult.Merge(dst, src)
+}
+func (m *SearchResult) XXX_Size() int {
+	return m.Size()
+}
+func (m *SearchResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SearchResult proto.InternalMessageInfo
 
 type SearchRequest struct {
-	Query string              `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	State RequestReleaseState `protobuf:"varint,2,opt,name=state,proto3,enum=apipb.RequestReleaseState" json:"state,omitempty"`
+	Query                string              `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	State                RequestReleaseState `protobuf:"varint,2,opt,name=state,proto3,enum=apipb.RequestReleaseState" json:"state,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *SearchRequest) Reset()                    { *m = SearchRequest{} }
-func (m *SearchRequest) String() string            { return proto.CompactTextString(m) }
-func (*SearchRequest) ProtoMessage()               {}
-func (*SearchRequest) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{20} }
+func (m *SearchRequest) Reset()         { *m = SearchRequest{} }
+func (m *SearchRequest) String() string { return proto.CompactTextString(m) }
+func (*SearchRequest) ProtoMessage()    {}
+func (*SearchRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{20}
+}
+func (m *SearchRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SearchRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SearchRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *SearchRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchRequest.Merge(dst, src)
+}
+func (m *SearchRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *SearchRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SearchRequest proto.InternalMessageInfo
 
 type SearchResponse struct {
-	Type    int32           `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
-	Results []*SearchResult `protobuf:"bytes,2,rep,name=results" json:"results,omitempty"`
+	Type                 int32           `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	Results              []*SearchResult `protobuf:"bytes,2,rep,name=results" json:"results,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *SearchResponse) Reset()                    { *m = SearchResponse{} }
-func (m *SearchResponse) String() string            { return proto.CompactTextString(m) }
-func (*SearchResponse) ProtoMessage()               {}
-func (*SearchResponse) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{21} }
+func (m *SearchResponse) Reset()         { *m = SearchResponse{} }
+func (m *SearchResponse) String() string { return proto.CompactTextString(m) }
+func (*SearchResponse) ProtoMessage()    {}
+func (*SearchResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{21}
+}
+func (m *SearchResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SearchResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SearchResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *SearchResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchResponse.Merge(dst, src)
+}
+func (m *SearchResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *SearchResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SearchResponse proto.InternalMessageInfo
 
 // Common
 type Response struct {
-	Type    int32  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
-	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Type                 int32    `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	Message              string   `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Response) Reset()                    { *m = Response{} }
-func (m *Response) String() string            { return proto.CompactTextString(m) }
-func (*Response) ProtoMessage()               {}
-func (*Response) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{22} }
+func (m *Response) Reset()         { *m = Response{} }
+func (m *Response) String() string { return proto.CompactTextString(m) }
+func (*Response) ProtoMessage()    {}
+func (*Response) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{22}
+}
+func (m *Response) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Response.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Response) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response.Merge(dst, src)
+}
+func (m *Response) XXX_Size() int {
+	return m.Size()
+}
+func (m *Response) XXX_DiscardUnknown() {
+	xxx_messageInfo_Response.DiscardUnknown(m)
+}
 
-// A label selector requirement is a selector that contains values, a key, and an operator
-// that relates the key and values.
+var xxx_messageInfo_Response proto.InternalMessageInfo
+
+// A label selector requirement is a selector that contains values, a key, and
+// an operator that relates the key and values.
 type LabelSelectorRequirement struct {
 	// key is the label key that the selector applies to.
 	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
@@ -432,43 +1177,136 @@ type LabelSelectorRequirement struct {
 	// Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
 	Operator LabelSelectorOperator `protobuf:"varint,2,opt,name=operator,proto3,enum=apipb.LabelSelectorOperator" json:"operator,omitempty"`
 	// values is an array of string values. If the operator is In or NotIn,
-	// the values array must be non-empty. If the operator is Exists or DoesNotExist,
-	// the values array must be empty. If the operator is Gt or Lt, the values
-	// array must have a single element, which will be interpreted as an integer.
-	Values []string `protobuf:"bytes,3,rep,name=values" json:"values,omitempty"`
+	// the values array must be non-empty. If the operator is Exists or
+	// DoesNotExist, the values array must be empty. If the operator is Gt or Lt,
+	// the values array must have a single element, which will be interpreted as
+	// an integer.
+	Values               []string `protobuf:"bytes,3,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *LabelSelectorRequirement) Reset()         { *m = LabelSelectorRequirement{} }
 func (m *LabelSelectorRequirement) String() string { return proto.CompactTextString(m) }
 func (*LabelSelectorRequirement) ProtoMessage()    {}
 func (*LabelSelectorRequirement) Descriptor() ([]byte, []int) {
-	return fileDescriptorMessages, []int{23}
+	return fileDescriptor_messages_a62e1af9be2697be, []int{23}
 }
+func (m *LabelSelectorRequirement) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *LabelSelectorRequirement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_LabelSelectorRequirement.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *LabelSelectorRequirement) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelSelectorRequirement.Merge(dst, src)
+}
+func (m *LabelSelectorRequirement) XXX_Size() int {
+	return m.Size()
+}
+func (m *LabelSelectorRequirement) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelSelectorRequirement.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LabelSelectorRequirement proto.InternalMessageInfo
 
 // An empty label selector term matches all objects. A null label selector term
 // matches no objects.
 type LabelSelectorTerm struct {
-	// expressions is a list of label selector requirements. The requirements are ANDed.
-	Expressions []*LabelSelectorRequirement `protobuf:"bytes,1,rep,name=expressions" json:"expressions,omitempty"`
+	// expressions is a list of label selector requirements. The requirements are
+	// ANDed.
+	Expressions          []*LabelSelectorRequirement `protobuf:"bytes,1,rep,name=expressions" json:"expressions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
+	XXX_unrecognized     []byte                      `json:"-"`
+	XXX_sizecache        int32                       `json:"-"`
 }
 
-func (m *LabelSelectorTerm) Reset()                    { *m = LabelSelectorTerm{} }
-func (m *LabelSelectorTerm) String() string            { return proto.CompactTextString(m) }
-func (*LabelSelectorTerm) ProtoMessage()               {}
-func (*LabelSelectorTerm) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{24} }
+func (m *LabelSelectorTerm) Reset()         { *m = LabelSelectorTerm{} }
+func (m *LabelSelectorTerm) String() string { return proto.CompactTextString(m) }
+func (*LabelSelectorTerm) ProtoMessage()    {}
+func (*LabelSelectorTerm) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{24}
+}
+func (m *LabelSelectorTerm) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *LabelSelectorTerm) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_LabelSelectorTerm.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *LabelSelectorTerm) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelSelectorTerm.Merge(dst, src)
+}
+func (m *LabelSelectorTerm) XXX_Size() int {
+	return m.Size()
+}
+func (m *LabelSelectorTerm) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelSelectorTerm.DiscardUnknown(m)
+}
 
-// A label selector represents the union of the results of one or more label queries
-// over a set of labels; that is, it represents the OR of the selectors represented
-// by the labelSelectorTerms.
+var xxx_messageInfo_LabelSelectorTerm proto.InternalMessageInfo
+
+// A label selector represents the union of the results of one or more label
+// queries over a set of labels; that is, it represents the OR of the selectors
+// represented by the labelSelectorTerms.
 type LabelSelector struct {
 	// terms is a list of label selector terms. The terms are ORed.
-	Terms []*LabelSelectorTerm `protobuf:"bytes,1,rep,name=terms" json:"terms,omitempty"`
+	Terms                []*LabelSelectorTerm `protobuf:"bytes,1,rep,name=terms" json:"terms,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *LabelSelector) Reset()                    { *m = LabelSelector{} }
-func (m *LabelSelector) String() string            { return proto.CompactTextString(m) }
-func (*LabelSelector) ProtoMessage()               {}
-func (*LabelSelector) Descriptor() ([]byte, []int) { return fileDescriptorMessages, []int{25} }
+func (m *LabelSelector) Reset()         { *m = LabelSelector{} }
+func (m *LabelSelector) String() string { return proto.CompactTextString(m) }
+func (*LabelSelector) ProtoMessage()    {}
+func (*LabelSelector) Descriptor() ([]byte, []int) {
+	return fileDescriptor_messages_a62e1af9be2697be, []int{25}
+}
+func (m *LabelSelector) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *LabelSelector) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_LabelSelector.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *LabelSelector) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelSelector.Merge(dst, src)
+}
+func (m *LabelSelector) XXX_Size() int {
+	return m.Size()
+}
+func (m *LabelSelector) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelSelector.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LabelSelector proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*GetProfileRequest)(nil), "apipb.GetProfileRequest")
@@ -530,6 +1368,9 @@ func (m *GetProfileRequest) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.Email)))
 		i += copy(dAtA[i:], m.Email)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -554,6 +1395,9 @@ func (m *GetChildRequest) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.ChildId)))
 		i += copy(dAtA[i:], m.ChildId)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -577,6 +1421,9 @@ func (m *GetChildrenFromProfileRequest) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.ProfileId)))
 		i += copy(dAtA[i:], m.ProfileId)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -612,6 +1459,9 @@ func (m *ChangeChildActivationRequest) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i++
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -641,6 +1491,9 @@ func (m *GetChildrenFromProfileResponse) MarshalTo(dAtA []byte) (int, error) {
 			}
 			i += n
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -676,6 +1529,9 @@ func (m *GetGameReleaseRequest) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x18
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(m.State))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -716,6 +1572,9 @@ func (m *SoundEnableRequest) MarshalTo(dAtA []byte) (int, error) {
 			dAtA[i] = 0
 		}
 		i++
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -763,6 +1622,24 @@ func (m *GameEntryRequest) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(m.Index))
 	}
+	if len(m.LimitAccess) > 0 {
+		for _, s := range m.LimitAccess {
+			dAtA[i] = 0x32
+			i++
+			l = len(s)
+			for l >= 1<<7 {
+				dAtA[i] = uint8(uint64(l)&0x7f | 0x80)
+				l >>= 7
+				i++
+			}
+			dAtA[i] = uint8(l)
+			i++
+			i += copy(dAtA[i:], s)
+		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -802,6 +1679,9 @@ func (m *PublishResponse) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i += n1
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -836,6 +1716,9 @@ func (m *ValidateRequest) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x18
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(m.NewState))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -882,6 +1765,9 @@ func (m *UpdateIndecesRequest) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], s)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -911,6 +1797,9 @@ func (m *GetGameRequest) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.GameId)))
 		i += copy(dAtA[i:], m.GameId)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -950,6 +1839,9 @@ func (m *ListGamesRequest) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.Language)))
 		i += copy(dAtA[i:], m.Language)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1030,6 +1922,9 @@ func (m *ListItem) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], s)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1076,6 +1971,9 @@ func (m *ListItemWithTests) MarshalTo(dAtA []byte) (int, error) {
 			}
 			i += n
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1155,6 +2053,9 @@ func (m *ListItemWithTests_TestGroup) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], s)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1208,6 +2109,9 @@ func (m *GetLatestVersionsRequest) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], s)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1244,6 +2148,9 @@ func (m *GameAndVersion) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.TarballUrl)))
 		i += copy(dAtA[i:], m.TarballUrl)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1274,6 +2181,9 @@ func (m *GameVersionsResponse) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1292,6 +2202,9 @@ func (m *IndexRequest) MarshalTo(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1319,8 +2232,11 @@ func (m *SearchResult) MarshalTo(dAtA []byte) (int, error) {
 	if m.Score != 0 {
 		dAtA[i] = 0x11
 		i++
-		binary.LittleEndian.PutUint64(dAtA[i:], uint64(math.Float64bits(float64(m.Score))))
+		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(math.Float64bits(float64(m.Score))))
 		i += 8
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1350,6 +2266,9 @@ func (m *SearchRequest) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x10
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(m.State))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1386,6 +2305,9 @@ func (m *SearchResponse) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1414,6 +2336,9 @@ func (m *Response) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintMessages(dAtA, i, uint64(len(m.Message)))
 		i += copy(dAtA[i:], m.Message)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1459,6 +2384,9 @@ func (m *LabelSelectorRequirement) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], s)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1488,6 +2416,9 @@ func (m *LabelSelectorTerm) MarshalTo(dAtA []byte) (int, error) {
 			}
 			i += n
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1519,6 +2450,9 @@ func (m *LabelSelector) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1542,6 +2476,9 @@ func (m *GetProfileRequest) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1552,6 +2489,9 @@ func (m *GetChildRequest) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1561,6 +2501,9 @@ func (m *GetChildrenFromProfileRequest) Size() (n int) {
 	l = len(m.ProfileId)
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1575,6 +2518,9 @@ func (m *ChangeChildActivationRequest) Size() (n int) {
 	if m.Active {
 		n += 2
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1586,6 +2532,9 @@ func (m *GetChildrenFromProfileResponse) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovMessages(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1604,6 +2553,9 @@ func (m *GetGameReleaseRequest) Size() (n int) {
 	if m.State != 0 {
 		n += 1 + sovMessages(uint64(m.State))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1620,6 +2572,9 @@ func (m *SoundEnableRequest) Size() (n int) {
 	}
 	if m.Enable {
 		n += 2
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1645,6 +2600,15 @@ func (m *GameEntryRequest) Size() (n int) {
 	if m.Index != 0 {
 		n += 1 + sovMessages(uint64(m.Index))
 	}
+	if len(m.LimitAccess) > 0 {
+		for _, s := range m.LimitAccess {
+			l = len(s)
+			n += 1 + l + sovMessages(uint64(l))
+		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1662,6 +2626,9 @@ func (m *PublishResponse) Size() (n int) {
 		l = m.Token.Size()
 		n += 1 + l + sovMessages(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1678,6 +2645,9 @@ func (m *ValidateRequest) Size() (n int) {
 	}
 	if m.NewState != 0 {
 		n += 1 + sovMessages(uint64(m.NewState))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1699,6 +2669,9 @@ func (m *UpdateIndecesRequest) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1712,6 +2685,9 @@ func (m *GetGameRequest) Size() (n int) {
 	l = len(m.GameId)
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1731,6 +2707,9 @@ func (m *ListGamesRequest) Size() (n int) {
 	l = len(m.Language)
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1774,6 +2753,9 @@ func (m *ListItem) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1796,6 +2778,9 @@ func (m *ListItemWithTests) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovMessages(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1838,6 +2823,9 @@ func (m *ListItemWithTests_TestGroup) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1859,6 +2847,9 @@ func (m *GetLatestVersionsRequest) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1877,6 +2868,9 @@ func (m *GameAndVersion) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1889,12 +2883,18 @@ func (m *GameVersionsResponse) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
 func (m *IndexRequest) Size() (n int) {
 	var l int
 	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1908,6 +2908,9 @@ func (m *SearchResult) Size() (n int) {
 	if m.Score != 0 {
 		n += 9
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1920,6 +2923,9 @@ func (m *SearchRequest) Size() (n int) {
 	}
 	if m.State != 0 {
 		n += 1 + sovMessages(uint64(m.State))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1936,6 +2942,9 @@ func (m *SearchResponse) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1948,6 +2957,9 @@ func (m *Response) Size() (n int) {
 	l = len(m.Message)
 	if l > 0 {
 		n += 1 + l + sovMessages(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1968,6 +2980,9 @@ func (m *LabelSelectorRequirement) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1980,6 +2995,9 @@ func (m *LabelSelectorTerm) Size() (n int) {
 			n += 1 + l + sovMessages(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1991,6 +3009,9 @@ func (m *LabelSelector) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovMessages(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2107,6 +3128,7 @@ func (m *GetProfileRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2186,6 +3208,7 @@ func (m *GetChildRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2265,6 +3288,7 @@ func (m *GetChildrenFromProfileRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2364,6 +3388,7 @@ func (m *ChangeChildActivationRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2445,6 +3470,7 @@ func (m *GetChildrenFromProfileResponse) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2572,6 +3598,7 @@ func (m *GetGameReleaseRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2700,6 +3727,7 @@ func (m *SoundEnableRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2865,6 +3893,35 @@ func (m *GameEntryRequest) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LimitAccess", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowMessages
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthMessages
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.LimitAccess = append(m.LimitAccess, string(dAtA[iNdEx:postIndex]))
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipMessages(dAtA[iNdEx:])
@@ -2877,6 +3934,7 @@ func (m *GameEntryRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3008,6 +4066,7 @@ func (m *PublishResponse) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3135,6 +4194,7 @@ func (m *ValidateRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3272,6 +4332,7 @@ func (m *UpdateIndecesRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3380,6 +4441,7 @@ func (m *GetGameRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3516,6 +4578,7 @@ func (m *ListGamesRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3807,6 +4870,7 @@ func (m *ListItem) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3965,6 +5029,7 @@ func (m *ListItemWithTests) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4246,6 +5311,7 @@ func (m *ListItemWithTests_TestGroup) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4373,6 +5439,7 @@ func (m *GetLatestVersionsRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4510,6 +5577,7 @@ func (m *GameAndVersion) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4591,6 +5659,7 @@ func (m *GameVersionsResponse) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4641,6 +5710,7 @@ func (m *IndexRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4716,7 +5786,7 @@ func (m *SearchResult) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 8) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint64(binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+			v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
 			iNdEx += 8
 			m.Score = float64(math.Float64frombits(v))
 		default:
@@ -4731,6 +5801,7 @@ func (m *SearchResult) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4829,6 +5900,7 @@ func (m *SearchRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4929,6 +6001,7 @@ func (m *SearchResponse) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5027,6 +6100,7 @@ func (m *Response) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5154,6 +6228,7 @@ func (m *LabelSelectorRequirement) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5235,6 +6310,7 @@ func (m *LabelSelectorTerm) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5316,6 +6392,7 @@ func (m *LabelSelector) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5430,98 +6507,99 @@ var (
 	ErrIntOverflowMessages   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("messages.proto", fileDescriptorMessages) }
+func init() { proto.RegisterFile("messages.proto", fileDescriptor_messages_a62e1af9be2697be) }
 
-var fileDescriptorMessages = []byte{
-	// 1430 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x57, 0xdd, 0x6e, 0x1b, 0x45,
-	0x14, 0xce, 0xae, 0xb3, 0xfe, 0x39, 0x76, 0x9c, 0xcd, 0x34, 0x85, 0x6d, 0xd4, 0xa6, 0x61, 0x11,
-	0xc2, 0xaa, 0xa8, 0x8b, 0x8a, 0x44, 0x0b, 0x08, 0x90, 0x89, 0x5d, 0xcb, 0x95, 0x71, 0xc2, 0xda,
-	0x49, 0x0b, 0x37, 0x61, 0xed, 0x9d, 0x38, 0xab, 0xee, 0xee, 0x6c, 0x67, 0xc6, 0x69, 0x22, 0x21,
-	0x78, 0x00, 0x2e, 0xe1, 0x82, 0x6b, 0xde, 0x05, 0xa9, 0x97, 0x88, 0x27, 0x80, 0xf2, 0x16, 0x5c,
-	0xa1, 0x99, 0x9d, 0x5d, 0xaf, 0x43, 0x42, 0xa3, 0x72, 0xcb, 0x4d, 0xb2, 0xe7, 0xcc, 0x99, 0x73,
-	0xce, 0xf7, 0xcd, 0x37, 0x3f, 0x86, 0x7a, 0x88, 0x19, 0x73, 0xa7, 0x98, 0x35, 0x63, 0x4a, 0x38,
-	0x41, 0x86, 0x1b, 0xfb, 0xf1, 0x78, 0xa3, 0x16, 0x12, 0x0f, 0x07, 0xca, 0xb9, 0xb1, 0x3e, 0x25,
-	0x53, 0x22, 0x3f, 0xef, 0x88, 0xaf, 0xc4, 0x6b, 0x7f, 0x00, 0x6b, 0x5d, 0xcc, 0x77, 0x29, 0x39,
-	0xf4, 0x03, 0xec, 0xe0, 0xa7, 0x33, 0xcc, 0x38, 0xaa, 0x83, 0xee, 0x7b, 0x96, 0xb6, 0xa5, 0x35,
-	0x2a, 0x8e, 0xee, 0x7b, 0x68, 0x1d, 0x0c, 0x1c, 0xba, 0x7e, 0x60, 0xe9, 0xd2, 0x95, 0x18, 0xf6,
-	0x3b, 0xb0, 0xda, 0xc5, 0x7c, 0xfb, 0xc8, 0x0f, 0xbc, 0x74, 0xe2, 0x35, 0x28, 0x4f, 0x84, 0x7d,
-	0x90, 0x4d, 0x2f, 0x49, 0xbb, 0xe7, 0xd9, 0x9f, 0xc0, 0x8d, 0x34, 0x9a, 0xe2, 0xe8, 0x01, 0x25,
-	0xe1, 0x99, 0xa2, 0x37, 0x00, 0xe2, 0xc4, 0x33, 0x9f, 0x5d, 0x51, 0x9e, 0x9e, 0x67, 0x7f, 0x01,
-	0xd7, 0xb7, 0x8f, 0xdc, 0x68, 0x8a, 0x65, 0x8a, 0xd6, 0x84, 0xfb, 0xc7, 0x2e, 0xf7, 0x49, 0xf4,
-	0xf2, 0xd2, 0xe8, 0x35, 0x28, 0xba, 0x22, 0x1e, 0xcb, 0xfe, 0xcb, 0x8e, 0xb2, 0xec, 0x87, 0xb0,
-	0x79, 0x51, 0x4b, 0x2c, 0x26, 0x11, 0xc3, 0xa8, 0xa1, 0x92, 0x52, 0x1c, 0x59, 0xda, 0x56, 0xa1,
-	0x51, 0xbd, 0x5b, 0x6b, 0x4a, 0x6e, 0x9b, 0x09, 0xec, 0x6c, 0xd4, 0xfe, 0x06, 0xae, 0x76, 0x31,
-	0xef, 0xba, 0x21, 0x76, 0x70, 0x80, 0x5d, 0x96, 0xc1, 0x7a, 0x1d, 0x4a, 0x53, 0x37, 0xcc, 0x61,
-	0x2a, 0x0a, 0xb3, 0xe7, 0x21, 0x0b, 0x4a, 0xc7, 0x98, 0x32, 0x9f, 0x44, 0x8a, 0xd6, 0xd4, 0x44,
-	0xef, 0x82, 0xc1, 0xb8, 0xcb, 0xb1, 0x55, 0xd8, 0xd2, 0x1a, 0xf5, 0xbb, 0x1b, 0xaa, 0xa4, 0xca,
-	0xa8, 0xf2, 0x0f, 0x45, 0x84, 0x93, 0x04, 0xda, 0x87, 0x80, 0x86, 0x64, 0x16, 0x79, 0x9d, 0xc8,
-	0x1d, 0xcf, 0x19, 0xfd, 0x17, 0x4a, 0x16, 0xc9, 0xd6, 0xcf, 0x90, 0x2d, 0x18, 0xc3, 0x32, 0x95,
-	0x6c, 0xa1, 0xec, 0x28, 0xcb, 0xfe, 0x41, 0x07, 0x53, 0x60, 0xec, 0x44, 0x9c, 0x9e, 0x5e, 0xa2,
-	0x4c, 0x0e, 0xbc, 0xbe, 0x00, 0xfe, 0x1e, 0x2c, 0xf3, 0xd3, 0x38, 0x45, 0xf8, 0xa6, 0x42, 0x78,
-	0x36, 0x75, 0x0a, 0x79, 0x74, 0x1a, 0x63, 0x47, 0x4e, 0x40, 0x1b, 0x50, 0x66, 0x98, 0x73, 0x3f,
-	0x9a, 0x32, 0x6b, 0x79, 0x4b, 0x6b, 0xd4, 0x9c, 0xcc, 0x16, 0x32, 0xf5, 0x23, 0x0f, 0x9f, 0x58,
-	0xc6, 0x96, 0xd6, 0x30, 0x9c, 0xc4, 0xb0, 0xbf, 0x86, 0x6a, 0x2e, 0x0d, 0x2a, 0x41, 0xa1, 0xd5,
-	0x6e, 0x9b, 0x4b, 0xa8, 0x06, 0xe5, 0xd6, 0xf6, 0xa8, 0xb7, 0xdf, 0x1a, 0x75, 0x4c, 0x0d, 0xd5,
-	0x01, 0xda, 0x9d, 0xcc, 0xd6, 0xc5, 0xe8, 0xb0, 0x33, 0x1a, 0xf5, 0x06, 0xdd, 0xa1, 0x59, 0x40,
-	0x15, 0x30, 0x7a, 0x83, 0x76, 0xe7, 0xb1, 0xb9, 0x8c, 0xd6, 0x60, 0xa5, 0xbf, 0xb3, 0xdd, 0xea,
-	0x67, 0xa3, 0x86, 0xed, 0xc3, 0xea, 0xee, 0x6c, 0x1c, 0xf8, 0xec, 0x28, 0x13, 0x0e, 0x52, 0xf8,
-	0x34, 0xd9, 0x49, 0xd2, 0xba, 0x05, 0x25, 0xb5, 0x4f, 0xd3, 0x05, 0x57, 0x26, 0x6a, 0x80, 0xc1,
-	0xc9, 0x13, 0x1c, 0x49, 0x3a, 0xaa, 0x77, 0x91, 0xa2, 0x63, 0x2f, 0x0e, 0x88, 0xeb, 0x8d, 0xc4,
-	0x88, 0x93, 0x04, 0xd8, 0xdf, 0xc1, 0xea, 0xbe, 0x1b, 0xf8, 0x9e, 0x58, 0xfb, 0x97, 0x09, 0xec,
-	0x0d, 0xa8, 0xc9, 0x81, 0x45, 0x95, 0x55, 0x85, 0x6f, 0x3f, 0x53, 0x5a, 0x25, 0xc2, 0xcf, 0x0e,
-	0xf2, 0x6a, 0xbb, 0x92, 0xa9, 0x2d, 0x27, 0xb3, 0x72, 0x84, 0x9f, 0xc9, 0x2f, 0xfb, 0x09, 0xac,
-	0xef, 0xc5, 0xa2, 0x7c, 0x2f, 0xf2, 0xf0, 0x04, 0xb3, 0xcb, 0xed, 0xde, 0x05, 0x8d, 0xe8, 0x8b,
-	0x1a, 0xb9, 0x06, 0x65, 0xd5, 0x3f, 0xb3, 0x0a, 0x5b, 0x05, 0x31, 0x94, 0x00, 0x60, 0xf6, 0x43,
-	0xa8, 0x67, 0x9b, 0x2a, 0x29, 0x73, 0x13, 0xaa, 0xb3, 0xc8, 0x7f, 0x3a, 0xc3, 0x07, 0x91, 0x1b,
-	0x62, 0x55, 0x07, 0x12, 0xd7, 0xc0, 0x0d, 0xf1, 0x85, 0x8a, 0xb3, 0x7f, 0xd4, 0xc1, 0xec, 0xfb,
-	0x4c, 0x66, 0xcb, 0xba, 0xee, 0xc2, 0x0a, 0x4d, 0x70, 0x2a, 0x0e, 0x34, 0xc9, 0x81, 0xad, 0x38,
-	0x38, 0x1b, 0xdf, 0xec, 0x45, 0x11, 0xa6, 0x09, 0x25, 0x35, 0x9a, 0x23, 0x48, 0x48, 0x2f, 0xf0,
-	0x43, 0x9f, 0xcb, 0xa2, 0x86, 0x93, 0x18, 0x62, 0x1b, 0x91, 0xc3, 0x43, 0x86, 0xb9, 0xe4, 0xd6,
-	0x70, 0x94, 0x25, 0x44, 0x1c, 0xb8, 0xd1, 0x74, 0x26, 0xa4, 0xb0, 0x2c, 0xbb, 0xcc, 0x6c, 0x3b,
-	0x04, 0x98, 0x57, 0x91, 0x6a, 0x1d, 0x7c, 0x69, 0x2e, 0xa1, 0x2a, 0x94, 0xb6, 0x9d, 0x4e, 0x6b,
-	0xd4, 0x69, 0x9b, 0x1a, 0x5a, 0x85, 0x6a, 0xbb, 0xb3, 0xdf, 0xe9, 0xef, 0xec, 0x7e, 0xde, 0x19,
-	0x8c, 0x4c, 0x5d, 0x8c, 0x3e, 0x6a, 0xf5, 0x84, 0x1e, 0xcd, 0x82, 0x90, 0xae, 0xd3, 0x79, 0xd8,
-	0xd9, 0x16, 0xb1, 0xcb, 0x68, 0x05, 0x2a, 0xfb, 0xad, 0x7e, 0xaf, 0x2d, 0xa7, 0x1a, 0x42, 0xe7,
-	0xbb, 0xce, 0x4e, 0x7b, 0x6f, 0x7b, 0xd4, 0xdb, 0x19, 0x98, 0x45, 0xfb, 0x37, 0x1d, 0xca, 0x02,
-	0x66, 0x8f, 0xe3, 0xf0, 0x62, 0x29, 0x9d, 0xa1, 0x5d, 0xff, 0x07, 0xed, 0x6f, 0x41, 0x3d, 0x70,
-	0x39, 0x66, 0x3c, 0x53, 0x5b, 0x41, 0xc6, 0xac, 0x24, 0xde, 0x54, 0x6f, 0xef, 0x43, 0x4d, 0x85,
-	0x25, 0x74, 0x2f, 0x5f, 0x2c, 0xb9, 0x6a, 0x12, 0x98, 0xd0, 0x70, 0x1b, 0x50, 0x4c, 0x89, 0x37,
-	0x9b, 0x88, 0x13, 0x3f, 0x2b, 0x61, 0xc8, 0x12, 0x6b, 0xf3, 0x91, 0xb4, 0x8c, 0x05, 0x25, 0xc6,
-	0x09, 0x15, 0xf4, 0x16, 0x13, 0xb1, 0x29, 0x53, 0xf4, 0xe9, 0xd2, 0xc9, 0x91, 0x7f, 0x8c, 0x0f,
-	0x0e, 0x09, 0x0d, 0x5d, 0x6e, 0x95, 0x92, 0x3e, 0x95, 0xf7, 0x81, 0x74, 0x0a, 0xbc, 0x6a, 0x79,
-	0xbd, 0x03, 0x97, 0x5b, 0xe5, 0x2d, 0xad, 0x51, 0x70, 0x20, 0x75, 0xb5, 0x38, 0xba, 0x0e, 0x95,
-	0x74, 0xc5, 0x98, 0x55, 0x91, 0xaa, 0x9d, 0x3b, 0xec, 0xbf, 0x0a, 0xb0, 0x96, 0x92, 0xfa, 0xc8,
-	0xe7, 0x47, 0x23, 0xcc, 0x38, 0xfb, 0x0f, 0xec, 0xbe, 0x0d, 0xab, 0x82, 0x0b, 0x3f, 0x9a, 0x2e,
-	0xd0, 0x6b, 0x38, 0x75, 0xe5, 0x4e, 0x81, 0x7f, 0x08, 0xc5, 0x29, 0x25, 0xb3, 0x58, 0x9c, 0x8d,
-	0xe2, 0xb6, 0xca, 0x0b, 0x79, 0xa1, 0x99, 0xa6, 0xf8, 0xdb, 0x15, 0xa1, 0x8e, 0x9a, 0xb1, 0xf1,
-	0x8b, 0x0e, 0x95, 0xcc, 0x2b, 0x0e, 0xb0, 0xdc, 0x0e, 0x93, 0xdf, 0x42, 0xce, 0xcf, 0xb0, 0x3f,
-	0x3d, 0x4a, 0x55, 0xae, 0xac, 0xff, 0x17, 0x7f, 0x61, 0xf1, 0xbf, 0xd7, 0xc0, 0xea, 0x62, 0xde,
-	0xcf, 0x63, 0xcf, 0x0e, 0x9c, 0xec, 0x6a, 0xd7, 0x2e, 0x79, 0xb5, 0x2f, 0x1c, 0x8f, 0xfa, 0xc2,
-	0xf1, 0x88, 0x6c, 0xa8, 0x4d, 0xdc, 0xd8, 0x1d, 0xfb, 0x81, 0xcf, 0x7d, 0x9c, 0x9e, 0x9e, 0x0b,
-	0x3e, 0xdb, 0x83, 0xba, 0x38, 0xc1, 0x5a, 0x91, 0x97, 0xf2, 0xf3, 0x0a, 0x0f, 0x92, 0x9b, 0x50,
-	0xe5, 0x2e, 0x1d, 0xbb, 0x41, 0x70, 0x30, 0xa3, 0x81, 0x5a, 0x5d, 0x50, 0xae, 0x3d, 0x1a, 0xd8,
-	0x5d, 0x58, 0xef, 0xce, 0xaf, 0x15, 0x96, 0x5d, 0x83, 0x77, 0xa0, 0x44, 0x31, 0x9b, 0x05, 0x9c,
-	0xa9, 0xe7, 0xd3, 0xd5, 0xdc, 0x4d, 0x3f, 0xef, 0xc9, 0x49, 0xa3, 0xec, 0x3a, 0xd4, 0xc4, 0xc5,
-	0x72, 0xa2, 0x08, 0xb1, 0x3f, 0x86, 0xda, 0x10, 0x8b, 0xe5, 0x71, 0x64, 0xc0, 0xc5, 0xcd, 0xaf,
-	0x83, 0xc1, 0x26, 0x84, 0x26, 0xbb, 0x47, 0x73, 0x12, 0xc3, 0x7e, 0x04, 0x2b, 0xe9, 0xf4, 0x84,
-	0xff, 0x75, 0x30, 0x9e, 0xce, 0x30, 0x3d, 0x55, 0xb3, 0x13, 0x63, 0xbe, 0x2a, 0xfa, 0x65, 0x1f,
-	0x5c, 0x43, 0xa8, 0x67, 0x7d, 0x5d, 0x7c, 0xe3, 0xdf, 0x9e, 0xc3, 0xd7, 0x25, 0xfc, 0x54, 0xec,
-	0x79, 0x4c, 0x73, 0xf0, 0xf7, 0xa1, 0xfc, 0x6a, 0x0f, 0x08, 0xfb, 0x5b, 0xb0, 0xfa, 0xee, 0x18,
-	0x07, 0x43, 0x1c, 0xe0, 0x09, 0x27, 0x54, 0x74, 0xee, 0x53, 0x1c, 0xe2, 0x88, 0x23, 0x13, 0x0a,
-	0x4f, 0x70, 0x0a, 0x58, 0x7c, 0xa2, 0xfb, 0x50, 0x26, 0x31, 0xa6, 0x2e, 0x27, 0x54, 0x21, 0xbe,
-	0x9e, 0x9e, 0x13, 0xf9, 0x24, 0x3b, 0x2a, 0xc6, 0xc9, 0xa2, 0xc5, 0x09, 0x70, 0xec, 0x06, 0xb3,
-	0x4c, 0x6b, 0xca, 0xb2, 0xf7, 0x61, 0x6d, 0x61, 0xea, 0x08, 0xd3, 0x10, 0xb5, 0xa0, 0x8a, 0x4f,
-	0x62, 0x8a, 0x99, 0xd4, 0x84, 0x12, 0xc0, 0xcd, 0xf3, 0x2a, 0xe5, 0xda, 0x75, 0xf2, 0x73, 0xec,
-	0x4f, 0x61, 0x65, 0x21, 0x10, 0x35, 0xc1, 0xe0, 0x98, 0x86, 0x69, 0x36, 0xeb, 0xbc, 0x6c, 0xa2,
-	0xb8, 0x93, 0x84, 0xdd, 0xfa, 0x08, 0xae, 0x9c, 0xb3, 0x8a, 0x68, 0x1d, 0xcc, 0xf9, 0x2d, 0x78,
-	0x30, 0x1c, 0x89, 0x37, 0xdf, 0x92, 0xb8, 0x1b, 0x5b, 0xfd, 0x7e, 0x62, 0x0e, 0x4d, 0xed, 0xd6,
-	0x63, 0xb8, 0x7a, 0x2e, 0x21, 0xa8, 0x08, 0x7a, 0x2f, 0x32, 0x97, 0xc4, 0xb3, 0x70, 0x40, 0x78,
-	0x2f, 0x32, 0x35, 0x04, 0x50, 0xec, 0x9c, 0xf8, 0x8c, 0x33, 0x53, 0x47, 0x26, 0xd4, 0xda, 0x04,
-	0xb3, 0x01, 0xe1, 0xd2, 0x65, 0x16, 0xc4, 0x84, 0x2e, 0x37, 0x97, 0xc5, 0xff, 0x3e, 0x37, 0x8d,
-	0xcf, 0xee, 0x3d, 0xff, 0x63, 0x73, 0xe9, 0xf9, 0x8b, 0x4d, 0xed, 0xd7, 0x17, 0x9b, 0xda, 0xef,
-	0x2f, 0x36, 0xb5, 0x9f, 0xfe, 0xdc, 0x5c, 0x82, 0xd5, 0x09, 0x09, 0x9b, 0x84, 0x33, 0x3f, 0x24,
-	0xcd, 0x29, 0x8d, 0x27, 0xbb, 0xda, 0x57, 0xe5, 0xc4, 0x8c, 0xc7, 0x3f, 0xeb, 0x85, 0x9d, 0xd1,
-	0xf0, 0xb1, 0x36, 0x2e, 0xca, 0xdf, 0x6d, 0xef, 0xfd, 0x1d, 0x00, 0x00, 0xff, 0xff, 0x4c, 0x51,
-	0x18, 0xe4, 0xf4, 0x0d, 0x00, 0x00,
+var fileDescriptor_messages_a62e1af9be2697be = []byte{
+	// 1453 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x57, 0xdd, 0x6e, 0x1b, 0xc5,
+	0x17, 0xcf, 0xae, 0xb3, 0xfe, 0x38, 0x76, 0x9c, 0xcd, 0x34, 0xfd, 0xff, 0xb7, 0x51, 0x9b, 0xa6,
+	0x8b, 0x10, 0x56, 0x45, 0x5d, 0x54, 0x24, 0x5a, 0x40, 0x80, 0x8c, 0xed, 0x5a, 0xae, 0x8c, 0x13,
+	0xd6, 0x4e, 0x5a, 0xb8, 0x31, 0x6b, 0xef, 0x89, 0xb3, 0xea, 0x7e, 0x75, 0x67, 0x9c, 0x26, 0x12,
+	0x82, 0x07, 0xe0, 0x96, 0x0b, 0xae, 0x79, 0x08, 0xde, 0x00, 0xa9, 0x97, 0x88, 0x27, 0x80, 0xf2,
+	0x16, 0x5c, 0xa1, 0x99, 0x9d, 0x5d, 0xdb, 0x21, 0xa1, 0x51, 0xb9, 0xe5, 0x26, 0xd9, 0x73, 0xe6,
+	0x9c, 0x39, 0xe7, 0xf7, 0x9b, 0xdf, 0x7c, 0x18, 0xaa, 0x3e, 0x52, 0x6a, 0x4f, 0x91, 0xd6, 0xa3,
+	0x38, 0x64, 0x21, 0xd1, 0xec, 0xc8, 0x8d, 0xc6, 0x5b, 0x15, 0x3f, 0x74, 0xd0, 0x93, 0xce, 0xad,
+	0xcd, 0x69, 0x38, 0x0d, 0xc5, 0xe7, 0x5d, 0xfe, 0x95, 0x78, 0xcd, 0xf7, 0x61, 0xa3, 0x83, 0x6c,
+	0x2f, 0x0e, 0x0f, 0x5d, 0x0f, 0x2d, 0x7c, 0x36, 0x43, 0xca, 0x48, 0x15, 0x54, 0xd7, 0x31, 0x94,
+	0x1d, 0xa5, 0x56, 0xb2, 0x54, 0xd7, 0x21, 0x9b, 0xa0, 0xa1, 0x6f, 0xbb, 0x9e, 0xa1, 0x0a, 0x57,
+	0x62, 0x98, 0x6f, 0xc3, 0x7a, 0x07, 0x59, 0xf3, 0xc8, 0xf5, 0x9c, 0x34, 0xf1, 0x1a, 0x14, 0x27,
+	0xdc, 0x1e, 0x65, 0xe9, 0x05, 0x61, 0x77, 0x1d, 0xf3, 0x63, 0xb8, 0x91, 0x46, 0xc7, 0x18, 0x3c,
+	0x8c, 0x43, 0xff, 0x4c, 0xd1, 0x1b, 0x00, 0x51, 0xe2, 0x99, 0x67, 0x97, 0xa4, 0xa7, 0xeb, 0x98,
+	0x9f, 0xc3, 0xf5, 0xe6, 0x91, 0x1d, 0x4c, 0x51, 0x4c, 0xd1, 0x98, 0x30, 0xf7, 0xd8, 0x66, 0x6e,
+	0x18, 0xbc, 0xba, 0x34, 0xf9, 0x1f, 0xe4, 0x6d, 0x1e, 0x8f, 0xa2, 0xff, 0xa2, 0x25, 0x2d, 0xf3,
+	0x11, 0x6c, 0x5f, 0xd4, 0x12, 0x8d, 0xc2, 0x80, 0x22, 0xa9, 0xc9, 0x49, 0x63, 0x0c, 0x0c, 0x65,
+	0x27, 0x57, 0x2b, 0xdf, 0xab, 0xd4, 0x05, 0xb7, 0xf5, 0x04, 0x76, 0x36, 0x6a, 0x7e, 0x0d, 0x57,
+	0x3b, 0xc8, 0x3a, 0xb6, 0x8f, 0x16, 0x7a, 0x68, 0xd3, 0x0c, 0xd6, 0xff, 0xa1, 0x30, 0xb5, 0xfd,
+	0x05, 0x4c, 0x79, 0x6e, 0x76, 0x1d, 0x62, 0x40, 0xe1, 0x18, 0x63, 0xea, 0x86, 0x81, 0xa4, 0x35,
+	0x35, 0xc9, 0x3b, 0xa0, 0x51, 0x66, 0x33, 0x34, 0x72, 0x3b, 0x4a, 0xad, 0x7a, 0x6f, 0x4b, 0x96,
+	0x94, 0x33, 0xca, 0xf9, 0x07, 0x3c, 0xc2, 0x4a, 0x02, 0xcd, 0x43, 0x20, 0x83, 0x70, 0x16, 0x38,
+	0xed, 0xc0, 0x1e, 0xcf, 0x19, 0xfd, 0x07, 0x4a, 0x96, 0xc9, 0x56, 0xcf, 0x90, 0xcd, 0x19, 0x43,
+	0x31, 0x95, 0x68, 0xa1, 0x68, 0x49, 0xcb, 0xfc, 0x49, 0x05, 0x9d, 0x63, 0x6c, 0x07, 0x2c, 0x3e,
+	0xbd, 0x44, 0x99, 0x05, 0xf0, 0xea, 0x12, 0xf8, 0xfb, 0xb0, 0xca, 0x4e, 0xa3, 0x14, 0xe1, 0x1b,
+	0x12, 0xe1, 0xd9, 0xa9, 0x53, 0xc8, 0xc3, 0xd3, 0x08, 0x2d, 0x91, 0x40, 0xb6, 0xa0, 0x48, 0x91,
+	0x31, 0x37, 0x98, 0x52, 0x63, 0x75, 0x47, 0xa9, 0x55, 0xac, 0xcc, 0xe6, 0x32, 0x75, 0x03, 0x07,
+	0x4f, 0x0c, 0x6d, 0x47, 0xa9, 0x69, 0x56, 0x62, 0x90, 0x5b, 0x50, 0xf1, 0x5c, 0xdf, 0x65, 0x23,
+	0x7b, 0x32, 0x41, 0x4a, 0x8d, 0xfc, 0x4e, 0xae, 0x56, 0xb2, 0xca, 0xc2, 0xd7, 0x10, 0x2e, 0xf3,
+	0x2b, 0x28, 0x2f, 0x54, 0x22, 0x05, 0xc8, 0x35, 0x5a, 0x2d, 0x7d, 0x85, 0x54, 0xa0, 0xd8, 0x68,
+	0x0e, 0xbb, 0x07, 0x8d, 0x61, 0x5b, 0x57, 0x48, 0x15, 0xa0, 0xd5, 0xce, 0x6c, 0x95, 0x8f, 0x0e,
+	0xda, 0xc3, 0x61, 0xb7, 0xdf, 0x19, 0xe8, 0x39, 0x52, 0x02, 0xad, 0xdb, 0x6f, 0xb5, 0x9f, 0xe8,
+	0xab, 0x64, 0x03, 0xd6, 0x7a, 0xbb, 0xcd, 0x46, 0x2f, 0x1b, 0xd5, 0x4c, 0x17, 0xd6, 0xf7, 0x66,
+	0x63, 0xcf, 0xa5, 0x47, 0x99, 0xb6, 0x88, 0xa4, 0x40, 0x11, 0xcd, 0x26, 0xe8, 0x0c, 0x28, 0xc8,
+	0xad, 0x9c, 0x6a, 0x42, 0x9a, 0xa4, 0x06, 0x1a, 0x0b, 0x9f, 0x62, 0x20, 0x18, 0x2b, 0xdf, 0x23,
+	0x92, 0xb1, 0xfd, 0xc8, 0x0b, 0x6d, 0x67, 0xc8, 0x47, 0xac, 0x24, 0xc0, 0xfc, 0x16, 0xd6, 0x0f,
+	0x6c, 0xcf, 0x75, 0xb8, 0x3c, 0x5e, 0xa5, 0xc1, 0x5b, 0x50, 0x11, 0x03, 0xcb, 0x42, 0x2c, 0x73,
+	0xdf, 0x41, 0x26, 0xc6, 0x52, 0x80, 0xcf, 0x47, 0x8b, 0x82, 0xbc, 0x92, 0x09, 0x72, 0x41, 0x89,
+	0xc5, 0x00, 0x9f, 0x8b, 0x2f, 0xf3, 0x29, 0x6c, 0xee, 0x47, 0xbc, 0x7c, 0x37, 0x70, 0x70, 0x82,
+	0xf4, 0x72, 0x1b, 0x7c, 0x49, 0x46, 0xea, 0xb2, 0x8c, 0xae, 0x41, 0x51, 0xf6, 0x4f, 0x8d, 0x9c,
+	0x58, 0xbe, 0x42, 0x02, 0x80, 0x9a, 0x8f, 0xa0, 0x9a, 0xed, 0xbb, 0xa4, 0xcc, 0x4d, 0x28, 0xcf,
+	0x02, 0xf7, 0xd9, 0x0c, 0x47, 0x81, 0xed, 0xa3, 0xac, 0x03, 0x89, 0xab, 0x6f, 0xfb, 0x78, 0xa1,
+	0x28, 0xcd, 0xef, 0x55, 0xd0, 0x7b, 0x2e, 0x15, 0xb3, 0x65, 0x5d, 0x77, 0x60, 0x2d, 0x4e, 0x70,
+	0x4a, 0x0e, 0x14, 0xc1, 0x81, 0x29, 0x39, 0x38, 0x1b, 0x5f, 0xef, 0x06, 0x01, 0xc6, 0x09, 0x25,
+	0x95, 0x78, 0x81, 0x20, 0xae, 0x4e, 0xa1, 0x39, 0x51, 0x54, 0xb3, 0x12, 0x83, 0xef, 0xb4, 0xf0,
+	0xf0, 0x90, 0x22, 0x13, 0xdc, 0x6a, 0x96, 0xb4, 0xb8, 0xce, 0x3d, 0x3b, 0x98, 0xce, 0xb8, 0x14,
+	0x56, 0x45, 0x97, 0x99, 0x6d, 0xfa, 0x00, 0xf3, 0x2a, 0x42, 0xad, 0xfd, 0x2f, 0xf4, 0x15, 0x52,
+	0x86, 0x42, 0xd3, 0x6a, 0x37, 0x86, 0xed, 0x96, 0xae, 0x90, 0x75, 0x28, 0xb7, 0xda, 0x07, 0xed,
+	0xde, 0xee, 0xde, 0x67, 0xed, 0xfe, 0x50, 0x57, 0xf9, 0xe8, 0xe3, 0x46, 0x97, 0xeb, 0x51, 0xcf,
+	0x71, 0xe9, 0x5a, 0xed, 0x47, 0xed, 0x26, 0x8f, 0x5d, 0x25, 0x6b, 0x50, 0x3a, 0x68, 0xf4, 0xba,
+	0x2d, 0x91, 0xaa, 0x71, 0x9d, 0xef, 0x59, 0xbb, 0xad, 0xfd, 0xe6, 0xb0, 0xbb, 0xdb, 0xd7, 0xf3,
+	0xe6, 0xaf, 0x2a, 0x14, 0x39, 0xcc, 0x2e, 0x43, 0xff, 0x62, 0x29, 0x9d, 0xa1, 0x5d, 0xfd, 0x1b,
+	0xed, 0x6f, 0x42, 0xd5, 0xb3, 0x19, 0x52, 0x96, 0xa9, 0x2d, 0x27, 0x62, 0xd6, 0x12, 0x6f, 0xaa,
+	0xb7, 0xf7, 0xa0, 0x22, 0xc3, 0x12, 0xba, 0x57, 0x2f, 0x96, 0x5c, 0x39, 0x09, 0x4c, 0x68, 0xb8,
+	0x03, 0x24, 0x8a, 0x43, 0x67, 0x36, 0xe1, 0x97, 0x42, 0x56, 0x42, 0x13, 0x25, 0x36, 0xe6, 0x23,
+	0x69, 0x19, 0x03, 0x0a, 0x94, 0x85, 0x31, 0xa7, 0x37, 0x9f, 0x88, 0x4d, 0x9a, 0xbc, 0x4f, 0x3b,
+	0x9e, 0x1c, 0xb9, 0xc7, 0x38, 0x3a, 0x0c, 0x63, 0xdf, 0x66, 0x46, 0x21, 0xe9, 0x53, 0x7a, 0x1f,
+	0x0a, 0x27, 0xc7, 0x2b, 0x97, 0xd7, 0x19, 0xd9, 0xcc, 0x28, 0xee, 0x28, 0xb5, 0x9c, 0x05, 0xa9,
+	0xab, 0xc1, 0xc8, 0x75, 0x28, 0xa5, 0x2b, 0x46, 0x8d, 0x92, 0x50, 0xed, 0xdc, 0x61, 0xfe, 0x99,
+	0x83, 0x8d, 0x94, 0xd4, 0xc7, 0x2e, 0x3b, 0x1a, 0x22, 0x65, 0xf4, 0x5f, 0xb0, 0xfb, 0x16, 0xac,
+	0x73, 0x2e, 0xdc, 0x60, 0xba, 0x44, 0xaf, 0x66, 0x55, 0xa5, 0x3b, 0x05, 0xfe, 0x01, 0xe4, 0xa7,
+	0x71, 0x38, 0x8b, 0xf8, 0xf1, 0xc9, 0x2f, 0xb4, 0x45, 0x21, 0x2f, 0x35, 0x53, 0xe7, 0x7f, 0x3b,
+	0x3c, 0xd4, 0x92, 0x19, 0x5b, 0x3f, 0xab, 0x50, 0xca, 0xbc, 0xfc, 0x00, 0x5b, 0xd8, 0x61, 0xe2,
+	0x9b, 0xcb, 0xf9, 0x39, 0xba, 0xd3, 0xa3, 0x54, 0xe5, 0xd2, 0xfa, 0x6f, 0xf1, 0x97, 0x16, 0xff,
+	0x3b, 0x05, 0x8c, 0x0e, 0xb2, 0xde, 0x22, 0xf6, 0xec, 0xc0, 0xc9, 0x6e, 0x7f, 0xe5, 0x92, 0xb7,
+	0xff, 0xd2, 0xf1, 0xa8, 0x2e, 0x1d, 0x8f, 0xc4, 0x84, 0xca, 0xc4, 0x8e, 0xec, 0xb1, 0xeb, 0xb9,
+	0xcc, 0xc5, 0xf4, 0xf4, 0x5c, 0xf2, 0x99, 0x0e, 0x54, 0xf9, 0x09, 0xd6, 0x08, 0x9c, 0x94, 0x9f,
+	0xd7, 0x78, 0xb3, 0xdc, 0x84, 0x32, 0xb3, 0xe3, 0xb1, 0xed, 0x79, 0xa3, 0x59, 0xec, 0xc9, 0xd5,
+	0x05, 0xe9, 0xda, 0x8f, 0x3d, 0xb3, 0x03, 0x9b, 0x9d, 0xf9, 0xb5, 0x42, 0xb3, 0x6b, 0xf0, 0x2e,
+	0x14, 0x62, 0xa4, 0x33, 0x8f, 0x51, 0xf9, 0xc2, 0xba, 0xba, 0xf0, 0x18, 0x98, 0xf7, 0x64, 0xa5,
+	0x51, 0x66, 0x15, 0x2a, 0xfc, 0x62, 0x39, 0x91, 0x84, 0x98, 0x1f, 0x41, 0x65, 0x80, 0x7c, 0x79,
+	0x2c, 0x11, 0x70, 0x71, 0xf3, 0x9b, 0xa0, 0xd1, 0x49, 0x18, 0x27, 0xbb, 0x47, 0xb1, 0x12, 0xc3,
+	0x7c, 0x0c, 0x6b, 0x69, 0x7a, 0xc2, 0xff, 0x26, 0x68, 0xcf, 0x66, 0x18, 0x9f, 0xca, 0xec, 0xc4,
+	0x98, 0xaf, 0x8a, 0x7a, 0xd9, 0x37, 0xd9, 0x00, 0xaa, 0x59, 0x5f, 0x17, 0xdf, 0xf8, 0x77, 0xe6,
+	0xf0, 0x55, 0x01, 0x3f, 0x15, 0xfb, 0x22, 0xa6, 0x39, 0xf8, 0x07, 0x50, 0x7c, 0xbd, 0x07, 0x84,
+	0xf9, 0x0d, 0x18, 0x3d, 0x7b, 0x8c, 0xde, 0x00, 0x3d, 0x9c, 0xb0, 0x30, 0xe6, 0x9d, 0xbb, 0x31,
+	0xfa, 0x18, 0x30, 0xa2, 0x43, 0xee, 0x29, 0xa6, 0x80, 0xf9, 0x27, 0x79, 0x00, 0xc5, 0x30, 0xc2,
+	0xd8, 0x66, 0x61, 0x2c, 0x11, 0x5f, 0x4f, 0xcf, 0x89, 0xc5, 0x49, 0x76, 0x65, 0x8c, 0x95, 0x45,
+	0xf3, 0x13, 0xe0, 0xd8, 0xf6, 0x66, 0x99, 0xd6, 0xa4, 0x65, 0x1e, 0xc0, 0xc6, 0x52, 0xea, 0x10,
+	0x63, 0x9f, 0x34, 0xa0, 0x8c, 0x27, 0x51, 0x8c, 0x54, 0x68, 0x42, 0x0a, 0xe0, 0xe6, 0x79, 0x95,
+	0x16, 0xda, 0xb5, 0x16, 0x73, 0xcc, 0x4f, 0x60, 0x6d, 0x29, 0x90, 0xd4, 0x41, 0x63, 0x18, 0xfb,
+	0xe9, 0x6c, 0xc6, 0x79, 0xb3, 0xf1, 0xe2, 0x56, 0x12, 0x76, 0xfb, 0x43, 0xb8, 0x72, 0xce, 0x2a,
+	0x92, 0x4d, 0xd0, 0xe7, 0xb7, 0xe0, 0x68, 0x30, 0xe4, 0x6f, 0xbe, 0x15, 0x7e, 0x37, 0x36, 0x7a,
+	0xbd, 0xc4, 0x1c, 0xe8, 0xca, 0xed, 0x27, 0x70, 0xf5, 0x5c, 0x42, 0x48, 0x1e, 0xd4, 0x6e, 0xa0,
+	0xaf, 0xf0, 0x67, 0x61, 0x3f, 0x64, 0xdd, 0x40, 0x57, 0x08, 0x40, 0xbe, 0x7d, 0xe2, 0x52, 0x46,
+	0x75, 0x95, 0xe8, 0x50, 0x69, 0x85, 0x48, 0xfb, 0x21, 0x13, 0x2e, 0x3d, 0xc7, 0x13, 0x3a, 0x4c,
+	0x5f, 0xe5, 0xff, 0x7b, 0x4c, 0xd7, 0x3e, 0xbd, 0xff, 0xe2, 0xf7, 0xed, 0x95, 0x17, 0x2f, 0xb7,
+	0x95, 0x5f, 0x5e, 0x6e, 0x2b, 0xbf, 0xbd, 0xdc, 0x56, 0x7e, 0xf8, 0x63, 0x7b, 0x05, 0xd6, 0x27,
+	0xa1, 0x5f, 0x0f, 0x19, 0x75, 0xfd, 0xb0, 0x3e, 0x8d, 0xa3, 0xc9, 0x9e, 0xf2, 0x65, 0x31, 0x31,
+	0xa3, 0xf1, 0x8f, 0x6a, 0x6e, 0x77, 0x38, 0x78, 0xa2, 0x8c, 0xf3, 0xe2, 0xa7, 0xdd, 0xbb, 0x7f,
+	0x05, 0x00, 0x00, 0xff, 0xff, 0xba, 0x1b, 0x15, 0xb1, 0x17, 0x0e, 0x00, 0x00,
 }

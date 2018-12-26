@@ -12,54 +12,55 @@ option java_multiple_files = true;
 
 // API Service
 service ApiService {
-    // Profile
-    rpc AddProfile (apipb.Profile) returns (apipb.Profile);
-    rpc GetProfile (apipb.GetProfileRequest) returns (apipb.Profile);
-    rpc UpdateProfile (UpdateProfileReq) returns (apipb.Profile);
+  // Profile
+  rpc AddProfile(apipb.Profile) returns (apipb.Profile);
+  rpc GetProfile(apipb.GetProfileRequest) returns (apipb.Profile);
+  rpc UpdateProfile(UpdateProfileReq) returns (apipb.Profile);
 
-    // Child
-    rpc AddChild (apipb.Child) returns (apipb.Child);
-    rpc GetChild (apipb.GetChildRequest) returns (apipb.Child);
-    rpc GetChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
-    rpc GetDisabledChildren (apipb.GetChildrenFromProfileRequest) returns (apipb.GetChildrenFromProfileResponse);
-    rpc UpdateChild (UpdateChildReq) returns (apipb.Child);
-    
-    rpc UpdateGameEntry (apipb.GameEntryRequest) returns (apipb.Child);
-    rpc ChangeActivation (apipb.ChangeChildActivationRequest) returns (apipb.Child);
-    rpc SoundEnable (apipb.SoundEnableRequest) returns (apipb.Child);
-    rpc UpdateGameIndices (apipb.UpdateIndecesRequest) returns (apipb.Child);
+  // Child
+  rpc AddChild(apipb.Child) returns (apipb.Child);
+  rpc GetChild(apipb.GetChildRequest) returns (apipb.Child);
+  rpc GetChildren(apipb.GetChildrenFromProfileRequest)
+      returns (apipb.GetChildrenFromProfileResponse);
+  rpc GetDisabledChildren(apipb.GetChildrenFromProfileRequest)
+      returns (apipb.GetChildrenFromProfileResponse);
+  rpc UpdateChild(UpdateChildReq) returns (apipb.Child);
 
-    rpc Statistics (StatisticsReq) returns (StatisticsRes);
-    rpc UpdateProgress(UpdateProgressReq) returns (apipb.Child);
+  rpc UpdateGameEntry(apipb.GameEntryRequest) returns (apipb.Child);
+  rpc ChangeActivation(apipb.ChangeChildActivationRequest)
+      returns (apipb.Child);
+  rpc SoundEnable(apipb.SoundEnableRequest) returns (apipb.Child);
+  rpc UpdateGameIndices(apipb.UpdateIndecesRequest) returns (apipb.Child);
+
+  rpc Statistics(StatisticsReq) returns (StatisticsRes);
+  rpc UpdateProgress(UpdateProgressReq) returns (apipb.Child);
 }
 
 message StatisticsReq {
-    int64 time_from = 1;
-    int64 time_to = 2;
+  int64 time_from = 1;
+  int64 time_to = 2;
 }
 
-message StatisticsRes {
-    map<string, int64> statistics = 1;
-}
+message StatisticsRes { map<string, int64> statistics = 1; }
 
 message UpdateProfileReq {
-    google.protobuf.FieldMask fields = 1;
-    apipb.Profile profile = 2;
+  google.protobuf.FieldMask fields = 1;
+  apipb.Profile profile = 2;
 }
 
 message UpdateChildReq {
-    google.protobuf.FieldMask fields = 1;
-    apipb.Child child = 2;
+  google.protobuf.FieldMask fields = 1;
+  apipb.Child child = 2;
 }
 
 message UpdateProgressReq {
-    // number of stars earned by user
-    int32 stars_earned = 1;
-    // put -1 to not update
-    int32 new_level = 2;
-    // put -1 in order not to update
-    int32 level_star_count = 3;
-    // Badges earned by user
-    repeated apipb.Badge badges_earned = 4;
-    string child_id = 5;
+  // number of stars earned by user
+  int32 stars_earned = 1;
+  // put -1 to not update
+  int32 new_level = 2;
+  // put -1 in order not to update
+  int32 level_star_count = 3;
+  // Badges earned by user
+  repeated apipb.Badge badges_earned = 4;
+  string child_id = 5;
 }

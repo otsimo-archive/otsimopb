@@ -9,8 +9,10 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
 import io "io"
 
@@ -18,6 +20,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type DataInterval int32
 
@@ -38,45 +46,137 @@ var DataInterval_value = map[string]int32{
 func (x DataInterval) String() string {
 	return proto.EnumName(DataInterval_name, int32(x))
 }
-func (DataInterval) EnumDescriptor() ([]byte, []int) { return fileDescriptorSimplyanalysis, []int{0} }
+func (DataInterval) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{0}
+}
 
 type GamePlayingRequest struct {
 	Games []string `protobuf:"bytes,1,rep,name=games" json:"games,omitempty"`
 	// From is the unix seconds time
 	From int64 `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`
 	// To is the unix seconds time
-	To       int64        `protobuf:"varint,3,opt,name=to,proto3" json:"to,omitempty"`
-	Interval DataInterval `protobuf:"varint,4,opt,name=interval,proto3,enum=apipb.DataInterval" json:"interval,omitempty"`
+	To                   int64        `protobuf:"varint,3,opt,name=to,proto3" json:"to,omitempty"`
+	Interval             DataInterval `protobuf:"varint,4,opt,name=interval,proto3,enum=apipb.DataInterval" json:"interval,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *GamePlayingRequest) Reset()                    { *m = GamePlayingRequest{} }
-func (m *GamePlayingRequest) String() string            { return proto.CompactTextString(m) }
-func (*GamePlayingRequest) ProtoMessage()               {}
-func (*GamePlayingRequest) Descriptor() ([]byte, []int) { return fileDescriptorSimplyanalysis, []int{0} }
+func (m *GamePlayingRequest) Reset()         { *m = GamePlayingRequest{} }
+func (m *GamePlayingRequest) String() string { return proto.CompactTextString(m) }
+func (*GamePlayingRequest) ProtoMessage()    {}
+func (*GamePlayingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{0}
+}
+func (m *GamePlayingRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GamePlayingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GamePlayingRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GamePlayingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GamePlayingRequest.Merge(dst, src)
+}
+func (m *GamePlayingRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GamePlayingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GamePlayingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GamePlayingRequest proto.InternalMessageInfo
 
 type GamePlayingReply struct {
-	Data *DataSet `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
+	Data                 *DataSet `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GamePlayingReply) Reset()                    { *m = GamePlayingReply{} }
-func (m *GamePlayingReply) String() string            { return proto.CompactTextString(m) }
-func (*GamePlayingReply) ProtoMessage()               {}
-func (*GamePlayingReply) Descriptor() ([]byte, []int) { return fileDescriptorSimplyanalysis, []int{1} }
+func (m *GamePlayingReply) Reset()         { *m = GamePlayingReply{} }
+func (m *GamePlayingReply) String() string { return proto.CompactTextString(m) }
+func (*GamePlayingReply) ProtoMessage()    {}
+func (*GamePlayingReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{1}
+}
+func (m *GamePlayingReply) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GamePlayingReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GamePlayingReply.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GamePlayingReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GamePlayingReply.Merge(dst, src)
+}
+func (m *GamePlayingReply) XXX_Size() int {
+	return m.Size()
+}
+func (m *GamePlayingReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_GamePlayingReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GamePlayingReply proto.InternalMessageInfo
 
 type SimplifiedReq struct {
 	Analysis string `protobuf:"bytes,1,opt,name=analysis,proto3" json:"analysis,omitempty"`
 	// From is the unix seconds time
 	From int64 `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`
 	// To is the unix seconds time
-	To       int64        `protobuf:"varint,3,opt,name=to,proto3" json:"to,omitempty"`
-	Games    []string     `protobuf:"bytes,4,rep,name=games" json:"games,omitempty"`
-	Interval DataInterval `protobuf:"varint,5,opt,name=interval,proto3,enum=apipb.DataInterval" json:"interval,omitempty"`
+	To                   int64        `protobuf:"varint,3,opt,name=to,proto3" json:"to,omitempty"`
+	Games                []string     `protobuf:"bytes,4,rep,name=games" json:"games,omitempty"`
+	Interval             DataInterval `protobuf:"varint,5,opt,name=interval,proto3,enum=apipb.DataInterval" json:"interval,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *SimplifiedReq) Reset()                    { *m = SimplifiedReq{} }
-func (m *SimplifiedReq) String() string            { return proto.CompactTextString(m) }
-func (*SimplifiedReq) ProtoMessage()               {}
-func (*SimplifiedReq) Descriptor() ([]byte, []int) { return fileDescriptorSimplyanalysis, []int{2} }
+func (m *SimplifiedReq) Reset()         { *m = SimplifiedReq{} }
+func (m *SimplifiedReq) String() string { return proto.CompactTextString(m) }
+func (*SimplifiedReq) ProtoMessage()    {}
+func (*SimplifiedReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{2}
+}
+func (m *SimplifiedReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SimplifiedReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SimplifiedReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *SimplifiedReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SimplifiedReq.Merge(dst, src)
+}
+func (m *SimplifiedReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *SimplifiedReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_SimplifiedReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SimplifiedReq proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*GamePlayingRequest)(nil), "apipb.GamePlayingRequest")
@@ -93,8 +193,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for SimplifiedAnalytics service
-
+// SimplifiedAnalyticsClient is the client API for SimplifiedAnalytics service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SimplifiedAnalyticsClient interface {
 	GamePlayingDuration(ctx context.Context, in *GamePlayingRequest, opts ...grpc.CallOption) (*GamePlayingReply, error)
 	GameSuccessFailure(ctx context.Context, in *GamePlayingRequest, opts ...grpc.CallOption) (*GamePlayingReply, error)
@@ -111,7 +212,7 @@ func NewSimplifiedAnalyticsClient(cc *grpc.ClientConn) SimplifiedAnalyticsClient
 
 func (c *simplifiedAnalyticsClient) GamePlayingDuration(ctx context.Context, in *GamePlayingRequest, opts ...grpc.CallOption) (*GamePlayingReply, error) {
 	out := new(GamePlayingReply)
-	err := grpc.Invoke(ctx, "/apipb.SimplifiedAnalytics/GamePlayingDuration", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.SimplifiedAnalytics/GamePlayingDuration", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +221,7 @@ func (c *simplifiedAnalyticsClient) GamePlayingDuration(ctx context.Context, in 
 
 func (c *simplifiedAnalyticsClient) GameSuccessFailure(ctx context.Context, in *GamePlayingRequest, opts ...grpc.CallOption) (*GamePlayingReply, error) {
 	out := new(GamePlayingReply)
-	err := grpc.Invoke(ctx, "/apipb.SimplifiedAnalytics/GameSuccessFailure", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.SimplifiedAnalytics/GameSuccessFailure", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -129,15 +230,14 @@ func (c *simplifiedAnalyticsClient) GameSuccessFailure(ctx context.Context, in *
 
 func (c *simplifiedAnalyticsClient) ByName(ctx context.Context, in *SimplifiedReq, opts ...grpc.CallOption) (*DataSet, error) {
 	out := new(DataSet)
-	err := grpc.Invoke(ctx, "/apipb.SimplifiedAnalytics/ByName", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.SimplifiedAnalytics/ByName", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for SimplifiedAnalytics service
-
+// SimplifiedAnalyticsServer is the server API for SimplifiedAnalytics service.
 type SimplifiedAnalyticsServer interface {
 	GamePlayingDuration(context.Context, *GamePlayingRequest) (*GamePlayingReply, error)
 	GameSuccessFailure(context.Context, *GamePlayingRequest) (*GamePlayingReply, error)
@@ -920,9 +1020,11 @@ var (
 	ErrIntOverflowSimplyanalysis   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("simplyanalysis.proto", fileDescriptorSimplyanalysis) }
+func init() {
+	proto.RegisterFile("simplyanalysis.proto", fileDescriptor_simplyanalysis_e47418c57387ba0c)
+}
 
-var fileDescriptorSimplyanalysis = []byte{
+var fileDescriptor_simplyanalysis_e47418c57387ba0c = []byte{
 	// 425 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0x4f, 0x6b, 0xd4, 0x40,
 	0x14, 0xcf, 0xec, 0x3f, 0x76, 0x9f, 0xba, 0x2e, 0xb3, 0x01, 0x63, 0x0e, 0x21, 0x04, 0x84, 0xe0,

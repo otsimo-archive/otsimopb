@@ -7,10 +7,12 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
-import binary "encoding/binary"
+import encoding_binary "encoding/binary"
 
 import io "io"
 
@@ -18,6 +20,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type QuerySort_SortOrder int32
 
@@ -39,7 +47,7 @@ func (x QuerySort_SortOrder) String() string {
 	return proto.EnumName(QuerySort_SortOrder_name, int32(x))
 }
 func (QuerySort_SortOrder) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{5, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{5, 0}
 }
 
 type Aggregation_Accumulator int32
@@ -80,7 +88,7 @@ func (x Aggregation_Accumulator) String() string {
 	return proto.EnumName(Aggregation_Accumulator_name, int32(x))
 }
 func (Aggregation_Accumulator) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{6, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{6, 0}
 }
 
 type QueryGroup_GroupType int32
@@ -90,10 +98,10 @@ const (
 	QueryGroup_Date QueryGroup_GroupType = 0
 	// Datetime gives rows on given interval
 	QueryGroup_Datetime QueryGroup_GroupType = 1
-	// TimeofDay gives rows on time of day. minutes and seconds on interval value determines interval.
-	// ex: if minutes and seconds are false then rows will be 0,1,2,3,4
-	// ex: if minutes is true then rows will be 00:00,00:01,00:02,...
-	// when seconds is true than minutes is always true
+	// TimeofDay gives rows on time of day. minutes and seconds on interval
+	// value determines interval. ex: if minutes and seconds are false then rows
+	// will be 0,1,2,3,4 ex: if minutes is true then rows will be
+	// 00:00,00:01,00:02,... when seconds is true than minutes is always true
 	QueryGroup_TimeOfDay QueryGroup_GroupType = 2
 	// Discrete should be used for String values
 	QueryGroup_Discrete QueryGroup_GroupType = 3
@@ -120,7 +128,7 @@ func (x QueryGroup_GroupType) String() string {
 	return proto.EnumName(QueryGroup_GroupType_name, int32(x))
 }
 func (QueryGroup_GroupType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{8, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{8, 0}
 }
 
 type ActiveUsersRequest_Type int32
@@ -149,7 +157,7 @@ func (x ActiveUsersRequest_Type) String() string {
 	return proto.EnumName(ActiveUsersRequest_Type_name, int32(x))
 }
 func (ActiveUsersRequest_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{12, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{12, 0}
 }
 
 type RetentionRequest_Type int32
@@ -175,7 +183,7 @@ func (x RetentionRequest_Type) String() string {
 	return proto.EnumName(RetentionRequest_Type_name, int32(x))
 }
 func (RetentionRequest_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{14, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{14, 0}
 }
 
 type GameInfoResponse_FieldType int32
@@ -207,20 +215,51 @@ func (x GameInfoResponse_FieldType) String() string {
 	return proto.EnumName(GameInfoResponse_FieldType_name, int32(x))
 }
 func (GameInfoResponse_FieldType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{19, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{19, 0}
 }
 
 type TimeRange struct {
 	// From is the unix seconds time
 	From int64 `protobuf:"varint,1,opt,name=from,proto3" json:"from,omitempty"`
 	// To is the unix seconds time
-	To int64 `protobuf:"varint,2,opt,name=to,proto3" json:"to,omitempty"`
+	To                   int64    `protobuf:"varint,2,opt,name=to,proto3" json:"to,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TimeRange) Reset()                    { *m = TimeRange{} }
-func (m *TimeRange) String() string            { return proto.CompactTextString(m) }
-func (*TimeRange) ProtoMessage()               {}
-func (*TimeRange) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{0} }
+func (m *TimeRange) Reset()         { *m = TimeRange{} }
+func (m *TimeRange) String() string { return proto.CompactTextString(m) }
+func (*TimeRange) ProtoMessage()    {}
+func (*TimeRange) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{0}
+}
+func (m *TimeRange) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TimeRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TimeRange.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *TimeRange) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TimeRange.Merge(dst, src)
+}
+func (m *TimeRange) XXX_Size() int {
+	return m.Size()
+}
+func (m *TimeRange) XXX_DiscardUnknown() {
+	xxx_messageInfo_TimeRange.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TimeRange proto.InternalMessageInfo
 
 func (m *TimeRange) GetFrom() int64 {
 	if m != nil {
@@ -240,13 +279,44 @@ type ChildAndProfileIds struct {
 	// ChildId
 	ChildId string `protobuf:"bytes,1,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
 	// ProfileId
-	ProfileId string `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	ProfileId            string   `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ChildAndProfileIds) Reset()                    { *m = ChildAndProfileIds{} }
-func (m *ChildAndProfileIds) String() string            { return proto.CompactTextString(m) }
-func (*ChildAndProfileIds) ProtoMessage()               {}
-func (*ChildAndProfileIds) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{1} }
+func (m *ChildAndProfileIds) Reset()         { *m = ChildAndProfileIds{} }
+func (m *ChildAndProfileIds) String() string { return proto.CompactTextString(m) }
+func (*ChildAndProfileIds) ProtoMessage()    {}
+func (*ChildAndProfileIds) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{1}
+}
+func (m *ChildAndProfileIds) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ChildAndProfileIds) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ChildAndProfileIds.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ChildAndProfileIds) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChildAndProfileIds.Merge(dst, src)
+}
+func (m *ChildAndProfileIds) XXX_Size() int {
+	return m.Size()
+}
+func (m *ChildAndProfileIds) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChildAndProfileIds.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ChildAndProfileIds proto.InternalMessageInfo
 
 func (m *ChildAndProfileIds) GetChildId() string {
 	if m != nil {
@@ -268,13 +338,44 @@ type ChildAndTimeRange struct {
 	// ProfileId
 	ProfileId string `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
 	// Range is the time range
-	Range *TimeRange `protobuf:"bytes,3,opt,name=range" json:"range,omitempty"`
+	Range                *TimeRange `protobuf:"bytes,3,opt,name=range" json:"range,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *ChildAndTimeRange) Reset()                    { *m = ChildAndTimeRange{} }
-func (m *ChildAndTimeRange) String() string            { return proto.CompactTextString(m) }
-func (*ChildAndTimeRange) ProtoMessage()               {}
-func (*ChildAndTimeRange) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{2} }
+func (m *ChildAndTimeRange) Reset()         { *m = ChildAndTimeRange{} }
+func (m *ChildAndTimeRange) String() string { return proto.CompactTextString(m) }
+func (*ChildAndTimeRange) ProtoMessage()    {}
+func (*ChildAndTimeRange) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{2}
+}
+func (m *ChildAndTimeRange) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ChildAndTimeRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ChildAndTimeRange.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ChildAndTimeRange) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChildAndTimeRange.Merge(dst, src)
+}
+func (m *ChildAndTimeRange) XXX_Size() int {
+	return m.Size()
+}
+func (m *ChildAndTimeRange) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChildAndTimeRange.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ChildAndTimeRange proto.InternalMessageInfo
 
 func (m *ChildAndTimeRange) GetChildId() string {
 	if m != nil {
@@ -301,13 +402,44 @@ type GameWithVersions struct {
 	// GameId
 	GameId string `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
 	// Versions
-	Versions []string `protobuf:"bytes,2,rep,name=versions" json:"versions,omitempty"`
+	Versions             []string `protobuf:"bytes,2,rep,name=versions" json:"versions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GameWithVersions) Reset()                    { *m = GameWithVersions{} }
-func (m *GameWithVersions) String() string            { return proto.CompactTextString(m) }
-func (*GameWithVersions) ProtoMessage()               {}
-func (*GameWithVersions) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{3} }
+func (m *GameWithVersions) Reset()         { *m = GameWithVersions{} }
+func (m *GameWithVersions) String() string { return proto.CompactTextString(m) }
+func (*GameWithVersions) ProtoMessage()    {}
+func (*GameWithVersions) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{3}
+}
+func (m *GameWithVersions) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameWithVersions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameWithVersions.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameWithVersions) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameWithVersions.Merge(dst, src)
+}
+func (m *GameWithVersions) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameWithVersions) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameWithVersions.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameWithVersions proto.InternalMessageInfo
 
 func (m *GameWithVersions) GetGameId() string {
 	if m != nil {
@@ -328,13 +460,44 @@ type PlayedGamesList struct {
 	// ChildId
 	ChildId string `protobuf:"bytes,2,opt,name=child_id,json=childId,proto3" json:"child_id,omitempty"`
 	// Range is the time range
-	Range *TimeRange `protobuf:"bytes,3,opt,name=range" json:"range,omitempty"`
+	Range                *TimeRange `protobuf:"bytes,3,opt,name=range" json:"range,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *PlayedGamesList) Reset()                    { *m = PlayedGamesList{} }
-func (m *PlayedGamesList) String() string            { return proto.CompactTextString(m) }
-func (*PlayedGamesList) ProtoMessage()               {}
-func (*PlayedGamesList) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{4} }
+func (m *PlayedGamesList) Reset()         { *m = PlayedGamesList{} }
+func (m *PlayedGamesList) String() string { return proto.CompactTextString(m) }
+func (*PlayedGamesList) ProtoMessage()    {}
+func (*PlayedGamesList) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{4}
+}
+func (m *PlayedGamesList) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PlayedGamesList) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PlayedGamesList.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *PlayedGamesList) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PlayedGamesList.Merge(dst, src)
+}
+func (m *PlayedGamesList) XXX_Size() int {
+	return m.Size()
+}
+func (m *PlayedGamesList) XXX_DiscardUnknown() {
+	xxx_messageInfo_PlayedGamesList.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PlayedGamesList proto.InternalMessageInfo
 
 func (m *PlayedGamesList) GetGames() []*GameWithVersions {
 	if m != nil {
@@ -358,14 +521,45 @@ func (m *PlayedGamesList) GetRange() *TimeRange {
 }
 
 type QuerySort struct {
-	FieldName string              `protobuf:"bytes,1,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
-	Order     QuerySort_SortOrder `protobuf:"varint,2,opt,name=order,proto3,enum=apipb.QuerySort_SortOrder" json:"order,omitempty"`
+	FieldName            string              `protobuf:"bytes,1,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
+	Order                QuerySort_SortOrder `protobuf:"varint,2,opt,name=order,proto3,enum=apipb.QuerySort_SortOrder" json:"order,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *QuerySort) Reset()                    { *m = QuerySort{} }
-func (m *QuerySort) String() string            { return proto.CompactTextString(m) }
-func (*QuerySort) ProtoMessage()               {}
-func (*QuerySort) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{5} }
+func (m *QuerySort) Reset()         { *m = QuerySort{} }
+func (m *QuerySort) String() string { return proto.CompactTextString(m) }
+func (*QuerySort) ProtoMessage()    {}
+func (*QuerySort) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{5}
+}
+func (m *QuerySort) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QuerySort) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QuerySort.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *QuerySort) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QuerySort.Merge(dst, src)
+}
+func (m *QuerySort) XXX_Size() int {
+	return m.Size()
+}
+func (m *QuerySort) XXX_DiscardUnknown() {
+	xxx_messageInfo_QuerySort.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QuerySort proto.InternalMessageInfo
 
 func (m *QuerySort) GetFieldName() string {
 	if m != nil {
@@ -382,15 +576,46 @@ func (m *QuerySort) GetOrder() QuerySort_SortOrder {
 }
 
 type Aggregation struct {
-	FieldName   string                  `protobuf:"bytes,1,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
-	OutputField string                  `protobuf:"bytes,2,opt,name=output_field,json=outputField,proto3" json:"output_field,omitempty"`
-	Accumulator Aggregation_Accumulator `protobuf:"varint,3,opt,name=accumulator,proto3,enum=apipb.Aggregation_Accumulator" json:"accumulator,omitempty"`
+	FieldName            string                  `protobuf:"bytes,1,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
+	OutputField          string                  `protobuf:"bytes,2,opt,name=output_field,json=outputField,proto3" json:"output_field,omitempty"`
+	Accumulator          Aggregation_Accumulator `protobuf:"varint,3,opt,name=accumulator,proto3,enum=apipb.Aggregation_Accumulator" json:"accumulator,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
 
-func (m *Aggregation) Reset()                    { *m = Aggregation{} }
-func (m *Aggregation) String() string            { return proto.CompactTextString(m) }
-func (*Aggregation) ProtoMessage()               {}
-func (*Aggregation) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{6} }
+func (m *Aggregation) Reset()         { *m = Aggregation{} }
+func (m *Aggregation) String() string { return proto.CompactTextString(m) }
+func (*Aggregation) ProtoMessage()    {}
+func (*Aggregation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{6}
+}
+func (m *Aggregation) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Aggregation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Aggregation.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Aggregation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Aggregation.Merge(dst, src)
+}
+func (m *Aggregation) XXX_Size() int {
+	return m.Size()
+}
+func (m *Aggregation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Aggregation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Aggregation proto.InternalMessageInfo
 
 func (m *Aggregation) GetFieldName() string {
 	if m != nil {
@@ -425,13 +650,44 @@ type GroupInterval struct {
 	// For TimeOfDay
 	Minutes bool `protobuf:"varint,5,opt,name=minutes,proto3" json:"minutes,omitempty"`
 	// For TimeOfDay
-	Seconds bool `protobuf:"varint,6,opt,name=seconds,proto3" json:"seconds,omitempty"`
+	Seconds              bool     `protobuf:"varint,6,opt,name=seconds,proto3" json:"seconds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GroupInterval) Reset()                    { *m = GroupInterval{} }
-func (m *GroupInterval) String() string            { return proto.CompactTextString(m) }
-func (*GroupInterval) ProtoMessage()               {}
-func (*GroupInterval) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{7} }
+func (m *GroupInterval) Reset()         { *m = GroupInterval{} }
+func (m *GroupInterval) String() string { return proto.CompactTextString(m) }
+func (*GroupInterval) ProtoMessage()    {}
+func (*GroupInterval) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{7}
+}
+func (m *GroupInterval) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GroupInterval) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GroupInterval.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GroupInterval) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GroupInterval.Merge(dst, src)
+}
+func (m *GroupInterval) XXX_Size() int {
+	return m.Size()
+}
+func (m *GroupInterval) XXX_DiscardUnknown() {
+	xxx_messageInfo_GroupInterval.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GroupInterval proto.InternalMessageInfo
 
 func (m *GroupInterval) GetInt() int32 {
 	if m != nil {
@@ -479,14 +735,45 @@ type QueryGroup struct {
 	FieldName string               `protobuf:"bytes,1,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
 	Type      QueryGroup_GroupType `protobuf:"varint,2,opt,name=type,proto3,enum=apipb.QueryGroup_GroupType" json:"type,omitempty"`
 	// Interval is optional for Date and Discrete type
-	Interval    *GroupInterval `protobuf:"bytes,3,opt,name=interval" json:"interval,omitempty"`
-	OutputField string         `protobuf:"bytes,4,opt,name=output_field,json=outputField,proto3" json:"output_field,omitempty"`
+	Interval             *GroupInterval `protobuf:"bytes,3,opt,name=interval" json:"interval,omitempty"`
+	OutputField          string         `protobuf:"bytes,4,opt,name=output_field,json=outputField,proto3" json:"output_field,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *QueryGroup) Reset()                    { *m = QueryGroup{} }
-func (m *QueryGroup) String() string            { return proto.CompactTextString(m) }
-func (*QueryGroup) ProtoMessage()               {}
-func (*QueryGroup) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{8} }
+func (m *QueryGroup) Reset()         { *m = QueryGroup{} }
+func (m *QueryGroup) String() string { return proto.CompactTextString(m) }
+func (*QueryGroup) ProtoMessage()    {}
+func (*QueryGroup) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{8}
+}
+func (m *QueryGroup) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGroup) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGroup.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *QueryGroup) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGroup.Merge(dst, src)
+}
+func (m *QueryGroup) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGroup) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGroup.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGroup proto.InternalMessageInfo
 
 func (m *QueryGroup) GetFieldName() string {
 	if m != nil {
@@ -517,20 +804,51 @@ func (m *QueryGroup) GetOutputField() string {
 }
 
 type Query struct {
-	Events       []string       `protobuf:"bytes,1,rep,name=events" json:"events,omitempty"`
-	Range        *TimeRange     `protobuf:"bytes,2,opt,name=range" json:"range,omitempty"`
-	Sort         []*QuerySort   `protobuf:"bytes,3,rep,name=sort" json:"sort,omitempty"`
-	Limit        int32          `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
-	Offset       int32          `protobuf:"varint,5,opt,name=offset,proto3" json:"offset,omitempty"`
-	GroupBy      *QueryGroup    `protobuf:"bytes,6,opt,name=group_by,json=groupBy" json:"group_by,omitempty"`
-	Aggregations []*Aggregation `protobuf:"bytes,7,rep,name=aggregations" json:"aggregations,omitempty"`
-	RawQueries   [][]byte       `protobuf:"bytes,8,rep,name=raw_queries,json=rawQueries" json:"raw_queries,omitempty"`
+	Events               []string       `protobuf:"bytes,1,rep,name=events" json:"events,omitempty"`
+	Range                *TimeRange     `protobuf:"bytes,2,opt,name=range" json:"range,omitempty"`
+	Sort                 []*QuerySort   `protobuf:"bytes,3,rep,name=sort" json:"sort,omitempty"`
+	Limit                int32          `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset               int32          `protobuf:"varint,5,opt,name=offset,proto3" json:"offset,omitempty"`
+	GroupBy              *QueryGroup    `protobuf:"bytes,6,opt,name=group_by,json=groupBy" json:"group_by,omitempty"`
+	Aggregations         []*Aggregation `protobuf:"bytes,7,rep,name=aggregations" json:"aggregations,omitempty"`
+	RawQueries           [][]byte       `protobuf:"bytes,8,rep,name=raw_queries,json=rawQueries" json:"raw_queries,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *Query) Reset()                    { *m = Query{} }
-func (m *Query) String() string            { return proto.CompactTextString(m) }
-func (*Query) ProtoMessage()               {}
-func (*Query) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{9} }
+func (m *Query) Reset()         { *m = Query{} }
+func (m *Query) String() string { return proto.CompactTextString(m) }
+func (*Query) ProtoMessage()    {}
+func (*Query) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{9}
+}
+func (m *Query) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Query) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Query.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Query) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Query.Merge(dst, src)
+}
+func (m *Query) XXX_Size() int {
+	return m.Size()
+}
+func (m *Query) XXX_DiscardUnknown() {
+	xxx_messageInfo_Query.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Query proto.InternalMessageInfo
 
 func (m *Query) GetEvents() []string {
 	if m != nil {
@@ -598,13 +916,44 @@ type AnalyzeRequest struct {
 	// Query is calculation query
 	Query *Query `protobuf:"bytes,6,opt,name=query" json:"query,omitempty"`
 	// Games are the compute this request on
-	Games []*GameWithVersions `protobuf:"bytes,7,rep,name=games" json:"games,omitempty"`
+	Games                []*GameWithVersions `protobuf:"bytes,7,rep,name=games" json:"games,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *AnalyzeRequest) Reset()                    { *m = AnalyzeRequest{} }
-func (m *AnalyzeRequest) String() string            { return proto.CompactTextString(m) }
-func (*AnalyzeRequest) ProtoMessage()               {}
-func (*AnalyzeRequest) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{10} }
+func (m *AnalyzeRequest) Reset()         { *m = AnalyzeRequest{} }
+func (m *AnalyzeRequest) String() string { return proto.CompactTextString(m) }
+func (*AnalyzeRequest) ProtoMessage()    {}
+func (*AnalyzeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{10}
+}
+func (m *AnalyzeRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AnalyzeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AnalyzeRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *AnalyzeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AnalyzeRequest.Merge(dst, src)
+}
+func (m *AnalyzeRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *AnalyzeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AnalyzeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AnalyzeRequest proto.InternalMessageInfo
 
 func (m *AnalyzeRequest) GetChildId() string {
 	if m != nil {
@@ -647,13 +996,44 @@ type AnalyzeResult struct {
 	// Data
 	Data *DataSet `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
 	// Created At
-	CreatedAt int64 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt            int64    `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AnalyzeResult) Reset()                    { *m = AnalyzeResult{} }
-func (m *AnalyzeResult) String() string            { return proto.CompactTextString(m) }
-func (*AnalyzeResult) ProtoMessage()               {}
-func (*AnalyzeResult) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{11} }
+func (m *AnalyzeResult) Reset()         { *m = AnalyzeResult{} }
+func (m *AnalyzeResult) String() string { return proto.CompactTextString(m) }
+func (*AnalyzeResult) ProtoMessage()    {}
+func (*AnalyzeResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{11}
+}
+func (m *AnalyzeResult) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AnalyzeResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AnalyzeResult.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *AnalyzeResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AnalyzeResult.Merge(dst, src)
+}
+func (m *AnalyzeResult) XXX_Size() int {
+	return m.Size()
+}
+func (m *AnalyzeResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_AnalyzeResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AnalyzeResult proto.InternalMessageInfo
 
 func (m *AnalyzeResult) GetRequest() *AnalyzeRequest {
 	if m != nil {
@@ -678,15 +1058,46 @@ func (m *AnalyzeResult) GetCreatedAt() int64 {
 
 // Active Users
 type ActiveUsersRequest struct {
-	Type  ActiveUsersRequest_Type `protobuf:"varint,1,opt,name=type,proto3,enum=apipb.ActiveUsersRequest_Type" json:"type,omitempty"`
-	Dates []int64                 `protobuf:"varint,2,rep,packed,name=dates" json:"dates,omitempty"`
-	AppId string                  `protobuf:"bytes,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Type                 ActiveUsersRequest_Type `protobuf:"varint,1,opt,name=type,proto3,enum=apipb.ActiveUsersRequest_Type" json:"type,omitempty"`
+	Dates                []int64                 `protobuf:"varint,2,rep,packed,name=dates" json:"dates,omitempty"`
+	AppId                string                  `protobuf:"bytes,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
 
-func (m *ActiveUsersRequest) Reset()                    { *m = ActiveUsersRequest{} }
-func (m *ActiveUsersRequest) String() string            { return proto.CompactTextString(m) }
-func (*ActiveUsersRequest) ProtoMessage()               {}
-func (*ActiveUsersRequest) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{12} }
+func (m *ActiveUsersRequest) Reset()         { *m = ActiveUsersRequest{} }
+func (m *ActiveUsersRequest) String() string { return proto.CompactTextString(m) }
+func (*ActiveUsersRequest) ProtoMessage()    {}
+func (*ActiveUsersRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{12}
+}
+func (m *ActiveUsersRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ActiveUsersRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ActiveUsersRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ActiveUsersRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ActiveUsersRequest.Merge(dst, src)
+}
+func (m *ActiveUsersRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ActiveUsersRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ActiveUsersRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ActiveUsersRequest proto.InternalMessageInfo
 
 func (m *ActiveUsersRequest) GetType() ActiveUsersRequest_Type {
 	if m != nil {
@@ -715,13 +1126,44 @@ type ActiveUsersResult struct {
 	// Data
 	Data *DataSet `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
 	// Created At
-	CreatedAt int64 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt            int64    `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ActiveUsersResult) Reset()                    { *m = ActiveUsersResult{} }
-func (m *ActiveUsersResult) String() string            { return proto.CompactTextString(m) }
-func (*ActiveUsersResult) ProtoMessage()               {}
-func (*ActiveUsersResult) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{13} }
+func (m *ActiveUsersResult) Reset()         { *m = ActiveUsersResult{} }
+func (m *ActiveUsersResult) String() string { return proto.CompactTextString(m) }
+func (*ActiveUsersResult) ProtoMessage()    {}
+func (*ActiveUsersResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{13}
+}
+func (m *ActiveUsersResult) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ActiveUsersResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ActiveUsersResult.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ActiveUsersResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ActiveUsersResult.Merge(dst, src)
+}
+func (m *ActiveUsersResult) XXX_Size() int {
+	return m.Size()
+}
+func (m *ActiveUsersResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_ActiveUsersResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ActiveUsersResult proto.InternalMessageInfo
 
 func (m *ActiveUsersResult) GetRequest() *ActiveUsersRequest {
 	if m != nil {
@@ -746,15 +1188,46 @@ func (m *ActiveUsersResult) GetCreatedAt() int64 {
 
 // Retention
 type RetentionRequest struct {
-	Type  RetentionRequest_Type `protobuf:"varint,1,opt,name=type,proto3,enum=apipb.RetentionRequest_Type" json:"type,omitempty"`
-	Dates []int64               `protobuf:"varint,2,rep,packed,name=dates" json:"dates,omitempty"`
-	AppId string                `protobuf:"bytes,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Type                 RetentionRequest_Type `protobuf:"varint,1,opt,name=type,proto3,enum=apipb.RetentionRequest_Type" json:"type,omitempty"`
+	Dates                []int64               `protobuf:"varint,2,rep,packed,name=dates" json:"dates,omitempty"`
+	AppId                string                `protobuf:"bytes,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *RetentionRequest) Reset()                    { *m = RetentionRequest{} }
-func (m *RetentionRequest) String() string            { return proto.CompactTextString(m) }
-func (*RetentionRequest) ProtoMessage()               {}
-func (*RetentionRequest) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{14} }
+func (m *RetentionRequest) Reset()         { *m = RetentionRequest{} }
+func (m *RetentionRequest) String() string { return proto.CompactTextString(m) }
+func (*RetentionRequest) ProtoMessage()    {}
+func (*RetentionRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{14}
+}
+func (m *RetentionRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *RetentionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_RetentionRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *RetentionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RetentionRequest.Merge(dst, src)
+}
+func (m *RetentionRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *RetentionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RetentionRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RetentionRequest proto.InternalMessageInfo
 
 func (m *RetentionRequest) GetType() RetentionRequest_Type {
 	if m != nil {
@@ -783,13 +1256,44 @@ type RetentionResult struct {
 	// Data
 	Data *DataSet `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
 	// Created At
-	CreatedAt int64 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt            int64    `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *RetentionResult) Reset()                    { *m = RetentionResult{} }
-func (m *RetentionResult) String() string            { return proto.CompactTextString(m) }
-func (*RetentionResult) ProtoMessage()               {}
-func (*RetentionResult) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{15} }
+func (m *RetentionResult) Reset()         { *m = RetentionResult{} }
+func (m *RetentionResult) String() string { return proto.CompactTextString(m) }
+func (*RetentionResult) ProtoMessage()    {}
+func (*RetentionResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{15}
+}
+func (m *RetentionResult) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *RetentionResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_RetentionResult.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *RetentionResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RetentionResult.Merge(dst, src)
+}
+func (m *RetentionResult) XXX_Size() int {
+	return m.Size()
+}
+func (m *RetentionResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_RetentionResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RetentionResult proto.InternalMessageInfo
 
 func (m *RetentionResult) GetRequest() *RetentionRequest {
 	if m != nil {
@@ -813,15 +1317,46 @@ func (m *RetentionResult) GetCreatedAt() int64 {
 }
 
 type InactiveUsersRequest struct {
-	AppId          string     `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
-	InactiveDuring *TimeRange `protobuf:"bytes,2,opt,name=inactive_during,json=inactiveDuring" json:"inactive_during,omitempty"`
-	ActiveDuring   *TimeRange `protobuf:"bytes,3,opt,name=active_during,json=activeDuring" json:"active_during,omitempty"`
+	AppId                string     `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	InactiveDuring       *TimeRange `protobuf:"bytes,2,opt,name=inactive_during,json=inactiveDuring" json:"inactive_during,omitempty"`
+	ActiveDuring         *TimeRange `protobuf:"bytes,3,opt,name=active_during,json=activeDuring" json:"active_during,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *InactiveUsersRequest) Reset()                    { *m = InactiveUsersRequest{} }
-func (m *InactiveUsersRequest) String() string            { return proto.CompactTextString(m) }
-func (*InactiveUsersRequest) ProtoMessage()               {}
-func (*InactiveUsersRequest) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{16} }
+func (m *InactiveUsersRequest) Reset()         { *m = InactiveUsersRequest{} }
+func (m *InactiveUsersRequest) String() string { return proto.CompactTextString(m) }
+func (*InactiveUsersRequest) ProtoMessage()    {}
+func (*InactiveUsersRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{16}
+}
+func (m *InactiveUsersRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *InactiveUsersRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_InactiveUsersRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *InactiveUsersRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InactiveUsersRequest.Merge(dst, src)
+}
+func (m *InactiveUsersRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *InactiveUsersRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_InactiveUsersRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InactiveUsersRequest proto.InternalMessageInfo
 
 func (m *InactiveUsersRequest) GetAppId() string {
 	if m != nil {
@@ -845,14 +1380,45 @@ func (m *InactiveUsersRequest) GetActiveDuring() *TimeRange {
 }
 
 type GetActiveUsersRequest struct {
-	AppId  string     `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
-	Period *TimeRange `protobuf:"bytes,2,opt,name=period" json:"period,omitempty"`
+	AppId                string     `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Period               *TimeRange `protobuf:"bytes,2,opt,name=period" json:"period,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *GetActiveUsersRequest) Reset()                    { *m = GetActiveUsersRequest{} }
-func (m *GetActiveUsersRequest) String() string            { return proto.CompactTextString(m) }
-func (*GetActiveUsersRequest) ProtoMessage()               {}
-func (*GetActiveUsersRequest) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{17} }
+func (m *GetActiveUsersRequest) Reset()         { *m = GetActiveUsersRequest{} }
+func (m *GetActiveUsersRequest) String() string { return proto.CompactTextString(m) }
+func (*GetActiveUsersRequest) ProtoMessage()    {}
+func (*GetActiveUsersRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{17}
+}
+func (m *GetActiveUsersRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetActiveUsersRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetActiveUsersRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetActiveUsersRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetActiveUsersRequest.Merge(dst, src)
+}
+func (m *GetActiveUsersRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetActiveUsersRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetActiveUsersRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetActiveUsersRequest proto.InternalMessageInfo
 
 func (m *GetActiveUsersRequest) GetAppId() string {
 	if m != nil {
@@ -869,15 +1435,46 @@ func (m *GetActiveUsersRequest) GetPeriod() *TimeRange {
 }
 
 type ActiveOnRangeRequest struct {
-	Range        *TimeRange `protobuf:"bytes,1,opt,name=range" json:"range,omitempty"`
-	CountryCodes []string   `protobuf:"bytes,2,rep,name=country_codes,json=countryCodes" json:"country_codes,omitempty"`
-	AppIds       []string   `protobuf:"bytes,3,rep,name=app_ids,json=appIds" json:"app_ids,omitempty"`
+	Range                *TimeRange `protobuf:"bytes,1,opt,name=range" json:"range,omitempty"`
+	CountryCodes         []string   `protobuf:"bytes,2,rep,name=country_codes,json=countryCodes" json:"country_codes,omitempty"`
+	AppIds               []string   `protobuf:"bytes,3,rep,name=app_ids,json=appIds" json:"app_ids,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *ActiveOnRangeRequest) Reset()                    { *m = ActiveOnRangeRequest{} }
-func (m *ActiveOnRangeRequest) String() string            { return proto.CompactTextString(m) }
-func (*ActiveOnRangeRequest) ProtoMessage()               {}
-func (*ActiveOnRangeRequest) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{18} }
+func (m *ActiveOnRangeRequest) Reset()         { *m = ActiveOnRangeRequest{} }
+func (m *ActiveOnRangeRequest) String() string { return proto.CompactTextString(m) }
+func (*ActiveOnRangeRequest) ProtoMessage()    {}
+func (*ActiveOnRangeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{18}
+}
+func (m *ActiveOnRangeRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ActiveOnRangeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ActiveOnRangeRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ActiveOnRangeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ActiveOnRangeRequest.Merge(dst, src)
+}
+func (m *ActiveOnRangeRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ActiveOnRangeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ActiveOnRangeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ActiveOnRangeRequest proto.InternalMessageInfo
 
 func (m *ActiveOnRangeRequest) GetRange() *TimeRange {
 	if m != nil {
@@ -901,14 +1498,45 @@ func (m *ActiveOnRangeRequest) GetAppIds() []string {
 }
 
 type GameInfoResponse struct {
-	GameId string                        `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	Events []*GameInfoResponse_EventInfo `protobuf:"bytes,2,rep,name=events" json:"events,omitempty"`
+	GameId               string                        `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Events               []*GameInfoResponse_EventInfo `protobuf:"bytes,2,rep,name=events" json:"events,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
+	XXX_unrecognized     []byte                        `json:"-"`
+	XXX_sizecache        int32                         `json:"-"`
 }
 
-func (m *GameInfoResponse) Reset()                    { *m = GameInfoResponse{} }
-func (m *GameInfoResponse) String() string            { return proto.CompactTextString(m) }
-func (*GameInfoResponse) ProtoMessage()               {}
-func (*GameInfoResponse) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{19} }
+func (m *GameInfoResponse) Reset()         { *m = GameInfoResponse{} }
+func (m *GameInfoResponse) String() string { return proto.CompactTextString(m) }
+func (*GameInfoResponse) ProtoMessage()    {}
+func (*GameInfoResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{19}
+}
+func (m *GameInfoResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameInfoResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameInfoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameInfoResponse.Merge(dst, src)
+}
+func (m *GameInfoResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameInfoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameInfoResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameInfoResponse proto.InternalMessageInfo
 
 func (m *GameInfoResponse) GetGameId() string {
 	if m != nil {
@@ -925,16 +1553,45 @@ func (m *GameInfoResponse) GetEvents() []*GameInfoResponse_EventInfo {
 }
 
 type GameInfoResponse_FieldInfo struct {
-	Name string                     `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Type GameInfoResponse_FieldType `protobuf:"varint,2,opt,name=type,proto3,enum=apipb.GameInfoResponse_FieldType" json:"type,omitempty"`
+	Name                 string                     `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Type                 GameInfoResponse_FieldType `protobuf:"varint,2,opt,name=type,proto3,enum=apipb.GameInfoResponse_FieldType" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
+	XXX_unrecognized     []byte                     `json:"-"`
+	XXX_sizecache        int32                      `json:"-"`
 }
 
 func (m *GameInfoResponse_FieldInfo) Reset()         { *m = GameInfoResponse_FieldInfo{} }
 func (m *GameInfoResponse_FieldInfo) String() string { return proto.CompactTextString(m) }
 func (*GameInfoResponse_FieldInfo) ProtoMessage()    {}
 func (*GameInfoResponse_FieldInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{19, 0}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{19, 0}
 }
+func (m *GameInfoResponse_FieldInfo) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameInfoResponse_FieldInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameInfoResponse_FieldInfo.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameInfoResponse_FieldInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameInfoResponse_FieldInfo.Merge(dst, src)
+}
+func (m *GameInfoResponse_FieldInfo) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameInfoResponse_FieldInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameInfoResponse_FieldInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameInfoResponse_FieldInfo proto.InternalMessageInfo
 
 func (m *GameInfoResponse_FieldInfo) GetName() string {
 	if m != nil {
@@ -951,16 +1608,45 @@ func (m *GameInfoResponse_FieldInfo) GetType() GameInfoResponse_FieldType {
 }
 
 type GameInfoResponse_EventInfo struct {
-	Name   string                        `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Fields []*GameInfoResponse_FieldInfo `protobuf:"bytes,2,rep,name=fields" json:"fields,omitempty"`
+	Name                 string                        `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Fields               []*GameInfoResponse_FieldInfo `protobuf:"bytes,2,rep,name=fields" json:"fields,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
+	XXX_unrecognized     []byte                        `json:"-"`
+	XXX_sizecache        int32                         `json:"-"`
 }
 
 func (m *GameInfoResponse_EventInfo) Reset()         { *m = GameInfoResponse_EventInfo{} }
 func (m *GameInfoResponse_EventInfo) String() string { return proto.CompactTextString(m) }
 func (*GameInfoResponse_EventInfo) ProtoMessage()    {}
 func (*GameInfoResponse_EventInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptorAnalysis, []int{19, 1}
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{19, 1}
 }
+func (m *GameInfoResponse_EventInfo) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameInfoResponse_EventInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameInfoResponse_EventInfo.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameInfoResponse_EventInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameInfoResponse_EventInfo.Merge(dst, src)
+}
+func (m *GameInfoResponse_EventInfo) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameInfoResponse_EventInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameInfoResponse_EventInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameInfoResponse_EventInfo proto.InternalMessageInfo
 
 func (m *GameInfoResponse_EventInfo) GetName() string {
 	if m != nil {
@@ -977,12 +1663,43 @@ func (m *GameInfoResponse_EventInfo) GetFields() []*GameInfoResponse_FieldInfo {
 }
 
 type AppDataInfoReq struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AppDataInfoReq) Reset()                    { *m = AppDataInfoReq{} }
-func (m *AppDataInfoReq) String() string            { return proto.CompactTextString(m) }
-func (*AppDataInfoReq) ProtoMessage()               {}
-func (*AppDataInfoReq) Descriptor() ([]byte, []int) { return fileDescriptorAnalysis, []int{20} }
+func (m *AppDataInfoReq) Reset()         { *m = AppDataInfoReq{} }
+func (m *AppDataInfoReq) String() string { return proto.CompactTextString(m) }
+func (*AppDataInfoReq) ProtoMessage()    {}
+func (*AppDataInfoReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_analysis_73aba21e5f9bef56, []int{20}
+}
+func (m *AppDataInfoReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AppDataInfoReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AppDataInfoReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *AppDataInfoReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AppDataInfoReq.Merge(dst, src)
+}
+func (m *AppDataInfoReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *AppDataInfoReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_AppDataInfoReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AppDataInfoReq proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*TimeRange)(nil), "apipb.TimeRange")
@@ -1024,12 +1741,14 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for AnalysisService service
-
+// AnalysisServiceClient is the client API for AnalysisService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AnalysisServiceClient interface {
 	// ActiveOnRange returns child ids who active given time range
 	ActiveOnRange(ctx context.Context, in *ActiveOnRangeRequest, opts ...grpc.CallOption) (AnalysisService_ActiveOnRangeClient, error)
-	// Inactive calculates inactive users who was active given period but not after at given app
+	// Inactive calculates inactive users who was active given period but not
+	// after at given app
 	Inactive(ctx context.Context, in *InactiveUsersRequest, opts ...grpc.CallOption) (AnalysisService_InactiveClient, error)
 	// Active streams active user on given period
 	Active(ctx context.Context, in *GetActiveUsersRequest, opts ...grpc.CallOption) (AnalysisService_ActiveClient, error)
@@ -1056,7 +1775,7 @@ func NewAnalysisServiceClient(cc *grpc.ClientConn) AnalysisServiceClient {
 }
 
 func (c *analysisServiceClient) ActiveOnRange(ctx context.Context, in *ActiveOnRangeRequest, opts ...grpc.CallOption) (AnalysisService_ActiveOnRangeClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_AnalysisService_serviceDesc.Streams[0], c.cc, "/apipb.AnalysisService/ActiveOnRange", opts...)
+	stream, err := c.cc.NewStream(ctx, &_AnalysisService_serviceDesc.Streams[0], "/apipb.AnalysisService/ActiveOnRange", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1088,7 +1807,7 @@ func (x *analysisServiceActiveOnRangeClient) Recv() (*ChildAndProfileIds, error)
 }
 
 func (c *analysisServiceClient) Inactive(ctx context.Context, in *InactiveUsersRequest, opts ...grpc.CallOption) (AnalysisService_InactiveClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_AnalysisService_serviceDesc.Streams[1], c.cc, "/apipb.AnalysisService/Inactive", opts...)
+	stream, err := c.cc.NewStream(ctx, &_AnalysisService_serviceDesc.Streams[1], "/apipb.AnalysisService/Inactive", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1120,7 +1839,7 @@ func (x *analysisServiceInactiveClient) Recv() (*ChildAndProfileIds, error) {
 }
 
 func (c *analysisServiceClient) Active(ctx context.Context, in *GetActiveUsersRequest, opts ...grpc.CallOption) (AnalysisService_ActiveClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_AnalysisService_serviceDesc.Streams[2], c.cc, "/apipb.AnalysisService/Active", opts...)
+	stream, err := c.cc.NewStream(ctx, &_AnalysisService_serviceDesc.Streams[2], "/apipb.AnalysisService/Active", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1153,7 +1872,7 @@ func (x *analysisServiceActiveClient) Recv() (*ChildAndProfileIds, error) {
 
 func (c *analysisServiceClient) PlayedGames(ctx context.Context, in *ChildAndTimeRange, opts ...grpc.CallOption) (*PlayedGamesList, error) {
 	out := new(PlayedGamesList)
-	err := grpc.Invoke(ctx, "/apipb.AnalysisService/PlayedGames", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.AnalysisService/PlayedGames", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1162,7 +1881,7 @@ func (c *analysisServiceClient) PlayedGames(ctx context.Context, in *ChildAndTim
 
 func (c *analysisServiceClient) Analyze(ctx context.Context, in *AnalyzeRequest, opts ...grpc.CallOption) (*AnalyzeResult, error) {
 	out := new(AnalyzeResult)
-	err := grpc.Invoke(ctx, "/apipb.AnalysisService/Analyze", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.AnalysisService/Analyze", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1171,7 +1890,7 @@ func (c *analysisServiceClient) Analyze(ctx context.Context, in *AnalyzeRequest,
 
 func (c *analysisServiceClient) ActiveUsers(ctx context.Context, in *ActiveUsersRequest, opts ...grpc.CallOption) (*ActiveUsersResult, error) {
 	out := new(ActiveUsersResult)
-	err := grpc.Invoke(ctx, "/apipb.AnalysisService/ActiveUsers", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.AnalysisService/ActiveUsers", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1180,7 +1899,7 @@ func (c *analysisServiceClient) ActiveUsers(ctx context.Context, in *ActiveUsers
 
 func (c *analysisServiceClient) Retention(ctx context.Context, in *RetentionRequest, opts ...grpc.CallOption) (*RetentionResult, error) {
 	out := new(RetentionResult)
-	err := grpc.Invoke(ctx, "/apipb.AnalysisService/Retention", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.AnalysisService/Retention", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1189,7 +1908,7 @@ func (c *analysisServiceClient) Retention(ctx context.Context, in *RetentionRequ
 
 func (c *analysisServiceClient) GameInfo(ctx context.Context, in *GameWithVersions, opts ...grpc.CallOption) (*GameInfoResponse, error) {
 	out := new(GameInfoResponse)
-	err := grpc.Invoke(ctx, "/apipb.AnalysisService/GameInfo", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.AnalysisService/GameInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1198,19 +1917,19 @@ func (c *analysisServiceClient) GameInfo(ctx context.Context, in *GameWithVersio
 
 func (c *analysisServiceClient) AppDataInfo(ctx context.Context, in *AppDataInfoReq, opts ...grpc.CallOption) (*GameInfoResponse, error) {
 	out := new(GameInfoResponse)
-	err := grpc.Invoke(ctx, "/apipb.AnalysisService/AppDataInfo", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.AnalysisService/AppDataInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for AnalysisService service
-
+// AnalysisServiceServer is the server API for AnalysisService service.
 type AnalysisServiceServer interface {
 	// ActiveOnRange returns child ids who active given time range
 	ActiveOnRange(*ActiveOnRangeRequest, AnalysisService_ActiveOnRangeServer) error
-	// Inactive calculates inactive users who was active given period but not after at given app
+	// Inactive calculates inactive users who was active given period but not
+	// after at given app
 	Inactive(*InactiveUsersRequest, AnalysisService_InactiveServer) error
 	// Active streams active user on given period
 	Active(*GetActiveUsersRequest, AnalysisService_ActiveServer) error
@@ -1477,6 +2196,9 @@ func (m *TimeRange) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.To))
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1506,6 +2228,9 @@ func (m *ChildAndProfileIds) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(len(m.ProfileId)))
 		i += copy(dAtA[i:], m.ProfileId)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1547,6 +2272,9 @@ func (m *ChildAndTimeRange) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i += n1
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1585,6 +2313,9 @@ func (m *GameWithVersions) MarshalTo(dAtA []byte) (int, error) {
 			i++
 			i += copy(dAtA[i:], s)
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1632,6 +2363,9 @@ func (m *PlayedGamesList) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i += n2
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1660,6 +2394,9 @@ func (m *QuerySort) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x10
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.Order))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1696,6 +2433,9 @@ func (m *Aggregation) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.Accumulator))
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1722,7 +2462,7 @@ func (m *GroupInterval) MarshalTo(dAtA []byte) (int, error) {
 	if m.Real != 0 {
 		dAtA[i] = 0x15
 		i++
-		binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Real))))
+		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Real))))
 		i += 4
 	}
 	if m.Days != 0 {
@@ -1754,6 +2494,9 @@ func (m *GroupInterval) MarshalTo(dAtA []byte) (int, error) {
 			dAtA[i] = 0
 		}
 		i++
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1799,6 +2542,9 @@ func (m *QueryGroup) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(len(m.OutputField)))
 		i += copy(dAtA[i:], m.OutputField)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -1895,6 +2641,9 @@ func (m *Query) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], b)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1957,6 +2706,9 @@ func (m *AnalyzeRequest) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1999,6 +2751,9 @@ func (m *AnalyzeResult) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x18
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.CreatedAt))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -2047,6 +2802,9 @@ func (m *ActiveUsersRequest) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintAnalysis(dAtA, i, uint64(len(m.AppId)))
 		i += copy(dAtA[i:], m.AppId)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2089,6 +2847,9 @@ func (m *ActiveUsersResult) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x18
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.CreatedAt))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -2137,6 +2898,9 @@ func (m *RetentionRequest) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintAnalysis(dAtA, i, uint64(len(m.AppId)))
 		i += copy(dAtA[i:], m.AppId)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2179,6 +2943,9 @@ func (m *RetentionResult) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x18
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.CreatedAt))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -2224,6 +2991,9 @@ func (m *InactiveUsersRequest) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i += n18
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2257,6 +3027,9 @@ func (m *GetActiveUsersRequest) MarshalTo(dAtA []byte) (int, error) {
 			return 0, err
 		}
 		i += n19
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -2316,6 +3089,9 @@ func (m *ActiveOnRangeRequest) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], s)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2352,6 +3128,9 @@ func (m *GameInfoResponse) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2380,6 +3159,9 @@ func (m *GameInfoResponse_FieldInfo) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x10
 		i++
 		i = encodeVarintAnalysis(dAtA, i, uint64(m.Type))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -2417,6 +3199,9 @@ func (m *GameInfoResponse_EventInfo) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2435,6 +3220,9 @@ func (m *AppDataInfoReq) MarshalTo(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -2456,6 +3244,9 @@ func (m *TimeRange) Size() (n int) {
 	if m.To != 0 {
 		n += 1 + sovAnalysis(uint64(m.To))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2469,6 +3260,9 @@ func (m *ChildAndProfileIds) Size() (n int) {
 	l = len(m.ProfileId)
 	if l > 0 {
 		n += 1 + l + sovAnalysis(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2488,6 +3282,9 @@ func (m *ChildAndTimeRange) Size() (n int) {
 		l = m.Range.Size()
 		n += 1 + l + sovAnalysis(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2503,6 +3300,9 @@ func (m *GameWithVersions) Size() (n int) {
 			l = len(s)
 			n += 1 + l + sovAnalysis(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2524,6 +3324,9 @@ func (m *PlayedGamesList) Size() (n int) {
 		l = m.Range.Size()
 		n += 1 + l + sovAnalysis(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2536,6 +3339,9 @@ func (m *QuerySort) Size() (n int) {
 	}
 	if m.Order != 0 {
 		n += 1 + sovAnalysis(uint64(m.Order))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2553,6 +3359,9 @@ func (m *Aggregation) Size() (n int) {
 	}
 	if m.Accumulator != 0 {
 		n += 1 + sovAnalysis(uint64(m.Accumulator))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2578,6 +3387,9 @@ func (m *GroupInterval) Size() (n int) {
 	if m.Seconds {
 		n += 2
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2598,6 +3410,9 @@ func (m *QueryGroup) Size() (n int) {
 	l = len(m.OutputField)
 	if l > 0 {
 		n += 1 + l + sovAnalysis(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2643,6 +3458,9 @@ func (m *Query) Size() (n int) {
 			n += 1 + l + sovAnalysis(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2670,6 +3488,9 @@ func (m *AnalyzeRequest) Size() (n int) {
 			n += 1 + l + sovAnalysis(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2686,6 +3507,9 @@ func (m *AnalyzeResult) Size() (n int) {
 	}
 	if m.CreatedAt != 0 {
 		n += 1 + sovAnalysis(uint64(m.CreatedAt))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2707,6 +3531,9 @@ func (m *ActiveUsersRequest) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovAnalysis(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2723,6 +3550,9 @@ func (m *ActiveUsersResult) Size() (n int) {
 	}
 	if m.CreatedAt != 0 {
 		n += 1 + sovAnalysis(uint64(m.CreatedAt))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2744,6 +3574,9 @@ func (m *RetentionRequest) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovAnalysis(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2760,6 +3593,9 @@ func (m *RetentionResult) Size() (n int) {
 	}
 	if m.CreatedAt != 0 {
 		n += 1 + sovAnalysis(uint64(m.CreatedAt))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2779,6 +3615,9 @@ func (m *InactiveUsersRequest) Size() (n int) {
 		l = m.ActiveDuring.Size()
 		n += 1 + l + sovAnalysis(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2792,6 +3631,9 @@ func (m *GetActiveUsersRequest) Size() (n int) {
 	if m.Period != nil {
 		l = m.Period.Size()
 		n += 1 + l + sovAnalysis(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2815,6 +3657,9 @@ func (m *ActiveOnRangeRequest) Size() (n int) {
 			n += 1 + l + sovAnalysis(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2831,6 +3676,9 @@ func (m *GameInfoResponse) Size() (n int) {
 			n += 1 + l + sovAnalysis(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2843,6 +3691,9 @@ func (m *GameInfoResponse_FieldInfo) Size() (n int) {
 	}
 	if m.Type != 0 {
 		n += 1 + sovAnalysis(uint64(m.Type))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -2860,12 +3711,18 @@ func (m *GameInfoResponse_EventInfo) Size() (n int) {
 			n += 1 + l + sovAnalysis(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
 func (m *AppDataInfoReq) Size() (n int) {
 	var l int
 	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -2961,6 +3818,7 @@ func (m *TimeRange) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3069,6 +3927,7 @@ func (m *ChildAndProfileIds) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3210,6 +4069,7 @@ func (m *ChildAndTimeRange) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3318,6 +4178,7 @@ func (m *GameWithVersions) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3461,6 +4322,7 @@ func (m *PlayedGamesList) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3559,6 +4421,7 @@ func (m *QuerySort) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3686,6 +4549,7 @@ func (m *Aggregation) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -3751,7 +4615,7 @@ func (m *GroupInterval) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Real = float32(math.Float32frombits(v))
 		case 3:
@@ -3844,6 +4708,7 @@ func (m *GroupInterval) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4004,6 +4869,7 @@ func (m *QueryGroup) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4278,6 +5144,7 @@ func (m *Query) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4470,6 +5337,7 @@ func (m *AnalyzeRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4605,6 +5473,7 @@ func (m *AnalyzeResult) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4765,6 +5634,7 @@ func (m *ActiveUsersRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -4900,6 +5770,7 @@ func (m *ActiveUsersResult) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5060,6 +5931,7 @@ func (m *RetentionRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5195,6 +6067,7 @@ func (m *RetentionResult) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5340,6 +6213,7 @@ func (m *InactiveUsersRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5452,6 +6326,7 @@ func (m *GetActiveUsersRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5593,6 +6468,7 @@ func (m *ActiveOnRangeRequest) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5703,6 +6579,7 @@ func (m *GameInfoResponse) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5801,6 +6678,7 @@ func (m *GameInfoResponse_FieldInfo) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5911,6 +6789,7 @@ func (m *GameInfoResponse_EventInfo) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -5961,6 +6840,7 @@ func (m *AppDataInfoReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -6075,9 +6955,9 @@ var (
 	ErrIntOverflowAnalysis   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("analysis.proto", fileDescriptorAnalysis) }
+func init() { proto.RegisterFile("analysis.proto", fileDescriptor_analysis_73aba21e5f9bef56) }
 
-var fileDescriptorAnalysis = []byte{
+var fileDescriptor_analysis_73aba21e5f9bef56 = []byte{
 	// 1554 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0x4f, 0x6f, 0xdb, 0xca,
 	0x11, 0x37, 0xa9, 0xbf, 0x1c, 0xc9, 0x32, 0xbd, 0xb5, 0x63, 0x45, 0x69, 0x5c, 0x87, 0x2d, 0x02,

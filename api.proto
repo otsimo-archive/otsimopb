@@ -18,20 +18,21 @@ option java_multiple_files = true;
 
 // API Service
 service ApiService {
-    // Profile
-    rpc AddProfile(Profile) returns (Response){}
-    rpc GetProfile(GetProfileRequest) returns (Profile){}
-    rpc UpdateProfile(Profile) returns (Response){}
+  // Profile
+  rpc AddProfile(Profile) returns (Response) {}
+  rpc GetProfile(GetProfileRequest) returns (Profile) {}
+  rpc UpdateProfile(Profile) returns (Response) {}
 
-    // Child
-    rpc AddChild(Child) returns (Response){}
-    rpc GetChild(GetChildRequest) returns (Child){}
-    rpc UpdateChild(Child) returns (Response){}
-    rpc GetChildren(GetChildrenFromProfileRequest) returns (GetChildrenFromProfileResponse){}
-    rpc UpdateGameEntry(GameEntryRequest)returns(Response){}
-    rpc ChangeActivation(ChangeChildActivationRequest)returns(Response);
-    rpc GetDisabledChildren(GetChildrenFromProfileRequest)returns(GetChildrenFromProfileResponse);
-    rpc SoundEnable(SoundEnableRequest) returns (Response);
-    rpc UpdateGameIndices(UpdateIndecesRequest) returns (Child);
+  // Child
+  rpc AddChild(Child) returns (Response) {}
+  rpc GetChild(GetChildRequest) returns (Child) {}
+  rpc UpdateChild(Child) returns (Response) {}
+  rpc GetChildren(GetChildrenFromProfileRequest)
+      returns (GetChildrenFromProfileResponse) {}
+  rpc UpdateGameEntry(GameEntryRequest) returns (Response) {}
+  rpc ChangeActivation(ChangeChildActivationRequest) returns (Response);
+  rpc GetDisabledChildren(GetChildrenFromProfileRequest)
+      returns (GetChildrenFromProfileResponse);
+  rpc SoundEnable(SoundEnableRequest) returns (Response);
+  rpc UpdateGameIndices(UpdateIndecesRequest) returns (Child);
 }
-

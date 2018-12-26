@@ -7,7 +7,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 
-import binary "encoding/binary"
+import encoding_binary "encoding/binary"
 
 import io "io"
 
@@ -15,6 +15,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Column_Type int32
 
@@ -47,17 +53,50 @@ var Column_Type_value = map[string]int32{
 func (x Column_Type) String() string {
 	return proto.EnumName(Column_Type_name, int32(x))
 }
-func (Column_Type) EnumDescriptor() ([]byte, []int) { return fileDescriptorDatasetmodels, []int{0, 0} }
-
-type Column struct {
-	Type Column_Type `protobuf:"varint,1,opt,name=type,proto3,enum=apipb.Column_Type" json:"type,omitempty"`
-	Name string      `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+func (Column_Type) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_datasetmodels_06ee24fe153fd3a7, []int{0, 0}
 }
 
-func (m *Column) Reset()                    { *m = Column{} }
-func (m *Column) String() string            { return proto.CompactTextString(m) }
-func (*Column) ProtoMessage()               {}
-func (*Column) Descriptor() ([]byte, []int) { return fileDescriptorDatasetmodels, []int{0} }
+type Column struct {
+	Type                 Column_Type `protobuf:"varint,1,opt,name=type,proto3,enum=apipb.Column_Type" json:"type,omitempty"`
+	Name                 string      `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
+}
+
+func (m *Column) Reset()         { *m = Column{} }
+func (m *Column) String() string { return proto.CompactTextString(m) }
+func (*Column) ProtoMessage()    {}
+func (*Column) Descriptor() ([]byte, []int) {
+	return fileDescriptor_datasetmodels_06ee24fe153fd3a7, []int{0}
+}
+func (m *Column) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Column) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Column.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Column) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Column.Merge(dst, src)
+}
+func (m *Column) XXX_Size() int {
+	return m.Size()
+}
+func (m *Column) XXX_DiscardUnknown() {
+	xxx_messageInfo_Column.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Column proto.InternalMessageInfo
 
 func (m *Column) GetType() Column_Type {
 	if m != nil {
@@ -74,16 +113,47 @@ func (m *Column) GetName() string {
 }
 
 type TimeOfDay struct {
-	Hours        int32 `protobuf:"varint,1,opt,name=hours,proto3" json:"hours,omitempty"`
-	Minutes      int32 `protobuf:"varint,2,opt,name=minutes,proto3" json:"minutes,omitempty"`
-	Seconds      int32 `protobuf:"varint,3,opt,name=seconds,proto3" json:"seconds,omitempty"`
-	Milliseconds int32 `protobuf:"varint,4,opt,name=milliseconds,proto3" json:"milliseconds,omitempty"`
+	Hours                int32    `protobuf:"varint,1,opt,name=hours,proto3" json:"hours,omitempty"`
+	Minutes              int32    `protobuf:"varint,2,opt,name=minutes,proto3" json:"minutes,omitempty"`
+	Seconds              int32    `protobuf:"varint,3,opt,name=seconds,proto3" json:"seconds,omitempty"`
+	Milliseconds         int32    `protobuf:"varint,4,opt,name=milliseconds,proto3" json:"milliseconds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TimeOfDay) Reset()                    { *m = TimeOfDay{} }
-func (m *TimeOfDay) String() string            { return proto.CompactTextString(m) }
-func (*TimeOfDay) ProtoMessage()               {}
-func (*TimeOfDay) Descriptor() ([]byte, []int) { return fileDescriptorDatasetmodels, []int{1} }
+func (m *TimeOfDay) Reset()         { *m = TimeOfDay{} }
+func (m *TimeOfDay) String() string { return proto.CompactTextString(m) }
+func (*TimeOfDay) ProtoMessage()    {}
+func (*TimeOfDay) Descriptor() ([]byte, []int) {
+	return fileDescriptor_datasetmodels_06ee24fe153fd3a7, []int{1}
+}
+func (m *TimeOfDay) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TimeOfDay) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TimeOfDay.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *TimeOfDay) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TimeOfDay.Merge(dst, src)
+}
+func (m *TimeOfDay) XXX_Size() int {
+	return m.Size()
+}
+func (m *TimeOfDay) XXX_DiscardUnknown() {
+	xxx_messageInfo_TimeOfDay.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TimeOfDay proto.InternalMessageInfo
 
 func (m *TimeOfDay) GetHours() int32 {
 	if m != nil {
@@ -121,13 +191,44 @@ type RowValue struct {
 	//	*RowValue_Date
 	//	*RowValue_DateOfTime
 	//	*RowValue_TimeOfDay
-	Value isRowValue_Value `protobuf_oneof:"value"`
+	Value                isRowValue_Value `protobuf_oneof:"value"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
-func (m *RowValue) Reset()                    { *m = RowValue{} }
-func (m *RowValue) String() string            { return proto.CompactTextString(m) }
-func (*RowValue) ProtoMessage()               {}
-func (*RowValue) Descriptor() ([]byte, []int) { return fileDescriptorDatasetmodels, []int{2} }
+func (m *RowValue) Reset()         { *m = RowValue{} }
+func (m *RowValue) String() string { return proto.CompactTextString(m) }
+func (*RowValue) ProtoMessage()    {}
+func (*RowValue) Descriptor() ([]byte, []int) {
+	return fileDescriptor_datasetmodels_06ee24fe153fd3a7, []int{2}
+}
+func (m *RowValue) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *RowValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_RowValue.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *RowValue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RowValue.Merge(dst, src)
+}
+func (m *RowValue) XXX_Size() int {
+	return m.Size()
+}
+func (m *RowValue) XXX_DiscardUnknown() {
+	xxx_messageInfo_RowValue.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RowValue proto.InternalMessageInfo
 
 type isRowValue_Value interface {
 	isRowValue_Value()
@@ -309,24 +410,24 @@ func _RowValue_OneofSizer(msg proto.Message) (n int) {
 	// value
 	switch x := m.Value.(type) {
 	case *RowValue_Str:
-		n += proto.SizeVarint(1<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(len(x.Str)))
 		n += len(x.Str)
 	case *RowValue_Int:
-		n += proto.SizeVarint(2<<3 | proto.WireVarint)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(x.Int))
 	case *RowValue_Real:
-		n += proto.SizeVarint(3<<3 | proto.WireFixed32)
+		n += 1 // tag and wire
 		n += 4
 	case *RowValue_Date:
-		n += proto.SizeVarint(4<<3 | proto.WireVarint)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(x.Date))
 	case *RowValue_DateOfTime:
-		n += proto.SizeVarint(5<<3 | proto.WireVarint)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(x.DateOfTime))
 	case *RowValue_TimeOfDay:
 		s := proto.Size(x.TimeOfDay)
-		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case nil:
@@ -337,13 +438,44 @@ func _RowValue_OneofSizer(msg proto.Message) (n int) {
 }
 
 type Row struct {
-	Values []*RowValue `protobuf:"bytes,1,rep,name=values" json:"values,omitempty"`
+	Values               []*RowValue `protobuf:"bytes,1,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
 }
 
-func (m *Row) Reset()                    { *m = Row{} }
-func (m *Row) String() string            { return proto.CompactTextString(m) }
-func (*Row) ProtoMessage()               {}
-func (*Row) Descriptor() ([]byte, []int) { return fileDescriptorDatasetmodels, []int{3} }
+func (m *Row) Reset()         { *m = Row{} }
+func (m *Row) String() string { return proto.CompactTextString(m) }
+func (*Row) ProtoMessage()    {}
+func (*Row) Descriptor() ([]byte, []int) {
+	return fileDescriptor_datasetmodels_06ee24fe153fd3a7, []int{3}
+}
+func (m *Row) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Row) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Row.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *Row) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Row.Merge(dst, src)
+}
+func (m *Row) XXX_Size() int {
+	return m.Size()
+}
+func (m *Row) XXX_DiscardUnknown() {
+	xxx_messageInfo_Row.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Row proto.InternalMessageInfo
 
 func (m *Row) GetValues() []*RowValue {
 	if m != nil {
@@ -353,15 +485,46 @@ func (m *Row) GetValues() []*RowValue {
 }
 
 type DataSet struct {
-	Label   string    `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
-	Columns []*Column `protobuf:"bytes,5,rep,name=columns" json:"columns,omitempty"`
-	Rows    []*Row    `protobuf:"bytes,6,rep,name=rows" json:"rows,omitempty"`
+	Label                string    `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	Columns              []*Column `protobuf:"bytes,5,rep,name=columns" json:"columns,omitempty"`
+	Rows                 []*Row    `protobuf:"bytes,6,rep,name=rows" json:"rows,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
 }
 
-func (m *DataSet) Reset()                    { *m = DataSet{} }
-func (m *DataSet) String() string            { return proto.CompactTextString(m) }
-func (*DataSet) ProtoMessage()               {}
-func (*DataSet) Descriptor() ([]byte, []int) { return fileDescriptorDatasetmodels, []int{4} }
+func (m *DataSet) Reset()         { *m = DataSet{} }
+func (m *DataSet) String() string { return proto.CompactTextString(m) }
+func (*DataSet) ProtoMessage()    {}
+func (*DataSet) Descriptor() ([]byte, []int) {
+	return fileDescriptor_datasetmodels_06ee24fe153fd3a7, []int{4}
+}
+func (m *DataSet) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DataSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DataSet.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *DataSet) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DataSet.Merge(dst, src)
+}
+func (m *DataSet) XXX_Size() int {
+	return m.Size()
+}
+func (m *DataSet) XXX_DiscardUnknown() {
+	xxx_messageInfo_DataSet.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DataSet proto.InternalMessageInfo
 
 func (m *DataSet) GetLabel() string {
 	if m != nil {
@@ -418,6 +581,9 @@ func (m *Column) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintDatasetmodels(dAtA, i, uint64(len(m.Name)))
 		i += copy(dAtA[i:], m.Name)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -456,6 +622,9 @@ func (m *TimeOfDay) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintDatasetmodels(dAtA, i, uint64(m.Milliseconds))
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -481,6 +650,9 @@ func (m *RowValue) MarshalTo(dAtA []byte) (int, error) {
 		}
 		i += nn1
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -503,7 +675,7 @@ func (m *RowValue_Real) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x1d
 	i++
-	binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Real))))
+	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Real))))
 	i += 4
 	return i, nil
 }
@@ -562,6 +734,9 @@ func (m *Row) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -610,6 +785,9 @@ func (m *DataSet) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -632,6 +810,9 @@ func (m *Column) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovDatasetmodels(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -650,6 +831,9 @@ func (m *TimeOfDay) Size() (n int) {
 	if m.Milliseconds != 0 {
 		n += 1 + sovDatasetmodels(uint64(m.Milliseconds))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -658,6 +842,9 @@ func (m *RowValue) Size() (n int) {
 	_ = l
 	if m.Value != nil {
 		n += m.Value.Size()
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -711,6 +898,9 @@ func (m *Row) Size() (n int) {
 			n += 1 + l + sovDatasetmodels(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -732,6 +922,9 @@ func (m *DataSet) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovDatasetmodels(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -838,6 +1031,7 @@ func (m *Column) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -964,6 +1158,7 @@ func (m *TimeOfDay) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1059,7 +1254,7 @@ func (m *RowValue) Unmarshal(dAtA []byte) error {
 			if (iNdEx + 4) > l {
 				return io.ErrUnexpectedEOF
 			}
-			v = uint32(binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
 			iNdEx += 4
 			m.Value = &RowValue_Real{float32(math.Float32frombits(v))}
 		case 4:
@@ -1146,6 +1341,7 @@ func (m *RowValue) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1227,6 +1423,7 @@ func (m *Row) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1368,6 +1565,7 @@ func (m *DataSet) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1482,9 +1680,9 @@ var (
 	ErrIntOverflowDatasetmodels   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("datasetmodels.proto", fileDescriptorDatasetmodels) }
+func init() { proto.RegisterFile("datasetmodels.proto", fileDescriptor_datasetmodels_06ee24fe153fd3a7) }
 
-var fileDescriptorDatasetmodels = []byte{
+var fileDescriptor_datasetmodels_06ee24fe153fd3a7 = []byte{
 	// 477 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x92, 0xcf, 0x8e, 0xd3, 0x30,
 	0x10, 0xc6, 0xeb, 0xcd, 0x9f, 0xb6, 0x53, 0x96, 0x46, 0x66, 0x0f, 0x39, 0x55, 0x55, 0x0e, 0x6c,

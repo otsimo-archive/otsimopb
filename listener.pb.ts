@@ -17,12 +17,26 @@ export interface DeviceInfo {
   countryCode?: string;
 }
 
+export const DeviceInfo_vendorId = "vendorId";
+export const DeviceInfo_clientSdk = "clientSdk";
+export const DeviceInfo_bundleIdentifier = "bundleIdentifier";
+export const DeviceInfo_bundleVersion = "bundleVersion";
+export const DeviceInfo_bundleShortVersion = "bundleShortVersion";
+export const DeviceInfo_deviceType = "deviceType";
+export const DeviceInfo_deviceName = "deviceName";
+export const DeviceInfo_osName = "osName";
+export const DeviceInfo_systemVersion = "systemVersion";
+export const DeviceInfo_languageCode = "languageCode";
+export const DeviceInfo_countryCode = "countryCode";
 export interface GameInfo {
   id?: string;
   version?: string;
   language?: string;
 }
 
+export const GameInfo_id = "id";
+export const GameInfo_version = "version";
+export const GameInfo_language = "language";
 /**
 Points are represented as latitude-longitude pairs in the E7 representation
 (degrees multiplied by 10**7 and rounded to the nearest integer).
@@ -34,12 +48,17 @@ export interface Point {
   longitude?: number;
 }
 
+export const Point_latitude = "latitude";
+export const Point_longitude = "longitude";
 export interface Vector3 {
   x?: number;
   y?: number;
   z?: number;
 }
 
+export const Vector3_x = "x";
+export const Vector3_y = "y";
+export const Vector3_z = "z";
 export interface MotionData {
   gravity?: Vector3;
   userAcceleration?: Vector3;
@@ -47,6 +66,10 @@ export interface MotionData {
   attitude?: Vector3;
 }
 
+export const MotionData_gravity = "gravity";
+export const MotionData_userAcceleration = "user_acceleration";
+export const MotionData_rotationRate = "rotation_rate";
+export const MotionData_attitude = "attitude";
 export interface GestureData {
   velocity?: number;
   width?: number;
@@ -54,6 +77,10 @@ export interface GestureData {
   duration?: number;
 }
 
+export const GestureData_velocity = "velocity";
+export const GestureData_width = "width";
+export const GestureData_height = "height";
+export const GestureData_duration = "duration";
 export interface Event {
 /**
 UserId is profile id or child id
@@ -88,7 +115,8 @@ Loc is the location of user
 */
   loc?: Point;
 /**
-EventId is Client side event id in order to track whether event is delivered successfully
+EventId is Client side event id in order to track whether event is
+delivered successfully
 */
   eventId?: string;
 /**
@@ -114,6 +142,21 @@ MotionData keeps motion data of device
   gestureData?: GestureData;
 }
 
+export const Event_userId = "user_id";
+export const Event_childId = "child_id";
+export const Event_event = "event";
+export const Event_timestamp = "timestamp";
+export const Event_game = "game";
+export const Event_device = "device";
+export const Event_appId = "app_id";
+export const Event_loc = "loc";
+export const Event_eventId = "event_id";
+export const Event_isResend = "is_resend";
+export const Event_payload = "payload";
+export const Event_age = "age";
+export const Event_gender = "gender";
+export const Event_motionData = "motion_data";
+export const Event_gestureData = "gesture_data";
 export interface AppEventData {
   event?: string;
   appId?: string;
@@ -122,7 +165,8 @@ export interface AppEventData {
   payload?: string;
   loc?: Point;
 /**
-EventId is Client side event id in order to track whether event is delivered successfully
+EventId is Client side event id in order to track whether event is
+delivered successfully
 */
   eventId?: string;
 /**
@@ -135,13 +179,23 @@ UserId is profile id or child id
   userId?: string;
 }
 
+export const AppEventData_event = "event";
+export const AppEventData_appId = "app_id";
+export const AppEventData_device = "device";
+export const AppEventData_timestamp = "timestamp";
+export const AppEventData_payload = "payload";
+export const AppEventData_loc = "loc";
+export const AppEventData_eventId = "event_id";
+export const AppEventData_isResend = "is_resend";
+export const AppEventData_userId = "user_id";
 export interface BatchEventData {
 /**
 Event the event name
 */
   event?: string;
 /**
-EventId is Client side event id in order to track whether event is delivered successfully
+EventId is Client side event id in order to track whether event is
+delivered successfully
 */
   eventId?: string;
 /**
@@ -171,6 +225,15 @@ MotionData keeps motion data of device
   gestureData?: GestureData;
 }
 
+export const BatchEventData_event = "event";
+export const BatchEventData_eventId = "event_id";
+export const BatchEventData_timestamp = "timestamp";
+export const BatchEventData_game = "game";
+export const BatchEventData_loc = "loc";
+export const BatchEventData_isResend = "is_resend";
+export const BatchEventData_payload = "payload";
+export const BatchEventData_motionData = "motion_data";
+export const BatchEventData_gestureData = "gesture_data";
 export interface BatchEvent {
 /**
 UserId is profile id or child id
@@ -202,8 +265,17 @@ Data is
   data?: BatchEventData[];
 }
 
+export const BatchEvent_userId = "user_id";
+export const BatchEvent_childId = "child_id";
+export const BatchEvent_appId = "app_id";
+export const BatchEvent_device = "device";
+export const BatchEvent_age = "age";
+export const BatchEvent_gender = "gender";
+export const BatchEvent_data = "data";
 export interface EventResponse {
   eventId?: string;
   success?: boolean;
 }
 
+export const EventResponse_eventId = "event_id";
+export const EventResponse_success = "success";

@@ -9,24 +9,34 @@ export interface ABTestGroup {
   active?: boolean;
 }
 
+export const ABTestGroup_name = "name";
+export const ABTestGroup_appId = "app_id";
+export const ABTestGroup_weight = "weight";
+export const ABTestGroup_active = "active";
 export interface ABDisableReq {
   name?: string;
   appId?: string;
 }
 
+export const ABDisableReq_name = "name";
+export const ABDisableReq_appId = "app_id";
 export interface ListTestGroupReq {
   appId?: string;
 }
 
+export const ListTestGroupReq_appId = "app_id";
 export interface AppTestingStatus {
   version?: number;
   tests?: ABTestGroup[];
 }
 
+export const AppTestingStatus_version = "version";
+export const AppTestingStatus_tests = "tests";
 export interface CheckUserStatusReq {
   userId?: string;
 }
 
+export const CheckUserStatusReq_userId = "user_id";
 export interface ChangeUserTestGroupReq {
   userId?: string;
   appId?: string;
@@ -36,14 +46,22 @@ TestGroupName is empty for no testing group
   testGroupName?: string;
 }
 
+export const ChangeUserTestGroupReq_userId = "user_id";
+export const ChangeUserTestGroupReq_appId = "app_id";
+export const ChangeUserTestGroupReq_testGroupName = "test_group_name";
 export interface UserTestGroupStatus {
   userId?: string;
   apps?: UserTestGroupStatusAppGroup[];
 }
 
+export const UserTestGroupStatus_userId = "user_id";
+export const UserTestGroupStatus_apps = "apps";
 export interface UserTestGroupStatusAppGroup {
   appId?: string;
   testGroup?: string;
   version?: number;
 }
 
+export const UserTestGroupStatusAppGroup_appId = "app_id";
+export const UserTestGroupStatusAppGroup_testGroup = "test_group";
+export const UserTestGroupStatusAppGroup_version = "version";

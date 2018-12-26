@@ -9,8 +9,10 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
 import io "io"
 
@@ -18,6 +20,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type OtsimoServices struct {
 	Environment   string `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
@@ -38,29 +46,92 @@ type OtsimoServices struct {
 	Services             map[string]string `protobuf:"bytes,20,rep,name=services" json:"services,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	GameStorageProviders map[string]string `protobuf:"bytes,21,rep,name=game_storage_providers,json=gameStorageProviders" json:"game_storage_providers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	Configs              map[string]string `protobuf:"bytes,23,rep,name=configs" json:"configs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *OtsimoServices) Reset()                    { *m = OtsimoServices{} }
-func (m *OtsimoServices) String() string            { return proto.CompactTextString(m) }
-func (*OtsimoServices) ProtoMessage()               {}
-func (*OtsimoServices) Descriptor() ([]byte, []int) { return fileDescriptorDiscovery, []int{0} }
+func (m *OtsimoServices) Reset()         { *m = OtsimoServices{} }
+func (m *OtsimoServices) String() string { return proto.CompactTextString(m) }
+func (*OtsimoServices) ProtoMessage()    {}
+func (*OtsimoServices) Descriptor() ([]byte, []int) {
+	return fileDescriptor_discovery_1955356dda8a2d87, []int{0}
+}
+func (m *OtsimoServices) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *OtsimoServices) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_OtsimoServices.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *OtsimoServices) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OtsimoServices.Merge(dst, src)
+}
+func (m *OtsimoServices) XXX_Size() int {
+	return m.Size()
+}
+func (m *OtsimoServices) XXX_DiscardUnknown() {
+	xxx_messageInfo_OtsimoServices.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_OtsimoServices proto.InternalMessageInfo
 
 type DiscoveryRequest struct {
-	Environment      string `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
-	SdkVersion       string `protobuf:"bytes,2,opt,name=sdk_version,json=sdkVersion,proto3" json:"sdk_version,omitempty"`
-	OsName           string `protobuf:"bytes,3,opt,name=os_name,json=osName,proto3" json:"os_name,omitempty"`
-	CountryCode      string `protobuf:"bytes,4,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
-	AppBundleId      string `protobuf:"bytes,5,opt,name=app_bundle_id,json=appBundleId,proto3" json:"app_bundle_id,omitempty"`
-	AppBundleVersion string `protobuf:"bytes,6,opt,name=app_bundle_version,json=appBundleVersion,proto3" json:"app_bundle_version,omitempty"`
+	Environment          string   `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	SdkVersion           string   `protobuf:"bytes,2,opt,name=sdk_version,json=sdkVersion,proto3" json:"sdk_version,omitempty"`
+	OsName               string   `protobuf:"bytes,3,opt,name=os_name,json=osName,proto3" json:"os_name,omitempty"`
+	CountryCode          string   `protobuf:"bytes,4,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	AppBundleId          string   `protobuf:"bytes,5,opt,name=app_bundle_id,json=appBundleId,proto3" json:"app_bundle_id,omitempty"`
+	AppBundleVersion     string   `protobuf:"bytes,6,opt,name=app_bundle_version,json=appBundleVersion,proto3" json:"app_bundle_version,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DiscoveryRequest) Reset()                    { *m = DiscoveryRequest{} }
-func (m *DiscoveryRequest) String() string            { return proto.CompactTextString(m) }
-func (*DiscoveryRequest) ProtoMessage()               {}
-func (*DiscoveryRequest) Descriptor() ([]byte, []int) { return fileDescriptorDiscovery, []int{1} }
+func (m *DiscoveryRequest) Reset()         { *m = DiscoveryRequest{} }
+func (m *DiscoveryRequest) String() string { return proto.CompactTextString(m) }
+func (*DiscoveryRequest) ProtoMessage()    {}
+func (*DiscoveryRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_discovery_1955356dda8a2d87, []int{1}
+}
+func (m *DiscoveryRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DiscoveryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DiscoveryRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *DiscoveryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DiscoveryRequest.Merge(dst, src)
+}
+func (m *DiscoveryRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *DiscoveryRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DiscoveryRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DiscoveryRequest proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*OtsimoServices)(nil), "apipb.OtsimoServices")
+	proto.RegisterMapType((map[string]string)(nil), "apipb.OtsimoServices.ConfigsEntry")
+	proto.RegisterMapType((map[string]string)(nil), "apipb.OtsimoServices.GameStorageProvidersEntry")
+	proto.RegisterMapType((map[string]string)(nil), "apipb.OtsimoServices.ServicesEntry")
 	proto.RegisterType((*DiscoveryRequest)(nil), "apipb.DiscoveryRequest")
 }
 
@@ -72,8 +143,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for Discovery service
-
+// DiscoveryClient is the client API for Discovery service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DiscoveryClient interface {
 	Get(ctx context.Context, in *DiscoveryRequest, opts ...grpc.CallOption) (*OtsimoServices, error)
 }
@@ -88,15 +160,14 @@ func NewDiscoveryClient(cc *grpc.ClientConn) DiscoveryClient {
 
 func (c *discoveryClient) Get(ctx context.Context, in *DiscoveryRequest, opts ...grpc.CallOption) (*OtsimoServices, error) {
 	out := new(OtsimoServices)
-	err := grpc.Invoke(ctx, "/apipb.Discovery/Get", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.Discovery/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for Discovery service
-
+// DiscoveryServer is the server API for Discovery service.
 type DiscoveryServer interface {
 	Get(context.Context, *DiscoveryRequest) (*OtsimoServices, error)
 }
@@ -1614,9 +1685,9 @@ var (
 	ErrIntOverflowDiscovery   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("discovery.proto", fileDescriptorDiscovery) }
+func init() { proto.RegisterFile("discovery.proto", fileDescriptor_discovery_1955356dda8a2d87) }
 
-var fileDescriptorDiscovery = []byte{
+var fileDescriptor_discovery_1955356dda8a2d87 = []byte{
 	// 655 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0xcf, 0x6a, 0xdb, 0x4e,
 	0x10, 0xc7, 0xad, 0xf8, 0x17, 0xff, 0x19, 0xdb, 0x49, 0x58, 0x9c, 0x44, 0x31, 0xfc, 0x54, 0xd7,

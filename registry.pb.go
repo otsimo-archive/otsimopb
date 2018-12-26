@@ -9,8 +9,10 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
 import io "io"
 
@@ -18,6 +20,12 @@ import io "io"
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type CategoryReq_Task int32
 
@@ -41,108 +49,389 @@ var CategoryReq_Task_value = map[string]int32{
 func (x CategoryReq_Task) String() string {
 	return proto.EnumName(CategoryReq_Task_name, int32(x))
 }
-func (CategoryReq_Task) EnumDescriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{3, 0} }
-
-type AllGameReleases struct {
-	GameId   string                         `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
-	Releases []*AllGameReleases_MiniRelease `protobuf:"bytes,2,rep,name=releases" json:"releases,omitempty"`
+func (CategoryReq_Task) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{3, 0}
 }
 
-func (m *AllGameReleases) Reset()                    { *m = AllGameReleases{} }
-func (m *AllGameReleases) String() string            { return proto.CompactTextString(m) }
-func (*AllGameReleases) ProtoMessage()               {}
-func (*AllGameReleases) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{0} }
+type AllGameReleases struct {
+	GameId               string                         `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	Releases             []*AllGameReleases_MiniRelease `protobuf:"bytes,2,rep,name=releases" json:"releases,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
+}
+
+func (m *AllGameReleases) Reset()         { *m = AllGameReleases{} }
+func (m *AllGameReleases) String() string { return proto.CompactTextString(m) }
+func (*AllGameReleases) ProtoMessage()    {}
+func (*AllGameReleases) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{0}
+}
+func (m *AllGameReleases) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AllGameReleases) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AllGameReleases.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *AllGameReleases) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AllGameReleases.Merge(dst, src)
+}
+func (m *AllGameReleases) XXX_Size() int {
+	return m.Size()
+}
+func (m *AllGameReleases) XXX_DiscardUnknown() {
+	xxx_messageInfo_AllGameReleases.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AllGameReleases proto.InternalMessageInfo
 
 type AllGameReleases_MiniRelease struct {
-	Version      string       `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
-	ReleasedAt   int64        `protobuf:"varint,2,opt,name=released_at,json=releasedAt,proto3" json:"released_at,omitempty"`
-	ReleaseState ReleaseState `protobuf:"varint,3,opt,name=release_state,json=releaseState,proto3,enum=apipb.ReleaseState" json:"release_state,omitempty"`
+	Version              string       `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	ReleasedAt           int64        `protobuf:"varint,2,opt,name=released_at,json=releasedAt,proto3" json:"released_at,omitempty"`
+	ReleaseState         ReleaseState `protobuf:"varint,3,opt,name=release_state,json=releaseState,proto3,enum=apipb.ReleaseState" json:"release_state,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
 func (m *AllGameReleases_MiniRelease) Reset()         { *m = AllGameReleases_MiniRelease{} }
 func (m *AllGameReleases_MiniRelease) String() string { return proto.CompactTextString(m) }
 func (*AllGameReleases_MiniRelease) ProtoMessage()    {}
 func (*AllGameReleases_MiniRelease) Descriptor() ([]byte, []int) {
-	return fileDescriptorRegistry, []int{0, 0}
+	return fileDescriptor_registry_6fd46f239a49be51, []int{0, 0}
 }
+func (m *AllGameReleases_MiniRelease) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AllGameReleases_MiniRelease) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AllGameReleases_MiniRelease.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *AllGameReleases_MiniRelease) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AllGameReleases_MiniRelease.Merge(dst, src)
+}
+func (m *AllGameReleases_MiniRelease) XXX_Size() int {
+	return m.Size()
+}
+func (m *AllGameReleases_MiniRelease) XXX_DiscardUnknown() {
+	xxx_messageInfo_AllGameReleases_MiniRelease.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AllGameReleases_MiniRelease proto.InternalMessageInfo
 
 type GameCategoryLocale struct {
-	Language string `protobuf:"bytes,1,opt,name=language,proto3" json:"language,omitempty"`
-	Title    string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Image    string `protobuf:"bytes,3,opt,name=image,proto3" json:"image,omitempty"`
+	Language             string   `protobuf:"bytes,1,opt,name=language,proto3" json:"language,omitempty"`
+	Title                string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Image                string   `protobuf:"bytes,3,opt,name=image,proto3" json:"image,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GameCategoryLocale) Reset()                    { *m = GameCategoryLocale{} }
-func (m *GameCategoryLocale) String() string            { return proto.CompactTextString(m) }
-func (*GameCategoryLocale) ProtoMessage()               {}
-func (*GameCategoryLocale) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{1} }
+func (m *GameCategoryLocale) Reset()         { *m = GameCategoryLocale{} }
+func (m *GameCategoryLocale) String() string { return proto.CompactTextString(m) }
+func (*GameCategoryLocale) ProtoMessage()    {}
+func (*GameCategoryLocale) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{1}
+}
+func (m *GameCategoryLocale) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameCategoryLocale) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameCategoryLocale.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameCategoryLocale) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameCategoryLocale.Merge(dst, src)
+}
+func (m *GameCategoryLocale) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameCategoryLocale) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameCategoryLocale.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameCategoryLocale proto.InternalMessageInfo
 
 type GameCategory struct {
-	Name     string                `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Locales  []*GameCategoryLocale `protobuf:"bytes,2,rep,name=locales" json:"locales,omitempty"`
-	Revision int32                 `protobuf:"varint,3,opt,name=revision,proto3" json:"revision,omitempty"`
-	Labels   map[string]string     `protobuf:"bytes,4,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Name                 string                `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Locales              []*GameCategoryLocale `protobuf:"bytes,2,rep,name=locales" json:"locales,omitempty"`
+	Revision             int32                 `protobuf:"varint,3,opt,name=revision,proto3" json:"revision,omitempty"`
+	Labels               map[string]string     `protobuf:"bytes,4,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *GameCategory) Reset()                    { *m = GameCategory{} }
-func (m *GameCategory) String() string            { return proto.CompactTextString(m) }
-func (*GameCategory) ProtoMessage()               {}
-func (*GameCategory) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{2} }
+func (m *GameCategory) Reset()         { *m = GameCategory{} }
+func (m *GameCategory) String() string { return proto.CompactTextString(m) }
+func (*GameCategory) ProtoMessage()    {}
+func (*GameCategory) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{2}
+}
+func (m *GameCategory) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GameCategory) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GameCategory.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GameCategory) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GameCategory.Merge(dst, src)
+}
+func (m *GameCategory) XXX_Size() int {
+	return m.Size()
+}
+func (m *GameCategory) XXX_DiscardUnknown() {
+	xxx_messageInfo_GameCategory.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GameCategory proto.InternalMessageInfo
 
 type CategoryReq struct {
-	Task          CategoryReq_Task `protobuf:"varint,1,opt,name=task,proto3,enum=apipb.CategoryReq_Task" json:"task,omitempty"`
-	Category      *GameCategory    `protobuf:"bytes,2,opt,name=category" json:"category,omitempty"`
-	KnownRevision int32            `protobuf:"varint,3,opt,name=known_revision,json=knownRevision,proto3" json:"known_revision,omitempty"`
+	Task                 CategoryReq_Task `protobuf:"varint,1,opt,name=task,proto3,enum=apipb.CategoryReq_Task" json:"task,omitempty"`
+	Category             *GameCategory    `protobuf:"bytes,2,opt,name=category" json:"category,omitempty"`
+	KnownRevision        int32            `protobuf:"varint,3,opt,name=known_revision,json=knownRevision,proto3" json:"known_revision,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
-func (m *CategoryReq) Reset()                    { *m = CategoryReq{} }
-func (m *CategoryReq) String() string            { return proto.CompactTextString(m) }
-func (*CategoryReq) ProtoMessage()               {}
-func (*CategoryReq) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{3} }
+func (m *CategoryReq) Reset()         { *m = CategoryReq{} }
+func (m *CategoryReq) String() string { return proto.CompactTextString(m) }
+func (*CategoryReq) ProtoMessage()    {}
+func (*CategoryReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{3}
+}
+func (m *CategoryReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CategoryReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CategoryReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CategoryReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CategoryReq.Merge(dst, src)
+}
+func (m *CategoryReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *CategoryReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_CategoryReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CategoryReq proto.InternalMessageInfo
 
 type CategoryListReq struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CategoryListReq) Reset()                    { *m = CategoryListReq{} }
-func (m *CategoryListReq) String() string            { return proto.CompactTextString(m) }
-func (*CategoryListReq) ProtoMessage()               {}
-func (*CategoryListReq) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{4} }
+func (m *CategoryListReq) Reset()         { *m = CategoryListReq{} }
+func (m *CategoryListReq) String() string { return proto.CompactTextString(m) }
+func (*CategoryListReq) ProtoMessage()    {}
+func (*CategoryListReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{4}
+}
+func (m *CategoryListReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CategoryListReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CategoryListReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CategoryListReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CategoryListReq.Merge(dst, src)
+}
+func (m *CategoryListReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *CategoryListReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_CategoryListReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CategoryListReq proto.InternalMessageInfo
 
 type CategoryList struct {
-	Categories []*GameCategory `protobuf:"bytes,1,rep,name=categories" json:"categories,omitempty"`
+	Categories           []*GameCategory `protobuf:"bytes,1,rep,name=categories" json:"categories,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *CategoryList) Reset()                    { *m = CategoryList{} }
-func (m *CategoryList) String() string            { return proto.CompactTextString(m) }
-func (*CategoryList) ProtoMessage()               {}
-func (*CategoryList) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{5} }
+func (m *CategoryList) Reset()         { *m = CategoryList{} }
+func (m *CategoryList) String() string { return proto.CompactTextString(m) }
+func (*CategoryList) ProtoMessage()    {}
+func (*CategoryList) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{5}
+}
+func (m *CategoryList) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CategoryList) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CategoryList.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CategoryList) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CategoryList.Merge(dst, src)
+}
+func (m *CategoryList) XXX_Size() int {
+	return m.Size()
+}
+func (m *CategoryList) XXX_DiscardUnknown() {
+	xxx_messageInfo_CategoryList.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CategoryList proto.InternalMessageInfo
 
 type GetAllGamesReq struct {
 	// Games that user wants the data of, if it is empty returns all games
 	Games []*GameAndVersion `protobuf:"bytes,1,rep,name=games" json:"games,omitempty"`
-	// Language filters games. If language field is empty than returns games with all languages.
-	Language string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	// Language filters games. If language field is empty than returns games with
+	// all languages.
+	Language             string   `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetAllGamesReq) Reset()                    { *m = GetAllGamesReq{} }
-func (m *GetAllGamesReq) String() string            { return proto.CompactTextString(m) }
-func (*GetAllGamesReq) ProtoMessage()               {}
-func (*GetAllGamesReq) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{6} }
+func (m *GetAllGamesReq) Reset()         { *m = GetAllGamesReq{} }
+func (m *GetAllGamesReq) String() string { return proto.CompactTextString(m) }
+func (*GetAllGamesReq) ProtoMessage()    {}
+func (*GetAllGamesReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{6}
+}
+func (m *GetAllGamesReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetAllGamesReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetAllGamesReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetAllGamesReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAllGamesReq.Merge(dst, src)
+}
+func (m *GetAllGamesReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetAllGamesReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAllGamesReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAllGamesReq proto.InternalMessageInfo
 
 type GetAllGamesRes struct {
-	Games []*GameRelease `protobuf:"bytes,1,rep,name=games" json:"games,omitempty"`
+	Games                []*GameRelease `protobuf:"bytes,1,rep,name=games" json:"games,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *GetAllGamesRes) Reset()                    { *m = GetAllGamesRes{} }
-func (m *GetAllGamesRes) String() string            { return proto.CompactTextString(m) }
-func (*GetAllGamesRes) ProtoMessage()               {}
-func (*GetAllGamesRes) Descriptor() ([]byte, []int) { return fileDescriptorRegistry, []int{7} }
+func (m *GetAllGamesRes) Reset()         { *m = GetAllGamesRes{} }
+func (m *GetAllGamesRes) String() string { return proto.CompactTextString(m) }
+func (*GetAllGamesRes) ProtoMessage()    {}
+func (*GetAllGamesRes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_registry_6fd46f239a49be51, []int{7}
+}
+func (m *GetAllGamesRes) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetAllGamesRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetAllGamesRes.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *GetAllGamesRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAllGamesRes.Merge(dst, src)
+}
+func (m *GetAllGamesRes) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetAllGamesRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAllGamesRes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAllGamesRes proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*AllGameReleases)(nil), "apipb.AllGameReleases")
 	proto.RegisterType((*AllGameReleases_MiniRelease)(nil), "apipb.AllGameReleases.MiniRelease")
 	proto.RegisterType((*GameCategoryLocale)(nil), "apipb.GameCategoryLocale")
 	proto.RegisterType((*GameCategory)(nil), "apipb.GameCategory")
+	proto.RegisterMapType((map[string]string)(nil), "apipb.GameCategory.LabelsEntry")
 	proto.RegisterType((*CategoryReq)(nil), "apipb.CategoryReq")
 	proto.RegisterType((*CategoryListReq)(nil), "apipb.CategoryListReq")
 	proto.RegisterType((*CategoryList)(nil), "apipb.CategoryList")
@@ -159,8 +448,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for RegistryService service
-
+// RegistryServiceClient is the client API for RegistryService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RegistryServiceClient interface {
 	// Get returns game
 	Get(ctx context.Context, in *GetGameRequest, opts ...grpc.CallOption) (*Game, error)
@@ -168,8 +458,9 @@ type RegistryServiceClient interface {
 	GetRelease(ctx context.Context, in *GetGameReleaseRequest, opts ...grpc.CallOption) (*GameRelease, error)
 	// Publish tries to create a new GameRelease by given manifest
 	Publish(ctx context.Context, in *GameManifest, opts ...grpc.CallOption) (*PublishResponse, error)
-	// ChangeReleaseState changes state of a release, If user is admin than s/he can change
-	// from WAITING to REJECTED or VALIDATED, developers can change to any except VALIDATED
+	// ChangeReleaseState changes state of a release, If user is admin than s/he
+	// can change from WAITING to REJECTED or VALIDATED, developers can change to
+	// any except VALIDATED
 	ChangeReleaseState(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*Response, error)
 	// GetLatestVersions returns latest versions of given game ids
 	GetLatestVersions(ctx context.Context, in *GetLatestVersionsRequest, opts ...grpc.CallOption) (*GameVersionsResponse, error)
@@ -199,7 +490,7 @@ func NewRegistryServiceClient(cc *grpc.ClientConn) RegistryServiceClient {
 
 func (c *registryServiceClient) Get(ctx context.Context, in *GetGameRequest, opts ...grpc.CallOption) (*Game, error) {
 	out := new(Game)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/Get", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -208,7 +499,7 @@ func (c *registryServiceClient) Get(ctx context.Context, in *GetGameRequest, opt
 
 func (c *registryServiceClient) GetRelease(ctx context.Context, in *GetGameReleaseRequest, opts ...grpc.CallOption) (*GameRelease, error) {
 	out := new(GameRelease)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/GetRelease", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/GetRelease", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -217,7 +508,7 @@ func (c *registryServiceClient) GetRelease(ctx context.Context, in *GetGameRelea
 
 func (c *registryServiceClient) Publish(ctx context.Context, in *GameManifest, opts ...grpc.CallOption) (*PublishResponse, error) {
 	out := new(PublishResponse)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/Publish", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/Publish", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -226,7 +517,7 @@ func (c *registryServiceClient) Publish(ctx context.Context, in *GameManifest, o
 
 func (c *registryServiceClient) ChangeReleaseState(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/ChangeReleaseState", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/ChangeReleaseState", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -235,7 +526,7 @@ func (c *registryServiceClient) ChangeReleaseState(ctx context.Context, in *Vali
 
 func (c *registryServiceClient) GetLatestVersions(ctx context.Context, in *GetLatestVersionsRequest, opts ...grpc.CallOption) (*GameVersionsResponse, error) {
 	out := new(GameVersionsResponse)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/GetLatestVersions", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/GetLatestVersions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -244,7 +535,7 @@ func (c *registryServiceClient) GetLatestVersions(ctx context.Context, in *GetLa
 
 func (c *registryServiceClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
 	out := new(SearchResponse)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/Search", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -252,7 +543,7 @@ func (c *registryServiceClient) Search(ctx context.Context, in *SearchRequest, o
 }
 
 func (c *registryServiceClient) ListGames(ctx context.Context, in *ListGamesRequest, opts ...grpc.CallOption) (RegistryService_ListGamesClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_RegistryService_serviceDesc.Streams[0], c.cc, "/apipb.RegistryService/ListGames", opts...)
+	stream, err := c.cc.NewStream(ctx, &_RegistryService_serviceDesc.Streams[0], "/apipb.RegistryService/ListGames", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -284,7 +575,7 @@ func (x *registryServiceListGamesClient) Recv() (*ListItem, error) {
 }
 
 func (c *registryServiceClient) ListGamesWithTests(ctx context.Context, in *ListGamesRequest, opts ...grpc.CallOption) (RegistryService_ListGamesWithTestsClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_RegistryService_serviceDesc.Streams[1], c.cc, "/apipb.RegistryService/ListGamesWithTests", opts...)
+	stream, err := c.cc.NewStream(ctx, &_RegistryService_serviceDesc.Streams[1], "/apipb.RegistryService/ListGamesWithTests", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -317,7 +608,7 @@ func (x *registryServiceListGamesWithTestsClient) Recv() (*ListItemWithTests, er
 
 func (c *registryServiceClient) AllReleases(ctx context.Context, in *GetGameRequest, opts ...grpc.CallOption) (*AllGameReleases, error) {
 	out := new(AllGameReleases)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/AllReleases", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/AllReleases", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -326,7 +617,7 @@ func (c *registryServiceClient) AllReleases(ctx context.Context, in *GetGameRequ
 
 func (c *registryServiceClient) Category(ctx context.Context, in *CategoryReq, opts ...grpc.CallOption) (*GameCategory, error) {
 	out := new(GameCategory)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/Category", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/Category", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -335,7 +626,7 @@ func (c *registryServiceClient) Category(ctx context.Context, in *CategoryReq, o
 
 func (c *registryServiceClient) ListCategories(ctx context.Context, in *CategoryListReq, opts ...grpc.CallOption) (*CategoryList, error) {
 	out := new(CategoryList)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/ListCategories", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/ListCategories", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -344,15 +635,14 @@ func (c *registryServiceClient) ListCategories(ctx context.Context, in *Category
 
 func (c *registryServiceClient) GetAllGames(ctx context.Context, in *GetAllGamesReq, opts ...grpc.CallOption) (*GetAllGamesRes, error) {
 	out := new(GetAllGamesRes)
-	err := grpc.Invoke(ctx, "/apipb.RegistryService/GetAllGames", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.RegistryService/GetAllGames", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for RegistryService service
-
+// RegistryServiceServer is the server API for RegistryService service.
 type RegistryServiceServer interface {
 	// Get returns game
 	Get(context.Context, *GetGameRequest) (*Game, error)
@@ -360,8 +650,9 @@ type RegistryServiceServer interface {
 	GetRelease(context.Context, *GetGameReleaseRequest) (*GameRelease, error)
 	// Publish tries to create a new GameRelease by given manifest
 	Publish(context.Context, *GameManifest) (*PublishResponse, error)
-	// ChangeReleaseState changes state of a release, If user is admin than s/he can change
-	// from WAITING to REJECTED or VALIDATED, developers can change to any except VALIDATED
+	// ChangeReleaseState changes state of a release, If user is admin than s/he
+	// can change from WAITING to REJECTED or VALIDATED, developers can change to
+	// any except VALIDATED
 	ChangeReleaseState(context.Context, *ValidateRequest) (*Response, error)
 	// GetLatestVersions returns latest versions of given game ids
 	GetLatestVersions(context.Context, *GetLatestVersionsRequest) (*GameVersionsResponse, error)
@@ -700,6 +991,9 @@ func (m *AllGameReleases) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -733,6 +1027,9 @@ func (m *AllGameReleases_MiniRelease) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x18
 		i++
 		i = encodeVarintRegistry(dAtA, i, uint64(m.ReleaseState))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -769,6 +1066,9 @@ func (m *GameCategoryLocale) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Image)))
 		i += copy(dAtA[i:], m.Image)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -828,6 +1128,9 @@ func (m *GameCategory) MarshalTo(dAtA []byte) (int, error) {
 			i += copy(dAtA[i:], v)
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -866,6 +1169,9 @@ func (m *CategoryReq) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintRegistry(dAtA, i, uint64(m.KnownRevision))
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -884,6 +1190,9 @@ func (m *CategoryListReq) MarshalTo(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -913,6 +1222,9 @@ func (m *CategoryList) MarshalTo(dAtA []byte) (int, error) {
 			}
 			i += n
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	return i, nil
 }
@@ -950,6 +1262,9 @@ func (m *GetAllGamesReq) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintRegistry(dAtA, i, uint64(len(m.Language)))
 		i += copy(dAtA[i:], m.Language)
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -980,6 +1295,9 @@ func (m *GetAllGamesRes) MarshalTo(dAtA []byte) (int, error) {
 			i += n
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
 	return i, nil
 }
 
@@ -1005,6 +1323,9 @@ func (m *AllGameReleases) Size() (n int) {
 			n += 1 + l + sovRegistry(uint64(l))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1020,6 +1341,9 @@ func (m *AllGameReleases_MiniRelease) Size() (n int) {
 	}
 	if m.ReleaseState != 0 {
 		n += 1 + sovRegistry(uint64(m.ReleaseState))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1038,6 +1362,9 @@ func (m *GameCategoryLocale) Size() (n int) {
 	l = len(m.Image)
 	if l > 0 {
 		n += 1 + l + sovRegistry(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1066,6 +1393,9 @@ func (m *GameCategory) Size() (n int) {
 			n += mapEntrySize + 1 + sovRegistry(uint64(mapEntrySize))
 		}
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1082,12 +1412,18 @@ func (m *CategoryReq) Size() (n int) {
 	if m.KnownRevision != 0 {
 		n += 1 + sovRegistry(uint64(m.KnownRevision))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
 func (m *CategoryListReq) Size() (n int) {
 	var l int
 	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1099,6 +1435,9 @@ func (m *CategoryList) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovRegistry(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1116,6 +1455,9 @@ func (m *GetAllGamesReq) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovRegistry(uint64(l))
 	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
 	return n
 }
 
@@ -1127,6 +1469,9 @@ func (m *GetAllGamesRes) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovRegistry(uint64(l))
 		}
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
@@ -1245,6 +1590,7 @@ func (m *AllGameReleases) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1362,6 +1708,7 @@ func (m *AllGameReleases_MiniRelease) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1499,6 +1846,7 @@ func (m *GameCategoryLocale) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1746,6 +2094,7 @@ func (m *GameCategory) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1867,6 +2216,7 @@ func (m *CategoryReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1917,6 +2267,7 @@ func (m *CategoryListReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -1998,6 +2349,7 @@ func (m *CategoryList) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2108,6 +2460,7 @@ func (m *GetAllGamesReq) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2189,6 +2542,7 @@ func (m *GetAllGamesRes) Unmarshal(dAtA []byte) error {
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
 			iNdEx += skippy
 		}
 	}
@@ -2303,9 +2657,9 @@ var (
 	ErrIntOverflowRegistry   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("registry.proto", fileDescriptorRegistry) }
+func init() { proto.RegisterFile("registry.proto", fileDescriptor_registry_6fd46f239a49be51) }
 
-var fileDescriptorRegistry = []byte{
+var fileDescriptor_registry_6fd46f239a49be51 = []byte{
 	// 862 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x55, 0xcd, 0x6e, 0x23, 0x45,
 	0x10, 0xce, 0xd8, 0xf1, 0x4f, 0x6a, 0xb2, 0x76, 0xb6, 0xc8, 0xee, 0x1a, 0x83, 0x9c, 0x68, 0x24,

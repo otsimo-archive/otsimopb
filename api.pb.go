@@ -9,13 +9,21 @@ import math "math"
 
 // skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
 
-import context "golang.org/x/net/context"
-import grpc "google.golang.org/grpc"
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
@@ -25,8 +33,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for ApiService service
-
+// ApiServiceClient is the client API for ApiService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ApiServiceClient interface {
 	// Profile
 	AddProfile(ctx context.Context, in *Profile, opts ...grpc.CallOption) (*Response, error)
@@ -54,7 +63,7 @@ func NewApiServiceClient(cc *grpc.ClientConn) ApiServiceClient {
 
 func (c *apiServiceClient) AddProfile(ctx context.Context, in *Profile, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/AddProfile", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/AddProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +72,7 @@ func (c *apiServiceClient) AddProfile(ctx context.Context, in *Profile, opts ...
 
 func (c *apiServiceClient) GetProfile(ctx context.Context, in *GetProfileRequest, opts ...grpc.CallOption) (*Profile, error) {
 	out := new(Profile)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/GetProfile", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/GetProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +81,7 @@ func (c *apiServiceClient) GetProfile(ctx context.Context, in *GetProfileRequest
 
 func (c *apiServiceClient) UpdateProfile(ctx context.Context, in *Profile, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/UpdateProfile", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/UpdateProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +90,7 @@ func (c *apiServiceClient) UpdateProfile(ctx context.Context, in *Profile, opts 
 
 func (c *apiServiceClient) AddChild(ctx context.Context, in *Child, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/AddChild", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/AddChild", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +99,7 @@ func (c *apiServiceClient) AddChild(ctx context.Context, in *Child, opts ...grpc
 
 func (c *apiServiceClient) GetChild(ctx context.Context, in *GetChildRequest, opts ...grpc.CallOption) (*Child, error) {
 	out := new(Child)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/GetChild", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/GetChild", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +108,7 @@ func (c *apiServiceClient) GetChild(ctx context.Context, in *GetChildRequest, op
 
 func (c *apiServiceClient) UpdateChild(ctx context.Context, in *Child, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/UpdateChild", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/UpdateChild", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +117,7 @@ func (c *apiServiceClient) UpdateChild(ctx context.Context, in *Child, opts ...g
 
 func (c *apiServiceClient) GetChildren(ctx context.Context, in *GetChildrenFromProfileRequest, opts ...grpc.CallOption) (*GetChildrenFromProfileResponse, error) {
 	out := new(GetChildrenFromProfileResponse)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/GetChildren", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/GetChildren", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -117,7 +126,7 @@ func (c *apiServiceClient) GetChildren(ctx context.Context, in *GetChildrenFromP
 
 func (c *apiServiceClient) UpdateGameEntry(ctx context.Context, in *GameEntryRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/UpdateGameEntry", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/UpdateGameEntry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +135,7 @@ func (c *apiServiceClient) UpdateGameEntry(ctx context.Context, in *GameEntryReq
 
 func (c *apiServiceClient) ChangeActivation(ctx context.Context, in *ChangeChildActivationRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/ChangeActivation", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/ChangeActivation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -135,7 +144,7 @@ func (c *apiServiceClient) ChangeActivation(ctx context.Context, in *ChangeChild
 
 func (c *apiServiceClient) GetDisabledChildren(ctx context.Context, in *GetChildrenFromProfileRequest, opts ...grpc.CallOption) (*GetChildrenFromProfileResponse, error) {
 	out := new(GetChildrenFromProfileResponse)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/GetDisabledChildren", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/GetDisabledChildren", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -144,7 +153,7 @@ func (c *apiServiceClient) GetDisabledChildren(ctx context.Context, in *GetChild
 
 func (c *apiServiceClient) SoundEnable(ctx context.Context, in *SoundEnableRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/SoundEnable", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/SoundEnable", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -153,15 +162,14 @@ func (c *apiServiceClient) SoundEnable(ctx context.Context, in *SoundEnableReque
 
 func (c *apiServiceClient) UpdateGameIndices(ctx context.Context, in *UpdateIndecesRequest, opts ...grpc.CallOption) (*Child, error) {
 	out := new(Child)
-	err := grpc.Invoke(ctx, "/apipb.ApiService/UpdateGameIndices", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/apipb.ApiService/UpdateGameIndices", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for ApiService service
-
+// ApiServiceServer is the server API for ApiService service.
 type ApiServiceServer interface {
 	// Profile
 	AddProfile(context.Context, *Profile) (*Response, error)
@@ -456,9 +464,9 @@ var _ApiService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "api.proto",
 }
 
-func init() { proto.RegisterFile("api.proto", fileDescriptorApi) }
+func init() { proto.RegisterFile("api.proto", fileDescriptor_api_bef061a41277b4ce) }
 
-var fileDescriptorApi = []byte{
+var fileDescriptor_api_bef061a41277b4ce = []byte{
 	// 418 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x53, 0xcd, 0x8e, 0xd3, 0x30,
 	0x18, 0x74, 0x40, 0xac, 0xca, 0xd7, 0x65, 0x0b, 0x06, 0xf1, 0x13, 0xa4, 0x1c, 0x0a, 0x9c, 0x90,
