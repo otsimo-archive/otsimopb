@@ -72,7 +72,8 @@ export interface ChildGameEntry {
   localSettings?: string;
   localSettingsVersion?: string|number;
 /**
-LimitAccess permits user to access to game only if on of the contitions match
+LimitAccess permits user to access to game only if on of the contitions
+match
 */
   limitAccess?: string[];
 }
@@ -372,7 +373,8 @@ export interface GameRelease {
   storage?: string;
   archiveFormat?: string;
   packageUrl?: string;
-}
+  packages?: { [key: string]: string };
+		}
 
 export const GameRelease_releaseId = "release_id";
 export const GameRelease_gameId = "game_id";
@@ -387,6 +389,7 @@ export const GameRelease_intVersion = "int_version";
 export const GameRelease_storage = "storage";
 export const GameRelease_archiveFormat = "archive_format";
 export const GameRelease_packageUrl = "package_url";
+export const GameRelease_packages = "packages";
 export interface UploadToken {
   token?: string;
   expiresAt?: string|number;

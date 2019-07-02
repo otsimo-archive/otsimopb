@@ -58,7 +58,8 @@ message ChildGameEntry {
   bytes local_settings = 8 [ (gogoproto.moretags) = "bson:\"local_settings\"" ];
   int64 local_settings_version = 9
       [ (gogoproto.moretags) = "bson:\"local_settings_version\"" ];
-  // LimitAccess permits user to access to game only if on of the contitions match
+  // LimitAccess permits user to access to game only if on of the contitions
+  // match
   repeated string limit_access = 10
       [ (gogoproto.moretags) = "bson:\"limit_access\"" ];
 }
@@ -256,6 +257,7 @@ message GameRelease {
   string storage = 11 [ (gogoproto.moretags) = "bson:\"-\"" ];
   string archive_format = 12 [ (gogoproto.moretags) = "bson:\"-\"" ];
   string package_url = 13 [ (gogoproto.moretags) = "bson:\"-\"" ];
+  map<string, string> packages = 14 [ (gogoproto.moretags) = "bson:\"-\"" ];
 }
 
 enum ReleaseState {

@@ -214,20 +214,27 @@ export interface GetLatestVersionsRequest {
 Device Capabilities
 */
   capabilities?: string[];
+/**
+Language of the client
+*/
+  language?: string;
 }
 
 export const GetLatestVersionsRequest_state = "state";
 export const GetLatestVersionsRequest_gameIds = "game_ids";
 export const GetLatestVersionsRequest_capabilities = "capabilities";
+export const GetLatestVersionsRequest_language = "language";
 export interface GameAndVersion {
   gameId?: string;
   version?: string;
   tarballUrl?: string;
-}
+  languageTarballs?: { [key: string]: string };
+		}
 
 export const GameAndVersion_gameId = "game_id";
 export const GameAndVersion_version = "version";
 export const GameAndVersion_tarballUrl = "tarball_url";
+export const GameAndVersion_languageTarballs = "language_tarballs";
 export interface GameVersionsResponse {
   results?: GameAndVersion[];
 }

@@ -141,12 +141,15 @@ message GetLatestVersionsRequest {
   repeated string game_ids = 2;
   // Device Capabilities
   repeated string capabilities = 3;
+  // Language of the client
+  string language = 4;
 }
 
 message GameAndVersion {
   string game_id = 1;
   string version = 2;
   string tarball_url = 3;
+  map<string, string> language_tarballs = 4;
 }
 
 message GameVersionsResponse { repeated GameAndVersion results = 1; }

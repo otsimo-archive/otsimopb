@@ -3,18 +3,17 @@
 
 package otsimopb
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-
-// skipping weak import gogoproto "github.com/gogo/protobuf/gogoproto"
-
 import (
-	context "golang.org/x/net/context"
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	io "io"
+	math "math"
+	math_bits "math/bits"
 )
-
-import io "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -38,6 +37,7 @@ var DataInterval_name = map[int32]string{
 	0: "HOURLY",
 	1: "DAILY",
 }
+
 var DataInterval_value = map[string]int32{
 	"HOURLY": 0,
 	"DAILY":  1,
@@ -46,12 +46,13 @@ var DataInterval_value = map[string]int32{
 func (x DataInterval) String() string {
 	return proto.EnumName(DataInterval_name, int32(x))
 }
+
 func (DataInterval) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{0}
+	return fileDescriptor_010df508860d9666, []int{0}
 }
 
 type GamePlayingRequest struct {
-	Games []string `protobuf:"bytes,1,rep,name=games" json:"games,omitempty"`
+	Games []string `protobuf:"bytes,1,rep,name=games,proto3" json:"games,omitempty"`
 	// From is the unix seconds time
 	From int64 `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`
 	// To is the unix seconds time
@@ -65,7 +66,7 @@ func (m *GamePlayingRequest) Reset()         { *m = GamePlayingRequest{} }
 func (m *GamePlayingRequest) String() string { return proto.CompactTextString(m) }
 func (*GamePlayingRequest) ProtoMessage()    {}
 func (*GamePlayingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{0}
+	return fileDescriptor_010df508860d9666, []int{0}
 }
 func (m *GamePlayingRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -82,8 +83,8 @@ func (m *GamePlayingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-func (dst *GamePlayingRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GamePlayingRequest.Merge(dst, src)
+func (m *GamePlayingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GamePlayingRequest.Merge(m, src)
 }
 func (m *GamePlayingRequest) XXX_Size() int {
 	return m.Size()
@@ -95,7 +96,7 @@ func (m *GamePlayingRequest) XXX_DiscardUnknown() {
 var xxx_messageInfo_GamePlayingRequest proto.InternalMessageInfo
 
 type GamePlayingReply struct {
-	Data                 *DataSet `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
+	Data                 *DataSet `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
@@ -104,7 +105,7 @@ func (m *GamePlayingReply) Reset()         { *m = GamePlayingReply{} }
 func (m *GamePlayingReply) String() string { return proto.CompactTextString(m) }
 func (*GamePlayingReply) ProtoMessage()    {}
 func (*GamePlayingReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{1}
+	return fileDescriptor_010df508860d9666, []int{1}
 }
 func (m *GamePlayingReply) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -121,8 +122,8 @@ func (m *GamePlayingReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return b[:n], nil
 	}
 }
-func (dst *GamePlayingReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GamePlayingReply.Merge(dst, src)
+func (m *GamePlayingReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GamePlayingReply.Merge(m, src)
 }
 func (m *GamePlayingReply) XXX_Size() int {
 	return m.Size()
@@ -139,7 +140,7 @@ type SimplifiedReq struct {
 	From int64 `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`
 	// To is the unix seconds time
 	To                   int64        `protobuf:"varint,3,opt,name=to,proto3" json:"to,omitempty"`
-	Games                []string     `protobuf:"bytes,4,rep,name=games" json:"games,omitempty"`
+	Games                []string     `protobuf:"bytes,4,rep,name=games,proto3" json:"games,omitempty"`
 	Interval             DataInterval `protobuf:"varint,5,opt,name=interval,proto3,enum=apipb.DataInterval" json:"interval,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -149,7 +150,7 @@ func (m *SimplifiedReq) Reset()         { *m = SimplifiedReq{} }
 func (m *SimplifiedReq) String() string { return proto.CompactTextString(m) }
 func (*SimplifiedReq) ProtoMessage()    {}
 func (*SimplifiedReq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simplyanalysis_e47418c57387ba0c, []int{2}
+	return fileDescriptor_010df508860d9666, []int{2}
 }
 func (m *SimplifiedReq) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -166,8 +167,8 @@ func (m *SimplifiedReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-func (dst *SimplifiedReq) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SimplifiedReq.Merge(dst, src)
+func (m *SimplifiedReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SimplifiedReq.Merge(m, src)
 }
 func (m *SimplifiedReq) XXX_Size() int {
 	return m.Size()
@@ -179,10 +180,43 @@ func (m *SimplifiedReq) XXX_DiscardUnknown() {
 var xxx_messageInfo_SimplifiedReq proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterEnum("apipb.DataInterval", DataInterval_name, DataInterval_value)
 	proto.RegisterType((*GamePlayingRequest)(nil), "apipb.GamePlayingRequest")
 	proto.RegisterType((*GamePlayingReply)(nil), "apipb.GamePlayingReply")
 	proto.RegisterType((*SimplifiedReq)(nil), "apipb.SimplifiedReq")
-	proto.RegisterEnum("apipb.DataInterval", DataInterval_name, DataInterval_value)
+}
+
+func init() { proto.RegisterFile("simplyanalysis.proto", fileDescriptor_010df508860d9666) }
+
+var fileDescriptor_010df508860d9666 = []byte{
+	// 425 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0x4f, 0x6b, 0xd4, 0x40,
+	0x14, 0xcf, 0xec, 0x3f, 0x76, 0x9f, 0xba, 0x2e, 0xb3, 0x01, 0x63, 0x0e, 0x21, 0x04, 0x84, 0xe0,
+	0x21, 0x85, 0x15, 0xbc, 0x4a, 0xcb, 0xa2, 0x5d, 0x28, 0xb6, 0x4c, 0x14, 0xac, 0xb7, 0xd9, 0xec,
+	0x34, 0x0c, 0x64, 0x32, 0x69, 0x66, 0x22, 0xe4, 0xe4, 0x57, 0xf0, 0x24, 0x9e, 0xfd, 0x34, 0x3d,
+	0xf6, 0xec, 0xc9, 0x6e, 0xbf, 0x88, 0xe4, 0x8f, 0x6b, 0xaa, 0x1e, 0x96, 0xde, 0xde, 0x7b, 0xbf,
+	0x97, 0x97, 0xdf, 0x9f, 0x01, 0x53, 0x71, 0x91, 0x25, 0x25, 0x4d, 0x69, 0x52, 0x2a, 0xae, 0x82,
+	0x2c, 0x97, 0x5a, 0xe2, 0x21, 0xcd, 0x78, 0xb6, 0xb6, 0xe7, 0x1b, 0xaa, 0xa9, 0x62, 0x5a, 0xc8,
+	0x0d, 0x4b, 0x5a, 0xcc, 0x36, 0x63, 0x19, 0xcb, 0xba, 0x3c, 0xa8, 0xaa, 0x66, 0xea, 0x7d, 0x06,
+	0xfc, 0x86, 0x0a, 0x76, 0x96, 0xd0, 0x92, 0xa7, 0x31, 0x61, 0x97, 0x05, 0x53, 0x1a, 0x9b, 0x30,
+	0x8c, 0xa9, 0x60, 0xca, 0x42, 0x6e, 0xdf, 0x9f, 0x90, 0xa6, 0xc1, 0x18, 0x06, 0x17, 0xb9, 0x14,
+	0x56, 0xcf, 0x45, 0x7e, 0x9f, 0xd4, 0x35, 0x9e, 0x42, 0x4f, 0x4b, 0xab, 0x5f, 0x4f, 0x7a, 0x5a,
+	0xe2, 0x03, 0x18, 0xf3, 0x54, 0xb3, 0xfc, 0x13, 0x4d, 0xac, 0x81, 0x8b, 0xfc, 0xe9, 0x62, 0x1e,
+	0xd4, 0xa4, 0x82, 0x25, 0xd5, 0x74, 0xd5, 0x42, 0x64, 0xb7, 0xe4, 0xbd, 0x84, 0xd9, 0x1d, 0x02,
+	0x59, 0x52, 0x62, 0x0f, 0x06, 0x95, 0x02, 0x0b, 0xb9, 0xc8, 0x7f, 0xb0, 0x98, 0x76, 0x0e, 0x84,
+	0x4c, 0x93, 0x1a, 0xf3, 0xbe, 0x22, 0x78, 0x14, 0x56, 0x1e, 0xf0, 0x0b, 0xce, 0x36, 0x84, 0x5d,
+	0x62, 0x1b, 0xc6, 0xbf, 0xed, 0xa8, 0xbf, 0x9c, 0x90, 0x5d, 0xbf, 0x17, 0xf5, 0x9d, 0xe8, 0x41,
+	0x57, 0x74, 0x57, 0xd0, 0x70, 0x0f, 0x41, 0xcf, 0x9f, 0xc1, 0xc3, 0x2e, 0x82, 0x01, 0x46, 0xc7,
+	0xa7, 0xef, 0xc9, 0xc9, 0xf9, 0xcc, 0xc0, 0x13, 0x18, 0x2e, 0x0f, 0x57, 0x27, 0xe7, 0x33, 0xb4,
+	0xf8, 0x81, 0x60, 0xfe, 0x87, 0xff, 0x61, 0x45, 0x54, 0xf3, 0x48, 0xe1, 0x15, 0xcc, 0x3b, 0x7e,
+	0x2c, 0x8b, 0x9c, 0x6a, 0x2e, 0x53, 0xfc, 0xb4, 0xfd, 0xe9, 0xbf, 0x61, 0xd9, 0x4f, 0xfe, 0x07,
+	0x55, 0x36, 0x1e, 0x37, 0xd9, 0x86, 0x45, 0x14, 0x31, 0xa5, 0x5e, 0x53, 0x9e, 0x14, 0x39, 0xbb,
+	0xd7, 0xa5, 0x00, 0x46, 0x47, 0xe5, 0x5b, 0x2a, 0x18, 0x36, 0xdb, 0x95, 0x3b, 0xd6, 0xdb, 0x7f,
+	0x45, 0x74, 0xf4, 0xea, 0xea, 0xc6, 0x31, 0xae, 0x6f, 0x1c, 0xe3, 0x6a, 0xeb, 0xa0, 0xeb, 0xad,
+	0x83, 0x7e, 0x6e, 0x1d, 0xf4, 0xe5, 0xd6, 0x31, 0xbe, 0xdd, 0x3a, 0x06, 0x3c, 0x8e, 0xa4, 0x08,
+	0xa4, 0x56, 0x5c, 0xc8, 0x20, 0xce, 0xb3, 0xe8, 0x0c, 0x7d, 0x1c, 0x37, 0x6d, 0xb6, 0xfe, 0xde,
+	0xeb, 0x9f, 0xbe, 0x0b, 0x3f, 0xa0, 0xf5, 0xa8, 0x7e, 0x9f, 0x2f, 0x7e, 0x05, 0x00, 0x00, 0xff,
+	0xff, 0x2a, 0x03, 0x32, 0xe4, 0xe9, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -242,6 +276,20 @@ type SimplifiedAnalyticsServer interface {
 	GamePlayingDuration(context.Context, *GamePlayingRequest) (*GamePlayingReply, error)
 	GameSuccessFailure(context.Context, *GamePlayingRequest) (*GamePlayingReply, error)
 	ByName(context.Context, *SimplifiedReq) (*DataSet, error)
+}
+
+// UnimplementedSimplifiedAnalyticsServer can be embedded to have forward compatible implementations.
+type UnimplementedSimplifiedAnalyticsServer struct {
+}
+
+func (*UnimplementedSimplifiedAnalyticsServer) GamePlayingDuration(ctx context.Context, req *GamePlayingRequest) (*GamePlayingReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GamePlayingDuration not implemented")
+}
+func (*UnimplementedSimplifiedAnalyticsServer) GameSuccessFailure(ctx context.Context, req *GamePlayingRequest) (*GamePlayingReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GameSuccessFailure not implemented")
+}
+func (*UnimplementedSimplifiedAnalyticsServer) ByName(ctx context.Context, req *SimplifiedReq) (*DataSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ByName not implemented")
 }
 
 func RegisterSimplifiedAnalyticsServer(s *grpc.Server, srv SimplifiedAnalyticsServer) {
@@ -390,9 +438,9 @@ func (m *GamePlayingReply) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintSimplyanalysis(dAtA, i, uint64(m.Data.Size()))
-		n1, err := m.Data.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
+		n1, err1 := m.Data.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
 		}
 		i += n1
 	}
@@ -463,6 +511,9 @@ func encodeVarintSimplyanalysis(dAtA []byte, offset int, v uint64) int {
 	return offset + 1
 }
 func (m *GamePlayingRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
 	var l int
 	_ = l
 	if len(m.Games) > 0 {
@@ -484,6 +535,9 @@ func (m *GamePlayingRequest) Size() (n int) {
 }
 
 func (m *GamePlayingReply) Size() (n int) {
+	if m == nil {
+		return 0
+	}
 	var l int
 	_ = l
 	if m.Data != nil {
@@ -494,6 +548,9 @@ func (m *GamePlayingReply) Size() (n int) {
 }
 
 func (m *SimplifiedReq) Size() (n int) {
+	if m == nil {
+		return 0
+	}
 	var l int
 	_ = l
 	l = len(m.Analysis)
@@ -519,14 +576,7 @@ func (m *SimplifiedReq) Size() (n int) {
 }
 
 func sovSimplyanalysis(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
-	}
-	return n
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozSimplyanalysis(x uint64) (n int) {
 	return sovSimplyanalysis(uint64((x << 1) ^ uint64((int64(x) >> 63))))
@@ -546,7 +596,7 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -574,7 +624,7 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -584,6 +634,9 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -603,7 +656,7 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.From |= (int64(b) & 0x7F) << shift
+				m.From |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -622,7 +675,7 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.To |= (int64(b) & 0x7F) << shift
+				m.To |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -641,7 +694,7 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Interval |= (DataInterval(b) & 0x7F) << shift
+				m.Interval |= DataInterval(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -653,6 +706,9 @@ func (m *GamePlayingRequest) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			if (iNdEx + skippy) > l {
@@ -682,7 +738,7 @@ func (m *GamePlayingReply) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -710,7 +766,7 @@ func (m *GamePlayingReply) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -719,6 +775,9 @@ func (m *GamePlayingReply) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -736,6 +795,9 @@ func (m *GamePlayingReply) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			if (iNdEx + skippy) > l {
@@ -765,7 +827,7 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -793,7 +855,7 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -803,6 +865,9 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -822,7 +887,7 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.From |= (int64(b) & 0x7F) << shift
+				m.From |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -841,7 +906,7 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.To |= (int64(b) & 0x7F) << shift
+				m.To |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -860,7 +925,7 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -870,6 +935,9 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -889,7 +957,7 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Interval |= (DataInterval(b) & 0x7F) << shift
+				m.Interval |= DataInterval(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -901,6 +969,9 @@ func (m *SimplifiedReq) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthSimplyanalysis
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthSimplyanalysis
 			}
 			if (iNdEx + skippy) > l {
@@ -969,8 +1040,11 @@ func skipSimplyanalysis(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthSimplyanalysis
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthSimplyanalysis
 			}
 			return iNdEx, nil
@@ -1001,6 +1075,9 @@ func skipSimplyanalysis(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthSimplyanalysis
+				}
 			}
 			return iNdEx, nil
 		case 4:
@@ -1019,38 +1096,3 @@ var (
 	ErrInvalidLengthSimplyanalysis = fmt.Errorf("proto: negative length found during unmarshaling")
 	ErrIntOverflowSimplyanalysis   = fmt.Errorf("proto: integer overflow")
 )
-
-func init() {
-	proto.RegisterFile("simplyanalysis.proto", fileDescriptor_simplyanalysis_e47418c57387ba0c)
-}
-
-var fileDescriptor_simplyanalysis_e47418c57387ba0c = []byte{
-	// 425 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0x4f, 0x6b, 0xd4, 0x40,
-	0x14, 0xcf, 0xec, 0x3f, 0x76, 0x9f, 0xba, 0x2e, 0xb3, 0x01, 0x63, 0x0e, 0x21, 0x04, 0x84, 0xe0,
-	0x21, 0x85, 0x15, 0xbc, 0x4a, 0xcb, 0xa2, 0x5d, 0x28, 0xb6, 0x4c, 0x14, 0xac, 0xb7, 0xd9, 0xec,
-	0x34, 0x0c, 0x64, 0x32, 0x69, 0x66, 0x22, 0xe4, 0xe4, 0x57, 0xf0, 0x24, 0x9e, 0xfd, 0x34, 0x3d,
-	0xf6, 0xec, 0xc9, 0x6e, 0xbf, 0x88, 0xe4, 0x8f, 0x6b, 0xaa, 0x1e, 0x96, 0xde, 0xde, 0x7b, 0xbf,
-	0x97, 0x97, 0xdf, 0x9f, 0x01, 0x53, 0x71, 0x91, 0x25, 0x25, 0x4d, 0x69, 0x52, 0x2a, 0xae, 0x82,
-	0x2c, 0x97, 0x5a, 0xe2, 0x21, 0xcd, 0x78, 0xb6, 0xb6, 0xe7, 0x1b, 0xaa, 0xa9, 0x62, 0x5a, 0xc8,
-	0x0d, 0x4b, 0x5a, 0xcc, 0x36, 0x63, 0x19, 0xcb, 0xba, 0x3c, 0xa8, 0xaa, 0x66, 0xea, 0x7d, 0x06,
-	0xfc, 0x86, 0x0a, 0x76, 0x96, 0xd0, 0x92, 0xa7, 0x31, 0x61, 0x97, 0x05, 0x53, 0x1a, 0x9b, 0x30,
-	0x8c, 0xa9, 0x60, 0xca, 0x42, 0x6e, 0xdf, 0x9f, 0x90, 0xa6, 0xc1, 0x18, 0x06, 0x17, 0xb9, 0x14,
-	0x56, 0xcf, 0x45, 0x7e, 0x9f, 0xd4, 0x35, 0x9e, 0x42, 0x4f, 0x4b, 0xab, 0x5f, 0x4f, 0x7a, 0x5a,
-	0xe2, 0x03, 0x18, 0xf3, 0x54, 0xb3, 0xfc, 0x13, 0x4d, 0xac, 0x81, 0x8b, 0xfc, 0xe9, 0x62, 0x1e,
-	0xd4, 0xa4, 0x82, 0x25, 0xd5, 0x74, 0xd5, 0x42, 0x64, 0xb7, 0xe4, 0xbd, 0x84, 0xd9, 0x1d, 0x02,
-	0x59, 0x52, 0x62, 0x0f, 0x06, 0x95, 0x02, 0x0b, 0xb9, 0xc8, 0x7f, 0xb0, 0x98, 0x76, 0x0e, 0x84,
-	0x4c, 0x93, 0x1a, 0xf3, 0xbe, 0x22, 0x78, 0x14, 0x56, 0x1e, 0xf0, 0x0b, 0xce, 0x36, 0x84, 0x5d,
-	0x62, 0x1b, 0xc6, 0xbf, 0xed, 0xa8, 0xbf, 0x9c, 0x90, 0x5d, 0xbf, 0x17, 0xf5, 0x9d, 0xe8, 0x41,
-	0x57, 0x74, 0x57, 0xd0, 0x70, 0x0f, 0x41, 0xcf, 0x9f, 0xc1, 0xc3, 0x2e, 0x82, 0x01, 0x46, 0xc7,
-	0xa7, 0xef, 0xc9, 0xc9, 0xf9, 0xcc, 0xc0, 0x13, 0x18, 0x2e, 0x0f, 0x57, 0x27, 0xe7, 0x33, 0xb4,
-	0xf8, 0x81, 0x60, 0xfe, 0x87, 0xff, 0x61, 0x45, 0x54, 0xf3, 0x48, 0xe1, 0x15, 0xcc, 0x3b, 0x7e,
-	0x2c, 0x8b, 0x9c, 0x6a, 0x2e, 0x53, 0xfc, 0xb4, 0xfd, 0xe9, 0xbf, 0x61, 0xd9, 0x4f, 0xfe, 0x07,
-	0x55, 0x36, 0x1e, 0x37, 0xd9, 0x86, 0x45, 0x14, 0x31, 0xa5, 0x5e, 0x53, 0x9e, 0x14, 0x39, 0xbb,
-	0xd7, 0xa5, 0x00, 0x46, 0x47, 0xe5, 0x5b, 0x2a, 0x18, 0x36, 0xdb, 0x95, 0x3b, 0xd6, 0xdb, 0x7f,
-	0x45, 0x74, 0xf4, 0xea, 0xea, 0xc6, 0x31, 0xae, 0x6f, 0x1c, 0xe3, 0x6a, 0xeb, 0xa0, 0xeb, 0xad,
-	0x83, 0x7e, 0x6e, 0x1d, 0xf4, 0xe5, 0xd6, 0x31, 0xbe, 0xdd, 0x3a, 0x06, 0x3c, 0x8e, 0xa4, 0x08,
-	0xa4, 0x56, 0x5c, 0xc8, 0x20, 0xce, 0xb3, 0xe8, 0x0c, 0x7d, 0x1c, 0x37, 0x6d, 0xb6, 0xfe, 0xde,
-	0xeb, 0x9f, 0xbe, 0x0b, 0x3f, 0xa0, 0xf5, 0xa8, 0x7e, 0x9f, 0x2f, 0x7e, 0x05, 0x00, 0x00, 0xff,
-	0xff, 0x2a, 0x03, 0x32, 0xe4, 0xe9, 0x02, 0x00, 0x00,
-}
