@@ -2,8 +2,6 @@ syntax = "proto3";
 package apipb;
 import weak "gogoproto/gogo.proto";
 
-import "models.proto";
-
 option (gogoproto.marshaler_all) = true;
 option (gogoproto.sizer_all) = true;
 option (gogoproto.unmarshaler_all) = true;
@@ -35,36 +33,13 @@ message GameInfo {
   string language = 3;
 }
 
-// Points are represented as latitude-longitude pairs in the E7 representation
-// (degrees multiplied by 10**7 and rounded to the nearest integer).
-// Latitudes should be in the range +/- 90 degrees and longitude should be in
-// the range +/- 180 degrees (inclusive).
-message Point {
-  int32 latitude = 1;
-  int32 longitude = 2;
-}
-
-message Vector3 {
-  float x = 1;
-  float y = 2;
-  float z = 3;
-}
-
-message MotionData {
-  Vector3 gravity = 1;
-  Vector3 user_acceleration = 2;
-  Vector3 rotation_rate = 3;
-  Vector3 attitude = 4;
-}
-
-message GestureData {
-  float velocity = 1;
-  float width = 2;
-  float height = 3;
-  float duration = 4;
+enum EventType {
+  GAME_EVENT = 0;
+  APP_EVENT = 1;
 }
 
 message Event {
+  reserved 8, 12 to 15;
   // UserId is profile id or child id
   string user_id = 1;
   // Child is secondary id
@@ -79,8 +54,6 @@ message Event {
   DeviceInfo device = 6;
   // AppId is the client app id
   string app_id = 7;
-  // Loc is the location of user
-  Point loc = 8;
   // EventId is Client side event id in order to track whether event is
   // delivered successfully
   string event_id = 9;
@@ -88,23 +61,17 @@ message Event {
   bool is_resend = 10;
   // Payload is a json data
   bytes payload = 11;
-  // Age is child's age in month
-  int32 age = 12;
-  // Child gender
-  Gender gender = 13;
-  // MotionData keeps motion data of device
-  MotionData motion_data = 14;
-  //
-  GestureData gesture_data = 15;
+  // Type of the event. default is GAME_EVENT
+  EventType event_type = 16;
 }
 
 message AppEventData {
+  reserved 6;
   string event = 1;
   string app_id = 2;
   DeviceInfo device = 3;
   int64 timestamp = 4;
   bytes payload = 5;
-  Point loc = 6;
   // EventId is Client side event id in order to track whether event is
   // delivered successfully
   string event_id = 7;
@@ -115,7 +82,8 @@ message AppEventData {
 }
 
 message BatchEventData {
-  // Event the event name
+  reserved 5, 8, 9;
+  // Event is the event name
   string event = 1;
   // EventId is Client side event id in order to track whether event is
   // delivered successfully
@@ -125,18 +93,16 @@ message BatchEventData {
   // Game is the game information
   GameInfo game = 4;
   // Loc is the location of user
-  Point loc = 5;
   // IsResend is true if client is trying to send a failed event
   bool is_resend = 6;
   // Payload is a json data
   bytes payload = 7;
-  // MotionData keeps motion data of device
-  MotionData motion_data = 8;
-  //
-  GestureData gesture_data = 9;
+  // Type of the event. default is GAME_EVENT
+  EventType event_type = 10;
 }
 
 message BatchEvent {
+  reserved 6, 7;
   // UserId is profile id or child id
   string user_id = 1;
   // Child is secondary id
@@ -145,10 +111,6 @@ message BatchEvent {
   string app_id = 3;
   // Device is device information,
   DeviceInfo device = 4;
-  // Age is child's age in month
-  int32 age = 6;
-  // Child Gender
-  Gender gender = 7;
   // Data is
   repeated BatchEventData data = 5;
 }
