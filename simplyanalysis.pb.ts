@@ -43,6 +43,11 @@ To is the unix seconds time
   to?: string|number;
   games?: string[];
   interval?: DataInterval;
+/**
+Child Id to filter data from
+optional
+*/
+  childId?: string;
 }
 
 export const SimplifiedReq_analysis = "analysis";
@@ -50,3 +55,4 @@ export const SimplifiedReq_from = "from";
 export const SimplifiedReq_to = "to";
 export const SimplifiedReq_games = "games";
 export const SimplifiedReq_interval = "interval";
+export const SimplifiedReq_childId = "child_id";

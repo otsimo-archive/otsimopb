@@ -44,4 +44,7 @@ message SimplifiedReq {
   int64 to = 3;
   repeated string games = 4;
   DataInterval interval = 5;
+  // Child Id to filter data from
+  // optional 
+  string child_id = 6;
 }
