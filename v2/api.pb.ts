@@ -56,3 +56,17 @@ export const UpdateProgressReq_newLevel = "new_level";
 export const UpdateProgressReq_levelStarCount = "level_star_count";
 export const UpdateProgressReq_badgesEarned = "badges_earned";
 export const UpdateProgressReq_childId = "child_id";
+export interface BatchUpdateChildrenReq {
+  fields?: google_protobuf_google_protobuf_field_mask.FieldMask;
+  child?: apipb_models.Child;
+  ids?: string[];
+}
+
+export const BatchUpdateChildrenReq_fields = "fields";
+export const BatchUpdateChildrenReq_child = "child";
+export const BatchUpdateChildrenReq_ids = "ids";
+export interface BatchUpdateChildrenRes {
+  child?: apipb_models.Child[];
+}
+
+export const BatchUpdateChildrenRes_child = "child";

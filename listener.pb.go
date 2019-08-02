@@ -213,7 +213,7 @@ type AppEventData struct {
 	EventId string `protobuf:"bytes,7,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	// IsResend is true if client is trying to send a failed event
 	IsResend bool `protobuf:"varint,8,opt,name=is_resend,json=isResend,proto3" json:"is_resend,omitempty"`
-	// UserId is profile id or child id
+	// UserId is profile id
 	UserId               string   `protobuf:"bytes,9,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

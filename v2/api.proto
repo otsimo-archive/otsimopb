@@ -25,6 +25,8 @@ service ApiService {
   rpc GetDisabledChildren(apipb.GetChildrenFromProfileRequest)
       returns (apipb.GetChildrenFromProfileResponse);
   rpc UpdateChild(UpdateChildReq) returns (apipb.Child);
+  rpc BatchUpdateChildren(BatchUpdateChildrenReq)
+      returns (BatchUpdateChildrenRes);
 
   rpc UpdateGameEntry(apipb.GameEntryRequest) returns (apipb.Child);
   rpc ChangeActivation(apipb.ChangeChildActivationRequest)
@@ -64,3 +66,11 @@ message UpdateProgressReq {
   repeated apipb.Badge badges_earned = 4;
   string child_id = 5;
 }
+
+message BatchUpdateChildrenReq {
+  google.protobuf.FieldMask fields = 1;
+  apipb.Child child = 2;
+  repeated string ids = 3;
+}
+
+message BatchUpdateChildrenRes { repeated apipb.Child child = 2; }

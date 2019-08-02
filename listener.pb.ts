@@ -117,7 +117,7 @@ IsResend is true if client is trying to send a failed event
 */
   isResend?: boolean;
 /**
-UserId is profile id or child id
+UserId is profile id
 */
   userId?: string;
 }
