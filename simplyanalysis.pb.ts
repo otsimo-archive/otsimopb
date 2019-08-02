@@ -20,12 +20,18 @@ To is the unix seconds time
 */
   to?: string|number;
   interval?: DataInterval;
+/**
+Child Id to filter data from
+optional
+*/
+  childId?: string;
 }
 
 export const GamePlayingRequest_games = "games";
 export const GamePlayingRequest_from = "from";
 export const GamePlayingRequest_to = "to";
 export const GamePlayingRequest_interval = "interval";
+export const GamePlayingRequest_childId = "child_id";
 export interface GamePlayingReply {
   data?: apipb_datasetmodels.DataSet;
 }

@@ -33,6 +33,9 @@ message GamePlayingRequest {
   // To is the unix seconds time
   int64 to = 3;
   DataInterval interval = 4;
+  // Child Id to filter data from
+  // optional
+  string child_id = 6;
 }
 message GamePlayingReply { DataSet data = 1; }
 
@@ -45,6 +48,6 @@ message SimplifiedReq {
   repeated string games = 4;
   DataInterval interval = 5;
   // Child Id to filter data from
-  // optional 
+  // optional
   string child_id = 6;
 }
