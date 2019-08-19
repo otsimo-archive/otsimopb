@@ -78,6 +78,7 @@ message TarballInfo {
   string url = 1;
   string storage = 2;
   string archive_format = 3;
+  string locale = 4;
 }
 
 message AddTarballReq {

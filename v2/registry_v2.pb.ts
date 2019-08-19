@@ -114,11 +114,13 @@ export interface TarballInfo {
   url?: string;
   storage?: string;
   archiveFormat?: string;
+  locale?: string;
 }
 
 export const TarballInfo_url = "url";
 export const TarballInfo_storage = "storage";
 export const TarballInfo_archiveFormat = "archive_format";
+export const TarballInfo_locale = "locale";
 export interface AddTarballReq {
   token?: string;
   infos?: TarballInfo[];
