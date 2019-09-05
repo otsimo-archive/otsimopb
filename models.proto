@@ -200,6 +200,7 @@ message GameManifest {
   int32 manifest_version = 23;
   map<string, GameOption> options = 24
       [ (gogoproto.moretags) = "bson:\"options\"" ];
+  bool is_multi_scene = 25 [ (gogoproto.moretags) = "bson:\"is_multi_scene\"" ];
 }
 
 message GameEnumGroup {
@@ -208,19 +209,45 @@ message GameEnumGroup {
   repeated string values = 3;
 }
 
+message GameSceneProps {
+  // Index of the scene
+  int32 index = 1;
+  // Languages of the 
+  repeated string languages = 2;
+  // ParentId of the scene. Can be empty or a category
+  string parent_id = 3;
+  // CanOverrideImage enables overriding scene image.
+  bool can_override_image = 4;
+
+  // TODO: how to determine newly added scenes??
+  // maybe: string active_after = 5;
+}
+
 message GameOption {
   string id = 1;
+  // Type is determines what kind of option is this: string, number, boolean,
+  // scene, category
   string type = 2;
+  // Description of the option
   string description = 3;
+  // Default value of option.
   string default = 4;
-  repeated string enum
-  = 5;
+  // Enum is limits of string values
+  repeated string enum = 5;
+  // Format of the string
   string format = 6;
+  // MinValue can be used when type is number and limits number
   double min_value = 7;
+  // MaxValue can be used when type is number and limits number
   double max_value = 8;
+  // Image of the option. It is available on material options
   string image = 9;
+  // SortKey is a key to use sort options. If it is empty id is used instead
   string sort_key = 10;
+  // EnumGroups further limits string enums.
   repeated GameEnumGroup enum_groups = 11;
+  // Scene is properties of game scene or category options.
+  GameSceneProps scene = 12;
 }
 
 message Game {
