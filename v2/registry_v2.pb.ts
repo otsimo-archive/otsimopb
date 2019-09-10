@@ -84,11 +84,26 @@ all languages.
 Device Capabilities
 */
   capabilities?: string[];
+/**
+Device Country
+*/
+  deviceCountry?: string;
+/**
+Device OS name
+*/
+  deviceOs?: string;
+/**
+App edition
+*/
+  appEdition?: string;
 }
 
 export const GetAllGamesReq_games = "games";
 export const GetAllGamesReq_language = "language";
 export const GetAllGamesReq_capabilities = "capabilities";
+export const GetAllGamesReq_deviceCountry = "device_country";
+export const GetAllGamesReq_deviceOs = "device_os";
+export const GetAllGamesReq_appEdition = "app_edition";
 export interface GetAllGamesRes {
   games?: apipb_models.GameRelease[];
 }

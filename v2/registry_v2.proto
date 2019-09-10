@@ -59,6 +59,12 @@ message GetAllGamesReq {
   string language = 2;
   // Device Capabilities
   repeated string capabilities = 3;
+  // Device Country
+  string device_country = 4;
+  // Device OS name
+  string device_os = 5;
+  // App edition
+  string app_edition = 6;
 }
 
 message GetAllGamesRes { repeated apipb.GameRelease games = 1; }

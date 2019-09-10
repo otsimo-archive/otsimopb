@@ -283,6 +283,8 @@ ManifestVersion
 */
   manifestVersion?: number;
   options?: { [key: string]: GameOption };
+		  isMultiScene?: boolean;
+  deviceFilter?: { [key: string]: FilterParams };
 		}
 
 export const GameManifest_uniqueName = "unique_name";
@@ -306,6 +308,8 @@ export const GameManifest_abTest = "ab_test";
 export const GameManifest_labels = "labels";
 export const GameManifest_manifestVersion = "manifest_version";
 export const GameManifest_options = "options";
+export const GameManifest_isMultiScene = "is_multi_scene";
+export const GameManifest_deviceFilter = "device_filter";
 export interface GameEnumGroup {
   key?: string;
   defaultValue?: string;
@@ -315,18 +319,88 @@ export interface GameEnumGroup {
 export const GameEnumGroup_key = "key";
 export const GameEnumGroup_defaultValue = "default_value";
 export const GameEnumGroup_values = "values";
+export interface FilterParams {
+  exclude?: string[];
+  include?: string[];
+}
+
+export const FilterParams_exclude = "exclude";
+export const FilterParams_include = "include";
+export interface GameSceneProps {
+/**
+Index of the scene or category
+*/
+  index?: number;
+/**
+Languages of the
+*/
+  languages?: string[];
+/**
+ParentId of the scene. Can be empty or a category
+*/
+  parentId?: string;
+/**
+CanOverrideImage enables overriding scene image.
+*/
+  canOverrideImage?: boolean;
+/**
+ActiveAfter is a date YYYY-MM-DD formated string.
+*/
+  activeAfter?: string;
+}
+
+export const GameSceneProps_index = "index";
+export const GameSceneProps_languages = "languages";
+export const GameSceneProps_parentId = "parent_id";
+export const GameSceneProps_canOverrideImage = "can_override_image";
+export const GameSceneProps_activeAfter = "active_after";
 export interface GameOption {
   id?: string;
+/**
+Type is determines what kind of option is this: string, number, boolean,
+scene, category
+*/
   type?: string;
+/**
+Description of the option
+*/
   description?: string;
+/**
+Default value of option.
+*/
   default?: string;
+/**
+Enum is limits of string values
+*/
   enum?: string[];
+/**
+Format of the string
+*/
   format?: string;
+/**
+MinValue can be used when type is number and limits number
+*/
   minValue?: number;
+/**
+MaxValue can be used when type is number and limits number
+*/
   maxValue?: number;
+/**
+Image of the option. It is available on material options
+*/
   image?: string;
+/**
+SortKey is a key to use sort options. If it is empty id is used instead
+*/
   sortKey?: string;
+/**
+EnumGroups further limits string enums.
+*/
   enumGroups?: GameEnumGroup[];
+/**
+Scene is properties of game scene or category options.
+*/
+  scene?: GameSceneProps;
 }
 
 export const GameOption_id = "id";
@@ -340,6 +414,7 @@ export const GameOption_maxValue = "max_value";
 export const GameOption_image = "image";
 export const GameOption_sortKey = "sort_key";
 export const GameOption_enumGroups = "enum_groups";
+export const GameOption_scene = "scene";
 export interface Game {
   id?: string;
   uniqueName?: string;

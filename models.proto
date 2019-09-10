@@ -201,6 +201,8 @@ message GameManifest {
   map<string, GameOption> options = 24
       [ (gogoproto.moretags) = "bson:\"options\"" ];
   bool is_multi_scene = 25 [ (gogoproto.moretags) = "bson:\"is_multi_scene\"" ];
+  map<string, FilterParams> device_filter = 26
+      [ (gogoproto.moretags) = "bson:\"device_filter\"" ];
 }
 
 message GameEnumGroup {
@@ -209,18 +211,22 @@ message GameEnumGroup {
   repeated string values = 3;
 }
 
+message FilterParams {
+  repeated string exclude = 1;
+  repeated string include = 2;
+}
+
 message GameSceneProps {
-  // Index of the scene
+  // Index of the scene or category
   int32 index = 1;
-  // Languages of the 
+  // Languages of the
   repeated string languages = 2;
   // ParentId of the scene. Can be empty or a category
   string parent_id = 3;
   // CanOverrideImage enables overriding scene image.
   bool can_override_image = 4;
-
-  // TODO: how to determine newly added scenes??
-  // maybe: string active_after = 5;
+  // ActiveAfter is a date YYYY-MM-DD formated string.
+  string active_after = 5;
 }
 
 message GameOption {
