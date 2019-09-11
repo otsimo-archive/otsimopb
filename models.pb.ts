@@ -9,6 +9,13 @@ export const Gender_FEMALE: Gender = "FEMALE";
 
 export const ALL_Gender_VALUES: Gender[] = [Gender_UNKNOWN,Gender_MALE,Gender_FEMALE];
 
+export type GameVideoSize =  "SMALL"  | "MEDIUM"  | "BIG" ;
+export const GameVideoSize_SMALL: GameVideoSize = "SMALL";
+export const GameVideoSize_MEDIUM: GameVideoSize = "MEDIUM";
+export const GameVideoSize_BIG: GameVideoSize = "BIG";
+
+export const ALL_GameVideoSize_VALUES: GameVideoSize[] = [GameVideoSize_SMALL,GameVideoSize_MEDIUM,GameVideoSize_BIG];
+
 export type ReleaseState =  "CREATED"  | "DEVELOPMENT"  | "WAITING"  | "REJECTED"  | "VALIDATED"  | "PRODUCTION" ;
 export const ReleaseState_CREATED: ReleaseState = "CREATED";
 export const ReleaseState_DEVELOPMENT: ReleaseState = "DEVELOPMENT";
@@ -187,7 +194,11 @@ Assets are asset folders or paths for this language
 Localized Annotations
 */
   annotations?: { [key: string]: string };
-		}
+		/**
+Videos are preview videos that show on market
+*/
+  videos?: GameVideo[];
+}
 
 export const GameMetadata_language = "language";
 export const GameMetadata_visibleName = "visible_name";
@@ -200,6 +211,21 @@ export const GameMetadata_images = "images";
 export const GameMetadata_infoSlug = "info_slug";
 export const GameMetadata_assets = "assets";
 export const GameMetadata_annotations = "annotations";
+export const GameMetadata_videos = "videos";
+export interface GameVideoURL {
+  url?: string;
+  size?: GameVideoSize;
+}
+
+export const GameVideoURL_url = "url";
+export const GameVideoURL_size = "size";
+export interface GameVideo {
+  tags?: string[];
+  urls?: GameVideoURL[];
+}
+
+export const GameVideo_tags = "tags";
+export const GameVideo_urls = "urls";
 export interface GameManifest {
 /**
 Unique Name of game

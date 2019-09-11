@@ -143,6 +143,25 @@ message GameMetadata {
   // Localized Annotations
   map<string, string> annotations = 11
       [ (gogoproto.moretags) = "bson:\"annotations,omitempty\"" ];
+  // Videos are preview videos that show on market
+  repeated GameVideo videos = 12
+      [ (gogoproto.moretags) = "bson:\"videos,omitempty\"" ];
+}
+
+enum GameVideoSize {
+  SMALL = 0;
+  MEDIUM = 1;
+  BIG = 2;
+}
+
+message GameVideoURL {
+  string url = 1;
+  GameVideoSize size = 2;
+}
+
+message GameVideo {
+  repeated string tags = 1;
+  repeated GameVideoURL urls = 2;
 }
 
 message GameManifest {
