@@ -39,6 +39,19 @@ export const Address_city = "city";
 export const Address_state = "state";
 export const Address_zipCode = "zip_code";
 export const Address_countryCode = "country_code";
+export interface ProfileAction {
+  id?: string;
+  kind?: string;
+  editions?: string[];
+  payload?: { [key: string]: string };
+		  priority?: number;
+}
+
+export const ProfileAction_id = "id";
+export const ProfileAction_kind = "kind";
+export const ProfileAction_editions = "editions";
+export const ProfileAction_payload = "payload";
+export const ProfileAction_priority = "priority";
 export interface Profile {
   id?: string;
   email?: string;
@@ -53,7 +66,8 @@ export interface Profile {
   timezone?: number;
   country?: string;
   labels?: { [key: string]: string };
-		}
+		  actions?: ProfileAction[];
+}
 
 export const Profile_id = "id";
 export const Profile_email = "email";
@@ -68,6 +82,7 @@ export const Profile_locale = "locale";
 export const Profile_timezone = "timezone";
 export const Profile_country = "country";
 export const Profile_labels = "labels";
+export const Profile_actions = "actions";
 export interface ChildGameEntry {
   id?: string;
   active?: boolean;
