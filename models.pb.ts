@@ -44,12 +44,14 @@ export interface ProfileAction {
   kind?: string;
   editions?: string[];
   payload?: { [key: string]: string };
-		}
+		  priority?: number;
+}
 
 export const ProfileAction_id = "id";
 export const ProfileAction_kind = "kind";
 export const ProfileAction_editions = "editions";
 export const ProfileAction_payload = "payload";
+export const ProfileAction_priority = "priority";
 export interface Profile {
   id?: string;
   email?: string;

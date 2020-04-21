@@ -29,6 +29,7 @@ message ProfileAction {
   string kind = 2;
   repeated string editions = 3;
   map<string, string> payload = 4;
+  int32 priority = 5;
 }
 
 message Profile {
