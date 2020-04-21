@@ -36,6 +36,10 @@ service ApiService {
 
   rpc Statistics(StatisticsReq) returns (StatisticsRes);
   rpc UpdateProgress(UpdateProgressReq) returns (apipb.Child);
+
+  // Actions
+  rpc AddProfileAction(AddProfileActionReq) returns (apipb.Profile);
+  rpc ConsumeAction(ConsumeActionReq) returns (apipb.Profile);
 }
 
 message StatisticsReq {
@@ -74,3 +78,21 @@ message BatchUpdateChildrenReq {
 }
 
 message BatchUpdateChildrenRes { repeated apipb.Child child = 2; }
+
+enum AddProfileActionConstraint {
+  // There can be only single action with same kind in the profile
+  UNIQUE_KIND = 0;
+  // There can be only single action with same kind in edition of the profile
+  UNIQUE_KIND_IN_EDITIONS = 1;
+}
+
+message AddProfileActionReq {
+  string profile_id = 1;
+  apipb.ProfileAction action = 2;
+  repeated AddProfileActionConstraint constraints = 3;
+}
+
+message ConsumeActionReq {
+  string profile_id = 1;
+  string action_id = 2;
+}
