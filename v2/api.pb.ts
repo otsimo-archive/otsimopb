@@ -5,17 +5,25 @@ import * as apipb_messages from "./messages.pb";
 import * as apipb_models from "./models.pb";
 import * as google_protobuf_google_protobuf_field_mask from "./google/protobuf/field_mask.pb";
 
-export type AddProfileActionConstraint =  "UNIQUE_KIND"  | "UNIQUE_KIND_IN_EDITIONS" ;
+export type AddProfileActionConstraint =  "UNIQUE_KIND_IGNORE_THIS"  | "UNIQUE_KIND_IN_EDITIONS_IGNORE_THIS"  | "UNIQUE_KIND_REPLACE"  | "UNIQUE_KIND_IN_EDITIONS_REPLACE" ;
 /**
 There can be only single action with same kind in the profile
 */
-export const AddProfileActionConstraint_UNIQUE_KIND: AddProfileActionConstraint = "UNIQUE_KIND";
+export const AddProfileActionConstraint_UNIQUE_KIND_IGNORE_THIS: AddProfileActionConstraint = "UNIQUE_KIND_IGNORE_THIS";
 /**
 There can be only single action with same kind in edition of the profile
 */
-export const AddProfileActionConstraint_UNIQUE_KIND_IN_EDITIONS: AddProfileActionConstraint = "UNIQUE_KIND_IN_EDITIONS";
+export const AddProfileActionConstraint_UNIQUE_KIND_IN_EDITIONS_IGNORE_THIS: AddProfileActionConstraint = "UNIQUE_KIND_IN_EDITIONS_IGNORE_THIS";
+/**
+There can be only single action with same kind in the profile
+*/
+export const AddProfileActionConstraint_UNIQUE_KIND_REPLACE: AddProfileActionConstraint = "UNIQUE_KIND_REPLACE";
+/**
+There can be only single action with same kind in edition of the profile
+*/
+export const AddProfileActionConstraint_UNIQUE_KIND_IN_EDITIONS_REPLACE: AddProfileActionConstraint = "UNIQUE_KIND_IN_EDITIONS_REPLACE";
 
-export const ALL_AddProfileActionConstraint_VALUES: AddProfileActionConstraint[] = [AddProfileActionConstraint_UNIQUE_KIND,AddProfileActionConstraint_UNIQUE_KIND_IN_EDITIONS];
+export const ALL_AddProfileActionConstraint_VALUES: AddProfileActionConstraint[] = [AddProfileActionConstraint_UNIQUE_KIND_IGNORE_THIS,AddProfileActionConstraint_UNIQUE_KIND_IN_EDITIONS_IGNORE_THIS,AddProfileActionConstraint_UNIQUE_KIND_REPLACE,AddProfileActionConstraint_UNIQUE_KIND_IN_EDITIONS_REPLACE];
 
 export interface StatisticsReq {
   timeFrom?: string|number;

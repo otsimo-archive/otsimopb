@@ -81,9 +81,13 @@ message BatchUpdateChildrenRes { repeated apipb.Child child = 2; }
 
 enum AddProfileActionConstraint {
   // There can be only single action with same kind in the profile
-  UNIQUE_KIND = 0;
+  UNIQUE_KIND_IGNORE_THIS = 0;
   // There can be only single action with same kind in edition of the profile
-  UNIQUE_KIND_IN_EDITIONS = 1;
+  UNIQUE_KIND_IN_EDITIONS_IGNORE_THIS = 1;
+  // There can be only single action with same kind in the profile
+  UNIQUE_KIND_REPLACE = 2;
+  // There can be only single action with same kind in edition of the profile
+  UNIQUE_KIND_IN_EDITIONS_REPLACE = 3;
 }
 
 message AddProfileActionReq {
