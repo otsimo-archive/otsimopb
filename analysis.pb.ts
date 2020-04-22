@@ -201,12 +201,17 @@ Interval is optional for Date and Discrete type
 */
   interval?: GroupInterval;
   outputField?: string;
+/**
+Timezone Offset in seconds
+*/
+  timezoneSeconds?: number;
 }
 
 export const QueryGroup_fieldName = "field_name";
 export const QueryGroup_type = "type";
 export const QueryGroup_interval = "interval";
 export const QueryGroup_outputField = "output_field";
+export const QueryGroup_timezoneSeconds = "timezone_seconds";
 export interface Query {
   events?: string[];
   range?: TimeRange;

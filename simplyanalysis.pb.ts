@@ -25,6 +25,10 @@ Child Id to filter data from
 optional
 */
   childId?: string;
+/**
+Timezone Offset in seconds
+*/
+  timezoneSeconds?: number;
 }
 
 export const GamePlayingRequest_games = "games";
@@ -32,6 +36,7 @@ export const GamePlayingRequest_from = "from";
 export const GamePlayingRequest_to = "to";
 export const GamePlayingRequest_interval = "interval";
 export const GamePlayingRequest_childId = "child_id";
+export const GamePlayingRequest_timezoneSeconds = "timezone_seconds";
 export interface GamePlayingReply {
   data?: apipb_datasetmodels.DataSet;
 }
@@ -54,6 +59,10 @@ Child Id to filter data from
 optional
 */
   childId?: string;
+/**
+Timezone Offset in seconds
+*/
+  timezoneSeconds?: number;
 }
 
 export const SimplifiedReq_analysis = "analysis";
@@ -62,3 +71,4 @@ export const SimplifiedReq_to = "to";
 export const SimplifiedReq_games = "games";
 export const SimplifiedReq_interval = "interval";
 export const SimplifiedReq_childId = "child_id";
+export const SimplifiedReq_timezoneSeconds = "timezone_seconds";

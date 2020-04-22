@@ -36,6 +36,8 @@ message GamePlayingRequest {
   // Child Id to filter data from
   // optional
   string child_id = 6;
+  // Timezone Offset in seconds
+  int32 timezone_seconds = 7;
 }
 message GamePlayingReply { DataSet data = 1; }
 
@@ -50,4 +52,6 @@ message SimplifiedReq {
   // Child Id to filter data from
   // optional
   string child_id = 6;
+  // Timezone Offset in seconds
+  int32 timezone_seconds = 7;
 }

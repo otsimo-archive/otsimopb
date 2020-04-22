@@ -106,6 +106,8 @@ message QueryGroup {
   // Interval is optional for Date and Discrete type
   GroupInterval interval = 3;
   string output_field = 4;
+  // Timezone Offset in seconds
+  int32 timezone_seconds = 5;
 }
 
 message Query {
