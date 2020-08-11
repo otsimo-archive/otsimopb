@@ -33,6 +33,7 @@ message OtsimoServices {
   map<string, string> services = 20;
   map<string, string> game_storage_providers = 21;
   map<string, string> configs = 23;
+  bool in_maintenance = 24;
 }
 
 message DiscoveryRequest {

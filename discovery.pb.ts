@@ -23,7 +23,8 @@ GameContent is registry service http url
   services?: { [key: string]: string };
 		  gameStorageProviders?: { [key: string]: string };
 		  configs?: { [key: string]: string };
-		}
+		  inMaintenance?: boolean;
+}
 
 export const OtsimoServices_environment = "environment";
 export const OtsimoServices_issuer = "issuer";
@@ -42,6 +43,7 @@ export const OtsimoServices_analyticsGrpc = "analytics_grpc";
 export const OtsimoServices_services = "services";
 export const OtsimoServices_gameStorageProviders = "game_storage_providers";
 export const OtsimoServices_configs = "configs";
+export const OtsimoServices_inMaintenance = "in_maintenance";
 export interface DiscoveryRequest {
   environment?: string;
   sdkVersion?: string;
