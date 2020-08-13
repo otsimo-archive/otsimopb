@@ -11,7 +11,6 @@ export OPTIONS_GW="Mgoogle/api/annotations.proto=google.golang.org/genproto/goog
 
 protoc --proto_path=$IMPORT_PATH --${GENERATOR}=${OPTIONS_API},plugins=grpc:${OUTPUT_DIR} $PROTO_FILES
 protoc --proto_path=$IMPORT_PATH --${GENERATOR}=${OPTIONS_API_V2},plugins=grpc:.. ./v2/*.proto
-protoc --proto_path=$IMPORT_PATH --grpc-gateway_out=${OPTIONS_API},logtostderr=true:${OUTPUT_DIR} ./file.proto
 protoc --proto_path=$IMPORT_PATH --grpc-gateway_out=${OPTIONS_API},logtostderr=true:${OUTPUT_DIR}/.. ./v2/*.proto
 
 protoc --proto_path=$IMPORT_PATH --js-fetch_out=${OUTPUT_DIR} $PROTO_FILES
